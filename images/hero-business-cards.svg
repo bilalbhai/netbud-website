@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 650" role="img" aria-labelledby="title desc">
+  <title id="title">Business cards, made to connect</title>
+  <desc id="desc">Original stacked printed business cards with NetBud branding and an illustrative NFC tap symbol. No real contact record or functional code is shown.</desc>
+  <path d="M43 113h633v444H43z" fill="#EEEDE9" />
+  <g transform="translate(150 104) rotate(8 256 151)">
+    <rect x="8" y="10" width="514" height="302" rx="17" fill="#1C1D21" />
+    <rect width="514" height="302" rx="17" fill="#A43B2C" stroke="#1C1D21" stroke-width="3" />
+    <path d="M482 0h15a17 17 0 0 1 17 17v268a17 17 0 0 1-17 17h-15z" fill="#FF704E" />
+    <text x="33" y="74" font-family="Arial,Helvetica,sans-serif" font-size="39" font-weight="700" fill="#FFFAF0">Good things,</text>
+    <text x="33" y="119" font-family="Arial,Helvetica,sans-serif" font-size="39" font-weight="700" fill="#FFFAF0">connected.</text>
+    <g transform="translate(399 59)" fill="none" stroke="#F4C7B9" stroke-width="5" stroke-linecap="round">
+      <path d="M0 0a12 12 0 0 1 0 22M10-10a26 26 0 0 1 0 42M20-20a40 40 0 0 1 0 62" />
+    </g>
+    <text x="33" y="264" font-family="Arial,Helvetica,sans-serif" font-size="20" fill="#FFFAF0">A simple way to share your business.</text>
+  </g>
+  <g transform="translate(69 270) rotate(-6 274 155)">
+    <rect x="8" y="10" width="548" height="310" rx="17" fill="#1C1D21" />
+    <rect width="548" height="310" rx="17" fill="#FFFAF0" stroke="#1C1D21" stroke-width="3" />
+    <rect x="33" y="43" width="83" height="83" rx="24" fill="#A43B2C" />
+    <g transform="translate(35 45) scale(1.45)">
+      <g transform="translate(1 11) scale(.4)"><path d="M12 69V29a16 16 0 0 1 32 0v40m0-52v36a22 22 0 1 0 22-22" fill="none" stroke="#A43B2C" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" /><circle cx="111" cy="17" r="10" fill="#FF704E" /></g></g>
+    <text x="136" y="103" font-family="Arial,Helvetica,sans-serif" font-size="57" font-weight="700" fill="#1C1D21">NetBud</text>
+    <text x="35" y="179" font-family="Arial,Helvetica,sans-serif" font-size="25" font-weight="700" fill="#A43B2C">Web · Brand · Print</text>
+    <path d="M35 208h249M35 228h189" fill="none" stroke="#1C1D21" stroke-width="6" stroke-linecap="round" opacity=".22" />
+    <path d="M0 261h548v32a17 17 0 0 1-17 17H17a17 17 0 0 1-17-17z" fill="#F4C7B9" />
+    <text x="35" y="293" font-family="Arial,Helvetica,sans-serif" font-size="21" font-weight="700" fill="#1C1D21">Printed cards + NFC options.</text>
+    <circle cx="469" cy="184" r="37" fill="#FF704E" />
+    <path d="M457 173a14 14 0 0 1 0 23m9-31a25 25 0 0 1 0 39m9-47a36 36 0 0 1 0 55" fill="none" stroke="#1C1D21" stroke-width="3" stroke-linecap="round" />
+  </g>
+</svg>

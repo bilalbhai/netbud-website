@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 460" role="img" aria-labelledby="title desc">
+  <title id="title">Business website illustration</title>
+  <desc id="desc">A bold illustrative website layout in coral, violet and cream.</desc>
+
+  <rect width="640" height="460" fill="#FF704E" />
+  <circle cx="555" cy="69" r="96" fill="#F4C7B9" />
+  <path d="M-10 359 147 202 304 359" fill="none" stroke="#1C1D21" stroke-width="3" />
+  <g transform="translate(93 68) rotate(-5 224 146)">
+    <rect x="10" y="12" width="448" height="293" rx="13" fill="#1C1D21" />
+    <rect width="448" height="293" rx="13" fill="#FFFAF0" stroke="#1C1D21" stroke-width="3" />
+    <path d="M0 42h448" stroke="#1C1D21" stroke-width="3" />
+    <g fill="#A43B2C"><circle cx="21" cy="21" r="4" /><circle cx="36" cy="21" r="4" /><circle cx="51" cy="21" r="4" /></g>
+    <text x="23" y="83" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="700" fill="#A43B2C" letter-spacing="1">YOUR BUSINESS</text>
+    <text x="21" y="138" font-family="Arial,Helvetica,sans-serif" font-size="45" font-weight="700" fill="#1C1D21" letter-spacing="-2">Looking</text><text x="21" y="185" font-family="Arial,Helvetica,sans-serif" font-size="45" font-weight="700" fill="#1C1D21" letter-spacing="-2">sharp.</text>
+    <rect x="24" y="221" width="155" height="36" rx="18" fill="#A43B2C" /><g transform="translate(132 231) scale(0.6)" fill="none" stroke="#FFFAF0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M0 12h30M18 0l12 12-12 12" /></g>
+    <path d="M278 125a64 64 0 0 1 128 0v132H278z" fill="#F4C7B9" />
+    <circle cx="342" cy="167" r="43" fill="#FF704E" /><path d="M317 180v-25a12 12 0 0 1 24 0v25m0-44v31a14 14 0 1 0 14-14" fill="none" stroke="#1C1D21" stroke-width="6" stroke-linecap="round" /></g>
+  </svg>

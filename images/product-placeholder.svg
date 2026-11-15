@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 460" role="img" aria-labelledby="title desc">
+  <title id="title">Your next digital step</title>
+  <desc id="desc">An original connected NetBud mark surrounded by bold digital building blocks.</desc>
+
+  <rect width="640" height="460" fill="#FFFAF0" />
+  <circle cx="318" cy="207" r="156" fill="#EEEDE9" />
+  <path d="M73 223h105M466 223h101M318 35v48M318 341v48" fill="none" stroke="#1C1D21" stroke-width="3" />
+  <rect x="39" y="188" width="70" height="70" rx="16" fill="#F4C7B9" stroke="#1C1D21" stroke-width="3" />
+  <circle cx="567" cy="223" r="35" fill="#FF704E" stroke="#1C1D21" stroke-width="3" />
+  <g transform="translate(217 106) scale(3.6206896551724137)">
+    <g transform="translate(1 11) scale(.4)"><path d="M12 69V29a16 16 0 0 1 32 0v40m0-52v36a22 22 0 1 0 22-22" fill="none" stroke="#A43B2C" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" /><circle cx="111" cy="17" r="10" fill="#FF704E" /></g></g>
+  </svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title desc"><title id="title">Common Ground — fictional café concept</title><desc id="desc">An original fictional café homepage concept in coffee brown, warm orange and cream. It is not a client project.</desc>
+<rect width="800" height="600" fill="#D9915E" />
+<g transform="translate(45 44) rotate(-2 355 240)">
+<rect x="9" y="11" width="710" height="480" rx="15" fill="#4B2E25" />
+<rect width="710" height="480" rx="15" fill="#FFF8E9" stroke="#4B2E25" stroke-width="2" />
+<path d="M0 36h710" stroke="#4B2E25" stroke-width="1.5" />
+<g fill="#B66C3E"><circle cx="21" cy="18" r="3.5" /><circle cx="34" cy="18" r="3.5" /><circle cx="47" cy="18" r="3.5" /></g>
+<text x="28" y="86" font-family="Georgia,Times New Roman,serif" font-size="29" font-weight="400" fill="#4B2E25">common ground.</text>
+<text x="526" y="82" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" fill="#4B2E25">MENU  /  VISIT</text>
+<rect x="21" y="109" width="668" height="284" fill="#E9D4AD" />
+<text x="46" y="148" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" fill="#6C4531" letter-spacing="1.5">SLOW MORNINGS. GOOD COMPANY.</text>
+<text x="43" y="211" font-family="Georgia,Times New Roman,serif" font-size="49" font-weight="400" fill="#4B2E25">Good coffee.</text>
+<text x="43" y="268" font-family="Georgia,Times New Roman,serif" font-size="49" font-weight="400" fill="#4B2E25">Great company.</text>
+<rect x="46" y="319" width="162" height="40" rx="20" fill="#754630" />
+<text x="127" y="345" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="700" fill="#FFF8E9" text-anchor="middle">Pull up a chair ↗</text>
+<ellipse cx="552" cy="326" rx="90" ry="17" fill="#CDB88F" />
+<circle cx="551" cy="251" r="79" fill="#FFF8E9" /><circle cx="551" cy="251" r="59" fill="#9C603A" />
+<path d="M548 280c-36-20-41-44-15-43 8 0 13 5 15 12 4-10 15-16 24-9 17 14-9 34-24 40" fill="#EDD4AA" />
+<path d="M626 232c41-9 50 40 10 46" fill="none" stroke="#FFF8E9" stroke-width="13" />
+<text x="28" y="434" font-family="Georgia,Times New Roman,serif" font-size="18" font-weight="400" fill="#6C4531">Fresh bakes. Thoughtful coffee. A place to pause.</text>
+<path d="M28 452h654" stroke="#CBB28D" />
+</g>
+<rect x="27" y="553" width="335" height="31" rx="15" fill="#4B2E25" />
+<text x="194" y="575" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="700" fill="#FFF8E9" text-anchor="middle" letter-spacing="1">FICTIONAL DEMONSTRATION</text>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 460" role="img" aria-labelledby="title desc">
+  <title id="title">Local search illustration</title>
+  <desc id="desc">An illustrative business pin, map and search bar, without ranking or results claims.</desc>
+
+  <rect width="640" height="460" fill="#F4C7B9" />
+  <path d="M0 117h640M0 322h640M143 0v460M464 0v460M0 255 640 153" stroke="#FFFAF0" stroke-width="23" fill="none" />
+  <path d="M331 109a88 88 0 0 1 88 88c0 65-88 151-88 151s-88-86-88-151a88 88 0 0 1 88-88" fill="#A43B2C" stroke="#1C1D21" stroke-width="3" />
+  <circle cx="331" cy="195" r="36" fill="#FFFAF0" /><g transform="translate(65 39) rotate(-4 256 34)"><rect x="7" y="8" width="510" height="67" rx="34" fill="#1C1D21" /><rect width="510" height="67" rx="34" fill="#FFFAF0" stroke="#1C1D21" stroke-width="3" /><circle cx="41" cy="32" r="13" stroke="#1C1D21" stroke-width="3" fill="none" /><path d="m51 43 11 11" stroke="#1C1D21" stroke-width="3" stroke-linecap="round" /><text x="84" y="43" font-family="Arial,Helvetica,sans-serif" font-size="25" font-weight="700" fill="#1C1D21" letter-spacing="-0.6">Find your next customer.</text></g>
+  <circle cx="90" cy="276" r="21" fill="#FF704E" stroke="#1C1D21" stroke-width="3" />
+  <circle cx="543" cy="263" r="30" fill="#FF704E" stroke="#1C1D21" stroke-width="3" />
+  <path d="m310 195 21-17 21 17v23h-42zm16 23v-16h11v16" fill="none" stroke="#A43B2C" stroke-width="3.5" stroke-linejoin="round" /></svg>

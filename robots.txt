@@ -1,0 +1,5 @@
+# Add the final absolute Sitemap URL when the production domain is configured.
+# Search indexing instructions are not access controls.
+User-agent: *
+Allow: /
+Disallow: /previews/

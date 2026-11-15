@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 650" role="img" aria-labelledby="title desc"><title id="title">Make room for easier bookings</title><desc id="desc">An original calendar and clock illustration. It represents booking-tool setup and does not show real appointments or confirmations.</desc>
+<path d="M70 70h508v508H70z" fill="#EEEDE9" />
+<g transform="translate(119 76) rotate(2 235 238)">
+<rect x="9" y="11" width="470" height="478" rx="22" fill="#1C1D21" />
+<rect width="470" height="478" rx="22" fill="#FFFAF0" stroke="#1C1D21" stroke-width="3" />
+<path d="M22 0h426a22 22 0 0 1 22 22v91H0V22A22 22 0 0 1 22 0" fill="#A43B2C" />
+<text x="26" y="49" font-family="Arial,Helvetica,sans-serif" font-size="38" font-weight="700" fill="#FFFAF0">Bookings,</text><text x="26" y="92" font-family="Arial,Helvetica,sans-serif" font-size="38" font-weight="700" fill="#FFFAF0">made simpler.</text>
+<path d="M376 20v50M414 20v50" stroke="#FF704E" stroke-width="8" stroke-linecap="round" />
+<g fill="#A43B2C" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="700" text-anchor="middle"><text x="53" y="162">M</text><text x="145" y="162">T</text><text x="237" y="162">W</text><text x="329" y="162">T</text><text x="420" y="162">F</text></g>
+<path d="M16 185h438M16 265h438M16 345h438M99 185v208M191 185v208M283 185v208M375 185v208" fill="none" stroke="#1C1D21" stroke-width="2" opacity=".19" />
+<rect x="113" y="205" width="157" height="40" rx="10" fill="#FF704E" />
+<rect x="299" y="285" width="141" height="40" rx="10" fill="#F4C7B9" />
+<rect x="16" y="418" width="438" height="44" rx="8" fill="#EEEDE9" />
+<text x="235" y="449" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="700" fill="#A43B2C" text-anchor="middle">Less back-and-forth.</text>
+</g>
+<circle cx="607" cy="476" r="80" fill="#F4C7B9" stroke="#1C1D21" stroke-width="3" />
+<circle cx="607" cy="476" r="64" fill="none" stroke="#1C1D21" stroke-width="2" />
+<path d="M607 430v47l31 21" fill="none" stroke="#1C1D21" stroke-width="6" stroke-linecap="round" />
+</svg>

@@ -1,0 +1,46 @@
+# Local work, dependencies and temporary files
+.work/
+node_modules/
+__pycache__/
+*.py[cod]
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
+.cache/
+coverage/
+
+# Private configuration and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+*.p12
+
+# Operating system and editor files
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vscode/
+.idea/
+
+# Local screenshots and generated review output
+/reference_render/
+/render_qa/
+
+# Unrelated university materials stored alongside the website
+/ICT615*
+/ict615*
+/BigData_week3.txt
+/Week 2 Lecture_ICT615_Big_Data.txt
+/DOCUMENT_A_RESEARCH_EVIDENCE_PACK.md
+/DOCUMENT_B_WORKED_ANALYTICAL_EXAMPLE.md
+/DOCUMENT_C_ANNOTATED_ASSESSMENT_FRAMEWORK.md
+/aemo_operational_demand_analysis.py
+/export_ict615_pdfs.py
+/analysis_outputs/
+/output/
