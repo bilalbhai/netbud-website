@@ -22,7 +22,7 @@ Initial service areas are Parramatta, Fairfield, Liverpool, Blacktown, Western S
 
 Approved public contact details:
 
-- Email: `mdbilalzafar0@gmail.com`
+- Email: `bilal@netbud.com.au`
 - Phone: `0425 714 451`
 - WhatsApp: `61425714451` — the same mobile number, authorised for WhatsApp
 - No preferred callback hours supplied

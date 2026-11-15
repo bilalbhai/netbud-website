@@ -40,7 +40,7 @@ A repository named `netbud-website` normally uses `https://YOUR-USERNAME.github.
 
 ## Before going live
 
-Review `js/config.js`: the website currently contains the original Gmail contact address and an empty `siteUrl`. The business card artwork uses `bilal@netbud.com.au`. Confirm the intended website contact details and production address before launch, then update matching static contact links and metadata.
+Review `js/config.js`: the contact email is `bilal@netbud.com.au` and the office is at 67-71 Great Western Highway, Parramatta, NSW 2150. The `siteUrl` is still empty; confirm the production address before launch and update matching metadata.
 
 Forms need a configured external endpoint to deliver enquiries directly; GitHub Pages does not run a backend. Review the current form behaviour, draft privacy/terms pages, social links, `robots.txt` and `sitemap.xml` before launch. Never add passwords or secret API keys to browser JavaScript.
 

@@ -54,7 +54,7 @@
     var clock = function () { return window.performance ? window.performance.now() : Date.now(); };
     host.style.setProperty('--story-duration', duration + 'ms');
     host.querySelectorAll('[data-hero-contact-phone]').forEach(function (node) { node.textContent = config.phoneDisplay || '0425 714 451'; });
-    host.querySelectorAll('[data-hero-contact-email]').forEach(function (node) { node.textContent = config.contactEmail || 'mdbilalzafar0@gmail.com'; });
+    host.querySelectorAll('[data-hero-contact-email]').forEach(function (node) { node.textContent = config.contactEmail || 'bilal@netbud.com.au'; });
 
     function reduced() { return Boolean(preference && preference.matches); }
     function stopClock() {

@@ -7,11 +7,11 @@ window.NETBUD_CONFIG = {
   agencyName: "NetBud",
   tagline: "Your mate for everything digital.",
   supportingTagline: "Websites · Social Media · Advertising · Digital Support",
-  contactEmail: "mdbilalzafar0@gmail.com",
+  contactEmail: "bilal@netbud.com.au",
   phoneNumber: "0425714451",
   phoneDisplay: "0425 714 451",
   whatsappNumber: "61425714451", // International digits only; no + or spaces.
-  businessLocation: "Sydney, NSW, Australia",
+  businessLocation: "67-71 Great Western Highway, Parramatta, NSW 2150",
   serviceAreas: ["Parramatta", "Fairfield", "Liverpool", "Blacktown", "Western Sydney", "Greater Sydney"],
   currency: "AUD", // INR is supported for a separately priced Indian storefront; this does not convert prices.
   locale: "en-AU",
