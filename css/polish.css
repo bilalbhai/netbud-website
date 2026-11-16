@@ -155,3 +155,9 @@
 
 /* Custom-built guide uses the established card surfaces and slow card motion. */
 .custom-guide-hero h1{font-size:clamp(38px,5vw,68px);max-width:1050px;letter-spacing:-.045em;line-height:1.08}.custom-guide-hero p:not(.eyebrow){max-width:790px}.custom-guide-hero .button-row{margin-top:28px}.custom-benefit-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin:32px 0}.custom-benefit{padding:32px;min-width:0}.custom-benefit h3{font-size:1.5rem;line-height:1.22}.custom-benefit p{font-size:1rem;color:var(--muted)}.custom-benefit .custom-benefit-line{font-weight:600;color:var(--ink);margin-bottom:0}.custom-guide-link{margin:18px 0 0}.partner-band .custom-guide-link .text-link{color:#f4c7b9;font-size:.85rem}@media(max-width:760px){.custom-benefit-grid{grid-template-columns:1fr}.custom-benefit{padding:25px}.custom-guide-hero .button{width:100%}}
+
+/* A compact shared message makes the core website offer visible on every page. */
+.site-selling-point{background:#efe8df;color:var(--ink);font-size:13px;line-height:1.5}
+.site-selling-point>.container{display:flex;align-items:center;gap:8px 14px;padding-block:11px;flex-wrap:wrap}
+.site-selling-point strong{color:#a43b2c;font-weight:700}.site-selling-point a{margin-left:auto;font-weight:600;text-underline-offset:4px;display:inline-flex;gap:8px;align-items:center}
+@media(max-width:760px){.site-selling-point{font-size:12px}.site-selling-point>.container{gap:4px 9px;padding-block:9px}.site-selling-point a{margin-left:0;min-height:30px}}
