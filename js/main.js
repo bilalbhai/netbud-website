@@ -238,7 +238,7 @@
     return '<span class="price-value">' + (price === null ? 'Get a quote' : 'From ' + escapeHtml(formatCurrency(price)) + (product.pricingType === 'monthly' ? '<small>/month</small>' : '')) + '</span><span class="price-detail">' + escapeHtml(product.billingLabel || (product.pricingType === 'monthly' ? 'Monthly' : 'One-time project')) + '</span>';
   }
   function productCard(product) {
-    return '<article class="product-card"><a class="product-visual" href="' + productHref(product) + '" tabindex="-1" aria-hidden="true"><img class="product-image" src="' + localPath(product.imageSmall || product.image) + '"' + (product.imageSmall ? ' srcset="' + localPath(product.imageSmall) + ' 600w, ' + localPath(product.image) + ' ' + (product.imageWidth || 1200) + 'w" sizes="(max-width:760px) 92vw, (max-width:1050px) 46vw, 380px"' : '') + ' width="' + (product.imageWidth || 640) + '" height="' + (product.imageHeight || 460) + '" alt="' + escapeHtml(product.imageAlt || '') + '" loading="lazy" decoding="async">' + (product.imageCaption ? '<span class="product-image-caption">' + escapeHtml(product.imageCaption) + '</span>' : '') + (product.featured ? '<span class="product-badge">Featured</span>' : '') + '</a><div class="product-info"><p class="eyebrow product-category">' + escapeHtml(product.category) + '</p><h3><a href="' + productHref(product) + '">' + escapeHtml(product.name) + '</a></h3><p>' + escapeHtml(product.description) + '</p><div class="product-price">' + priceMarkup(product) + '</div><div class="product-actions"><a class="button button-outline" href="' + productHref(product) + '">View details</a><a class="button button-primary" href="' + productHref(product) + '#product-enquiry">' + (product.physical ? 'Order enquiry' : 'Get my quote') + '</a></div></div></article>';
+    return '<article class="product-card"><a class="product-visual" href="' + productHref(product) + '" tabindex="-1" aria-hidden="true"><img class="product-image" src="' + localPath(product.imageSmall || product.image) + '"' + (product.imageSmall ? ' srcset="' + localPath(product.imageSmall) + ' 600w, ' + localPath(product.image) + ' ' + (product.imageWidth || 1200) + 'w" sizes="(max-width:760px) 92vw, (max-width:1050px) 46vw, 380px"' : '') + ' width="' + (product.imageWidth || 640) + '" height="' + (product.imageHeight || 460) + '" alt="' + escapeHtml(product.imageAlt || '') + '" loading="lazy" decoding="async">' + (product.imageCaption ? '<span class="product-image-caption">' + escapeHtml(product.imageCaption) + '</span>' : '') + (product.featured ? '<span class="product-badge">Featured</span>' : '') + '</a><div class="product-info"><p class="eyebrow product-category">' + escapeHtml(product.category) + '</p><h3><a href="' + productHref(product) + '">' + escapeHtml(product.name) + '</a></h3><p>' + escapeHtml(product.description) + '</p><div class="product-price">' + priceMarkup(product) + '</div><div class="product-actions"><a class="button button-outline" href="' + productHref(product) + '">View details</a><a class="button button-primary" href="' + productHref(product) + '#product-enquiry">' + (product.physical ? 'Order enquiry' : 'Get my quote') + (document.body.dataset.page === 'shop' && document.body.dataset.layout !== 'product' ? icon('arrow') : '') + '</a></div></div></article>';
   }
   function renderFeaturedProducts() {
     document.querySelectorAll('[data-featured-products]').forEach(function (container) {
@@ -264,6 +264,7 @@
     grid.innerHTML=result.length ? result.map(productCard).join('') : '<div class="empty-state"><h2>No matches yet.</h2><p>Try a broader search or reset your filters.</p><button class="button button-outline" type="button" data-reset-filters>Reset filters</button></div>';
     document.querySelector('[data-results-count]').textContent=result.length+' of '+products.length+' products and services';
     document.querySelectorAll('[data-category]').forEach(function (button) { var active=button.dataset.category===filterState.category;button.classList.toggle('is-active',active);button.setAttribute('aria-pressed',String(active)); });
+    document.dispatchEvent(new CustomEvent('netbud:cataloguechange'));
   }
   function setupCatalogue() {
     var params=new URLSearchParams(location.search), categories=['All'].concat(Array.from(new Set(products.map(function(p){return p.category;}))));
@@ -1072,98 +1073,9 @@
     });
   }
 
-  // Content starts visible. Scroll effects are an optional, motion-aware enhancement.
+  // One shared entrance/timeline observer; device choreography remains in hero-story.js.
   function setupReveals() {
-    // Collect coherent units once. Later catalogue/basket renders stay immediately visible.
-    var roots = [document.querySelector('main'), document.getElementById('site-footer')].filter(Boolean);
-    var groupSelector = '.hero-studio, .hero-note, .service-ribbon, .page-art, .product-card, .portfolio-card, .price-card, .service-row, .service-jump, .partner-point, .home-step, .step, .value-row, .card, .cart-item, .cart-summary, .cart-tools, .product-gallery, .product-price, .breadcrumbs, .catalogue-toolbar, .category-tabs, form, details, .button-row, .button-group, .social-links, .footer-brand, .footer-links, .footer-bottom';
-    var leafSelector = 'h1, h2, h3, h4, p, ul, ol, dl, figure, picture, img, svg[role="img"], a.button, button.button, .button-link, .text-link';
-    function blocked(element) {
-      if (element.closest('[hidden], [data-no-reveal], .sr-only, noscript, script, style, .honeypot, .form-status, .field-error, .enquiry-review, [role="status"], [role="alert"]')) return true;
-      if (element.closest('[data-demo-panel]')) return true;
-      var desk = element.closest('.hero-studio');
-      if (desk && desk !== element) return true;
-      var parentReveal = element.parentElement && element.parentElement.closest('[data-reveal]');
-      return Boolean(parentReveal && !parentReveal.hasAttribute('data-process-reveal'));
-    }
-    function addTarget(element, group) {
-      if (element.hasAttribute('data-reveal') || blocked(element) || element.querySelector('[data-reveal]')) return;
-      if (!group && element.closest('form, details')) return;
-      if (element.matches('img') && !element.getAttribute('alt')) return;
-      if (element.matches('h1, h2, h3, h4, p, ul, ol') && !element.textContent.trim()) return;
-      // Keep very long forms/cards readable as ordinary content; surrounding headings still fade.
-      if (group && element.getBoundingClientRect().height > (window.innerHeight || 800) * 1.5) return;
-      element.setAttribute('data-reveal', 'auto');
-    }
-    roots.forEach(function (root) {
-      root.querySelectorAll(groupSelector).forEach(function (element) { addTarget(element, true); });
-      root.querySelectorAll(leafSelector).forEach(function (element) { addTarget(element, false); });
-    });
-    var elements = Array.from(document.querySelectorAll('[data-reveal]')).filter(function (element) { return !blocked(element); });
-    if (!window.matchMedia) return;
-    var motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (motionPreference.matches) return;
-    var observer;
-    function reveal(element, immediate) {
-      if (immediate) {
-        element.classList.add('reveal-instant');
-        element.style.setProperty('--reveal-delay', '0ms');
-        element.style.setProperty('--reveal-duration', '0ms');
-      }
-      element.classList.add('is-revealed');
-      if (observer) observer.unobserve(element);
-    }
-    function showEverything() {
-      document.body.classList.remove('motion-ready');
-      elements.forEach(function (element) { element.classList.remove('reveal-ready'); reveal(element, true); });
-      if (observer) observer.disconnect();
-    }
-    // Browser-restored scroll positions should display content without another entrance.
-    function isHistoryRestore() {
-      try {
-        var navigation = window.performance && window.performance.getEntriesByType && window.performance.getEntriesByType('navigation')[0];
-        return Boolean(navigation && navigation.type === 'back_forward');
-      } catch (error) { return false; }
-    }
-    if (isHistoryRestore()) { showEverything(); return; }
-    document.body.classList.add('motion-ready');
-    function handleMotionChange(event) { if (event.matches) showEverything(); }
-    if (motionPreference.addEventListener) motionPreference.addEventListener('change', handleMotionChange);
-    else if (motionPreference.addListener) motionPreference.addListener(handleMotionChange);
-    window.addEventListener('pageshow', function (event) { if (event.persisted || isHistoryRestore()) showEverything(); });
-    if (!elements.length || !window.IntersectionObserver) return;
-    var compactViewport = window.matchMedia('(max-width: 767px)');
-    function assignGroupDelays() {
-      document.querySelectorAll('[data-reveal-group]').forEach(function (group) {
-        Array.from(group.children).filter(function (child) { return child.hasAttribute('data-reveal'); }).forEach(function (element, index) {
-          if (!element.classList.contains('is-revealed')) element.style.setProperty('--reveal-delay', (compactViewport.matches ? 0 : Math.min(index * 50, 200)) + 'ms');
-        });
-      });
-    }
-    assignGroupDelays();
-    if (compactViewport.addEventListener) compactViewport.addEventListener('change', assignGroupDelays);
-    else if (compactViewport.addListener) compactViewport.addListener(assignGroupDelays);
-    // Keyboard focus must never wait for a scroll animation to expose its control.
-    document.addEventListener('focusin', function (event) {
-      elements.forEach(function (element) {
-        if (element.classList.contains('reveal-ready') && element.contains(event.target)) reveal(element, true);
-      });
-    });
-    try {
-      observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          var tall = entry.boundingClientRect && entry.boundingClientRect.height > (window.innerHeight || 800) * 1.5;
-          if (entry.isIntersecting && (entry.intersectionRatio >= 0.06 || tall)) reveal(entry.target);
-        });
-      }, { threshold: 0.06, rootMargin: '0px 0px -12px 0px' });
-      elements.forEach(function (element) {
-        element.classList.add('reveal-ready');
-        var bounds = element.getBoundingClientRect();
-        // First-screen content is readable immediately; only later content fades on scroll.
-        if (element.contains(document.activeElement) || (bounds.top < window.innerHeight && bounds.bottom > 0)) reveal(element, true);
-        else observer.observe(element);
-      });
-    } catch (error) { showEverything(); return; }
+    if (window.NetBudMotion) window.NetBudMotion.init();
   }
 
   function openImagePreview(trigger) {

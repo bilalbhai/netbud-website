@@ -25,16 +25,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css?v=20261116-premium1">
-    <script src="/js/config.js?v=20261116-premium1" defer></script>
-    <script src="/js/products.js?v=20261116-premium1" defer></script>
-    <script src="/js/main.js?v=20261116-premium1" defer></script>
-    <script src="/js/form-experience.js?v=20261116-premium1" defer></script>
-    <script src="/js/section-experience.js?v=20261116-premium1" defer></script>
-    <script src="/js/marketing-packages.js?v=20261116-premium1" defer></script>
-    <script src="/js/hero-story.js?v=20261116-premium1" defer></script>
-  <link rel="stylesheet" href="/css/shop.css?v=20261116-premium1">
-  <link rel="stylesheet" href="/css/polish.css?v=20261116-premium1"></head>
+    <link rel="stylesheet" href="/css/style.css?v=20261116-motion1">
+    <script src="/js/config.js?v=20261116-motion1" defer></script>
+    <script src="/js/products.js?v=20261116-motion1" defer></script>
+    <script src="/js/motion.js?v=20261116-motion1" defer></script>
+    <script src="/js/main.js?v=20261116-motion1" defer></script>
+    <script src="/js/form-experience.js?v=20261116-motion1" defer></script>
+    <script src="/js/section-experience.js?v=20261116-motion1" defer></script>
+    <script src="/js/marketing-packages.js?v=20261116-motion1" defer></script>
+    <script src="/js/hero-story.js?v=20261116-motion1" defer></script>
+  <link rel="stylesheet" href="/css/shop.css?v=20261116-motion1">
+  <link rel="stylesheet" href="/css/polish.css?v=20261116-motion1"><link rel="stylesheet" href="/css/motion.css?v=20261116-motion1"></head>
   <body data-page="home" data-base="/">
     <a class="skip-link" href="#main">Skip to main content</a>
     <header id="site-header">
@@ -49,8 +50,8 @@
         <div class="container hero-inner">
           <div class="hero-copy">
             <p class="eyebrow">Custom-coded. Built for your business.</p>
-          <h1 id="hero-title">We make business <span class="hero-line">tech <span class="hero-last">easy.</span></span></h1>
-            <p class="lead">Custom-coded websites, smart NFC business and Google review cards, and practical digital support. Made around your business, with one friendly mate to bring it together.</p>
+          <h1 id="hero-title" aria-label="Your business deserves a website that stands out."><span class="hero-words" aria-hidden="true"><span class="hero-word" style="--word-index:0">Your</span> <span class="hero-word" style="--word-index:1">business</span> <span class="hero-word" style="--word-index:2">deserves</span> <span class="hero-word" style="--word-index:3">a</span> <span class="hero-word" style="--word-index:4">website</span> <span class="hero-word" style="--word-index:5">that</span> <span class="hero-word is-accent" style="--word-index:6">stands</span> <span class="hero-word is-accent" style="--word-index:7">out.</span></span></h1>
+            <p class="lead">Beautiful custom-coded websites, smart NFC products and practical digital solutions. Made around your business, with your digital mate by your side.</p>
             <div class="button-row">
         <a class="button button-primary" href="/free-preview/">Get Your Free Homepage Preview <span data-icon="arrow"></span></a>
         <a class="button button-outline" href="/shop/">Explore Our Shop <span data-icon="arrow"></span></a>
@@ -58,6 +59,7 @@
             <div class="hero-note"><span><span data-icon="check"></span> <strong data-launch-price="1">Request a website quote</strong></span><span><span data-icon="check"></span> Sydney-based support</span></div>
           </div>
           <div class="hero-studio hero-showcase" data-demo-interval="3000" data-hero-story role="region" aria-roledescription="carousel" aria-label="NetBud product demonstrations">
+            <div class="hero-story__controls" role="group" aria-label="Product preview controls"><button class="hero-story__control" type="button" data-story-pause aria-label="Pause product animation" aria-pressed="false">Pause Ⅱ</button><button class="hero-story__control" type="button" data-story-next aria-label="Next product preview">Next ↗</button></div>
             <div class="studio-panels">
               <div class="studio-panel is-active" data-demo-panel="websites" role="group" aria-roledescription="slide" aria-label="1 of 2: Business website on a laptop">
                 <div class="laptop-demo" data-scene-visual role="img" aria-label="A fictional small-business website slowly scrolling down and back up on a silver laptop">
@@ -120,8 +122,7 @@
               </div>
             </div>
             <div class="hero-story__footer">
-              <a class="button button-primary hero-story__order" data-story-order href="/shop/#catalogue" aria-label="Explore website plans">Explore plans</a>
-              <button class="button button-outline hero-story__reduced-control" type="button" data-story-pause>Next preview ↗</button>
+              <a class="button button-primary hero-story__order" data-story-order href="/pricing/" aria-label="Explore website plans">Explore plans</a>
             </div>
           </div>
         </div>
@@ -262,7 +263,7 @@
             </div>
             <a class="text-link" href="/how-it-works/">How it works <span data-icon="arrow"></span></a>
           </div>
-          <div class="home-steps" data-process-reveal data-reveal="process">
+          <div class="home-steps">
             <div class="home-step">
               <span class="step-number">01</span>
               <h3>Have a chat.</h3>

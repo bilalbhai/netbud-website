@@ -146,13 +146,6 @@
       update();
     });
 
-    var steps = Array.from(document.querySelectorAll('.preview-steps li'));
-    if (steps.length && window.IntersectionObserver) {
-      var observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) { if (entry.isIntersecting) { steps.forEach(function (step) { step.classList.toggle('is-current', step === entry.target); }); } });
-      }, {rootMargin:'-30% 0px -40% 0px'});
-      steps.forEach(function (step) { observer.observe(step); });
-    }
     var pending = false;
     function updateHeader() { document.body.classList.toggle('has-scrolled', window.scrollY > 12); pending = false; }
     window.addEventListener('scroll', function () { if (!pending) { pending = true; window.requestAnimationFrame(updateHeader); } }, {passive:true});

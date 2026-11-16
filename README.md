@@ -56,3 +56,7 @@ See SHOP_LAUNCH.md. Catalogue data lives in js/products.js. Regenerate static de
 ## Visual design maintenance
 
 The shared palette, type and motion tokens are at the top of `css/style.css`; `css/polish.css` contains the organised premium layouts, controls and responsive refinements. Product imagery and smaller card variants are configured in `js/products.js`. Keep scopes and prices separate from visual edits. Run `node scripts/build-catalogue.cjs` after editing page templates or catalogue data to refresh the clean directory routes. See `VISUAL_REDESIGN_AUDIT.md` and `PREMIUM_REDESIGN_REPORT.md` for the November visual review.
+
+## Creative motion review
+
+`css/motion.css` and `js/motion.js` provide the selective entrance, timeline and pointer enhancements. `js/hero-story.js` remains the sole device-scene controller. Run `node scripts/check-motion.cjs` for its dependency-free regression checks. See `CREATIVE_MOTION_AUDIT.md` and `CREATIVE_MOTION_REPORT.md` for the separate review branch, animation inventory, evidence, limits and approval-before-deployment workflow.

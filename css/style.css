@@ -1160,7 +1160,7 @@ h4 {
 }
 @keyframes nfc-prompt-out { 0%, 52% { opacity: 1; } 66%, 100% { opacity: 0; } }
 @keyframes nfc-profile-in { 0%, 62% { opacity: 0; transform: translateY(3%); } 80%, 100% { opacity: 1; transform: translateY(0); } }
-@keyframes nfc-tap-ring { 0%, 53% { opacity: 0; transform: scale(.35); } 58% { opacity: .7; } 78%, 100% { opacity: 0; transform: scale(1.9); } }
+@keyframes nfc-tap-ring {0%,25% {opacity:0;transform:scale(.35);} 28.3333333% {opacity:.45;} 41.6666667%,100% {opacity:0;transform:scale(1.45);}}
 @keyframes nfc-connected-in { 0%, 67% { opacity: 0; transform: translateY(8px); } 82%, 100% { opacity: 1; transform: translateY(0); } }
 
 @media (max-width: 430px) {
@@ -5525,18 +5525,11 @@ main:focus {
   transition: none;
 }
 
-.motion-ready .hero-studio {
-  animation: hero-enter var(--motion-hero) var(--ease-enter) both;
-}
 
-.motion-ready .hero-last::after {
-  transform-origin: left;
-  animation: underline-enter 400ms var(--ease-enter) both;
-}
 
-.motion-ready .page-art > img {
-  animation: hero-enter 500ms var(--ease-enter) both;
-}
+
+
+
 
 @keyframes page-fade-in {
   from { opacity: 0; }
@@ -6066,14 +6059,13 @@ body[data-page="home"] .partner-band .eyebrow { color: var(--peach); }
 [data-hero-story] .studio-panel.is-active .nfc-phone--iphone17 .nfc-phone__profile { animation-name: iphone17-contact-preview; }
 [data-hero-story] .studio-panel.is-active .nfc-phone--iphone17 .nfc-phone__prompt { animation-name: iphone17-prompt-out; }
 @keyframes iphone17-tap-preview {
-  0% { transform: translate(0, 125%) rotate(0) scale(1); opacity: 0; }
-  10% { transform: translate(0, 110%) rotate(0) scale(1); opacity: 1; }
-  25% { transform: translate(0, 48.3333333%) rotate(0) scale(1); opacity: 1; }
-  61.6666667% { transform: translate(0, 48.3333333%) rotate(0) scale(1); opacity: 1; }
-  90%, 100% { transform: translate(0, 0) rotate(0) scale(1); opacity: 1; }
+  0% { transform:translate(0,125%);opacity:0; }
+  10% { transform:translate(0,110%);opacity:1; }
+  25%,68.3333333% { transform:translate(0,48.3333333%);opacity:1; }
+  90%,100% { transform:translate(0,0);opacity:1; }
 }
-@keyframes iphone17-prompt-out { 0%, 51.6666667% { opacity: 1; } 61.6666667%, 100% { opacity: 0; } }
-@keyframes iphone17-contact-preview { 0%, 51.6666667% { opacity: 0; transform: none; } 61.6666667%, 100% { opacity: 1; transform: none; } }
+@keyframes iphone17-prompt-out { 0%,41.6666667% {opacity:1;} 68.3333333%,100% {opacity:0;} }
+@keyframes iphone17-contact-preview { 0%,41.6666667% {opacity:0;transform:none;} 68.3333333%,100% {opacity:1;transform:none;} }
 @media (prefers-reduced-motion: reduce) {
   [data-hero-story] .studio-panel.is-active .nfc-phone--iphone17,
   [data-hero-story] .studio-panel.is-active .nfc-phone--iphone17 .nfc-phone__profile,
@@ -6092,8 +6084,8 @@ body[data-page="home"] .partner-band .eyebrow { color: var(--peach); }
 [data-hero-story] .nfc-demo__tap-ring { left: 29.5%; top: 51%; }
 [data-hero-story] .studio-panel.is-active .nfc-phone--iphone17 .ios-status { animation: iphone17-status-contrast var(--story-duration, 3000ms) linear both; }
 [data-hero-story] .studio-panel.is-active .nfc-phone--iphone17 .ios-home-indicator { animation: iphone17-home-contrast var(--story-duration, 3000ms) linear both; }
-@keyframes iphone17-status-contrast { 0%, 61.6656667% { color: #fff; } 61.6666667%, 100% { color: #111; } }
-@keyframes iphone17-home-contrast { 0%, 61.6656667% { background: #fff; } 61.6666667%, 100% { background: #111; } }
+@keyframes iphone17-status-contrast { 0%, 68.3323333% { color: #fff; } 68.3333333%, 100% { color: #111; } }
+@keyframes iphone17-home-contrast { 0%, 68.3323333% { background: #fff; } 68.3333333%, 100% { background: #111; } }
 @media (prefers-reduced-motion: reduce) {
   [data-hero-story] .studio-panel.is-active .nfc-phone--iphone17 .ios-status,
   [data-hero-story] .studio-panel.is-active .nfc-phone--iphone17 .ios-home-indicator { animation: none !important; }
@@ -6108,8 +6100,8 @@ body[data-page="home"] .partner-band .eyebrow { color: var(--peach); }
 [data-hero-story] .nfc-demo__tap-ring { left: 41.5%; top: 32.1666667cqw; }
 
 @keyframes nfc-card-centred-handoff {
-  0%, 51.6666667% { transform: translateY(0) rotate(0); opacity: 1; }
-  58.3333334%, 100% { transform: translate( -80cqw, -80cqw) rotate(0); opacity: 0; }
+  0%,41.6666667% {transform:translate(0,0) rotate(0);opacity:1;}
+  48.3333334%,100% {transform:translate(-80cqw,-80cqw) rotate(0);opacity:0;}
 }
 @media (prefers-reduced-motion: reduce) {
   [data-hero-story] .studio-panel.is-active .nfc-card { animation: none !important; }
@@ -6119,11 +6111,11 @@ body[data-page="home"] .partner-band .eyebrow { color: var(--peach); }
 .nfc-transfer-signal svg { display: block; width: 100%; height: 100%; }
 [data-hero-story] .studio-panel.is-active .nfc-transfer-signal { animation: nfc-signal-transfer var(--story-duration, 3000ms) ease-in-out both; }
 @keyframes nfc-signal-transfer {
-  0%, 43% { opacity: 0; transform: scale(.9); }
-  46% { opacity: 1; transform: scale(1); }
-  49.5% { opacity: 0; transform: scale(.94); }
-  53% { opacity: 1; transform: scale(1); }
-  57%, 100% { opacity: 0; transform: scale(1.05); }
+  0%,25% {opacity:0;transform:scale(.94);}
+  28.3333333% {opacity:1;transform:scale(1);}
+  33.3333333% {opacity:0;transform:scale(.96);}
+  36.6666667% {opacity:1;transform:scale(1);}
+  41.6666667%,100% {opacity:0;transform:scale(1.02);}
 }
 @media (prefers-reduced-motion: reduce) {
   [data-hero-story] .studio-panel.is-active .nfc-transfer-signal { animation: none !important; }
@@ -6162,4 +6154,4 @@ body[data-page="home"] .partner-band .eyebrow { color: var(--peach); }
 [data-hero-story] .studio-panel.is-active .nfc-transfer-signal {
   animation-duration: var(--story-duration, 3000ms); animation-delay: 0s; animation-timing-function: linear;
 }
-[data-hero-story] .studio-panel.is-active .nfc-demo__tap-ring { animation: none; opacity: 0; }
+[data-hero-story] .studio-panel.is-active .nfc-demo__tap-ring { animation:nfc-tap-ring var(--story-duration,3000ms) linear both; }

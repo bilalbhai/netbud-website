@@ -34,6 +34,7 @@
     host.dataset.storyBound = 'true';
     var panels = Array.from(host.querySelectorAll('[data-demo-panel]'));
     var control = host.querySelector('[data-story-pause]');
+    var nextControl = host.querySelector('[data-story-next]');
     var title = host.querySelector('[data-story-title]');
     var order = host.querySelector('[data-story-order]');
     var progress = Array.from(host.querySelectorAll('.hero-story__progress > span'));
@@ -69,6 +70,7 @@
       host.classList.toggle('is-scene-paused', !moving);
       host.classList.toggle('is-story-reduced', reduced());
       host.dataset.storyState = reduced() ? 'reduced' : moving ? 'playing' : 'paused';
+      document.dispatchEvent(new CustomEvent('netbud:storyplayback', {detail:{paused:userPaused}}));
       if (!control) return;
       if (reduced()) {
         control.textContent = 'Next preview ↗';
@@ -118,6 +120,7 @@
       userPaused = !userPaused;
       schedule();
     });
+    if (nextControl) nextControl.addEventListener('click', function () { userPaused = false; show((active + 1) % panels.length); });
     if (order) {
       order.addEventListener('focus', function () { orderFocused = true; schedule(); });
       order.addEventListener('blur', function () { orderFocused = false; schedule(); });

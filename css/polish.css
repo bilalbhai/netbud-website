@@ -45,11 +45,11 @@ h3{line-height:1.22;letter-spacing:-.025em}
 
 /* 3. Surfaces and catalogue */
 .card,.product-card,.price-card,.portfolio-card,.product-gallery,.cart-summary,.shop-hero-art,.marketing-service-art,.starting-price-card,.contact-callback .card,.info-panel,.contact-sidebar,.catalogue-toolbar,.consent-banner{border:0;border-radius:var(--radius);box-shadow:var(--surface-shadow)}
-.card,.price-card,.product-card{transition:transform var(--motion-card) var(--ease-control),box-shadow var(--motion-card),opacity var(--motion-reveal) ease!important}
+.card,.price-card,.product-card{transition:transform var(--motion-card) var(--ease-control),box-shadow var(--motion-card),opacity var(--motion-reveal) ease}
 .card,.price-card{background:var(--white)}
 .price-card.featured{box-shadow:var(--surface-shadow);background:var(--lavender)}
 .product-visual{background:var(--surface);border-bottom:0;overflow:hidden}
-.product-image{aspect-ratio:4/3;object-fit:cover;display:block;transition:transform var(--motion-image) var(--ease-control)!important}
+.product-image{aspect-ratio:4/3;object-fit:cover;display:block;transition:transform var(--motion-image) var(--ease-control)}
 .product-badge,.portfolio-status,.price-badge{background:#faf9f6f2;color:var(--ink);border:0;box-shadow:0 4px 16px #24242b08;font-size:12px;font-weight:600}
 .product-info{padding:25px}
 .product-info h3{font-size:23px;line-height:1.24;min-height:2.48em;margin-bottom:14px}
@@ -83,7 +83,7 @@ body[data-page=home] .hero{background:var(--gradient-hero)}
 [data-hero-story] .hero-story__footer{min-height:0;padding-top:14px;gap:0}
 [data-hero-story] .laptop-demo__caption{display:none}
 .hero-story__order{min-height:48px;font-size:14px}
-.hero-story__reduced-control{display:none}
+
 body[data-page=home] .service-ribbon{background:var(--surface);border:0;padding-block:30px calc(var(--section-curve) + 14px)}
 .ribbon-inner{font-size:14px}
 body[data-page=home] .callback-wrap{background:var(--white);padding-block:70px 90px}
@@ -278,7 +278,7 @@ body[data-layout=utility] .page-hero{background:var(--gradient-hero,var(--paper)
 
 /* 8. Fine-pointer motion. No decorative movement is required to use the site. */
 @media(hover:hover) and (pointer:fine){
- .product-card:hover,.card:hover,.price-card:hover{transform:translateY(-4px);box-shadow:var(--surface-raised);border-color:transparent}
+ .product-card:hover,.price-card:hover,.card:has(a):not(:has(form)):hover{transform:translateY(-4px);box-shadow:var(--surface-raised);border-color:transparent}
  .product-card:hover .product-image{transform:scale(1.025)}
  .button-primary:hover,.button-light:hover,.button-white:hover{transform:translateY(-2px);background:#ee7765;color:var(--ink);box-shadow:0 7px 20px #e9634e22}
  .button-outline:hover{transform:translateY(-2px);background:var(--white);color:var(--ink);border-color:#24242b35;box-shadow:var(--surface-shadow)}
@@ -346,7 +346,7 @@ body[data-layout=utility] .page-hero{background:var(--gradient-hero,var(--paper)
 }
 @media(max-width:390px){.partner-points{grid-template-columns:1fr}.hero .eyebrow{font-size:10px;letter-spacing:.08em}.product-card .button{padding-inline:13px}}
 @media(prefers-reduced-motion:reduce){
- .hero-story__reduced-control{display:inline-flex;justify-content:center;margin-top:10px;width:100%}
+
  :root{--motion-card:0ms;--motion-image:0ms;--motion-control:0ms;--motion-fast:0ms;--motion-reveal:0ms}
  .product-card,.price-card,.card,.product-image,.portfolio-media>img{transition:none!important}
  .product-card:hover,.card:hover,.price-card:hover,.button:hover,.shop-industry-links a:hover,.social-links a:hover,.social-links button:hover,.button:hover>.icon,.product-card:hover .product-image{transform:none}
