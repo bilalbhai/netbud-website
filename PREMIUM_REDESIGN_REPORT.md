@@ -86,9 +86,14 @@ The existing `node scripts/build-catalogue.cjs` command refreshed all 18 product
 - Direct form delivery still needs a genuine HTTPS endpoint. Current email/WhatsApp/copy drafts work without one and are clearly described.
 - Social profile URLs and analytics remain optional and unconfigured. No fake live profiles or tracking were added.
 - Privacy and Terms still require the business/legal review already stated on those pages.
+- Final public-domain check: `https://netbud.com.au` serves the redesign successfully, but `https://www.netbud.com.au` failed certificate hostname validation. Public DNS returned the four correct GitHub Pages apex A records and `www CNAME bilalbhai.github.io`. The DNS values match GitHub's documented setup; the remaining issue needs review of the Pages domain/certificate provisioning in the GitHub account. No certificate checks were bypassed and no DNS records were changed during this redesign.
 - A genuine founder/team/office photograph can replace the labelled illustration when supplied. None has been fabricated.
 - Real-device Safari/Firefox checks and performance laboratory scores were not available in this browser review. The static architecture, responsive checks, lazy images and motion preferences were preserved and tested within the stated limits.
 
 ## Publication
 
 Use the existing `main` branch and GitHub Pages workflow for `https://netbud.com.au`. The remote branch was checked before publication and matched the starting local commit. The deployment result and live-site verification are reported in the final handover.
+
+Redesign commit `b7cb744` was pushed successfully. GitHub Pages run `43840228002` completed successfully. Live checks of Home, Shop, Work, E-commerce, Contact and the fictional gallery found the new palette and content, with no broken loaded images or horizontal overflow. The live browser log had no warnings or errors. A final screenshot is saved as `live-redesign-proof.jpg` in the evidence folder. The `www` certificate issue above remains separate from the successful apex-domain deployment.
+
+Domain setup reference: https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site
