@@ -8,7 +8,7 @@
   var cartKey = "netbud-quote-basket-v1";
   var cart = [];
   var storageAvailable = true;
-  var filterState = { category: "All", search: "", sort: "featured" };
+  var filterState = { category: "All", search: "", sort: "featured", billing: "All", industry: "All" };
   var toastTimer;
   var formStatusCounter = 0;
   var fieldErrorCounter = 0;
@@ -25,7 +25,7 @@
   function safeSiteUrl() { return safeHttps(config.siteUrl || "").replace(/\/$/, ""); }
   function productById(id) { return products.find(function (product) { return product.id === Number(id); }); }
   function publicPrice(product) {
-    if (!config.publicPricing || !product || product.price === null || product.price === "") return null;
+    if (!config.launchPricingApproved || !config.publicPricing || !product || product.price === null || product.price === "") return null;
     return typeof product.price === "number" && Number.isFinite(product.price) && product.price >= 0 ? product.price : null;
   }
 
@@ -109,8 +109,7 @@
     var page = document.body.dataset.page || "";
     var callbackHref = document.getElementById("callback") ? "#callback" : localPath("contact.html#callback");
     var links = [
-      ["services", "services.html", "Services"], ["portfolio", "portfolio.html", "Work"],
-      ["pricing", "pricing.html", "Pricing"], ["about", "about.html", "About"], ["contact", "contact.html", "Contact"]
+      ["home", "index.html", "Home"], ["shop", "shop.html", "Shop"], ["portfolio", "portfolio.html", "Our Work"], ["about", "about.html", "About"], ["contact", "contact.html", "Contact"]
     ];
     var header = document.getElementById("site-header");
     if (header) {
@@ -195,7 +194,7 @@
         '<div class="footer-bottom"><p>© <span data-current-year></span> ' + escapeHtml(config.agencyName || "NetBud") + '. All rights reserved.</p><div><a href="' + localPath("privacy.html") + '">Privacy Policy</a><a href="' + localPath("terms.html") + '">Website Terms</a>' + analyticsPreference + '</div><p>Made with care, in Sydney.</p></div></div>';
     }
     document.querySelectorAll("[data-current-year]").forEach(function (node) { node.textContent = new Date().getFullYear(); });
-    document.querySelectorAll("[data-starting-price]").forEach(function (node) { node.textContent = config.publicPricing ? formatCurrency(config.starterWebsitePrice) : "Request pricing"; });
+    document.querySelectorAll("[data-starting-price]").forEach(function (node) { node.textContent = publicPrice(productById(1)) !== null ? formatCurrency(productById(1).price) : "Request pricing"; });
     document.querySelectorAll("[data-contact-email]").forEach(function (node) {
       node.textContent = config.contactEmail || "Email details coming soon";
       if (config.contactEmail) node.href = "mailto:" + config.contactEmail;
@@ -224,67 +223,44 @@
     }
   }
 
+  function productHref(product) { return localPath('shop/' + product.slug + '.html'); }
   function priceMarkup(product) {
     var price = publicPrice(product);
-    if (price === null) return '<span class="price-value">Request pricing</span><span class="price-detail">' + (product.pricingType === "monthly" ? "Tailored monthly support" : "A quote to suit your business") + '</span>';
-    return '<span class="price-prefix">' + (product.startingAt ? "Starting at" : "") + '</span><span class="price-value">' + escapeHtml(formatCurrency(price)) + (product.pricingType === "monthly" ? '<small>/month</small>' : "") + '</span><span class="price-detail">' + escapeHtml(config.currency || "AUD") + ' · ' + (product.pricingType === "monthly" ? "Recurring fee" : "One-time project") + '</span>';
+    return '<span class="price-value">' + (price === null ? 'Get a quote' : 'From ' + escapeHtml(formatCurrency(price)) + (product.pricingType === 'monthly' ? '<small>/month</small>' : '')) + '</span><span class="price-detail">' + escapeHtml(product.billingLabel || (product.pricingType === 'monthly' ? 'Monthly' : 'One-time project')) + '</span>';
   }
-
   function productCard(product) {
-    return '<article class="product-card"><a class="product-visual" href="' + localPath("product.html?id=" + product.id) + '" tabindex="-1" aria-hidden="true"><img class="product-image" src="' + localPath(product.image || "images/product-placeholder.svg") + '" width="640" height="460" alt="" loading="lazy">' + (product.featured ? '<span class="product-badge">A good place to start</span>' : "") + '</a><div class="product-info"><p class="eyebrow product-category">' + escapeHtml(product.category) + '</p><h3><a href="' + localPath("product.html?id=" + product.id) + '">' + escapeHtml(product.name) + '</a></h3><p>' + escapeHtml(product.description) + '</p><div class="product-price">' + priceMarkup(product) + '</div><div class="product-actions"><a class="button button-outline" href="' + localPath("product.html?id=" + product.id) + '">View details</a><button type="button" class="button button-primary" data-add-product="' + product.id + '"' + (product.available === false ? ' disabled' : "") + '>' + (product.available === false ? "Unavailable" : "Add to quote") + '</button></div></div></article>';
+    return '<article class="product-card"><a class="product-visual" href="' + productHref(product) + '" tabindex="-1" aria-hidden="true"><img class="product-image" src="' + localPath(product.image) + '" width="640" height="460" alt="" loading="lazy">' + (product.featured ? '<span class="product-badge">Featured</span>' : '') + '</a><div class="product-info"><p class="eyebrow product-category">' + escapeHtml(product.category) + '</p><h3><a href="' + productHref(product) + '">' + escapeHtml(product.name) + '</a></h3><p>' + escapeHtml(product.description) + '</p><div class="product-price">' + priceMarkup(product) + '</div><div class="product-actions"><a class="button button-outline" href="' + productHref(product) + '">View details</a><a class="button button-primary" href="' + productHref(product) + '#product-enquiry">' + (product.physical ? 'Order enquiry' : 'Get my quote') + '</a></div></div></article>';
   }
-
   function renderFeaturedProducts() {
-    document.querySelectorAll("[data-featured-products]").forEach(function (container) {
-      var limit = Number(container.dataset.limit) || 3;
-      container.innerHTML = products.filter(function (product) { return product.featured && product.available !== false; }).slice(0, limit).map(productCard).join("");
+    document.querySelectorAll('[data-featured-products]').forEach(function (container) {
+      container.innerHTML = products.filter(function (p) { return p.featured && p.available !== false; }).slice(0, Number(container.dataset.limit) || 3).map(productCard).join('');
     });
+    document.querySelectorAll('[data-launch-price]').forEach(function (node) { var p = productById(node.dataset.launchPrice); if (p) node.innerHTML = publicPrice(p) === null ? 'Request a tailored quote' : 'From ' + escapeHtml(formatCurrency(p.price)) + (p.pricingType === 'monthly' ? '/month' : ''); });
   }
-
   function filteredProducts() {
-    var result = products.filter(function (product) {
-      var categoryMatches = filterState.category === "All" || filterState.category === "all" || product.category === filterState.category;
-      var text = (product.name + " " + product.category + " " + product.description).toLowerCase();
-      return categoryMatches && text.indexOf(filterState.search.toLowerCase()) !== -1;
+    return products.filter(function (p) {
+      return (filterState.category === 'All' || p.category === filterState.category) &&
+        (filterState.billing === 'All' || p.pricingType === filterState.billing) &&
+        (filterState.industry === 'All' || (p.industries || []).indexOf(filterState.industry) !== -1) &&
+        (p.name + ' ' + p.category + ' ' + p.description + ' ' + (p.features || []).join(' ')).toLowerCase().indexOf(filterState.search.toLowerCase()) !== -1;
+    }).sort(function (a,b) {
+      if (filterState.sort === 'name') return a.name.localeCompare(b.name);
+      if (/price/.test(filterState.sort)) { var x=publicPrice(a),y=publicPrice(b); return x===null&&y===null ? a.name.localeCompare(b.name) : x===null ? 1 : y===null ? -1 : filterState.sort==='price-desc' ? y-x : x-y; }
+      return Number(b.featured)-Number(a.featured) || a.catalogueNumber.localeCompare(b.catalogueNumber);
     });
-    if (/price|low|high/.test(filterState.sort)) {
-      var descending = /desc|high/.test(filterState.sort);
-      result.sort(function (a, b) {
-        var first = publicPrice(a); var second = publicPrice(b);
-        if (first === null && second === null) return a.name.localeCompare(b.name);
-        if (first === null) return 1;
-        if (second === null) return -1;
-        return descending ? second - first : first - second;
-      });
-    } else if (filterState.sort === "name") {
-      result.sort(function (a, b) { return a.name.localeCompare(b.name); });
-    } else {
-      result.sort(function (a, b) { return Number(Boolean(b.featured)) - Number(Boolean(a.featured)); });
-    }
-    return result;
   }
-
   function renderCatalogue() {
-    var grid = document.querySelector("[data-product-grid]");
-    if (!grid) return;
-    var result = filteredProducts();
-    grid.innerHTML = result.length ? result.map(productCard).join("") : '<div class="empty-state"><span class="icon-box">' + icon("search") + '</span><h2>No packages found</h2><p>Try a different search or reset the filters to see everything.</p><button type="button" class="button button-outline" data-reset-filters>Reset filters</button></div>';
-    var resultCount = document.querySelector("[data-results-count]");
-    if (resultCount) resultCount.textContent = result.length + " " + (result.length === 1 ? "package" : "packages") + " to explore";
-    document.querySelectorAll("[data-category]").forEach(function (button) {
-      var active = button.dataset.category === filterState.category;
-      button.classList.toggle("is-active", active);
-      button.setAttribute("aria-pressed", String(active));
-    });
+    var grid=document.querySelector('[data-product-grid]'); if (!grid) return;
+    var result=filteredProducts();
+    grid.innerHTML=result.length ? result.map(productCard).join('') : '<div class="empty-state"><h2>No matches yet.</h2><p>Try a broader search or reset your filters.</p><button class="button button-outline" type="button" data-reset-filters>Reset filters</button></div>';
+    document.querySelector('[data-results-count]').textContent=result.length+' of '+products.length+' products and services';
+    document.querySelectorAll('[data-category]').forEach(function (button) { var active=button.dataset.category===filterState.category;button.classList.toggle('is-active',active);button.setAttribute('aria-pressed',String(active)); });
   }
-
   function setupCatalogue() {
-    var search = document.getElementById("product-search");
-    var category = document.getElementById("category-filter");
-    var sort = document.getElementById("product-sort");
-    if (search) search.addEventListener("input", function () { filterState.search = search.value.trim(); renderCatalogue(); });
-    if (category) category.addEventListener("change", function () { filterState.category = category.value; renderCatalogue(); });
-    if (sort) sort.addEventListener("change", function () { filterState.sort = sort.value; renderCatalogue(); });
+    var params=new URLSearchParams(location.search), categories=['All'].concat(Array.from(new Set(products.map(function(p){return p.category;}))));
+    if(categories.indexOf(params.get('category'))!==-1)filterState.category=params.get('category');
+    var industry=params.get('industry');if(products.some(function(p){return(p.industries||[]).indexOf(industry)!==-1;}))filterState.industry=industry;
+    [['product-search','search','input'],['category-filter','category','change'],['product-sort','sort','change'],['billing-filter','billing','change'],['industry-filter','industry','change']].forEach(function(item){var e=document.getElementById(item[0]);if(e){e.value=filterState[item[1]];e.addEventListener(item[2],function(){filterState[item[1]]=e.value.trim();renderCatalogue();});}});
     renderCatalogue();
   }
 
@@ -310,56 +286,24 @@
   }
 
   function renderProductDetail() {
-    var container = document.querySelector("[data-product-detail]");
-    if (!container) return;
-    var id = new URLSearchParams(window.location.search).get("id");
-    var product = productById(id);
-    if (!product) {
-      document.title = "Package not found | NetBud";
-      var missingDescription = "This package could not be found. Explore NetBud’s service catalogue to find websites, business tools and digital support.";
-      updateMeta('meta[name="description"]', missingDescription);
-      updateMeta('meta[property="og:title"]', document.title);
-      updateMeta('meta[property="og:description"]', missingDescription);
-      updateMeta('meta[name="twitter:title"]', document.title);
-      updateMeta('meta[name="twitter:description"]', missingDescription);
-      updateMeta('meta[name="robots"]', 'noindex, follow');
-      if (safeSiteUrl()) updateCanonical(safeSiteUrl() + "/shop.html");
-      container.innerHTML = '<div class="empty-state"><span class="icon-box">' + icon("search") + '</span><p class="eyebrow">Let’s get you back on track</p><h1>We couldn’t find that package.</h1><p>The link may have changed. There are plenty of useful places to start in our catalogue.</p><a class="button button-primary" href="' + localPath("shop.html") + '">Explore packages ' + icon("arrow") + '</a></div>';
-      return;
-    }
-    document.title = product.name + " | NetBud Digital Services";
-    updateMeta('meta[name="description"]', product.description);
-    updateMeta('meta[property="og:title"]', document.title);
-    updateMeta('meta[property="og:description"]', product.description);
-    updateMeta('meta[name="twitter:title"]', document.title);
-    updateMeta('meta[name="twitter:description"]', product.description);
-    updateMeta('meta[name="robots"]', 'index, follow');
-    var productionUrl = safeSiteUrl();
-    if (productionUrl) {
-      var imageUrl = productionUrl + "/images/social-card.jpg?v=20261028-b1";
-      updateMeta('meta[property="og:image"]', imageUrl);
-      updateMeta('meta[name="twitter:image"]', imageUrl);
-      updateCanonical(productionUrl + "/product.html?id=" + product.id);
-    }
-    var quoteUrl = localPath("contact.html?service=" + encodeURIComponent(product.name) + "#enquiry");
-    var productActions = '<div class="button-group button-row"><button type="button" class="button button-primary" data-add-product="' + product.id + '"' + (product.available === false ? ' disabled' : "") + '>' + (product.available === false ? "Currently unavailable" : "Add to quote basket") + ' ' + icon("bag") + '</button><a class="button button-outline" href="' + quoteUrl + '">Request a quote</a></div><p class="small muted">' + (product.startingAt ? 'Starting price; final scope and total agreed in your proposal. ' : '') + 'Adding a package is an enquiry step. It does not place a paid order or activate a plan.</p>';
-    container.innerHTML = '<nav class="breadcrumbs breadcrumb" aria-label="Breadcrumb"><a href="' + localPath("index.html") + '">Home</a><span aria-hidden="true">/</span><a href="' + localPath("shop.html") + '">Packages</a><span aria-hidden="true">/</span><span aria-current="page">' + escapeHtml(product.name) + '</span></nav>' +
-      '<div class="product-detail-grid product-detail"><div class="product-detail-visual product-gallery"><img data-product-main-image src="' + localPath(product.image) + '" width="640" height="460" alt="Illustration of ' + escapeHtml(product.name) + '">' + (Array.isArray(product.images) && product.images.length > 1 ? '<div class="product-image-thumbs">' + product.images.map(function (image, index) { return '<button type="button" data-product-image="' + escapeHtml(image) + '" aria-label="View image ' + (index + 1) + ' of ' + escapeHtml(product.name) + '" aria-pressed="' + String(index === 0) + '"><img src="' + localPath(image) + '" width="70" height="50" alt=""></button>'; }).join('') + '</div>' : '') + '<p class="muted">Original illustration · final scope tailored to your business</p></div><div class="product-detail-info"><p class="eyebrow">' + escapeHtml(product.category) + '</p><h1>' + escapeHtml(product.name) + '</h1><p class="lead">' + escapeHtml(product.description) + '</p><div class="product-price product-price-large">' + priceMarkup(product) + '</div>' + productActions + '<p class="muted">' + escapeHtml(product.note) + '</p><ul class="check-list">' + product.features.map(function (feature) { return '<li><span>' + escapeHtml(feature) + '</span></li>'; }).join("") + '</ul></div></div>' +
-      '<div class="section product-scope"><div class="grid-2"><article class="card"><p class="eyebrow">The useful details</p><h2>What’s included</h2><ul class="feature-list">' + product.inclusions.map(function (item) { return '<li>' + escapeHtml(item) + '</li>'; }).join("") + '</ul></article><article class="card"><p class="eyebrow">Clear expectations</p><h2>What’s scoped separately</h2><ul class="feature-list">' + product.exclusions.map(function (item) { return '<li>' + escapeHtml(item) + '</li>'; }).join("") + '</ul></article></div><p class="product-description">' + escapeHtml(product.detail) + '</p></div>' +
-      '<section class="section related-products" aria-labelledby="related-title"><div class="section-heading"><div><p class="eyebrow">Make it work together</p><h2 id="related-title">A little more support?</h2></div><a class="text-link" href="' + localPath("shop.html") + '">All packages ' + icon("arrow") + '</a></div><div class="grid-3">' + products.filter(function (related) { return related.id !== product.id && related.available !== false; }).slice(0, 3).map(productCard).join("") + '</div></section>';
+    var container=document.querySelector('[data-product-detail]');if(!container)return;
+    var product=productById(document.body.dataset.productId || new URLSearchParams(location.search).get('id'));
+    if(!product && ['8','9'].indexOf(new URLSearchParams(location.search).get('id'))!==-1){window.location.replace(localPath('contact.html?service='+encodeURIComponent(new URLSearchParams(location.search).get('id')==='8'?'Paid digital advertising':'Social content and paid advertising')+'#enquiry'));return;}
+    if(!product){container.innerHTML='<div class="empty-state"><h1>Let’s find the right service.</h1><p>This package link is no longer available.</p><a class="button button-primary" href="'+localPath('shop.html')+'">Explore the shop</a></div>';document.title='Package not found | NetBud';return;}
+    document.title=product.name+' | NetBud';updateMeta('meta[name="description"]',product.description);updateMeta('meta[property="og:title"]',document.title);updateMeta('meta[property="og:description"]',product.description);updateMeta('meta[name="twitter:title"]',document.title);updateMeta('meta[name="twitter:description"]',product.description);updateCanonical(safeSiteUrl()+'/shop/'+product.slug+'.html');
+    function list(items){return '<ul class="feature-list">'+(items||[]).map(function(v){return '<li>'+escapeHtml(v)+'</li>';}).join('')+'</ul>';}
+    function panel(title,items){return '<article class="card"><h2>'+title+'</h2>'+list(items)+'</article>';}
+    var quote='Your final quote depends on your requirements, project size and any extra features. We’ll confirm the full price with you before starting.';
+    var fields='';
+    if(product.physical)fields='<div class="field"><label for="product-quantity">Card quantity</label><input id="product-quantity" name="quantity" type="number" min="1" max="999" value="1"></div><div class="field"><label for="product-link">'+(product.id===10?'Google Business Profile / review link':'Website or contact-page link')+' (optional)</label><input id="product-link" name="destination" type="url" placeholder="https://" maxlength="500"></div>';
+    if(product.id===5)fields+='<div class="field"><label for="product-title">Job title (optional)</label><input id="product-title" name="jobTitle" maxlength="100"></div><div class="field"><label for="product-social">Social links (optional)</label><input id="product-social" name="socialLinks" maxlength="500"></div>';
+    if(product.id===4)fields+='<div class="field"><label for="product-industry">Industry (optional)</label><input id="product-industry" name="industry" maxlength="100"></div><div class="field"><label for="product-style">Brand personality / colours (optional)</label><input id="product-style" name="designPreferences" maxlength="300"></div>';
+    var special=product.id===10?'<div class="tap-steps"><span>01 · Tap or scan</span><span>02 · Open your Google review page</span><span>03 · Customer chooses to leave a genuine review</span></div><p>No incentives, review gating or promised positive reviews. A Google Account is needed to leave a review. <a href="https://support.google.com/business/answer/3474122" target="_blank" rel="noopener">Google’s review guidance</a></p>':'';
+    var preview=product.category==='Websites'?'<aside class="shop-preview"><p class="eyebrow">See a direction before committing</p><h2>Your next website. A first look, free.</h2><p>One limited homepage concept for eligible businesses after discovery. Target: three business days, subject to availability.</p><a class="button button-outline" href="'+localPath('free-preview.html')+'">Request my free preview</a></aside>':'';
+    container.innerHTML='<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="'+localPath('shop.html')+'">Shop</a><span aria-hidden="true">/</span><span aria-current="page">'+escapeHtml(product.name)+'</span></nav><div class="product-detail-grid"><div class="product-detail-visual product-gallery"><img src="'+localPath(product.image)+'" width="640" height="460" alt="Illustrative concept for '+escapeHtml(product.name)+'"><p class="small muted">Illustrative concept · final design and availability confirmed in your quote.</p></div><div class="product-detail-info"><p class="eyebrow">'+escapeHtml(product.category)+'</p><h1>'+escapeHtml(product.name)+'</h1><p class="lead">'+escapeHtml(config.launchPricingApproved&&product.proposedOffer?product.proposedOffer:product.description)+'</p><div class="product-price">'+priceMarkup(product)+'</div><p>'+quote+'</p><div class="button-row"><a class="button button-primary" href="#product-enquiry">'+(product.physical?'Order enquiry':'Get my quote')+'</a><button class="button button-outline" type="button" data-add-product="'+product.id+'">Add to quote basket</button></div><p class="small muted">No payment is taken. '+escapeHtml(config.pricingNote)+'</p></div></div><section class="product-scope"><p class="lead">'+escapeHtml(product.detail)+'</p>'+special+'<div class="shop-detail-panels">'+panel('Who it’s for',Array.isArray(product.audience)?product.audience:[product.audience])+panel('Starting package includes',product.inclusions)+panel('Not included in the entry package',product.exclusions)+panel('Options & upgrades',product.options)+panel('What happens next',product.process)+panel('What we need from you',product.requirements)+'</div><p class="notice">'+escapeHtml(product.note)+'</p></section>'+preview+'<section class="section"><h2>Good questions. Clear answers.</h2><div class="faq-list">'+(product.faqs||[]).map(function(f){return '<details><summary>'+escapeHtml(f.q)+'</summary><p>'+escapeHtml(f.a)+'</p></details>';}).join('')+'</div></section><section class="shop-enquiry" id="product-enquiry"><div><p class="eyebrow">One useful next step</p><h2>Let’s talk about '+escapeHtml(product.name)+'.</h2><p>Start with your name and email. We’ll agree the details, scope and final quote together.</p><p>Logo or artwork? Mention it below; we’ll arrange a suitable way to share files after you enquire.</p><p>We prepare a draft for you to review and send through your email or WhatsApp app.</p></div><form class="enquiry-form" method="post" data-enquiry-form="product" data-form-title="'+escapeHtml(product.name)+' enquiry"><div class="form-grid"><div class="field"><label for="product-name">Your name *</label><input id="product-name" name="name" autocomplete="name" required maxlength="100"></div><div class="field"><label for="product-email">Email *</label><input id="product-email" name="email" type="email" autocomplete="email" required maxlength="200"></div><div class="field"><label for="product-phone">Phone (optional)</label><input id="product-phone" name="phone" type="tel" autocomplete="tel" maxlength="30"></div><div class="field"><label for="product-business">Business / brand name (optional)</label><input id="product-business" name="business" autocomplete="organization" maxlength="120"></div><div class="field field-full"><label for="product-selected">Selected product</label><input id="product-selected" name="selectedProduct" value="'+escapeHtml(product.name)+'" readonly></div>'+fields+'<div class="field field-full"><label for="product-notes">What do you have in mind? (optional)</label><textarea id="product-notes" name="message" rows="3" maxlength="3000" placeholder="Preferences, style references or a quick description…"></textarea></div></div><div class="honeypot" aria-hidden="true"><label for="product-check">Leave empty</label><input id="product-check" name="website_confirm" tabindex="-1" autocomplete="off"></div><p class="small muted">Your details are used to respond to this enquiry. <a href="'+localPath('privacy.html')+'">Privacy information</a>.</p><button type="submit" class="button button-primary" disabled>Prepare my enquiry</button><div class="form-status" role="status" aria-live="polite"></div></form></section><section class="section related-products"><div class="section-heading"><div><p class="eyebrow">Useful together</p><h2>Build on your next step.</h2></div><a class="text-link" href="'+localPath('shop.html')+'">All products & services ↗</a></div><div class="grid-3">'+(product.relatedIds||[]).map(productById).filter(Boolean).slice(0,4).map(productCard).join('')+'</div></section>';
   }
 
-  function renderPricing() {
-    document.querySelectorAll("[data-pricing-grid]").forEach(function (container) {
-      container.innerHTML = (config.pricingPlans || []).map(function (plan) {
-        var setupValue = plan.priceSource === "starterWebsite" ? config.starterWebsitePrice : plan.setup;
-        var setup = config.publicPricing && typeof setupValue === "number" && setupValue >= 0 ? setupValue : null;
-        var monthly = config.publicPricing && typeof plan.monthly === "number" && plan.monthly >= 0 ? plan.monthly : null;
-        return '<article class="price-card' + (plan.featured ? ' is-featured featured' : '') + '">' + (plan.featured ? '<span class="price-badge pill">A good place to start</span>' : '') + '<p class="eyebrow">' + escapeHtml(plan.label) + '</p><h2>' + escapeHtml(plan.title) + '</h2><p>' + escapeHtml(plan.description) + '</p><div class="plan-price">' + (setup !== null ? '<span class="price-prefix">' + (plan.startingAt ? 'Starting at' : 'Setup') + '</span><span class="price-value">' + escapeHtml(formatCurrency(setup)) + '</span><span class="price-detail">' + escapeHtml(config.currency || 'AUD') + ' · one-time setup</span>' : '<span class="price-value">Let’s talk</span><span class="price-detail">Setup and monthly fees quoted separately</span>') + (monthly !== null ? '<p>' + escapeHtml(currencyLabel(monthly)) + ' / month, separately</p>' : '') + '</div><ul class="check-list">' + plan.features.map(function (feature) { return '<li><span>' + escapeHtml(feature) + '</span></li>'; }).join('') + '</ul><a class="button ' + (plan.featured ? 'button-primary' : 'button-outline') + '" href="' + localPath('contact.html?service=' + encodeURIComponent(plan.title) + '#enquiry') + '">Request a proposal ' + icon('arrow') + '</a><p class="small muted">' + escapeHtml(plan.note) + '</p></article>';
-      }).join('');
-    });
-    document.querySelectorAll('[data-pricing-note]').forEach(function (node) { node.textContent = config.pricingNote || ''; });
-  }
+  function renderPricing() { document.querySelectorAll('[data-pricing-note]').forEach(function(node){node.textContent=config.pricingNote;}); }
 
   function renderPortfolio() {
     document.querySelectorAll('[data-portfolio-grid]').forEach(function (container) {
@@ -395,7 +339,7 @@
       storageAvailable = true;
     } catch (error) { storageAvailable = false; cart = []; return; }
     // Invalid old data is different from a browser that blocks storage access.
-    try { cart = sanitiseCart(saved ? JSON.parse(saved) : []); }
+    try { var previousCart=saved?JSON.parse(saved):[]; cart = sanitiseCart(previousCart); if(Array.isArray(previousCart)&&previousCart.some(function(item){return item&&(Number(item.id)===8||Number(item.id)===9);})) notify('Paid campaign packages now need a tailored enquiry. Please contact us to include them in your quote.'); }
     catch (error) { cart = []; }
   }
 
@@ -461,13 +405,13 @@
     cart.forEach(function (item) {
       var product = productById(item.id);
       var price = publicPrice(product);
-      lines.push(product.name + ' × ' + item.quantity + ' — ' + (price === null ? (product.pricingType === 'monthly' ? 'Monthly fee to be quoted' : 'Price to be confirmed') : (product.startingAt ? 'Starting at ' : '') + currencyLabel(price) + (product.pricingType === 'monthly' ? ' / month' : ' each')));
+      lines.push(product.name + ' × ' + item.quantity + ' — ' + (price === null ? (product.pricingType === 'monthly' ? 'Monthly fee to be quoted' : 'Price to be confirmed') : (product.startingAt ? 'From ' : '') + currencyLabel(price) + (product.pricingType === 'monthly' ? '/month' : ' each')));
     });
     lines.push('', (totals.startingAt ? 'Indicative one-time starting total: ' : 'One-time priced subtotal: ') + currencyLabel(totals.oneTime));
-    lines.push('Recurring monthly fees: ' + (totals.monthly === 0 && totals.monthlyQuoteOnly ? 'To be quoted separately' : totals.monthly === 0 ? 'None selected' : currencyLabel(totals.monthly) + ' / month' + (totals.monthlyQuoteOnly ? ' + services to be quoted' : '')));
+    lines.push('Recurring monthly fees: ' + (totals.monthly === 0 && totals.monthlyQuoteOnly ? 'To be quoted separately' : totals.monthly === 0 ? 'None selected' : currencyLabel(totals.monthly) + '/month' + (totals.monthlyQuoteOnly ? ' + services to be quoted' : '')));
     if (totals.quoteOnly) lines.push('Quote-only item quantities: ' + totals.quoteOnly + ' (excluded from priced subtotals).');
     if (totals.physical) lines.push('Physical item delivery charges and final quantities require confirmation.');
-    lines.push('Final scope, total, taxes, payment schedule and any recurring terms require a written proposal. This is an enquiry, not a paid or accepted order.');
+    lines.push('Final scope, total, payment schedule and any recurring terms require a written proposal. This is an enquiry, not a paid or accepted order.');
     return lines.join('\n');
   }
 
@@ -477,9 +421,9 @@
       '<div class="field"><label for="checkout-name">Full name <span aria-hidden="true">*</span></label><input id="checkout-name" name="name" autocomplete="name" required minlength="2" maxlength="100"></div>' +
       '<div class="field"><label for="checkout-business">Business name <span class="muted">(optional)</span></label><input id="checkout-business" name="business" autocomplete="organization" maxlength="150"></div>' +
       '<div class="field"><label for="checkout-email">Email address <span aria-hidden="true">*</span></label><input id="checkout-email" name="email" type="email" autocomplete="email" required maxlength="200"></div>' +
-      '<div class="field"><label for="checkout-phone">Australian phone number <span aria-hidden="true">*</span></label><input id="checkout-phone" name="phone" type="tel" autocomplete="tel" required maxlength="25" placeholder="04xx xxx xxx"></div>' +
+      '<div class="field"><label for="checkout-phone">Australian phone number <span class="muted">(optional)</span></label><input id="checkout-phone" name="phone" type="tel" autocomplete="tel" maxlength="25" placeholder="04xx xxx xxx"></div>' +
       '<div class="field field-full"><label for="checkout-billing">Billing address <span class="muted">(optional for digital services)</span></label><textarea id="checkout-billing" name="billingAddress" autocomplete="billing street-address" rows="2" maxlength="500"></textarea></div>' +
-      '<div class="field field-full" data-delivery-field hidden><label for="checkout-delivery">Delivery address <span aria-hidden="true">*</span></label><textarea id="checkout-delivery" name="deliveryAddress" autocomplete="shipping street-address" rows="3" maxlength="500"></textarea><p class="field-help">Required for physical cards. Delivery cost is confirmed in your quote.</p></div>' +
+      '<div class="field field-full" data-delivery-field hidden><label for="checkout-delivery">Delivery suburb / postcode <span class="muted">(optional for the enquiry)</span></label><textarea id="checkout-delivery" name="deliveryAddress" autocomplete="shipping street-address" rows="3" maxlength="500"></textarea><p class="field-help">Delivery cost and address are confirmed before dispatch.</p></div>' +
       '<div class="field field-full"><label for="checkout-notes">Additional instructions <span class="muted">(optional)</span></label><textarea id="checkout-notes" name="message" rows="4" maxlength="3000" placeholder="Tell us a little about your business and what you need."></textarea></div>' +
       '<div class="field field-full"><label class="checkbox-label"><input type="checkbox" name="marketing" value="yes"><span>I’d also like occasional NetBud updates. <span class="muted">Optional; you can opt out.</span></span></label></div>' +
       '<div class="honeypot" aria-hidden="true"><label for="checkout-check">Leave this field empty</label><input id="checkout-check" name="website_confirm" tabindex="-1" autocomplete="off"></div>' +
@@ -517,16 +461,16 @@
     container.querySelector('[data-cart-items]').innerHTML = cart.map(function (item) {
       var product = productById(item.id);
       var price = publicPrice(product);
-      return '<article class="cart-item"><a class="cart-item-image" aria-label="View ' + escapeHtml(product.name) + ' details" href="' + localPath('product.html?id=' + product.id) + '"><img src="' + localPath(product.image) + '" width="160" height="120" alt=""></a><div class="cart-item-info"><p class="eyebrow">' + escapeHtml(product.category) + '</p><h2><a href="' + localPath('product.html?id=' + product.id) + '">' + escapeHtml(product.name) + '</a></h2><p>' + (price === null ? 'Pricing to be confirmed' : (product.startingAt ? 'Starting at ' : '') + escapeHtml(currencyLabel(price)) + (product.pricingType === 'monthly' ? ' / month' : ' per package')) + '</p>' + (product.physical ? '<p class="small muted">Physical item · delivery quoted separately</p>' : '') + '<div class="cart-controls"><div class="quantity-control cart-controls"><button type="button" data-decrease="' + product.id + '" aria-label="Decrease quantity of ' + escapeHtml(product.name) + '"' + (item.quantity <= 1 ? ' disabled' : '') + '>' + icon('minus') + '</button><label class="sr-only" for="quantity-' + product.id + '">Quantity for ' + escapeHtml(product.name) + '</label><input id="quantity-' + product.id + '" data-quantity="' + product.id + '" type="number" inputmode="numeric" min="1" max="99" step="1" value="' + item.quantity + '"><button type="button" data-increase="' + product.id + '" aria-label="Increase quantity of ' + escapeHtml(product.name) + '"' + (item.quantity >= 99 ? ' disabled' : '') + '>' + icon('plus') + '</button></div><button class="remove-item" type="button" data-remove="' + product.id + '" aria-label="Remove ' + escapeHtml(product.name) + ' from quote basket">' + icon('trash') + '<span>Remove</span></button></div></div><div class="cart-line-total cart-item-price">' + (price === null ? 'To be quoted' : (product.startingAt ? 'From ' : '') + escapeHtml(formatCurrency(price * item.quantity)) + (product.pricingType === 'monthly' ? '<small>/month</small>' : '')) + '</div></article>';
+      return '<article class="cart-item"><a class="cart-item-image" aria-label="View ' + escapeHtml(product.name) + ' details" href="' + localPath('product.html?id=' + product.id) + '"><img src="' + localPath(product.image) + '" width="160" height="120" alt=""></a><div class="cart-item-info"><p class="eyebrow">' + escapeHtml(product.category) + '</p><h2><a href="' + localPath('product.html?id=' + product.id) + '">' + escapeHtml(product.name) + '</a></h2><p>' + (price === null ? 'Pricing to be confirmed' : (product.startingAt ? 'From ' : '') + escapeHtml(currencyLabel(price)) + (product.pricingType === 'monthly' ? '/month' : ' per package')) + '</p>' + (product.physical ? '<p class="small muted">Physical item · delivery quoted separately</p>' : '') + '<div class="cart-controls"><div class="quantity-control cart-controls"><button type="button" data-decrease="' + product.id + '" aria-label="Decrease quantity of ' + escapeHtml(product.name) + '"' + (item.quantity <= 1 ? ' disabled' : '') + '>' + icon('minus') + '</button><label class="sr-only" for="quantity-' + product.id + '">Quantity for ' + escapeHtml(product.name) + '</label><input id="quantity-' + product.id + '" data-quantity="' + product.id + '" type="number" inputmode="numeric" min="1" max="99" step="1" value="' + item.quantity + '"><button type="button" data-increase="' + product.id + '" aria-label="Increase quantity of ' + escapeHtml(product.name) + '"' + (item.quantity >= 99 ? ' disabled' : '') + '>' + icon('plus') + '</button></div><button class="remove-item" type="button" data-remove="' + product.id + '" aria-label="Remove ' + escapeHtml(product.name) + ' from quote basket">' + icon('trash') + '<span>Remove</span></button></div></div><div class="cart-line-total cart-item-price">' + (price === null ? 'To be quoted' : (product.startingAt ? 'From ' : '') + escapeHtml(formatCurrency(price * item.quantity)) + (product.pricingType === 'monthly' ? '<small>/month</small>' : '')) + '</div></article>';
     }).join('');
     var totals = calculateTotals();
     var oneTimeDisplay = totals.oneTime === 0 && totals.quoteOnly > totals.monthlyQuoteOnly ? 'To be quoted' : currencyLabel(totals.oneTime);
-    var monthlyDisplay = totals.monthlyQuoteOnly && totals.monthly === 0 ? 'To be quoted' : totals.monthly === 0 ? 'None selected' : currencyLabel(totals.monthly) + ' / month';
+    var monthlyDisplay = totals.monthlyQuoteOnly && totals.monthly === 0 ? 'To be quoted' : totals.monthly === 0 ? 'None selected' : currencyLabel(totals.monthly) + '/month';
     if (totals.monthlyQuoteOnly && totals.monthly > 0) monthlyDisplay += ' + services to quote';
     container.querySelector('[data-cart-summary]').innerHTML = '<p class="eyebrow">Your quote basket</p><h2>A clear starting point.</h2><dl><div><dt>' + (totals.startingAt ? 'One-time starting subtotal' : 'One-time priced subtotal') + '</dt><dd>' + escapeHtml(oneTimeDisplay) + '</dd></div><div><dt>Recurring monthly subtotal</dt><dd>' + escapeHtml(monthlyDisplay) + '</dd></div>' + (totals.quoteOnly ? '<div><dt>Unpriced item quantities</dt><dd>' + totals.quoteOnly + ' to quote</dd></div>' : '') + '</dl><p class="notice">' + (totals.quoteOnly ? 'Quote-only packages are excluded from the priced subtotals. ' : '') + 'This is an indicative enquiry estimate. Your final scope, total and terms are confirmed before work begins.</p><p class="small muted">' + escapeHtml(config.pricingNote || '') + ' Monthly charges are separate; no subscription is activated.</p><a class="button button-primary" href="#checkout-title">Prepare my enquiry ' + icon('arrow') + '</a>';
     var delivery = container.querySelector('[data-delivery-field]');
     delivery.hidden = !totals.physical;
-    delivery.querySelector('textarea').required = totals.physical;
+    delivery.querySelector('textarea').required = false;
     delivery.querySelector('textarea').disabled = !totals.physical || container.querySelector('form[data-enquiry-form="checkout"]').getAttribute('aria-busy') === 'true';
     var review = container.querySelector('.enquiry-review');
     if (review) review.remove();
@@ -634,7 +578,7 @@
   }
 
   var formLabels = {
-    name: 'Contact name', business: 'Business name', email: 'Email address', phone: 'Phone number',
+    selectedProduct: 'Selected product', quantity: 'Quantity', destination: 'Destination link', jobTitle: 'Job title', socialLinks: 'Social links', name: 'Contact name', business: 'Business name', email: 'Email address', phone: 'Phone number',
     website: 'Current website', services: 'Services required', message: 'Message / instructions', preferredTime: 'Preferred callback time',
     industry: 'Industry', designPreferences: 'Design preferences', preferences: 'Design preferences', goals: 'Project goals', billingAddress: 'Billing address', deliveryAddress: 'Delivery address'
   };
@@ -837,10 +781,11 @@
     });
     var service = new URLSearchParams(window.location.search).get('service');
     if (service && service.length <= 150) {
+      (root || document).querySelectorAll('form[data-enquiry-form="contact"]').forEach(function(form){if(!form.querySelector('[name="selectedProduct"]')){var row=document.createElement('div');row.className='field field-full';var label=document.createElement('label');label.htmlFor='contact-selected-product';label.textContent='Selected service';var input=document.createElement('input');input.id='contact-selected-product';input.name='selectedProduct';input.readOnly=true;input.value=service;row.appendChild(label);row.appendChild(input);form.querySelector('.form-grid').prepend(row);}});
       (root || document).querySelectorAll('[name="services"]').forEach(function (field) {
         if (field.tagName === 'SELECT') {
           var requestedProduct = products.find(function (product) { return product.name === service; });
-          var categoryValue = requestedProduct ? { 'Websites': 'websites', 'SEO': 'seo', 'Ongoing Support': 'support', 'Branding': 'branding', 'NFC & QR': 'nfc', 'Business Systems': 'systems' }[requestedProduct.category] : /website/i.test(service) ? 'websites' : '';
+          var categoryValue = requestedProduct ? { 'Websites': 'websites', 'Digital Growth': 'seo', 'Branding & Design': 'branding', 'NFC Products': 'nfc', 'Business Systems & Support': 'systems' }[requestedProduct.category] : /website/i.test(service) ? 'websites' : '';
           var matching = Array.from(field.options).find(function (option) { return option.value === service || option.textContent === service || categoryValue && option.value === categoryValue; });
           if (matching) field.value = matching.value;
         } else if (field.type !== 'checkbox' && field.type !== 'radio' && !field.value) field.value = service;
@@ -1232,7 +1177,7 @@
       var category = event.target.closest('[data-category]');
       if (category) { filterState.category = category.dataset.category; var select = document.getElementById('category-filter'); if (select) select.value = filterState.category; renderCatalogue(); return; }
       if (event.target.closest('[data-reset-filters]')) {
-        filterState = { category: 'All', search: '', sort: 'featured' };
+        filterState = { category: 'All', search: '', sort: 'featured', billing: 'All', industry: 'All' }; document.querySelectorAll('#billing-filter,#industry-filter').forEach(function(e){e.value='All';});
         var search = document.getElementById('product-search'); var categories = document.getElementById('category-filter'); var sort = document.getElementById('product-sort');
         if (search) search.value = ''; if (categories) categories.value = 'All'; if (sort) sort.value = 'featured'; renderCatalogue();
         if (search) search.focus();

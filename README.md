@@ -40,7 +40,7 @@ A repository named `netbud-website` normally uses `https://YOUR-USERNAME.github.
 
 ## Before going live
 
-Review `js/config.js`: the contact email is `bilal@netbud.com.au` and the office is at 67-71 Great Western Highway, Parramatta, NSW 2150. The `siteUrl` is still empty; confirm the production address before launch and update matching metadata.
+Review `js/config.js`: the contact email is `bilal@netbud.com.au` and the office is at 67-71 Great Western Highway, Parramatta, NSW 2150. The production address is `https://netbud.com.au`; generated product pages and sitemap use that domain.
 
 Forms need a configured external endpoint to deliver enquiries directly; GitHub Pages does not run a backend. Review the current form behaviour, draft privacy/terms pages, social links, `robots.txt` and `sitemap.xml` before launch. Never add passwords or secret API keys to browser JavaScript.
 
@@ -49,3 +49,6 @@ See `TESTING.md` for existing checks and `PROJECT_BRIEF.md` for project context.
 ## Repository contents
 
 Temporary tooling, private environment files and unrelated university materials are excluded through `.gitignore`. Business card designs are concept proofs; consult their README before printing.
+
+## Digital shop maintenance
+See SHOP_LAUNCH.md. Catalogue data lives in js/products.js. Regenerate static detail pages with node scripts/build-catalogue.cjs after editing. The website stays buildless on GitHub Pages.

@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Domain pending. Add public page URLs for the actual deployed hostname.
-       See README.md. An empty draft avoids publishing an invented domain. -->
+  <url><loc>https://netbud.com.au/</loc></url>
+  <url><loc>https://netbud.com.au/services.html</loc></url>
+  <url><loc>https://netbud.com.au/shop.html</loc></url>
+  <url><loc>https://netbud.com.au/pricing.html</loc></url>
+  <url><loc>https://netbud.com.au/portfolio.html</loc></url>
+  <url><loc>https://netbud.com.au/about.html</loc></url>
+  <url><loc>https://netbud.com.au/contact.html</loc></url>
+  <url><loc>https://netbud.com.au/free-preview.html</loc></url>
+  <url><loc>https://netbud.com.au/how-it-works.html</loc></url>
+  <url><loc>https://netbud.com.au/shop/nfc-google-review-card.html</loc></url>
+  <url><loc>https://netbud.com.au/shop/custom-nfc-business-card.html</loc></url>
+  <url><loc>https://netbud.com.au/shop/professional-logo-design.html</loc></url>
+  <url><loc>https://netbud.com.au/shop/landing-page.html</loc></url>
+  <url><loc>https://netbud.com.au/shop/portfolio-website.html</loc></url>
+  <url><loc>https://netbud.com.au/shop/business-website.html</loc></url>
+  <url><loc>https://netbud.com.au/shop/ecommerce-website.html</loc></url>
+  <url><loc>https://netbud.com.au/shop/website-redesign.html</loc></url>
+  <url><loc>https://netbud.com.au/shop/google-business-profile-setup.html</loc></url>
+  <url><loc>https://netbud.com.au/shop/google-business-profile-management.html</loc></url>
+  <url><loc>https://netbud.com.au/shop/seo-setup-optimisation.html</loc></url>
+  <url><loc>https://netbud.com.au/shop/monthly-seo-management.html</loc></url>
+  <url><loc>https://netbud.com.au/shop/social-media-content-management.html</loc></url>
+  <url><loc>https://netbud.com.au/shop/business-analytics-tracking-setup.html</loc></url>
+  <url><loc>https://netbud.com.au/shop/domain-professional-email-setup.html</loc></url>
+  <url><loc>https://netbud.com.au/shop/website-hosting-care.html</loc></url>
+  <url><loc>https://netbud.com.au/shop/online-booking-system-setup.html</loc></url>
+  <url><loc>https://netbud.com.au/shop/digital-invoicing-system-setup.html</loc></url>
 </urlset>

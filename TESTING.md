@@ -270,3 +270,22 @@ Card is level with animation disabled. Both objects use a single physical scale:
 ## NFC signal and centred phone — s14
 Added pulsing blue wireless arcs at the tap point. Card stays level until 55%, then rotates 45 degrees and fades upward by 71.6667%: 500ms of the 3000ms scene. Phone finishes at translate(0,0), horizontally centred; physical scale and monochrome dimming retained. Reduced motion skips decorative signal and card motion. Static checks pass. Visual fixtures verify tap and final preview independently.
 s18: Approved copper wallpaper, warm titanium frame and richer contact palette; contact contrast 85%, lock brightness 85%. Animation and dimensions unchanged. Static validation passed; visual fixtures checked.
+
+## Digital shop launch — 16 November 2026
+
+The owner confirmed all 18 starting amounts and entry scopes, including ten original human-designed logo concepts at A$79. Prices use From A$… and separate monthly billing; no GST is charged. CNAME remains netbud.com.au. No payment, upload or direct form-delivery backend was added.
+
+Completed checks:
+- Dependency-free catalogue audit: exactly 18 unique IDs/slugs, expected amounts, images, generated page files, canonical metadata, required detail arrays and valid related IDs. Domain file preserved.
+- Static site checker expanded to generated product pages: 34 HTML pages, 23 SVGs, 1,052 references and 41 configured asset paths; zero failures or warnings.
+- All seven production JavaScript files passed Node syntax checking. Git diff whitespace check passed.
+- Browser category filter: NFC 2/18. Search logo: Professional Logo Design. Unknown keyword: empty state/reset. Monthly: 4/18. Tradies industry: 15/18.
+- All 18 direct HTML product pages rendered the correct heading, selected product and expected price, two or three relevant FAQs, enabled enquiry action and no broken loaded images or horizontal overflow in the observed desktop viewport.
+- Product enquiry tested with synthetic qa@example.com: chosen product and quantity carried into a reviewable draft and mailto/WhatsApp actions. No external message sent.
+- Physical review card plus monthly SEO basket: one-time A$39 and monthly A$299 kept separate; enquiry draft contains both. Optional phone/delivery details did not block draft preparation. Empty basket restores its useful state. Test basket cleared.
+- Generic contact prefill and legacy product.html?id=1 tested. Original homepage heading, two hero scenes and callback form remain present; homepage website price renders From A$599.
+- Shop at 375px; product at 375px; shop and logo product at 768px; shop at 1440px: no horizontal overflow. Actual viewport dimensions recorded. Mobile navigation opens/closes with Our Work link visible.
+- No independent theme switch existed; existing light design and dark sections retained. Reduced-motion support retained in existing CSS/JS; no new animated system introduced.
+- Final observed browser error log was empty. These are browser-emulation checks, not physical-device or external provider tests.
+
+Evidence: shop-launch/desktop-shop.jpg, mobile-product.jpg and qa-results.json in the existing visual evidence directory. Publishing status is reported with the final Git commit in the delivery response. Implementation and outstanding supplier/platform agreements: SHOP_LAUNCH.md.
