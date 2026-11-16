@@ -37,7 +37,7 @@
     var title = host.querySelector('[data-story-title]');
     var order = host.querySelector('[data-story-order]');
     var progress = Array.from(host.querySelectorAll('.hero-story__progress > span'));
-    if (panels.length !== 2 || !control) return;
+    if (panels.length !== 2) return;
     var duration = Number(host.dataset.demoInterval) || 3000;
     var preference = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
     var config = window.NETBUD_CONFIG || {};
@@ -69,6 +69,7 @@
       host.classList.toggle('is-scene-paused', !moving);
       host.classList.toggle('is-story-reduced', reduced());
       host.dataset.storyState = reduced() ? 'reduced' : moving ? 'playing' : 'paused';
+      if (!control) return;
       if (reduced()) {
         control.textContent = 'Next preview ↗';
         control.removeAttribute('aria-pressed');
@@ -112,7 +113,7 @@
       }
       schedule();
     }
-    control.addEventListener('click', function () {
+    if (control) control.addEventListener('click', function () {
       if (reduced()) { show((active + 1) % panels.length); return; }
       userPaused = !userPaused;
       schedule();
