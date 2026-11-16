@@ -4,3 +4,6 @@
 @media(max-width:760px){.shop-hero-grid,.shop-enquiry{grid-template-columns:1fr}.shop-hero-art{max-width:540px;width:100%;margin:auto}.shop-hero{padding-top:38px}.shop-detail-panels{grid-template-columns:1fr}.shop-enquiry{padding:24px}.tap-steps{grid-template-columns:1fr}.related-products .grid-3{grid-template-columns:1fr}.shop-assurance{border-radius:28px 28px 0 0}.shop-results{gap:15px}.shop-industry-links a{padding:17px;font-size:14px}.shop-category-nav button{padding:11px 14px;font-size:13px}.shop-enquiry .form-grid{grid-template-columns:1fr}.shop-enquiry .field-full{grid-column:auto}}
 @media(prefers-reduced-motion:reduce){.shop-industry-links a,.shop-category-nav button{transition:none}}
 .product-detail-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start}.product-detail-grid>*{min-width:0}@media(max-width:760px){.product-detail-grid{grid-template-columns:1fr;gap:28px}.product-gallery{position:static}}
+
+/* Supplied photographic scenes retain the existing card geometry and palette. */
+.product-visual{overflow:hidden}.product-image-caption{display:block;padding:8px 12px;background:var(--paper);color:var(--muted);font-size:11px;line-height:1.45}.product-image{display:block}.product-gallery>img{height:auto}.shop-hero-art img{display:block;border-radius:20px;object-fit:cover;margin-bottom:20px}

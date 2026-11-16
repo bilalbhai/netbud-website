@@ -18,9 +18,9 @@ window.NETBUD_PRODUCTS = [
     "available": true,
     "physical": true,
     "featured": true,
-    "image": "images/product-review.svg",
+    "image": "images/nfc-google-review.webp",
     "images": [
-      "images/product-review.svg"
+      "images/nfc-google-review.webp"
     ],
     "description": "Make it easier for customers to share their experience. A simple tap or QR scan opens your business's Google review page.",
     "detail": "Hold a compatible NFC-enabled phone near the card, or scan its QR code with the camera. Tap the card, open the Google review page, and the customer chooses whether to leave a genuine review. We do not offer incentives, screen customers for positive feedback or guarantee reviews and rankings.",
@@ -92,7 +92,11 @@ window.NETBUD_PRODUCTS = [
       2,
       1
     ],
-    "note": "Your final quote depends on your requirements, project size and any extra features. We'll confirm the full price with you before starting."
+    "note": "Your final quote depends on your requirements, project size and any extra features. We'll confirm the full price with you before starting.",
+    "imageAlt": "A customer holds a phone near a tap-to-review display on a caf\u00e9 counter (AI-generated illustrative scene)",
+    "imageWidth": 764,
+    "imageHeight": 515,
+    "imageCaption": "AI-generated illustrative scene \u00b7 Not actual supplied stock"
   },
   {
     "id": 5,
@@ -109,9 +113,9 @@ window.NETBUD_PRODUCTS = [
     "available": true,
     "physical": true,
     "featured": true,
-    "image": "images/product-nfc.svg",
+    "image": "images/nfc-business-card.webp",
     "images": [
-      "images/product-nfc.svg"
+      "images/nfc-business-card.webp"
     ],
     "description": "Share your contact details with one tap. A modern, reusable business card that connects people directly to your professional information.",
     "detail": "The physical NFC card stores a link to an existing contact page, digital contact file or website. A compatible phone opens that destination after a tap; the QR code offers a camera-based alternative. A hosted digital profile is a separate online service with its own hosting and editing arrangements. This package does not include an editable NFC management dashboard.",
@@ -183,7 +187,11 @@ window.NETBUD_PRODUCTS = [
       4,
       19
     ],
-    "note": "Your final quote depends on your requirements, project size and any extra features. We'll confirm the full price with you before starting."
+    "note": "Your final quote depends on your requirements, project size and any extra features. We'll confirm the full price with you before starting.",
+    "imageAlt": "An ivory NFC business card on a warm wooden desk beside a laptop (AI-generated illustrative scene)",
+    "imageWidth": 764,
+    "imageHeight": 515,
+    "imageCaption": "AI-generated illustrative scene \u00b7 Not actual supplied stock"
   },
   {
     "id": 4,
@@ -200,9 +208,9 @@ window.NETBUD_PRODUCTS = [
     "available": true,
     "physical": false,
     "featured": true,
-    "image": "images/product-branding.svg",
+    "image": "images/professional-logo-design.webp",
     "images": [
-      "images/product-branding.svg"
+      "images/professional-logo-design.webp"
     ],
     "description": "Give your business a professional identity. Explore ten original logo concepts created by a human designer, choose your favourite and refine it for your brand.",
     "detail": "We start with a short brief about your business and customers. The written proposal sets the concept allowance, revision rounds, final file formats and ownership terms. Choose a direction, review the agreed refinements and approve the final identity. Illustrative concepts are not completed client projects.",
@@ -284,7 +292,11 @@ window.NETBUD_PRODUCTS = [
       "One business or brand per package"
     ],
     "fulfilmentNote": "Owner confirmed the ten-original-human-designed-concept entry offer at A$79. Exact revision allowance, final formats and IP terms must still be recorded in the quote.",
-    "headline": "10 Logo Concepts. One Brand You'll Love."
+    "headline": "10 Logo Concepts. One Brand You'll Love.",
+    "imageAlt": "A designer sketches logo ideas beside a screen showing a coral brand palette (AI-generated illustrative scene)",
+    "imageWidth": 764,
+    "imageHeight": 501,
+    "imageCaption": "AI-generated illustrative scene"
   },
   {
     "id": 11,
@@ -463,9 +475,9 @@ window.NETBUD_PRODUCTS = [
     "available": true,
     "physical": false,
     "featured": true,
-    "image": "images/product-website.svg",
+    "image": "images/business-website-consultation.webp",
     "images": [
-      "images/product-website.svg"
+      "images/business-website-consultation.webp"
     ],
     "description": "A clear, mobile-friendly website that helps customers understand your services and get in touch.",
     "detail": "We shape a compact website around your services and enquiry needs. The entry scope uses up to three basic pages or an equivalent template-based layout. Eligible businesses can request a limited free homepage concept after discovery before committing to a full build.",
@@ -538,7 +550,11 @@ window.NETBUD_PRODUCTS = [
       18
     ],
     "note": "Your final quote depends on your requirements, project size and any extra features. We'll confirm the full price with you before starting.",
-    "previewEligible": true
+    "previewEligible": true,
+    "imageAlt": "Two business owners discuss a website on a laptop in a caf\u00e9 (AI-generated illustrative scene)",
+    "imageWidth": 764,
+    "imageHeight": 501,
+    "imageCaption": "AI-generated illustrative scene"
   },
   {
     "id": 13,

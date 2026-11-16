@@ -289,3 +289,13 @@ Completed checks:
 - Final observed browser error log was empty. These are browser-emulation checks, not physical-device or external provider tests.
 
 Evidence: shop-launch/desktop-shop.jpg, mobile-product.jpg and qa-results.json in the existing visual evidence directory. Publishing status is reported with the final Git commit in the delivery response. Implementation and outstanding supplier/platform agreements: SHOP_LAUNCH.md.
+
+## Supplied photographic image integration — 16 November 2026
+
+- Created four optimised WebP crops from the owner's 1536 x 1024 collage, excluding white dividers. Native crops are 764 x 515 or 764 x 501; no upscaling. Visually inspected all four output files.
+- Catalogue audit passed for all 18 products, approved prices, local image files, detail pages and retained domain. Static checker: 34 HTML pages, 23 SVGs, 1,052 references and 41 configured paths, zero failures/warnings. Shared JavaScript syntax and diff whitespace checks passed.
+- Browser desktop at 1280px: Shop hero and four catalogue photo mappings checked; images loaded after scrolling. Search for logo returned 1/18. All four product heroes loaded with appropriate captions and unchanged prices. Services hero loaded; homepage hero/callback remained present with three updated featured cards. No horizontal overflow observed.
+- Added the four relevant items using product buttons; basket rendered all four matching WebP thumbnails with object-fit cover. Basket checked at desktop and 375px, then cleared through its normal UI. No external enquiry was sent.
+- Browser at 375px: Shop, four product pages, homepage, Services and basket checked without horizontal overflow. Visible hero photos loaded; below-fold images remain lazy until scrolled into view. Mobile menu opened and closed; Our Work link visible.
+- Existing light design and dark sections preserved; no independent dark-mode feature exists to switch or test. No physical-device or provider integration test claimed. Final observed browser error log empty.
+- No DNS, CNAME, payment, prices, service scope or homepage animation changes. Asset mapping and sizes: IMAGE_ASSETS.md. Live deployment verification is reported with the final commit in the delivery message.
