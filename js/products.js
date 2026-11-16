@@ -317,8 +317,8 @@ window.NETBUD_PRODUCTS = [
     "images": [
       "images/product-website.svg"
     ],
-    "description": "One focused page for a service, event or offer, with a clear next step for visitors.",
-    "detail": "Keep the message simple: what you offer, why it matters and how to enquire. We arrange supplied copy and images into one responsive page, add basic metadata and test the agreed contact action. The section limit is agreed before starting.",
+    "description": "Purpose-built landing pages developed with custom code to promote your business, service or campaign.",
+    "detail": "We design and code one focused responsive page around your offer and supplied content, with basic metadata and an agreed enquiry action. Section count, interactions and one defined round of minor corrections are agreed before starting.",
     "audience": "Businesses promoting a single service, event or offer.",
     "industries": [
       "Caf\u00e9s and Restaurants",
@@ -337,7 +337,7 @@ window.NETBUD_PRODUCTS = [
       "One minor correction round"
     ],
     "inclusions": [
-      "One responsive page within an agreed section limit",
+      "One custom-coded responsive page within an agreed section limit",
       "Client-supplied text and images",
       "Contact or enquiry action",
       "Basic search metadata",
@@ -366,12 +366,28 @@ window.NETBUD_PRODUCTS = [
     ],
     "faqs": [
       {
-        "q": "Is hosting included?",
-        "a": "No. Hosting and domains are separate unless expressly included."
-      },
-      {
         "q": "Can it grow later?",
         "a": "Yes. Additional pages and features are scoped separately."
+      },
+      {
+        "q": "Do you use Wix, Shopify or Squarespace?",
+        "a": "No. NetBud's website-development service focuses on custom-coded websites built around each client's requirements. We may integrate trusted third-party services for payments, booking, email and other functionality when needed."
+      },
+      {
+        "q": "Can I request custom website features?",
+        "a": "Absolutely. Tell us what your business needs, and we'll assess what's possible and provide a quote before work begins."
+      },
+      {
+        "q": "Will my website work on mobile?",
+        "a": "Our new website projects include responsive layouts designed for mobile, tablet and desktop screens. For a redesign, improvements are agreed after reviewing the existing architecture."
+      },
+      {
+        "q": "Can I update my website later?",
+        "a": "Yes. We can discuss future updates, new pages and additional features. The cost depends on the work involved. Editing tools or a CMS are included only if agreed."
+      },
+      {
+        "q": "Do I need ongoing hosting?",
+        "a": "Yes, a live website requires hosting. We'll explain the available hosting arrangements and ongoing costs before launch."
       }
     ],
     "relatedIds": [
@@ -379,7 +395,19 @@ window.NETBUD_PRODUCTS = [
       18,
       15
     ],
-    "note": "Your final quote depends on your requirements, project size and any extra features. We'll confirm the full price with you before starting."
+    "note": "Your final quote depends on your requirements, project size and any extra features. We'll confirm the full price with you before starting.",
+    "websiteApproach": {
+      "title": "Why custom-coded?",
+      "intro": "A website planned around the business, with the scope and technical architecture agreed before development.",
+      "benefits": [
+        "A design shaped around your business instead of a preset template.",
+        "More control over page layouts and the customer experience.",
+        "Functionality planned around actual customer needs.",
+        "Clean, maintainable code that can be extended within the agreed architecture.",
+        "Appropriate third-party tools for payments, bookings, email and other agreed needs."
+      ],
+      "note": "Responsive layouts, accessibility and performance are considered during development. Extra pages, custom features and integrations are quoted separately; outcomes depend on implementation."
+    }
   },
   {
     "id": 12,
@@ -400,8 +428,8 @@ window.NETBUD_PRODUCTS = [
     "images": [
       "images/product-website.svg"
     ],
-    "description": "A compact online home for your profile, experience and selected work.",
-    "detail": "A template-based portfolio helps clients see who you are and what you do. The entry scope is up to three basic pages or equivalent sections using supplied content. The project count, page structure and minor revision allowance are agreed before starting.",
+    "description": "Showcase your work with a personalised, custom-coded portfolio designed around your experience and projects.",
+    "detail": "A personalised portfolio helps clients see who you are and what you do. We develop its layouts with custom code around your supplied work and profile. The entry scope is up to three basic pages or equivalent sections; project count and minor revisions are agreed before starting.",
     "audience": "Freelancers, photographers, consultants and individual service providers.",
     "industries": [
       "Freelancers",
@@ -415,7 +443,7 @@ window.NETBUD_PRODUCTS = [
       "Basic search metadata"
     ],
     "inclusions": [
-      "Template-based portfolio of up to three basic pages or equivalent sections",
+      "Custom-coded portfolio of up to three basic pages or equivalent sections",
       "About/profile and services or experience sections",
       "Agreed selection of supplied projects",
       "Contact information",
@@ -425,7 +453,7 @@ window.NETBUD_PRODUCTS = [
     "exclusions": [
       "More pages and extensive content work",
       "Custom animations and integrations",
-      "Domain, hosting, paid themes or licences",
+      "Domain, hosting, third-party licences",
       "Ongoing updates unless agreed"
     ],
     "options": [
@@ -451,6 +479,26 @@ window.NETBUD_PRODUCTS = [
       {
         "q": "Can I add projects myself?",
         "a": "Editing tools are included only if specified. Ask about supported content-management options."
+      },
+      {
+        "q": "Do you use Wix, Shopify or Squarespace?",
+        "a": "No. NetBud's website-development service focuses on custom-coded websites built around each client's requirements. We may integrate trusted third-party services for payments, booking, email and other functionality when needed."
+      },
+      {
+        "q": "Can I request custom website features?",
+        "a": "Absolutely. Tell us what your business needs, and we'll assess what's possible and provide a quote before work begins."
+      },
+      {
+        "q": "Will my website work on mobile?",
+        "a": "Our new website projects include responsive layouts designed for mobile, tablet and desktop screens. For a redesign, improvements are agreed after reviewing the existing architecture."
+      },
+      {
+        "q": "Can I update my website later?",
+        "a": "Yes. We can discuss future updates, new pages and additional features. The cost depends on the work involved. Editing tools or a CMS are included only if agreed."
+      },
+      {
+        "q": "Do I need ongoing hosting?",
+        "a": "Yes, a live website requires hosting. We'll explain the available hosting arrangements and ongoing costs before launch."
       }
     ],
     "relatedIds": [
@@ -458,7 +506,19 @@ window.NETBUD_PRODUCTS = [
       4,
       3
     ],
-    "note": "Your final quote depends on your requirements, project size and any extra features. We'll confirm the full price with you before starting."
+    "note": "Your final quote depends on your requirements, project size and any extra features. We'll confirm the full price with you before starting.",
+    "websiteApproach": {
+      "title": "Why custom-coded?",
+      "intro": "A website planned around the business, with the scope and technical architecture agreed before development.",
+      "benefits": [
+        "A design shaped around your business instead of a preset template.",
+        "More control over page layouts and the customer experience.",
+        "Functionality planned around actual customer needs.",
+        "Clean, maintainable code that can be extended within the agreed architecture.",
+        "Appropriate third-party tools for payments, bookings, email and other agreed needs."
+      ],
+      "note": "Responsive layouts, accessibility and performance are considered during development. Extra pages, custom features and integrations are quoted separately; outcomes depend on implementation."
+    }
   },
   {
     "id": 1,
@@ -479,8 +539,8 @@ window.NETBUD_PRODUCTS = [
     "images": [
       "images/business-website-consultation.webp"
     ],
-    "description": "A clear, mobile-friendly website that helps customers understand your services and get in touch.",
-    "detail": "We shape a compact website around your services and enquiry needs. The entry scope uses up to three basic pages or an equivalent template-based layout. Eligible businesses can request a limited free homepage concept after discovery before committing to a full build.",
+    "description": "Custom-coded business websites designed around your brand, services and customers. No drag-and-drop website builders.",
+    "detail": "We design and code a compact website around your services and enquiry needs. The entry scope is up to three basic pages or equivalent compact sections using agreed content. Eligible businesses can request a limited free homepage concept after discovery before committing to a full build.",
     "audience": "Cafes, tradies, salons, consultants, NDIS businesses and other small Australian businesses.",
     "industries": [
       "Caf\u00e9s and Restaurants",
@@ -499,7 +559,7 @@ window.NETBUD_PRODUCTS = [
       "Basic launch assistance"
     ],
     "inclusions": [
-      "Up to three basic pages or equivalent compact template-based scope",
+      "Custom-coded website of up to three basic pages or equivalent compact sections",
       "Service information using agreed content",
       "Mobile-responsive layout",
       "Contact form on an agreed supported provider",
@@ -534,12 +594,28 @@ window.NETBUD_PRODUCTS = [
         "a": "Eligible businesses can request one limited homepage concept after discovery. Target: three business days, subject to availability; it is not a complete working site."
       },
       {
-        "q": "Is hosting included?",
-        "a": "Domains, hosting, subscriptions and ongoing care are separate unless expressly included."
-      },
-      {
         "q": "Is advanced SEO included?",
         "a": "Basic metadata is included; ongoing SEO and content campaigns are separate."
+      },
+      {
+        "q": "Do you use Wix, Shopify or Squarespace?",
+        "a": "No. NetBud's website-development service focuses on custom-coded websites built around each client's requirements. We may integrate trusted third-party services for payments, booking, email and other functionality when needed."
+      },
+      {
+        "q": "Can I request custom website features?",
+        "a": "Absolutely. Tell us what your business needs, and we'll assess what's possible and provide a quote before work begins."
+      },
+      {
+        "q": "Will my website work on mobile?",
+        "a": "Our new website projects include responsive layouts designed for mobile, tablet and desktop screens. For a redesign, improvements are agreed after reviewing the existing architecture."
+      },
+      {
+        "q": "Can I update my website later?",
+        "a": "Yes. We can discuss future updates, new pages and additional features. The cost depends on the work involved. Editing tools or a CMS are included only if agreed."
+      },
+      {
+        "q": "Do I need ongoing hosting?",
+        "a": "Yes, a live website requires hosting. We'll explain the available hosting arrangements and ongoing costs before launch."
       }
     ],
     "relatedIds": [
@@ -554,7 +630,19 @@ window.NETBUD_PRODUCTS = [
     "imageAlt": "Two business owners discuss a website on a laptop in a caf\u00e9 (AI-generated illustrative scene)",
     "imageWidth": 764,
     "imageHeight": 501,
-    "imageCaption": ""
+    "imageCaption": "",
+    "websiteApproach": {
+      "title": "Why custom-coded?",
+      "intro": "A website planned around the business, with the scope and technical architecture agreed before development.",
+      "benefits": [
+        "A design shaped around your business instead of a preset template.",
+        "More control over page layouts and the customer experience.",
+        "Functionality planned around actual customer needs.",
+        "Clean, maintainable code that can be extended within the agreed architecture.",
+        "Appropriate third-party tools for payments, bookings, email and other agreed needs."
+      ],
+      "note": "Responsive layouts, accessibility and performance are considered during development. Extra pages, custom features and integrations are quoted separately; outcomes depend on implementation."
+    }
   },
   {
     "id": 13,
@@ -575,21 +663,21 @@ window.NETBUD_PRODUCTS = [
     "images": [
       "images/product-website.svg"
     ],
-    "description": "A starter storefront on an established e-commerce platform for an agreed small product range.",
-    "detail": "We configure a supported established e-commerce service for up to five customer-supplied products, standard checkout and basic shipping settings. The platform and payment provider handle checkout. A static HTML site alone does not securely process payments.",
+    "description": "Custom-coded online storefronts tailored to your products and customers, with supported secure payment integrations.",
+    "detail": "We develop a custom-coded storefront for up to five customer-supplied products, with an agreed standard cart, basic shipping settings and supported payment integration. A trusted third-party provider handles secure checkout and payment details. Provider fees and any required hosting or account approval are separate.",
     "audience": "Small online retailers launching a limited initial product range.",
     "industries": [
       "Online Retailers",
       "New Businesses"
     ],
     "features": [
-      "Established e-commerce platform",
+      "Custom-coded storefront",
       "Up to five initial products",
       "Supported checkout",
       "Basic shipping setup"
     ],
     "inclusions": [
-      "Template-based storefront on an established supported service",
+      "Custom-coded storefront within the agreed five-product entry scope",
       "Up to five initial customer-supplied products",
       "Basic categories and responsive layout",
       "Standard cart and supported checkout integration",
@@ -604,7 +692,7 @@ window.NETBUD_PRODUCTS = [
       "Ongoing fulfilment and guaranteed provider account approval"
     ],
     "options": [
-      "Platform selected after reviewing your needs",
+      "Technical architecture and checkout provider agreed after reviewing your needs",
       "Extra products, migrations and workflows quoted separately"
     ],
     "process": [
@@ -621,15 +709,35 @@ window.NETBUD_PRODUCTS = [
     "faqs": [
       {
         "q": "Do you collect card numbers?",
-        "a": "No. Checkout uses the selected platform and supported payment provider."
+        "a": "No. A supported third-party payment provider handles secure checkout and payment details; the storefront does not collect raw card numbers."
       },
       {
         "q": "Are all store features included?",
-        "a": "No. This is a five-product starter; advanced features and platform costs are additional."
+        "a": "No. This is a five-product starter. Advanced features, hosting and third-party provider costs are additional."
       },
       {
         "q": "Can you migrate my store?",
         "a": "Request a migration quote after review of its data and platform."
+      },
+      {
+        "q": "Do you use Wix, Shopify or Squarespace?",
+        "a": "No. NetBud's website-development service focuses on custom-coded websites built around each client's requirements. We may integrate trusted third-party services for payments, booking, email and other functionality when needed."
+      },
+      {
+        "q": "Can I request custom website features?",
+        "a": "Absolutely. Tell us what your business needs, and we'll assess what's possible and provide a quote before work begins."
+      },
+      {
+        "q": "Will my website work on mobile?",
+        "a": "Our new website projects include responsive layouts designed for mobile, tablet and desktop screens. For a redesign, improvements are agreed after reviewing the existing architecture."
+      },
+      {
+        "q": "Can I update my website later?",
+        "a": "Yes. We can discuss future updates, new pages and additional features. The cost depends on the work involved. Editing tools or a CMS are included only if agreed."
+      },
+      {
+        "q": "Do I need ongoing hosting?",
+        "a": "Yes, a live website requires hosting. We'll explain the available hosting arrangements and ongoing costs before launch."
       }
     ],
     "relatedIds": [
@@ -638,7 +746,19 @@ window.NETBUD_PRODUCTS = [
       7,
       3
     ],
-    "note": "Your final quote depends on your requirements, project size and any extra features. We'll confirm the full price with you before starting."
+    "note": "Your final quote depends on your requirements, project size and any extra features. We'll confirm the full price with you before starting.",
+    "websiteApproach": {
+      "title": "Why custom-coded?",
+      "intro": "A website planned around the business, with the scope and technical architecture agreed before development.",
+      "benefits": [
+        "A design shaped around your business instead of a preset template.",
+        "More control over page layouts and the customer experience.",
+        "Functionality planned around actual customer needs.",
+        "Clean, maintainable code that can be extended within the agreed architecture.",
+        "Appropriate third-party tools for payments, bookings, email and other agreed needs."
+      ],
+      "note": "Responsive layouts, accessibility and performance are considered during development. Extra pages, custom features and integrations are quoted separately; outcomes depend on implementation."
+    }
   },
   {
     "id": 14,
@@ -659,8 +779,8 @@ window.NETBUD_PRODUCTS = [
     "images": [
       "images/product-website.svg"
     ],
-    "description": "A focused refresh of one existing page to make your website clearer and easier to use.",
-    "detail": "We audit one page and improve its visual layout within the limits of your platform. The focus is clearer calls to action, typography and spacing, with mobile improvements where feasible. A full rebuild is scoped separately.",
+    "description": "A modern, personalised refresh of your existing website, tailored to its codebase and your agreed requirements.",
+    "detail": "We review and refresh one existing page through agreed code and layout changes where its architecture supports them. The focus is clearer calls to action, typography, spacing and mobile improvements. Moving a builder-based site to a custom-coded website is a separate rebuild quote, not part of this one-page refresh.",
     "audience": "Businesses with one outdated or difficult-to-use existing page.",
     "industries": [
       "Caf\u00e9s and Restaurants",
@@ -715,6 +835,26 @@ window.NETBUD_PRODUCTS = [
       {
         "q": "Can every mobile issue be fixed?",
         "a": "Platform and code constraints are reviewed before agreeing feasible work."
+      },
+      {
+        "q": "Do you use Wix, Shopify or Squarespace?",
+        "a": "No. NetBud's website-development service focuses on custom-coded websites built around each client's requirements. We may integrate trusted third-party services for payments, booking, email and other functionality when needed."
+      },
+      {
+        "q": "Can I request custom website features?",
+        "a": "Absolutely. Tell us what your business needs, and we'll assess what's possible and provide a quote before work begins."
+      },
+      {
+        "q": "Will my website work on mobile?",
+        "a": "Our new website projects include responsive layouts designed for mobile, tablet and desktop screens. For a redesign, improvements are agreed after reviewing the existing architecture."
+      },
+      {
+        "q": "Can I update my website later?",
+        "a": "Yes. We can discuss future updates, new pages and additional features. The cost depends on the work involved. Editing tools or a CMS are included only if agreed."
+      },
+      {
+        "q": "Do I need ongoing hosting?",
+        "a": "Yes, a live website requires hosting. We'll explain the available hosting arrangements and ongoing costs before launch."
       }
     ],
     "relatedIds": [
@@ -723,7 +863,19 @@ window.NETBUD_PRODUCTS = [
       3
     ],
     "note": "Your final quote depends on your requirements, project size and any extra features. We'll confirm the full price with you before starting.",
-    "previewEligible": true
+    "previewEligible": true,
+    "websiteApproach": {
+      "title": "Why custom-coded?",
+      "intro": "For a new custom-coded build, these are the benefits we plan for. A one-page redesign works within your existing architecture; a full rebuild or platform migration needs a separate quote.",
+      "benefits": [
+        "A design shaped around your business instead of a preset template.",
+        "More control over page layouts and the customer experience.",
+        "Functionality planned around actual customer needs.",
+        "Clean, maintainable code that can be extended within the agreed architecture.",
+        "Appropriate third-party tools for payments, bookings, email and other agreed needs."
+      ],
+      "note": "Responsive layouts, accessibility and performance are considered during development. Extra pages, custom features and integrations are quoted separately; outcomes depend on implementation."
+    }
   },
   {
     "id": 15,

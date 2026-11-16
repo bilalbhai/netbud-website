@@ -149,3 +149,6 @@
     transition-timing-function: cubic-bezier(.4,0,.2,1);
   }
 }
+
+/* A short, mobile-friendly explanation of our development approach. */
+.custom-approach{padding-block:36px 64px}.custom-approach>p{max-width:760px}.approach-compare{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin:28px 0}.approach-compare .card{padding:30px}.approach-compare h3{font-size:1.25rem}.website-approach{padding-bottom:0}.website-approach .feature-list{margin-block:24px}@media(max-width:760px){.approach-compare{grid-template-columns:1fr}.approach-compare .card{padding:24px}}
