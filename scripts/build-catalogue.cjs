@@ -26,3 +26,5 @@ const pages=['','services.html','shop.html','pricing.html','portfolio.html','abo
 fs.writeFileSync(path.join(root,'sitemap.xml'),'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+pages.map(p=>'  <url><loc>'+url+'/'+p+'</loc></url>').join('\n')+'\n</urlset>\n');
 fs.writeFileSync(path.join(root,'robots.txt'),'User-agent: *\nAllow: /\nDisallow: /previews/\nSitemap: '+url+'/sitemap.xml\n');
 console.log('Generated '+products.length+' standalone product pages and sitemap. Public launch prices approved: '+config.launchPricingApproved);
+
+require('./build-clean-urls.cjs');

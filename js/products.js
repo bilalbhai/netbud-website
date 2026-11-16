@@ -96,7 +96,7 @@ window.NETBUD_PRODUCTS = [
     "imageAlt": "A customer holds a phone near a tap-to-review display on a caf\u00e9 counter (AI-generated illustrative scene)",
     "imageWidth": 764,
     "imageHeight": 515,
-    "imageCaption": "AI-generated illustrative scene \u00b7 Not actual supplied stock"
+    "imageCaption": ""
   },
   {
     "id": 5,
@@ -191,7 +191,7 @@ window.NETBUD_PRODUCTS = [
     "imageAlt": "An ivory NFC business card on a warm wooden desk beside a laptop (AI-generated illustrative scene)",
     "imageWidth": 764,
     "imageHeight": 515,
-    "imageCaption": "AI-generated illustrative scene \u00b7 Not actual supplied stock"
+    "imageCaption": ""
   },
   {
     "id": 4,
@@ -296,7 +296,7 @@ window.NETBUD_PRODUCTS = [
     "imageAlt": "A designer sketches logo ideas beside a screen showing a coral brand palette (AI-generated illustrative scene)",
     "imageWidth": 764,
     "imageHeight": 501,
-    "imageCaption": "AI-generated illustrative scene"
+    "imageCaption": ""
   },
   {
     "id": 11,
@@ -554,7 +554,7 @@ window.NETBUD_PRODUCTS = [
     "imageAlt": "Two business owners discuss a website on a laptop in a caf\u00e9 (AI-generated illustrative scene)",
     "imageWidth": 764,
     "imageHeight": 501,
-    "imageCaption": "AI-generated illustrative scene"
+    "imageCaption": ""
   },
   {
     "id": 13,
