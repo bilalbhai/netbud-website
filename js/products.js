@@ -26,7 +26,7 @@ window.NETBUD_PRODUCTS = [
     "detail": "Hold a compatible NFC-enabled phone near the card, or scan its QR code with the camera. Tap the card, open the Google review page, and the customer chooses whether to leave a genuine review. We do not offer incentives, screen customers for positive feedback or guarantee reviews and rankings.",
     "audience": "Local businesses with an eligible Google Business Profile and a verified review link.",
     "industries": [
-      "Caf\u00e9s and Restaurants",
+      "Cafés and Restaurants",
       "Tradies",
       "Salons and Barbers",
       "NDIS and Care Providers",
@@ -93,10 +93,11 @@ window.NETBUD_PRODUCTS = [
       1
     ],
     "note": "Your final quote depends on your requirements, project size and any extra features. We'll confirm the full price with you before starting.",
-    "imageAlt": "A customer holds a phone near a tap-to-review display on a caf\u00e9 counter (AI-generated illustrative scene)",
+    "imageAlt": "A customer holds a phone near a tap-to-review display on a café counter (AI-generated illustrative scene)",
     "imageWidth": 764,
     "imageHeight": 515,
-    "imageCaption": ""
+    "imageCaption": "AI-generated product concept",
+    "imageSmall": "images/nfc-google-review-small.webp"
   },
   {
     "id": 5,
@@ -121,7 +122,7 @@ window.NETBUD_PRODUCTS = [
     "detail": "The physical NFC card stores a link to an existing contact page, digital contact file or website. A compatible phone opens that destination after a tap; the QR code offers a camera-based alternative. A hosted digital profile is a separate online service with its own hosting and editing arrangements. This package does not include an editable NFC management dashboard.",
     "audience": "Owners, consultants, tradies and professionals wanting a reusable business introduction.",
     "industries": [
-      "Caf\u00e9s and Restaurants",
+      "Cafés and Restaurants",
       "Tradies",
       "Salons and Barbers",
       "NDIS and Care Providers",
@@ -191,7 +192,8 @@ window.NETBUD_PRODUCTS = [
     "imageAlt": "An ivory NFC business card on a warm wooden desk beside a laptop (AI-generated illustrative scene)",
     "imageWidth": 764,
     "imageHeight": 515,
-    "imageCaption": ""
+    "imageCaption": "AI-generated product concept",
+    "imageSmall": "images/nfc-business-card-small.webp"
   },
   {
     "id": 4,
@@ -216,7 +218,7 @@ window.NETBUD_PRODUCTS = [
     "detail": "We start with a short brief about your business and customers. The written proposal sets the concept allowance, revision rounds, final file formats and ownership terms. Choose a direction, review the agreed refinements and approve the final identity. Illustrative concepts are not completed client projects.",
     "audience": "New businesses and established operators looking for a clearer identity.",
     "industries": [
-      "Caf\u00e9s and Restaurants",
+      "Cafés and Restaurants",
       "Tradies",
       "Salons and Barbers",
       "NDIS and Care Providers",
@@ -296,7 +298,8 @@ window.NETBUD_PRODUCTS = [
     "imageAlt": "A designer sketches logo ideas beside a screen showing a coral brand palette (AI-generated illustrative scene)",
     "imageWidth": 764,
     "imageHeight": 501,
-    "imageCaption": ""
+    "imageCaption": "AI-generated illustrative scene",
+    "imageSmall": "images/professional-logo-design-small.webp"
   },
   {
     "id": 11,
@@ -313,15 +316,15 @@ window.NETBUD_PRODUCTS = [
     "available": true,
     "physical": false,
     "featured": false,
-    "image": "images/product-website.svg",
+    "image": "images/demo-landing.webp",
     "images": [
-      "images/product-website.svg"
+      "images/demo-landing.webp"
     ],
     "description": "Purpose-built landing pages developed with custom code to promote your business, service or campaign.",
     "detail": "We design and code one focused responsive page around your offer and supplied content, with basic metadata and an agreed enquiry action. Section count, interactions and one defined round of minor corrections are agreed before starting.",
     "audience": "Businesses promoting a single service, event or offer.",
     "industries": [
-      "Caf\u00e9s and Restaurants",
+      "Cafés and Restaurants",
       "Tradies",
       "Salons and Barbers",
       "NDIS and Care Providers",
@@ -407,7 +410,12 @@ window.NETBUD_PRODUCTS = [
         "Appropriate third-party tools for payments, bookings, email and other agreed needs."
       ],
       "note": "Responsive layouts, accessibility and performance are considered during development. Extra pages, custom features and integrations are quoted separately; outcomes depend on implementation."
-    }
+    },
+    "imageWidth": 1200,
+    "imageHeight": 900,
+    "imageAlt": "Original illustrative landing page interface with fictional sample content",
+    "imageCaption": "Illustrative interface · Sample content",
+    "imageSmall": "images/demo-landing-small.webp"
   },
   {
     "id": 12,
@@ -424,9 +432,9 @@ window.NETBUD_PRODUCTS = [
     "available": true,
     "physical": false,
     "featured": false,
-    "image": "images/product-website.svg",
+    "image": "images/demo-portfolio.webp",
     "images": [
-      "images/product-website.svg"
+      "images/demo-portfolio.webp"
     ],
     "description": "Showcase your work with a personalised, custom-coded portfolio designed around your experience and projects.",
     "detail": "A personalised portfolio helps clients see who you are and what you do. We develop its layouts with custom code around your supplied work and profile. The entry scope is up to three basic pages or equivalent sections; project count and minor revisions are agreed before starting.",
@@ -518,7 +526,12 @@ window.NETBUD_PRODUCTS = [
         "Appropriate third-party tools for payments, bookings, email and other agreed needs."
       ],
       "note": "Responsive layouts, accessibility and performance are considered during development. Extra pages, custom features and integrations are quoted separately; outcomes depend on implementation."
-    }
+    },
+    "imageWidth": 1200,
+    "imageHeight": 900,
+    "imageAlt": "Original illustrative portfolio website interface with fictional sample content",
+    "imageCaption": "Illustrative interface · Sample content",
+    "imageSmall": "images/demo-portfolio-small.webp"
   },
   {
     "id": 1,
@@ -543,7 +556,7 @@ window.NETBUD_PRODUCTS = [
     "detail": "We design and code a compact website around your services and enquiry needs. The entry scope is up to three basic pages or equivalent compact sections using agreed content. Eligible businesses can request a limited free homepage concept after discovery before committing to a full build.",
     "audience": "Cafes, tradies, salons, consultants, NDIS businesses and other small Australian businesses.",
     "industries": [
-      "Caf\u00e9s and Restaurants",
+      "Cafés and Restaurants",
       "Tradies",
       "Salons and Barbers",
       "NDIS and Care Providers",
@@ -627,10 +640,10 @@ window.NETBUD_PRODUCTS = [
     ],
     "note": "Your final quote depends on your requirements, project size and any extra features. We'll confirm the full price with you before starting.",
     "previewEligible": true,
-    "imageAlt": "Two business owners discuss a website on a laptop in a caf\u00e9 (AI-generated illustrative scene)",
+    "imageAlt": "Two business owners discuss a website on a laptop in a café (AI-generated illustrative scene)",
     "imageWidth": 764,
     "imageHeight": 501,
-    "imageCaption": "",
+    "imageCaption": "AI-generated illustrative scene",
     "websiteApproach": {
       "title": "Why custom-coded?",
       "intro": "A website planned around the business, with the scope and technical architecture agreed before development.",
@@ -642,7 +655,8 @@ window.NETBUD_PRODUCTS = [
         "Appropriate third-party tools for payments, bookings, email and other agreed needs."
       ],
       "note": "Responsive layouts, accessibility and performance are considered during development. Extra pages, custom features and integrations are quoted separately; outcomes depend on implementation."
-    }
+    },
+    "imageSmall": "images/business-website-consultation-small.webp"
   },
   {
     "id": 13,
@@ -659,9 +673,9 @@ window.NETBUD_PRODUCTS = [
     "available": true,
     "physical": false,
     "featured": false,
-    "image": "images/product-website.svg",
+    "image": "images/demo-store.webp",
     "images": [
-      "images/product-website.svg"
+      "images/demo-store.webp"
     ],
     "description": "Custom-coded online storefronts tailored to your products and customers, with supported secure payment integrations.",
     "detail": "We develop a custom-coded storefront for up to five customer-supplied products, with an agreed standard cart, basic shipping settings and supported payment integration. A trusted third-party provider handles secure checkout and payment details. Provider fees and any required hosting or account approval are separate.",
@@ -758,7 +772,12 @@ window.NETBUD_PRODUCTS = [
         "Appropriate third-party tools for payments, bookings, email and other agreed needs."
       ],
       "note": "Responsive layouts, accessibility and performance are considered during development. Extra pages, custom features and integrations are quoted separately; outcomes depend on implementation."
-    }
+    },
+    "imageWidth": 1200,
+    "imageHeight": 900,
+    "imageAlt": "Original illustrative e-commerce website interface with fictional sample content",
+    "imageCaption": "Illustrative interface · Sample content",
+    "imageSmall": "images/demo-store-small.webp"
   },
   {
     "id": 14,
@@ -775,15 +794,15 @@ window.NETBUD_PRODUCTS = [
     "available": true,
     "physical": false,
     "featured": false,
-    "image": "images/product-website.svg",
+    "image": "images/demo-redesign.webp",
     "images": [
-      "images/product-website.svg"
+      "images/demo-redesign.webp"
     ],
     "description": "A modern, personalised refresh of your existing website, tailored to its codebase and your agreed requirements.",
     "detail": "We review and refresh one existing page through agreed code and layout changes where its architecture supports them. The focus is clearer calls to action, typography, spacing and mobile improvements. Moving a builder-based site to a custom-coded website is a separate rebuild quote, not part of this one-page refresh.",
     "audience": "Businesses with one outdated or difficult-to-use existing page.",
     "industries": [
-      "Caf\u00e9s and Restaurants",
+      "Cafés and Restaurants",
       "Tradies",
       "Salons and Barbers",
       "NDIS and Care Providers",
@@ -875,7 +894,12 @@ window.NETBUD_PRODUCTS = [
         "Appropriate third-party tools for payments, bookings, email and other agreed needs."
       ],
       "note": "Responsive layouts, accessibility and performance are considered during development. Extra pages, custom features and integrations are quoted separately; outcomes depend on implementation."
-    }
+    },
+    "imageWidth": 1200,
+    "imageHeight": 900,
+    "imageAlt": "Original illustrative website redesign interface with fictional sample content",
+    "imageCaption": "Illustrative interface · Sample content",
+    "imageSmall": "images/demo-redesign-small.webp"
   },
   {
     "id": 15,
@@ -892,15 +916,15 @@ window.NETBUD_PRODUCTS = [
     "available": true,
     "physical": false,
     "featured": false,
-    "image": "images/product-seo.svg",
+    "image": "images/demo-profile-setup.webp",
     "images": [
-      "images/product-seo.svg"
+      "images/demo-profile-setup.webp"
     ],
     "description": "Help customers find accurate business information on your Google Business Profile.",
     "detail": "We help configure one eligible business profile using approved categories, hours and contact details. Google controls eligibility, verification and publishing decisions. We can assist with the process but cannot guarantee approval or ranking.",
     "audience": "Eligible local businesses setting up or correcting one Google Business Profile.",
     "industries": [
-      "Caf\u00e9s and Restaurants",
+      "Cafés and Restaurants",
       "Tradies",
       "Salons and Barbers",
       "NDIS and Care Providers",
@@ -958,7 +982,12 @@ window.NETBUD_PRODUCTS = [
       2,
       1
     ],
-    "note": "Your final quote depends on your requirements, project size and any extra features. We'll confirm the full price with you before starting."
+    "note": "Your final quote depends on your requirements, project size and any extra features. We'll confirm the full price with you before starting.",
+    "imageWidth": 1200,
+    "imageHeight": 900,
+    "imageAlt": "Original illustrative google business profile setup interface with fictional sample content",
+    "imageCaption": "Illustrative interface · Sample content",
+    "imageSmall": "images/demo-profile-setup-small.webp"
   },
   {
     "id": 16,
@@ -975,15 +1004,15 @@ window.NETBUD_PRODUCTS = [
     "available": true,
     "physical": false,
     "featured": false,
-    "image": "images/product-seo.svg",
+    "image": "images/demo-profile-care.webp",
     "images": [
-      "images/product-seo.svg"
+      "images/demo-profile-care.webp"
     ],
     "description": "Keep one business profile current with a focused monthly check and agreed updates.",
     "detail": "The entry package covers one monthly profile check, up to two basic information updates and assistance drafting responses to up to five genuine reviews. The owner approves responses and supplies accurate information. It does not guarantee reviews or rankings.",
     "audience": "Local businesses with an existing profile needing regular attention.",
     "industries": [
-      "Caf\u00e9s and Restaurants",
+      "Cafés and Restaurants",
       "Tradies",
       "Salons and Barbers",
       "NDIS and Care Providers",
@@ -1040,7 +1069,12 @@ window.NETBUD_PRODUCTS = [
       17,
       1
     ],
-    "note": "Monthly scope, any separate setup fee, minimum term, notice period and cancellation arrangements are confirmed in writing before you agree. An enquiry does not activate a subscription."
+    "note": "Monthly scope, any separate setup fee, minimum term, notice period and cancellation arrangements are confirmed in writing before you agree. An enquiry does not activate a subscription.",
+    "imageWidth": 1200,
+    "imageHeight": 900,
+    "imageAlt": "Original illustrative google business profile management interface with fictional sample content",
+    "imageCaption": "Illustrative interface · Sample content",
+    "imageSmall": "images/demo-profile-care-small.webp"
   },
   {
     "id": 2,
@@ -1057,15 +1091,15 @@ window.NETBUD_PRODUCTS = [
     "available": true,
     "physical": false,
     "featured": false,
-    "image": "images/product-seo.svg",
+    "image": "images/demo-seo-setup.webp",
     "images": [
-      "images/product-seo.svg"
+      "images/demo-seo-setup.webp"
     ],
     "description": "Get your search foundations in order with a focused audit and practical page improvements.",
     "detail": "This is one-time setup for up to three existing pages. We review titles, descriptions and headings, make agreed changes where access permits, and give basic indexing and technical recommendations. Search performance depends on many factors.",
     "audience": "Small businesses needing basic SEO improvements to an existing website.",
     "industries": [
-      "Caf\u00e9s and Restaurants",
+      "Cafés and Restaurants",
       "Tradies",
       "Salons and Barbers",
       "NDIS and Care Providers",
@@ -1124,7 +1158,12 @@ window.NETBUD_PRODUCTS = [
       18,
       1
     ],
-    "note": "Your final quote depends on your requirements, project size and any extra features. We'll confirm the full price with you before starting."
+    "note": "Your final quote depends on your requirements, project size and any extra features. We'll confirm the full price with you before starting.",
+    "imageWidth": 1200,
+    "imageHeight": 900,
+    "imageAlt": "Original illustrative seo setup & optimisation interface with fictional sample content",
+    "imageCaption": "Illustrative interface · Sample content",
+    "imageSmall": "images/demo-seo-setup-small.webp"
   },
   {
     "id": 17,
@@ -1141,15 +1180,15 @@ window.NETBUD_PRODUCTS = [
     "available": true,
     "physical": false,
     "featured": false,
-    "image": "images/product-seo.svg",
+    "image": "images/demo-seo-monthly.webp",
     "images": [
-      "images/product-seo.svg"
+      "images/demo-seo-monthly.webp"
     ],
     "description": "A monthly programme of website review, agreed on-page tasks and performance monitoring.",
     "detail": "The entry plan covers one website, a monthly review and up to two agreed on-page tasks on existing pages. We review available search data and explain changes and next priorities. A full content-production or development programme is separate.",
     "audience": "Businesses wanting ongoing attention to their existing search presence.",
     "industries": [
-      "Caf\u00e9s and Restaurants",
+      "Cafés and Restaurants",
       "Tradies",
       "Salons and Barbers",
       "NDIS and Care Providers",
@@ -1207,7 +1246,12 @@ window.NETBUD_PRODUCTS = [
       18,
       7
     ],
-    "note": "Monthly scope, any separate setup fee, minimum term, notice period and cancellation arrangements are confirmed in writing before you agree. An enquiry does not activate a subscription."
+    "note": "Monthly scope, any separate setup fee, minimum term, notice period and cancellation arrangements are confirmed in writing before you agree. An enquiry does not activate a subscription.",
+    "imageWidth": 1200,
+    "imageHeight": 900,
+    "imageAlt": "Original illustrative monthly seo management interface with fictional sample content",
+    "imageCaption": "Illustrative interface · Sample content",
+    "imageSmall": "images/demo-seo-monthly-small.webp"
   },
   {
     "id": 7,
@@ -1224,15 +1268,15 @@ window.NETBUD_PRODUCTS = [
     "available": true,
     "physical": false,
     "featured": false,
-    "image": "images/product-social.svg",
+    "image": "images/demo-social.webp",
     "images": [
-      "images/product-social.svg"
+      "images/demo-social.webp"
     ],
     "description": "Ten short-form videos a month, captions and publishing support for one agreed social platform.",
     "detail": "This is NetBud's Social Content Starter package: ten videos in total each month using the agreed shop photos and website information, prepared for one Reels or TikTok platform. Scheduling depends on authorised account permissions. A daily pool of twenty relevant hashtags is adapted to platform limits; it does not mean twenty hashtags are posted every day. Additional platforms are separately quoted.",
     "audience": "Small businesses wanting a consistent presence on one agreed platform.",
     "industries": [
-      "Caf\u00e9s and Restaurants",
+      "Cafés and Restaurants",
       "Tradies",
       "Salons and Barbers",
       "NDIS and Care Providers",
@@ -1299,7 +1343,12 @@ window.NETBUD_PRODUCTS = [
     "note": "Monthly scope, any separate setup fee, minimum term, notice period and cancellation arrangements are confirmed in writing before you agree. An enquiry does not activate a subscription.",
     "legacyNames": [
       "Social Content Starter"
-    ]
+    ],
+    "imageWidth": 1200,
+    "imageHeight": 900,
+    "imageAlt": "Original illustrative social media content & management interface with fictional sample content",
+    "imageCaption": "Illustrative interface · Sample content",
+    "imageSmall": "images/demo-social-small.webp"
   },
   {
     "id": 18,
@@ -1316,15 +1365,15 @@ window.NETBUD_PRODUCTS = [
     "available": true,
     "physical": false,
     "featured": false,
-    "image": "images/product-ads.svg",
+    "image": "images/demo-analytics.webp",
     "images": [
-      "images/product-ads.svg"
+      "images/demo-analytics.webp"
     ],
     "description": "Understand website performance with a focused measurement and reporting setup.",
     "detail": "We configure GA4 and connect Search Console for one supported website, subject to access and compatibility. One agreed conversion event can be set up where feasible, with a basic reporting walkthrough. Data is available only after collection under the agreed consent and privacy arrangements; uncollected historic data cannot be recreated.",
     "audience": "Businesses wanting insight into visits and one useful website action.",
     "industries": [
-      "Caf\u00e9s and Restaurants",
+      "Cafés and Restaurants",
       "Tradies",
       "Salons and Barbers",
       "NDIS and Care Providers",
@@ -1383,7 +1432,12 @@ window.NETBUD_PRODUCTS = [
       13,
       1
     ],
-    "note": "Your final quote depends on your requirements, project size and any extra features. We'll confirm the full price with you before starting."
+    "note": "Your final quote depends on your requirements, project size and any extra features. We'll confirm the full price with you before starting.",
+    "imageWidth": 1200,
+    "imageHeight": 900,
+    "imageAlt": "Original illustrative business analytics & tracking setup interface with fictional sample content",
+    "imageCaption": "Illustrative interface · Sample content",
+    "imageSmall": "images/demo-analytics-small.webp"
   },
   {
     "id": 19,
@@ -1400,15 +1454,15 @@ window.NETBUD_PRODUCTS = [
     "available": true,
     "physical": false,
     "featured": false,
-    "image": "images/product-care.svg",
+    "image": "images/demo-email.webp",
     "images": [
-      "images/product-care.svg"
+      "images/demo-email.webp"
     ],
     "description": "Connect a customer-owned domain and one professional mailbox on a supported provider.",
     "detail": "We help configure agreed DNS records and one mailbox using a supported third-party service, then run basic delivery checks and hand over. Domain ownership and renewal remain with you unless a separate written arrangement states otherwise.",
     "audience": "Businesses connecting a domain or setting up their first professional mailbox.",
     "industries": [
-      "Caf\u00e9s and Restaurants",
+      "Cafés and Restaurants",
       "Tradies",
       "Salons and Barbers",
       "NDIS and Care Providers",
@@ -1467,7 +1521,12 @@ window.NETBUD_PRODUCTS = [
       6,
       3
     ],
-    "note": "Your final quote depends on your requirements, project size and any extra features. We'll confirm the full price with you before starting."
+    "note": "Your final quote depends on your requirements, project size and any extra features. We'll confirm the full price with you before starting.",
+    "imageWidth": 1200,
+    "imageHeight": 900,
+    "imageAlt": "Original illustrative domain & professional email setup interface with fictional sample content",
+    "imageCaption": "Illustrative interface · Sample content",
+    "imageSmall": "images/demo-email-small.webp"
   },
   {
     "id": 3,
@@ -1484,15 +1543,15 @@ window.NETBUD_PRODUCTS = [
     "available": true,
     "physical": false,
     "featured": false,
-    "image": "images/product-care.svg",
+    "image": "images/demo-care.webp",
     "images": [
-      "images/product-care.svg"
+      "images/demo-care.webp"
     ],
     "description": "An agreed basic care arrangement for a small website, with checks and a clear support allowance.",
     "detail": "Care depends on the site platform. Before activation, we identify the hosting provider, confirm which platform costs are covered and define maintenance, support and exclusions. This is available for enquiry only; the quote basket does not activate a hosting service.",
     "audience": "Owners of a small supported website wanting routine care.",
     "industries": [
-      "Caf\u00e9s and Restaurants",
+      "Cafés and Restaurants",
       "Tradies",
       "Salons and Barbers",
       "NDIS and Care Providers",
@@ -1555,7 +1614,12 @@ window.NETBUD_PRODUCTS = [
       14
     ],
     "note": "Monthly scope, any separate setup fee, minimum term, notice period and cancellation arrangements are confirmed in writing before you agree. An enquiry does not activate a subscription.",
-    "fulfilmentNote": "Confirm hosting platform/costs, maintenance allowance, support window and recurring terms before accepting a monthly order."
+    "fulfilmentNote": "Confirm hosting platform/costs, maintenance allowance, support window and recurring terms before accepting a monthly order.",
+    "imageWidth": 1200,
+    "imageHeight": 900,
+    "imageAlt": "Original illustrative website hosting & care interface with fictional sample content",
+    "imageCaption": "Illustrative interface · Sample content",
+    "imageSmall": "images/demo-care-small.webp"
   },
   {
     "id": 6,
@@ -1572,9 +1636,9 @@ window.NETBUD_PRODUCTS = [
     "available": true,
     "physical": false,
     "featured": false,
-    "image": "images/product-booking.svg",
+    "image": "images/demo-booking.webp",
     "images": [
-      "images/product-booking.svg"
+      "images/demo-booking.webp"
     ],
     "description": "Connect one supported booking service so customers can choose an appointment time.",
     "detail": "We configure an existing service, rather than build a new booking platform. Entry scope includes basic hours or appointment settings, an agreed website link/widget and testing. Suitability, privacy and payment requirements are reviewed first.",
@@ -1633,7 +1697,12 @@ window.NETBUD_PRODUCTS = [
       19,
       18
     ],
-    "note": "Your final quote depends on your requirements, project size and any extra features. We'll confirm the full price with you before starting."
+    "note": "Your final quote depends on your requirements, project size and any extra features. We'll confirm the full price with you before starting.",
+    "imageWidth": 1200,
+    "imageHeight": 900,
+    "imageAlt": "Original illustrative online booking system setup interface with fictional sample content",
+    "imageCaption": "Illustrative interface · Sample content",
+    "imageSmall": "images/demo-booking-small.webp"
   },
   {
     "id": 20,
@@ -1650,9 +1719,9 @@ window.NETBUD_PRODUCTS = [
     "available": true,
     "physical": false,
     "featured": false,
-    "image": "images/product-booking.svg",
+    "image": "images/demo-invoice.webp",
     "images": [
-      "images/product-booking.svg"
+      "images/demo-invoice.webp"
     ],
     "description": "Move everyday invoicing into one supported service with practical setup and handover.",
     "detail": "We configure a supported invoicing tool with your supplied business details and an agreed basic template. This is software setup, not bookkeeping or a custom accounting application. You remain responsible for invoice accuracy and applicable tax treatment.",
@@ -1711,6 +1780,11 @@ window.NETBUD_PRODUCTS = [
       18,
       1
     ],
-    "note": "Your final quote depends on your requirements, project size and any extra features. We'll confirm the full price with you before starting."
+    "note": "Your final quote depends on your requirements, project size and any extra features. We'll confirm the full price with you before starting.",
+    "imageWidth": 1200,
+    "imageHeight": 900,
+    "imageAlt": "Original illustrative digital invoicing system setup interface with fictional sample content",
+    "imageCaption": "Illustrative interface · Sample content",
+    "imageSmall": "images/demo-invoice-small.webp"
   }
 ];

@@ -108,7 +108,7 @@
       if (order) {
         order.hidden = false;
         order.textContent = website ? 'Explore plans' : 'Order your custom NFC card now';
-        order.setAttribute('href', website ? 'pricing.html' : 'product.html?id=5');
+        order.setAttribute('href', website ? '/pricing/' : '/shop/custom-nfc-business-card/');
         order.setAttribute('aria-label', website ? 'Explore website plans' : 'Order your custom NFC card now');
       }
       schedule();
