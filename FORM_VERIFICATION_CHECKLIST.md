@@ -1,11 +1,10 @@
 # NetBud form verification checklist
 
-23 distinct enquiry forms: 5 general placements plus 18 product/service forms. The owner has confirmed activation and receipt of a test enquiry; use this checklist to verify each placement.
+22 distinct enquiry forms: 4 general placements plus 18 product/service forms. The owner has confirmed activation and receipt of a test enquiry; use this checklist to verify each placement.
 
 Use your own real contact details. For each test confirm the success message on the same page, the received email, source URL, field contents and Reply-To. Do not send sensitive data.
 
 - [ ] [Homepage callback](https://netbud.com.au/#callback)
-- [ ] [Contact-page callback](https://netbud.com.au/contact/#callback)
 - [ ] [General business enquiry](https://netbud.com.au/contact/#enquiry)
 - [ ] [Free Homepage Preview](https://netbud.com.au/free-preview/)
 - [ ] [Quote basket](https://netbud.com.au/cart/) — add products and quantities first.

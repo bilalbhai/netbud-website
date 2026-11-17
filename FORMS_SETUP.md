@@ -4,7 +4,7 @@ Status: the owner confirmed recipient activation AND receipt of a second test en
 
 ## Verification
 
-Use FORM_VERIFICATION_CHECKLIST.md to check the 23 distinct form placements. Use your own real details, verify the email subject, source URL, fields and Reply-To, then tick each form. For the basket, select products and quantities before submitting. Old .html URLs and /product/?id=... are aliases of these forms, not additional enquiry types.
+Use FORM_VERIFICATION_CHECKLIST.md to check the 22 distinct form placements. Use your own real details, verify the email subject, source URL, fields and Reply-To, then tick each form. For the basket, select products and quantities before submitting. Old .html URLs and /product/?id=... are aliases of these forms, not additional enquiry types.
 
 If changing the recipient or moving to a new origin, set `formDeliveryVerified` false, submit one test, open the recipient inbox yourself, confirm FormSubmit’s activation message, then submit a second test and confirm receipt before restoring true. An activation link alone is not proof of delivery.
 

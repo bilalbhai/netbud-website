@@ -351,3 +351,9 @@ body[data-layout=utility] .page-hero{background:var(--gradient-hero,var(--paper)
  .product-card,.price-card,.card,.product-image,.portfolio-media>img{transition:none!important}
  .product-card:hover,.card:hover,.price-card:hover,.button:hover,.shop-industry-links a:hover,.social-links a:hover,.social-links button:hover,.button:hover>.icon,.product-card:hover .product-image{transform:none}
 }
+
+/* Keep the direct contact links readable against their ivory surfaces. */
+.contact-hero-links .contact-direct-link{color:var(--ink);margin-top:12px;box-shadow:0 4px 14px #24242b0b}
+.contact-hero-links .contact-direct-link:hover{color:var(--accent-ink);background:var(--peach)}
+.contact-hero-links .contact-direct-link:focus-visible{outline-color:var(--coral);outline-offset:3px}
+body[data-layout=contact] #callback,body[data-layout=contact] #enquiry{scroll-margin-top:110px}
