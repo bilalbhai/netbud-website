@@ -31,7 +31,8 @@ window.NETBUD_CONFIG = {
     facebook: "",
     linkedin: ""
   },
-  formEndpoint: "", // Public HTTPS static-form endpoint, for example https://formspree.io/f/your-id.
+  formEndpoint: "https://formsubmit.co/ajax/bilal@netbud.com.au",
+  formDeliveryVerified: false, // Set true only after activation AND a real test email is confirmed in the recipient inbox.
   googleAnalyticsId: "", // Optional G-XXXXXXXXXX measurement ID. An opt-in is shown before loading analytics.
   hostedPaymentLinks: [], // Optional [{ label: "Pay an agreed invoice", url: "https://…" }]. Only add genuine links.
   upi: {

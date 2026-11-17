@@ -311,7 +311,7 @@
     if(product.id===4)fields+='<div class="field"><label for="product-industry">Industry (optional)</label><input id="product-industry" name="industry" maxlength="100"></div><div class="field"><label for="product-style">Brand personality / colours (optional)</label><input id="product-style" name="designPreferences" maxlength="300"></div>';
     var special=product.id===10?'<div class="tap-steps"><span>01 · Tap or scan</span><span>02 · Open your Google review page</span><span>03 · Customer chooses to leave a genuine review</span></div><p>No incentives, review gating or promised positive reviews. A Google Account is needed to leave a review. <a href="https://support.google.com/business/answer/3474122" target="_blank" rel="noopener">Google’s review guidance</a></p>':'';
     var preview=product.category==='Websites'?'<aside class="shop-preview"><p class="eyebrow">See a direction before committing</p><h2>Your next website. A first look, free.</h2><p>One limited homepage concept for eligible businesses after discovery. Target: three business days, subject to availability.</p><a class="button button-outline" href="'+localPath('free-preview.html')+'">Request my free preview</a></aside>':'';
-    container.innerHTML='<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="'+localPath('shop.html')+'">Shop</a><span aria-hidden="true">/</span><span aria-current="page">'+escapeHtml(product.name)+'</span></nav><div class="product-detail-grid"><div class="product-detail-visual product-gallery"><img src="'+localPath(product.image)+'" width="'+(product.imageWidth||640)+'" height="'+(product.imageHeight||460)+'" decoding="async" fetchpriority="high" alt="'+escapeHtml(product.imageAlt||('Illustrative concept for '+product.name))+'"><button type="button" class="gallery-enlarge" data-view-image="'+localPath(product.image)+'" data-image-alt="'+escapeHtml(product.imageAlt||product.name)+'">View image <span aria-hidden="true">↗</span></button><p class="small muted">'+escapeHtml(product.imageCaption === '' ? '' : (product.imageCaption||'Illustrative product concept. Final scope and appearance are agreed in your quote.'))+'</p></div><div class="product-detail-info"><p class="eyebrow">'+escapeHtml(product.category)+'</p><h1>'+escapeHtml(product.name)+'</h1><p class="lead">'+escapeHtml(config.launchPricingApproved&&product.proposedOffer?product.proposedOffer:product.description)+'</p><div class="product-price">'+priceMarkup(product)+'</div><p>'+quote+'</p><div class="button-row"><a class="button button-primary" href="#product-enquiry">'+(product.physical?'Order enquiry':'Get my quote')+'</a><button class="button button-outline" type="button" data-add-product="'+product.id+'">Add to quote basket</button></div><p class="small muted">No payment is taken. '+escapeHtml(config.pricingNote)+'</p></div></div>'+approach+'<section class="product-scope"><p class="lead">'+escapeHtml(product.detail)+'</p>'+special+'<div class="shop-detail-panels">'+panel('Who it’s for',Array.isArray(product.audience)?product.audience:[product.audience])+panel('Starting package includes',product.inclusions)+panel('Not included in the entry package',product.exclusions)+panel('Options & upgrades',product.options)+panel('What happens next',product.process)+panel('What we need from you',product.requirements)+'</div><p class="notice">'+escapeHtml(product.note)+'</p></section>'+preview+'<section class="section"><h2>Good questions. Clear answers.</h2><div class="faq-list">'+(product.faqs||[]).map(function(f){return '<details><summary>'+escapeHtml(f.q)+'</summary><p>'+escapeHtml(f.a)+'</p></details>';}).join('')+'</div></section><section class="shop-enquiry" id="product-enquiry"><div><p class="eyebrow">One useful next step</p><h2>Let’s talk about '+escapeHtml(product.name)+'.</h2><p>Start with your name and email. We’ll agree the details, scope and final quote together.</p><p>Logo or artwork? Mention it below; we’ll arrange a suitable way to share files after you enquire.</p><p>We prepare a draft for you to review and send through your email or WhatsApp app.</p></div><form class="enquiry-form" method="post" data-enquiry-form="product" data-form-title="'+escapeHtml(product.name)+' enquiry"><div class="form-grid"><div class="field"><label for="product-name">Your name *</label><input id="product-name" name="name" autocomplete="name" required maxlength="100"></div><div class="field"><label for="product-email">Email *</label><input id="product-email" name="email" type="email" autocomplete="email" required maxlength="200"></div><div class="field"><label for="product-phone">Phone (optional)</label><input id="product-phone" name="phone" type="tel" autocomplete="tel" maxlength="30"></div><div class="field"><label for="product-business">Business / brand name (optional)</label><input id="product-business" name="business" autocomplete="organization" maxlength="120"></div><div class="field field-full"><label for="product-selected">Selected product</label><input id="product-selected" name="selectedProduct" value="'+escapeHtml(product.name)+'" readonly></div>'+fields+'<div class="field field-full"><label for="product-notes">What do you have in mind? (optional)</label><textarea id="product-notes" name="message" rows="3" maxlength="3000" placeholder="Preferences, style references or a quick description…"></textarea></div></div><div class="honeypot" aria-hidden="true"><label for="product-check">Leave empty</label><input id="product-check" name="website_confirm" tabindex="-1" autocomplete="off"></div><p class="small muted">Your details are used to respond to this enquiry. <a href="'+localPath('privacy.html')+'">Privacy information</a>.</p><button type="submit" class="button button-primary" disabled>Prepare my enquiry</button><div class="form-status" role="status" aria-live="polite"></div></form></section><section class="section related-products"><div class="section-heading"><div><p class="eyebrow">Useful together</p><h2>Build on your next step.</h2></div><a class="text-link" href="'+localPath('shop.html')+'">All products & services ↗</a></div><div class="grid-3">'+(product.relatedIds||[]).map(productById).filter(Boolean).slice(0,4).map(productCard).join('')+'</div></section>';
+    container.innerHTML='<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="'+localPath('shop.html')+'">Shop</a><span aria-hidden="true">/</span><span aria-current="page">'+escapeHtml(product.name)+'</span></nav><div class="product-detail-grid"><div class="product-detail-visual product-gallery"><img src="'+localPath(product.image)+'" width="'+(product.imageWidth||640)+'" height="'+(product.imageHeight||460)+'" decoding="async" fetchpriority="high" alt="'+escapeHtml(product.imageAlt||('Illustrative concept for '+product.name))+'"><button type="button" class="gallery-enlarge" data-view-image="'+localPath(product.image)+'" data-image-alt="'+escapeHtml(product.imageAlt||product.name)+'">View image <span aria-hidden="true">↗</span></button><p class="small muted">'+escapeHtml(product.imageCaption === '' ? '' : (product.imageCaption||'Illustrative product concept. Final scope and appearance are agreed in your quote.'))+'</p></div><div class="product-detail-info"><p class="eyebrow">'+escapeHtml(product.category)+'</p><h1>'+escapeHtml(product.name)+'</h1><p class="lead">'+escapeHtml(config.launchPricingApproved&&product.proposedOffer?product.proposedOffer:product.description)+'</p><div class="product-price">'+priceMarkup(product)+'</div><p>'+quote+'</p><div class="button-row"><a class="button button-primary" href="#product-enquiry">'+(product.physical?'Order enquiry':'Get my quote')+'</a><button class="button button-outline" type="button" data-add-product="'+product.id+'">Add to quote basket</button></div><p class="small muted">No payment is taken. '+escapeHtml(config.pricingNote)+'</p></div></div>'+approach+'<section class="product-scope"><p class="lead">'+escapeHtml(product.detail)+'</p>'+special+'<div class="shop-detail-panels">'+panel('Who it’s for',Array.isArray(product.audience)?product.audience:[product.audience])+panel('Starting package includes',product.inclusions)+panel('Not included in the entry package',product.exclusions)+panel('Options & upgrades',product.options)+panel('What happens next',product.process)+panel('What we need from you',product.requirements)+'</div><p class="notice">'+escapeHtml(product.note)+'</p></section>'+preview+'<section class="section"><h2>Good questions. Clear answers.</h2><div class="faq-list">'+(product.faqs||[]).map(function(f){return '<details><summary>'+escapeHtml(f.q)+'</summary><p>'+escapeHtml(f.a)+'</p></details>';}).join('')+'</div></section><section class="shop-enquiry" id="product-enquiry"><div><p class="eyebrow">One useful next step</p><h2>Let’s talk about '+escapeHtml(product.name)+'.</h2><p>Start with your name and email. We’ll agree the details, scope and final quote together.</p><p>Logo or artwork? Mention it below; we’ll arrange a suitable way to share files after you enquire.</p><p>Send your enquiry directly below. If delivery cannot be confirmed, you can use an email or WhatsApp draft instead.</p></div><form class="enquiry-form" method="post" data-enquiry-form="product" data-form-title="'+escapeHtml(product.name)+' enquiry"><div class="form-grid"><div class="field"><label for="product-name">Your name *</label><input id="product-name" name="name" autocomplete="name" required maxlength="100"></div><div class="field"><label for="product-email">Email *</label><input id="product-email" name="email" type="email" autocomplete="email" required maxlength="200"></div><div class="field"><label for="product-phone">Phone (optional)</label><input id="product-phone" name="phone" type="tel" autocomplete="tel" maxlength="30"></div><div class="field"><label for="product-business">Business / brand name (optional)</label><input id="product-business" name="business" autocomplete="organization" maxlength="120"></div><div class="field field-full"><label for="product-selected">Selected product</label><input id="product-selected" name="selectedProduct" value="'+escapeHtml(product.name)+'" readonly></div>'+fields+'<div class="field field-full"><label for="product-notes">What do you have in mind? (optional)</label><textarea id="product-notes" name="message" rows="3" maxlength="3000" placeholder="Preferences, style references or a quick description…"></textarea></div></div><div class="honeypot" aria-hidden="true"><label for="product-check">Leave empty</label><input id="product-check" name="website_confirm" tabindex="-1" autocomplete="off"></div><p class="small muted">Your details are used to respond to this enquiry. <a href="'+localPath('privacy.html')+'">Privacy information</a>.</p><button type="submit" class="button button-primary" disabled>Prepare my enquiry</button><div class="form-status" role="status" aria-live="polite"></div></form></section><section class="section related-products"><div class="section-heading"><div><p class="eyebrow">Useful together</p><h2>Build on your next step.</h2></div><a class="text-link" href="'+localPath('shop.html')+'">All products & services ↗</a></div><div class="grid-3">'+(product.relatedIds||[]).map(productById).filter(Boolean).slice(0,4).map(productCard).join('')+'</div></section>';
   }
 
   function renderPricing() { document.querySelectorAll('[data-pricing-note]').forEach(function(node){node.textContent=config.pricingNote;}); }
@@ -427,7 +427,7 @@
   }
 
   function checkoutMarkup() {
-    return '<section class="checkout-section checkout-form" data-checkout-section aria-labelledby="checkout-title"><div class="section-heading"><div><p class="eyebrow">One simple next step</p><h2 id="checkout-title">Tell us where to start.</h2><p>Review an enquiry draft, then choose how to contact us. Your basket does not commit you to a purchase.</p></div></div>' +
+    return '<section class="checkout-section checkout-form" data-checkout-section aria-labelledby="checkout-title"><div class="section-heading"><div><p class="eyebrow">One simple next step</p><h2 id="checkout-title">Tell us where to start.</h2><p>Send your quote enquiry directly to NetBud. Your basket does not commit you to a purchase.</p></div></div>' +
       '<form class="enquiry-form" method="post" data-enquiry-form="checkout" data-form-title="Quote basket enquiry"><div class="form-grid">' +
       '<div class="field"><label for="checkout-name">Full name <span aria-hidden="true">*</span></label><input id="checkout-name" name="name" autocomplete="name" required minlength="2" maxlength="100"></div>' +
       '<div class="field"><label for="checkout-business">Business name <span class="muted">(optional)</span></label><input id="checkout-business" name="business" autocomplete="organization" maxlength="150"></div>' +
@@ -677,6 +677,35 @@
     notify('Draft selected. Use your device’s copy command to copy it.');
   }
 
+  function enquiryPayload(form, data, text) {
+    var type = form.dataset.enquiryForm;
+    var titles = {callback:'Callback Request',contact:'Business Enquiry',preview:'Free Homepage Preview Request',checkout:'Quote Basket Enquiry'};
+    var title = type === 'product' ? (data.selectedProduct || 'Product') + ' Enquiry' : titles[type] || form.dataset.formTitle || 'Business Enquiry';
+    var payload = Object.assign({}, data, {
+      _subject:'NetBud | ' + title, _replyto:data.email, _template:'table', _honey:'',
+      enquiryType:title, pageUrl:window.location.href, productOrService:data.selectedProduct || data.services || '', enquirySummary:text
+    });
+    if (type === 'checkout') payload.selectedProducts = cart.map(function(item){
+      var product=productById(item.id);return (product ? product.name : item.id) + ' × ' + item.quantity;
+    }).join('\n');
+    return payload;
+  }
+
+  async function confirmFormResponse(response) {
+    var result;
+    try { result = await response.json(); } catch (error) { throw new Error('Invalid form-service response'); }
+    if (!result || typeof result !== 'object' || Array.isArray(result)) throw new Error('Invalid form-service response');
+    var detail = JSON.stringify(result);
+    if (/activat|verif|confirm.{0,35}(email|address)|check.{0,35}(email|inbox)/i.test(detail)) {
+      var pending = new Error('Recipient activation required'); pending.verificationPending = true; throw pending;
+    }
+    if (!response.ok || (result.success !== true && result.success !== 'true') || result.error || result.errors) throw new Error('Form service did not confirm acceptance');
+    if (config.formDeliveryVerified !== true) {
+      var unverified = new Error('Recipient delivery not yet verified'); unverified.verificationPending = true; throw unverified;
+    }
+    return result;
+  }
+
   function setupForms(root) {
     (root || document).querySelectorAll('form[data-enquiry-form]').forEach(function (form) {
       if (form.dataset.bound === 'true') return;
@@ -765,17 +794,20 @@
         try {
           var response = await fetch(endpoint, {
             method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            body: JSON.stringify(Object.assign({}, data, { _subject: 'NetBud — ' + (form.dataset.formTitle || 'Business enquiry'), enquiryType: form.dataset.enquiryForm, enquirySummary: text, _gotcha: '' })),
+            body: JSON.stringify(enquiryPayload(form, data, text)),
             credentials: 'omit', signal: controller ? controller.signal : undefined
           });
-          if (!response.ok) throw new Error('Delivery was not accepted');
+          await confirmFormResponse(response);
           var oldReview = form.querySelector('.enquiry-review'); if (oldReview) oldReview.remove();
           var changed = formRevision !== submittedRevision || basketSnapshot !== null && basketSnapshot !== JSON.stringify(cart);
-          setFormStatus(form, changed ? 'Your submitted enquiry has been received by our form service. Your basket or form changed while it was sending; the latest changes remain here and have not been sent.' : 'Your enquiry has been submitted through our form service. We’ll be in touch to discuss it. This is an enquiry, not a confirmed order.', 'success');
+          setFormStatus(form, changed ? "Thanks! Your enquiry has been submitted. We'll be in touch soon. Your latest edits remain here and have not been sent." : "Thanks! Your enquiry has been submitted. We'll be in touch soon.", 'success');
           if (!changed) form.reset();
         } catch (error) {
           if (formRevision !== submittedRevision || basketSnapshot !== null && basketSnapshot !== JSON.stringify(cart)) setFormStatus(form, 'Delivery could not be confirmed. Your latest changes have been kept. Review them before preparing another enquiry, or contact us directly.', 'error');
-          else showEnquiryDraft(form, text, true);
+          else {
+            showEnquiryDraft(form, text, true);
+            if (error.verificationPending) setFormStatus(form, 'Email delivery is awaiting verification. Your enquiry has not been marked as delivered. Your details are preserved below; you can use an alternative contact method.', 'info');
+          }
         }
         finally {
           if (timeout) clearTimeout(timeout);
@@ -788,7 +820,10 @@
         }
       });
       // Static forms start disabled so JavaScript-free visits cannot submit private details to a page URL.
-      form.querySelectorAll('[type="submit"]').forEach(function (button) { button.disabled = false; });
+      form.querySelectorAll('[type="submit"]').forEach(function (button) {
+        button.disabled = false;
+        if (safeHttps(config.formEndpoint)) button.textContent = form.dataset.enquiryForm === 'callback' ? 'Send callback request' : form.dataset.enquiryForm === 'preview' ? 'Send preview request' : form.dataset.enquiryForm === 'checkout' ? 'Send quote enquiry' : 'Send enquiry';
+      });
     });
     var service = new URLSearchParams(window.location.search).get('service');
     if (service && service.length <= 150) {
