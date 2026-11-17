@@ -1,6 +1,7 @@
 /* Independent arrival and headline effects; hero scroll mechanics stay untouched. */
 (function () {
   'use strict';
+  var arrivalStarted = false;
   function typeHeadline(heading, preference) {
     if (!heading || preference.matches || document.hidden) return;
     var frame = null, startTime = null, done = false, previous = '';
@@ -55,7 +56,7 @@
     frame = window.requestAnimationFrame(tick);
   }
   function start() {
-    if (!document.querySelector('[data-website-hero]')) return;
+    if (arrivalStarted || !document.querySelector('[data-website-hero]')) return;
     var preference = window.matchMedia('(prefers-reduced-motion: reduce)');
     var target = document.querySelector('#site-header .brand img'), heading = document.querySelector('#hero-title');
     if (!target || preference.matches || document.hidden || !target.animate) return;
@@ -63,6 +64,8 @@
     if (navigation && navigation.type === 'back_forward') return;
     var bounds = target.getBoundingClientRect();
     if (!bounds.width || !bounds.height) return;
+    arrivalStarted = true;
+    var initialWidth = window.innerWidth;
     var overlay = document.createElement('div'); overlay.className = 'brand-arrival'; overlay.setAttribute('aria-hidden', 'true');
     var backdrop = document.createElement('div'); backdrop.className = 'brand-arrival__backdrop';
     var flight = document.createElement('div'); flight.className = 'brand-arrival__flight';
@@ -80,11 +83,12 @@
       finished = true; window.clearTimeout(fallback);
       target.classList.remove('is-brand-arriving'); if (heading) heading.classList.remove('is-brand-intro-pending');
       overlay.remove(); animations.forEach(function (animation) { animation.cancel(); });
-      window.removeEventListener('resize', abort); window.removeEventListener('pagehide', abort);
+      window.removeEventListener('resize', resize); window.removeEventListener('pagehide', abort);
       document.removeEventListener('visibilitychange', visibility); preference.removeEventListener('change', abort);
       if (typing === true) typeHeadline(heading, preference);
     }
     function abort() { cleanup(false); }
+    function resize() { if (window.innerWidth !== initialWidth) abort(); }
     function visibility() { if (document.hidden) abort(); }
     function animate(node, frames, duration, easing) {
       var animation = node.animate(frames, {duration:duration, easing:easing, fill:'forwards'});
@@ -94,7 +98,7 @@
       var origin = node.getBoundingClientRect(); node.style.transformOrigin = '0 0';
       return animate(node, [{transform:'translate(0,0) scale(1,1)'}, {transform:'translate(' + (destination.left-origin.left) + 'px,' + (destination.top-origin.top) + 'px) scale(' + destination.width/origin.width + ',' + destination.height/origin.height + ')'}], 1000, 'cubic-bezier(.65,0,.2,1)');
     }
-    window.addEventListener('resize', abort); window.addEventListener('pagehide', abort);
+    window.addEventListener('resize', resize); window.addEventListener('pagehide', abort);
     document.addEventListener('visibilitychange', visibility); preference.addEventListener('change', abort);
     logo.addEventListener('error', abort, {once:true}); wordmark.addEventListener('error', abort, {once:true});
     fallback = window.setTimeout(abort, 2400);
@@ -113,6 +117,28 @@
       }).catch(abort);
     } catch (error) { abort(); }
   }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
-  else start();
+  var preparing = false;
+  function ready() {
+    if (document.hidden || arrivalStarted || preparing) return;
+    preparing = true;
+    var assets = [document.fonts ? document.fonts.ready : Promise.resolve()];
+    if (window.Image) ['/images/logo-symbol.svg', '/images/logo-wordmark.svg'].forEach(function (src) {
+      assets.push(new Promise(function (resolve) {
+        var image = new window.Image(); image.onload = image.onerror = resolve; image.src = src;
+      }));
+    });
+    Promise.all(assets).then(function () {
+      window.requestAnimationFrame(function () {
+        window.requestAnimationFrame(function () {
+          preparing = false;
+          if (document.hidden) return;
+          start();
+          if (arrivalStarted) document.removeEventListener('visibilitychange', ready);
+        });
+      });
+    });
+  }
+  function loaded() { document.addEventListener('visibilitychange', ready); ready(); }
+  if (document.readyState === 'complete') loaded();
+  else window.addEventListener('load', loaded, {once:true});
 }());
