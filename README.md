@@ -4,7 +4,7 @@ A website for NetBud, a Sydney-based business offering websites, NFC business ca
 
 Built with HTML, CSS and plain JavaScript. No build step or package installation is required.
 
-Ordering-system development is documented in [the Phase A review](docs/ordering/README.md). It is a proposal on a separate development branch; checkout, customer tracking and admin are not active.
+Ordering-system development is documented in [the phase review](docs/ordering/README.md). The Phase B foundation is isolated in `backend/` on a development branch; checkout, customer tracking and admin are not active. See [local backend setup](backend/README.md) for synthetic-data tests.
 
 ## Run locally
 

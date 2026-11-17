@@ -3,7 +3,7 @@
 Date: 17 November 2026. Branch: `codex/netbud-ordering-phase-a`.
 Baseline: `49e5708034e84d586bd08724e9734b4c5a6819b7`, verified against `origin/main` before this audit.
 
-**Status: architecture prepared; backend implementation awaiting approval. No ordering system has been activated.**
+**Current status: Phase B development foundation implemented for review. No ordering system has been activated.** See the [Phase B report](PHASE_B_REPORT.md) and [local testing instructions](../../backend/README.md). The Phase A findings below remain the planning baseline; the owner subsequently authorized Phase B only.
 
 The supplied master brief requires Phase A followed by approved phases in order. This change contains documentation and a catalogue snapshot only. No public pages, prices, forms, animations, PACES content, hosting, DNS or external accounts were changed.
 
