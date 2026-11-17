@@ -33,3 +33,11 @@ Evidence:
 Preview: http://127.0.0.1:8765/?review=website-nfc-approval
 
 The stopped local server was restarted from this current working folder. It remains available for review. Publish only after the user's approval; no DNS or hosting changes are required.
+
+## Follow-up: centred, faster automatic loop
+
+The latest requested behaviour supersedes the earlier ten-second/manual-control description above. Pause/Replay buttons are removed. All NFC components now share a **six-second infinite CSS cycle**, with the phone reaching the tap at about1.3seconds, followed by contact preview, a reading hold and a soft reset into the next cycle. No loop timer or forced layout restart is used. Hidden/offscreen playback still pauses; reduced motion remains a static contact preview.
+
+The phone's final position is vertically centred and the tap offset was adjusted to preserve the card-centre contact point. Gallery labels now sit inside the frame and section padding is equal at top/bottom. Desktop measured phone margins: top56.80px/bottom56.80px; left173.01px/right173.02px. At375px, top33.20px/bottom33.21px with no overflow. Browser checks observed final contact preview then the next card/lock-screen phase while state remained playing; duration6s, iteration countinfinite and zero NFC control buttons. Screenshots: `nfc-centred-loop.jpg`, `loop-mobile.jpg` in the same evidence folder.
+
+Updated lifecycle suite:15 checks passed, plus18 unchanged website-scroll checks. The removed manual controls' obsolete assertions were retired. Changes remain local, without publication.

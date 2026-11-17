@@ -53,7 +53,7 @@
  .is-website-pinned .website-stage{padding-top:18px}.is-website-pinned .website-showcase{top:36%;bottom:120px}
  .is-website-pinned .website-heading .eyebrow{margin-bottom:10px}.is-website-pinned .website-intro-copy{font-size:14px}
 }
-/* Standalone NFC: one 10s timeline; every dependent milestone shares percentages. */
+/* Standalone NFC: one looping 6s timeline; every dependent milestone shares percentages. */
 .nfc-section{background:linear-gradient(135deg,#f8f6f2,#eee9f5 70%,#e5edf3);position:relative;padding-block:80px}
 .nfc-section-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(32px,6vw,90px);align-items:center}
 .nfc-section-copy h2{font-size:clamp(40px,4.5vw,66px);line-height:1.04;letter-spacing:-.055em;margin-bottom:25px}
@@ -70,23 +70,24 @@
 .nfc-controls button:hover:not(:disabled){background:#fff;transform:translateY(-2px)}
 .nfc-controls button:disabled{opacity:.55;cursor:default}
 .nfc-status{font-size:11px;text-align:center;margin:12px 0 0;color:var(--muted)}
-[data-nfc-demo][data-hero-story] .studio-panel.is-active .nfc-phone--iphone17{animation:nfc-section-phone 10s linear both}
-[data-nfc-demo][data-hero-story] .studio-panel.is-active .nfc-phone--iphone17 .nfc-phone__profile{animation:nfc-section-contact 10s linear both}
-[data-nfc-demo][data-hero-story] .studio-panel.is-active .nfc-phone--iphone17 .nfc-phone__prompt{animation:nfc-section-lock 10s linear both}
-[data-nfc-demo][data-hero-story] .studio-panel.is-active .nfc-card{animation:nfc-section-card 10s linear both}
-[data-nfc-demo][data-hero-story] .studio-panel.is-active .nfc-transfer-signal{animation:nfc-section-signal 10s linear both}
-[data-nfc-demo][data-hero-story] .studio-panel.is-active .nfc-demo__tap-ring{animation:nfc-section-ring 10s linear both}
-[data-nfc-demo][data-hero-story] .studio-panel.is-active .nfc-phone--iphone17 .ios-status{animation:nfc-section-status 10s linear both}
-[data-nfc-demo][data-hero-story] .studio-panel.is-active .nfc-phone--iphone17 .ios-home-indicator{animation:nfc-section-home 10s linear both}
+[data-nfc-demo][data-hero-story] .studio-panel.is-active .nfc-phone--iphone17{animation:nfc-section-phone var(--nfc-cycle,6s) linear infinite both}
+[data-nfc-demo][data-hero-story] .studio-panel.is-active .nfc-phone--iphone17 .nfc-phone__profile{animation:nfc-section-contact var(--nfc-cycle,6s) linear infinite both}
+[data-nfc-demo][data-hero-story] .studio-panel.is-active .nfc-phone--iphone17 .nfc-phone__prompt{animation:nfc-section-lock var(--nfc-cycle,6s) linear infinite both}
+[data-nfc-demo][data-hero-story] .studio-panel.is-active .nfc-card{animation:nfc-section-card var(--nfc-cycle,6s) linear infinite both}
+[data-nfc-demo][data-hero-story] .studio-panel.is-active .nfc-transfer-signal{animation:nfc-section-signal var(--nfc-cycle,6s) linear infinite both}
+[data-nfc-demo][data-hero-story] .studio-panel.is-active .nfc-demo__tap-ring{animation:nfc-section-ring var(--nfc-cycle,6s) linear infinite both}
+[data-nfc-demo][data-hero-story] .studio-panel.is-active .nfc-phone--iphone17 .ios-status{animation:nfc-section-status var(--nfc-cycle,6s) linear infinite both}
+[data-nfc-demo][data-hero-story] .studio-panel.is-active .nfc-phone--iphone17 .ios-home-indicator{animation:nfc-section-home var(--nfc-cycle,6s) linear infinite both}
 [data-nfc-demo].is-scene-paused *,[data-nfc-demo].is-scene-paused *::after{animation-play-state:paused!important}
-@keyframes nfc-section-phone{0%{transform:translate(0,125%);opacity:0}10%{transform:translate(0,110%);opacity:1}40%,53%{transform:translate(0,48.3333333%);opacity:1}72%,100%{transform:translate(0,0);opacity:1}}
-@keyframes nfc-section-contact{0%,45%{opacity:0;transform:none}53%,100%{opacity:1;transform:none}}
-@keyframes nfc-section-lock{0%,45%{opacity:1}53%,100%{opacity:0}}
-@keyframes nfc-section-card{0%,45%{transform:translate(0,0) rotate(0);opacity:1}47%,100%{transform:translate(-80cqw,-80cqw) rotate(0);opacity:0}}
-@keyframes nfc-section-signal{0%,40%{opacity:0;transform:scale(.94)}41.5%{opacity:1;transform:scale(1)}42.5%{opacity:0;transform:scale(.96)}44%{opacity:1;transform:scale(1)}45%,100%{opacity:0;transform:scale(1.02)}}
-@keyframes nfc-section-ring{0%,40%{opacity:0;transform:scale(.8)}41%{opacity:.35;transform:scale(.95)}45%,100%{opacity:0;transform:scale(1.25)}}
-@keyframes nfc-section-status{0%,52.999%{color:white}53%,100%{color:#111}}
-@keyframes nfc-section-home{0%,52.999%{background:white}53%,100%{background:#111}}
+@keyframes nfc-section-phone{0%{transform:translate(0,125%);opacity:0}10%{transform:translate(0,110%);opacity:1}22%,44%{transform:translate(0,38.3333333%);opacity:1}60%,90%{transform:translate(0,0);opacity:1}96%{transform:translate(0,0);opacity:0}100%{transform:translate(0,125%);opacity:0}}
+@keyframes nfc-section-contact{0%,30%{opacity:0;transform:none}44%,96%{opacity:1;transform:none}100%{opacity:0;transform:none}}
+@keyframes nfc-section-lock{0%,30%{opacity:1}44%,96%{opacity:0}100%{opacity:1}}
+@keyframes nfc-section-card{0%,30%{transform:translate(0,0) rotate(0);opacity:1}33.3333%,93%{transform:translate(-80cqw,-80cqw) rotate(0);opacity:0}94%{transform:translate(0,0) rotate(0);opacity:0}100%{transform:translate(0,0) rotate(0);opacity:1}}
+@keyframes nfc-section-signal{0%,22%{opacity:0;transform:scale(.94)}24%{opacity:1;transform:scale(1)}26%{opacity:0;transform:scale(.96)}28%{opacity:1;transform:scale(1)}30%,100%{opacity:0;transform:scale(1.02)}}
+@keyframes nfc-section-ring{0%,22%{opacity:0;transform:scale(.8)}24%{opacity:.35;transform:scale(.95)}30%,100%{opacity:0;transform:scale(1.25)}}
+@keyframes nfc-section-status{0%,43.999%{color:white}44%,96%{color:#111}100%{color:white}}
+@keyframes nfc-section-home{0%,43.999%{background:white}44%,96%{background:#111}100%{background:white}}
+
 /* Static states are explicit, including before JS binds and for no-JS visitors. */
 [data-nfc-demo]:not([data-nfc-bound]) .nfc-demo *,[data-nfc-demo].is-nfc-static .nfc-demo *{animation:none!important}
 [data-nfc-demo]:not([data-nfc-bound]) .nfc-phone,[data-nfc-demo].is-nfc-static .nfc-phone{transform:none!important;opacity:1!important}

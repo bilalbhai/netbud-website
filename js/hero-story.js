@@ -73,40 +73,28 @@
 
   function setupNfcDemo(host) {
     if (host.dataset.nfcBound) return;
-    var panel = host.querySelector('.studio-panel'), presentation = host.closest('.nfc-presentation');
-    var pause = presentation.querySelector('[data-nfc-pause]'), replay = presentation.querySelector('[data-nfc-replay]'), status = presentation.querySelector('[data-nfc-status]');
+    var presentation = host.closest('.nfc-presentation');
+    var status = presentation.querySelector('[data-nfc-status]');
     var preference = window.matchMedia('(prefers-reduced-motion: reduce)');
     var bounds = host.getBoundingClientRect(), visible = bounds.top < window.innerHeight && bounds.bottom > 0;
-    var paused = false, complete = false, pageActive = true;
-    var config = window.NETBUD_CONFIG || {}, refreshClock = setupPhoneClock(host);
+    var pageActive = true;
+    var config = window.NETBUD_CONFIG || {};
+    setupPhoneClock(host);
     host.querySelectorAll('[data-hero-contact-phone]').forEach(function(node){node.textContent=config.phoneDisplay || '0425 714 451';});
     host.querySelectorAll('[data-hero-contact-email]').forEach(function(node){node.textContent=config.contactEmail || 'bilal@netbud.com.au';});
     host.dataset.nfcBound = 'true';
     function update() {
       var reduced = preference.matches;
-      var playing = !reduced && !paused && !complete && visible && !document.hidden && pageActive;
+      var playing = !reduced && visible && !document.hidden && pageActive;
       host.classList.toggle('is-scene-paused', !playing);
       host.classList.toggle('is-nfc-static', reduced);
-      host.dataset.nfcState = reduced ? 'static' : complete ? 'complete' : paused ? 'paused' : playing ? 'playing' : 'waiting';
-      pause.disabled = reduced || complete; replay.disabled = reduced;
-      pause.textContent = paused ? 'Resume ▷' : 'Pause Ⅱ';
-      pause.setAttribute('aria-label', paused ? 'Resume NFC demonstration' : 'Pause NFC demonstration');
-      pause.setAttribute('aria-pressed', String(paused));
-      status.textContent = reduced ? 'Static contact preview · reduced motion.' : complete ? 'Contact preview · replay whenever you like.' : paused ? 'Demonstration paused.' : playing ? 'A simple connection, in ten seconds.' : 'Ready when you scroll into view.';
+      host.dataset.nfcState = reduced ? 'static' : playing ? 'playing' : 'waiting';
+      if (status) status.textContent = reduced ? 'Static contact preview · reduced motion.' : 'Automatic NFC contact demonstration.';
     }
-    function restart() {
-      paused = false; complete = false; refreshClock();
-      panel.classList.remove('is-active');
-      void panel.offsetWidth; // One deliberate reflow only on an explicit Replay.
-      panel.classList.add('is-active'); update();
-    }
-    pause.addEventListener('click', function(){if(preference.matches || complete)return;paused=!paused;update();});
-    replay.addEventListener('click', function(){if(!preference.matches)restart();});
-    panel.addEventListener('animationend', function(event){if(event.animationName==='nfc-section-phone'){complete=true;update();}});
     document.addEventListener('visibilitychange', update);
     window.addEventListener('pagehide', function(){pageActive=false;update();});
     window.addEventListener('pageshow', function(){pageActive=true;update();});
-    preference.addEventListener('change', function(){if(preference.matches)update();else restart();});
+    preference.addEventListener('change', update);
     if (window.IntersectionObserver) {
       var observer = new window.IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.target===host){visible=entry.isIntersecting && entry.intersectionRatio>=.15;update();}});},{threshold:[0,.15]});
       observer.observe(host);

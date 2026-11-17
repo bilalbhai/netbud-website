@@ -1,4 +1,4 @@
-/* Local refinement: existing device transforms, keyframes and controllers are untouched. */
+/* Signature product composition and balanced device framing. */
 #services{scroll-margin-top:105px}
 .nfc-signature{color:#fff8ef;background:radial-gradient(ellipse at 95% 20%,#75697f40,transparent 55%),radial-gradient(ellipse at 0 100%,#a45d3c24,transparent 55%),#28272b;padding-block:clamp(65px,7vw,105px)}
 .nfc-signature .signature-badge{display:inline-flex;align-items:center;gap:10px;width:fit-content;padding:8px 12px;border:1px solid #eaa98c45;border-radius:40px;color:#f3c0a5;font-size:9px;letter-spacing:.12em;margin-bottom:28px}
@@ -20,6 +20,11 @@
 .nfc-signature .nfc-controls button{background:#ffffff0c;border:1px solid #f9e8d12e;color:#f8eee3}
 .nfc-signature .nfc-controls button:hover:not(:disabled){background:#ffffff1f;color:#fff}
 .nfc-signature .nfc-status{color:#c9bfb7}
+.nfc-signature{padding-block:clamp(64px,6vw,88px)}
+.nfc-signature .nfc-presentation{position:relative}
+.nfc-signature .signature-product-label{position:absolute;z-index:3;top:18px;left:20px;right:20px;margin:0;color:#6c5b50;pointer-events:none}
+.nfc-signature .signature-product-label>span:last-child{color:#8c4c34}
+.nfc-signature .nfc-gallery .nfc-phone--iphone17{top:10cqw}
 .nfc-signature :is(a,button):focus-visible{outline-color:#ffd4b2;outline-offset:5px}
 @media(max-width:999px){.nfc-signature .nfc-section-copy{max-width:650px}.nfc-signature .signature-badge{margin-bottom:23px}}
 @media(max-width:600px){.nfc-signature .nfc-section-copy h2{font-size:45px}.nfc-signature .nfc-section-copy>p:not(.eyebrow){font-size:16px}.signature-features{gap:7px;margin:22px 0 26px}.signature-features>li{font-size:10px;padding:7px 9px}.signature-product-label{font-size:8px}.signature-product-label>span:last-child{font-size:9px}}
