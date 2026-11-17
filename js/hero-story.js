@@ -204,6 +204,7 @@
       var headerHeight = header ? header.offsetHeight : 84;
       var distance = Math.max(1, scrollRegion.offsetHeight - stage.offsetHeight);
       var p = clamp((headerHeight - scrollRegion.getBoundingClientRect().top) / distance);
+      if (window.scrollY > 8) scrollRegion.classList.toggle('has-hero-scrolled', true);
       if (p === scrollProgress) return;
       scrollProgress = p;
       var nfc = p >= .58;

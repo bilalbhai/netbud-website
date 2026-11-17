@@ -37,6 +37,12 @@ Pause freezes the presentation without preventing document scrolling. Resume cat
 
 The earlier cinematic stylesheet is reused for the simplified mobile introduction. Device transforms are separated from the stage zoom and existing inner screen/NFC animations.
 
+## Follow-up refinement: laptop blending and actions
+
+The laptop photograph now uses `images/laptop-silhouette-mask.svg` to remove the rectangular backdrop while keeping the bezel, keyboard and a softly feathered contact shadow. The live HTML screen remains crisp and separate. Desktop Pause/Next and the extra product-action footer are hidden, leaving the two main actions. These rise from the bottom once, over750ms, after the first scroll beyond8px; returning to the opening does not hide them again. Mobile, no-JavaScript and reduced-motion layouts keep their primary actions immediately available. Mobile preview controls remain usable.
+
+Browser follow-up at1440×800 verified initial action visibility `hidden`, desktop controls `none`, then action visibility `visible` after40px of ordinary scrolling. The masked device was visually inspected against the section gradient. Evidence: `blended-opening.jpg` and `blended-actions.jpg` in the same review folder. Both controller suites still pass.
+
 ## Actual tests and refinements
 
 - Captured desktop/mobile before screenshots and opening, expanding website, NFC reveal, ending and mobile screenshots after implementation.

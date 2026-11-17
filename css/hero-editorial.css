@@ -16,7 +16,7 @@
 .hero-editorial .studio-panels{border:0;border-radius:0;background:transparent;overflow:visible}
 .hero-editorial [data-demo-panel]{background:transparent;aspect-ratio:1.3;min-height:0}
 .hero-editorial .laptop-demo,.hero-editorial .showcase-float .laptop-demo{background:transparent;overflow:visible}
-.hero-editorial .laptop-demo__photo>img{mix-blend-mode:multiply}
+.hero-editorial .laptop-demo__photo>img{mix-blend-mode:multiply;mask-image:url('/images/laptop-silhouette-mask.svg');mask-size:100% 100%;mask-repeat:no-repeat;-webkit-mask-image:url('/images/laptop-silhouette-mask.svg');-webkit-mask-size:100% 100%;-webkit-mask-repeat:no-repeat}
 .hero-editorial .nfc-demo{background:transparent;width:90%;height:100%;margin:auto}
 .hero-nfc-heading{display:none}
 .hero-editorial .hero-story__controls{position:relative;justify-content:center;padding-bottom:0;gap:8px}
@@ -41,6 +41,10 @@
  .hero-scroll-active .hero-copy .eyebrow{margin-bottom:12px}
  .hero-scroll-active .lead{font-size:16px;margin-bottom:0}
  .hero-scroll-active .button-row{position:absolute;z-index:8;left:0;right:0;bottom:49px}
+ .hero-scroll-active:not(.has-hero-scrolled) .button-row{visibility:hidden;opacity:0;translate:0 85px;pointer-events:none}
+ .hero-scroll-active.has-hero-scrolled .button-row{animation:hero-actions-rise 750ms cubic-bezier(.2,.8,.2,1) both}
+ .hero-scroll-active .hero-story__controls,.hero-scroll-active .hero-story__footer{display:none}
+ .hero-scroll-active .hero-scroll-hint span{animation:none}
  .hero-scroll-active .hero-note{position:absolute;z-index:8;left:0;right:0;bottom:19px;margin:0;font-size:10px}
  .hero-scroll-active .hero-studio.hero-showcase{position:absolute;top:42%;bottom:130px;left:50%;width:min(760px,70vw);margin:0;transform:translateX(-50%);z-index:2}
  .hero-scroll-active .nfc-demo{width:min(620px,61svh);height:100%;aspect-ratio:auto;margin:auto}
@@ -90,3 +94,4 @@
  .hero-editorial .nfc-demo{aspect-ratio:auto;height:100%}
 }
 @media(prefers-reduced-motion:reduce){.hero-scroll-hint span{animation:none}.hero-editorial .hero-stage{height:auto}.hero-editorial h1,.hero-editorial .lead{opacity:1!important;translate:none!important}}
+@keyframes hero-actions-rise{0%{opacity:0;translate:0 85px}72%{opacity:1;translate:0 -6px}100%{opacity:1;translate:0 0}}

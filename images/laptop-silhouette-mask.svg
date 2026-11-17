@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="1024" viewBox="0 0 1536 1024">
+ <defs><filter id="edge"><feGaussianBlur stdDeviation="1.5"/></filter><filter id="shadow"><feGaussianBlur stdDeviation="14"/></filter></defs>
+ <ellipse cx="768" cy="951" rx="701" ry="25" fill="white" opacity=".6" filter="url(#shadow)"/>
+ <g fill="white" filter="url(#edge)"><rect x="186" y="54" width="1164" height="750" rx="37"/><path d="M188 789H1348L1458 910Q1465 939 1432 949H104Q70 940 74 910Z"/></g>
+</svg>
