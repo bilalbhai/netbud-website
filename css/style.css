@@ -26,6 +26,17 @@
   --gradient-portfolio:var(--gradient-work);
 }
 
+/* Native page scrollbar: an ivory channel with a glossy coral capsule. */
+html::-webkit-scrollbar{width:14px;height:14px}
+html::-webkit-scrollbar-track{background:var(--paper);border:1px solid #e9e2dc;border-radius:999px;box-shadow:inset 1px 0 3px #a43b2c0c}
+html::-webkit-scrollbar-thumb{min-height:48px;border:3px solid var(--paper);border-radius:999px;background:linear-gradient(90deg,#f8b8a8 0%,var(--coral) 42%,#d85440 100%);background-clip:padding-box;box-shadow:inset 1px 0 1px #fff9,inset -1px 0 1px #a43b2c30}
+html::-webkit-scrollbar-thumb:hover{background:linear-gradient(90deg,#f9c7b9 0%,#f1745e 42%,var(--coral) 100%);background-clip:padding-box}
+html::-webkit-scrollbar-thumb:active{background:var(--accent-ink);background-clip:padding-box}
+html::-webkit-scrollbar-button{display:none;width:0;height:0}
+html::-webkit-scrollbar-corner{background:var(--paper)}
+@supports not selector(::-webkit-scrollbar){html{scrollbar-width:thin;scrollbar-color:var(--coral) var(--paper)}}
+@media(forced-colors:active){html{scrollbar-color:auto}}
+
 /* 2. Reset, readable defaults and reusable layout */
 *, *::before, *::after {
   box-sizing: border-box;
