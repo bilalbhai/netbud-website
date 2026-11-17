@@ -1,32 +1,17 @@
-/* State invariants for the desktop controller; rendering is checked in-browser. */
-const fs=require('fs'),vm=require('vm'),assert=require('assert/strict');
-let y=0,checks=0,frames=[],timers=new Map(),serial=0;
-function element(dataset={}){return{dataset,attrs:{},events:{},hidden:false,style:{values:{},setProperty(k,v){this.values[k]=String(v);}},classList:{toggle(){},remove(){}},setAttribute(k,v){this.attrs[k]=v;},removeAttribute(k){delete this.attrs[k];},addEventListener(k,v){this.events[k]=v;}};}
-const region=element(),stage={offsetHeight:875},header={offsetHeight:85};
-region.offsetHeight=2200;region.getBoundingClientRect=()=>({top:125-y});region.querySelector=s=>s==='.hero-stage'?stage:null;
-const host=element({demoInterval:'3000'}),pause=element(),next=element(),order=element(),panels=[element({demoPanel:'websites'}),element({demoPanel:'business-cards'})];
-host.closest=()=>region;host.getBoundingClientRect=()=>({top:100,bottom:700});
-host.querySelector=s=>({'[data-story-pause]':pause,'[data-story-next]':next,'[data-story-order]':order}[s]||null);
-host.querySelectorAll=s=>s==='[data-demo-panel]'?panels:[];
+/* Website-only scroll state: no autoplay and no connection to the NFC controller. */
+const fs=require('fs'),vm=require('vm'),assert=require('assert/strict');let checks=0,y=0,frames=[],writes=0;
+const values={},classes=new Set(),events={},stage={offsetHeight:775};
+const hero={dataset:{},offsetHeight:1800,querySelector:()=>stage,getBoundingClientRect:()=>({top:125-y}),classList:{toggle(k,on){if(on)classes.add(k);else classes.delete(k);}},style:{setProperty(k,v){values[k]=String(v);writes++;},removeProperty(k){delete values[k];}}};
 const preference={matches:false,addEventListener(k,fn){this.change=fn;}},desktop={matches:true,addEventListener(k,fn){this.change=fn;}};
-const doc={readyState:'complete',hidden:false,querySelector:s=>s==='#site-header'?header:host,dispatchEvent(){},addEventListener(){}};
-const win={innerHeight:1000,scrollY:0,performance:{now:()=>0},matchMedia:q=>q.includes('min-width')?desktop:preference,events:{},addEventListener(k,v){this.events[k]=v;},requestAnimationFrame(fn){frames.push(fn);return frames.length;},setTimeout(fn){let id=++serial;timers.set(id,fn);return id;},clearTimeout(id){timers.delete(id);},scrollTo(){}};
-vm.runInNewContext(fs.readFileSync('js/hero-story.js','utf8'),{window:win,document:doc,Array,Number,Boolean,Math,Date,CustomEvent:class{}});
-function flush(){let pending=frames;frames=[];pending.forEach(fn=>fn());}
-function scroll(p){y=40+1325*p;win.scrollY=y;win.events.scroll();flush();}
-function eq(a,b,label){assert.equal(a,b,label);checks++;}
-flush();eq(timers.size,0,'desktop never leaves an autoplay timer running');
-eq(host.dataset.storyState,'scrolling','desktop is scroll-controlled');
-scroll(.45);eq(host.dataset.storyActive,'websites','middle scroll keeps website scene');eq(timers.size,0,'website scrub does not start autoplay');
-scroll(.7);eq(host.dataset.storyActive,'business-cards','scroll selects NFC');eq(order.attrs.href,'/shop/custom-nfc-business-card/','NFC link remains correct');
-eq(timers.size,0,'NFC scrub has no competing timer');
-pause.events.click();const held=region.style.values['--hero-progress'];scroll(.9);eq(region.style.values['--hero-progress'],held,'pause freezes presentation without blocking scroll');
-pause.events.click();flush();eq(region.style.values['--hero-progress'],'0.9','resume catches up to scroll');
-order.events.focus();scroll(.1);eq(order.attrs.href,'/shop/custom-nfc-business-card/','focused product CTA does not change destination');
-order.events.blur();flush();eq(host.dataset.storyActive,'websites','blur catches up to actual scroll');
-scroll(2);eq(region.style.values['--hero-progress'],'1','progress clamps at end');scroll(-1);eq(region.style.values['--hero-progress'],'0','progress clamps at opening');
-preference.matches=true;preference.change();eq(host.dataset.storyState,'reduced','reduced preference exits scroll mode');eq(timers.size,0,'reduced motion has no autoplay');
-pause.events.click();eq(host.dataset.storyActive,'business-cards','manual NFC remains accessible');
-preference.matches=false;desktop.matches=false;preference.change();eq(timers.size,1,'mobile uses only one existing scene timer');
-desktop.matches=true;desktop.change();flush();eq(timers.size,0,'returning to desktop removes autoplay');
-console.log(JSON.stringify({checks,failures:0,note:'Desktop state invariants; browser rendering tested separately.'}));
+const doc={readyState:'complete',hidden:false,events:{},querySelector:s=>s==='#site-header'?{offsetHeight:85}:hero,querySelectorAll:()=>[],addEventListener(k,fn){this.events[k]=fn;}};
+const win={matchMedia:q=>q.includes('min-width')?desktop:preference,requestAnimationFrame(fn){frames.push(fn);return frames.length;},addEventListener(k,fn){events[k]=fn;}};
+vm.runInNewContext(fs.readFileSync('js/hero-story.js','utf8'),{window:win,document:doc,Math,Boolean});
+function flush(){let f=frames;frames=[];f.forEach(fn=>fn());}function scroll(p){y=40+1025*p;events.scroll();flush();}function eq(a,b,n){assert.equal(a,b,n);checks++;}
+flush();eq(classes.has('is-website-pinned'),true,'capable desktop pins');eq(values['--website-copy-opacity'],'1','opening copy visible');eq(values['--website-zoom'],'1','opening size stable');
+scroll(.5);eq(Number(values['--website-zoom'])>1,true,'scroll brings site forward');eq(Number(values['--website-tilt'].replace('deg',''))<5,true,'perspective straightens');eq(values['--website-copy-opacity'],'0','copy recedes');eq(hero.dataset.websiteProgress,'0.500','single progress source');
+scroll(.95);eq(classes.has('is-website-ending'),true,'exit blends');scroll(2);eq(hero.dataset.websiteProgress,'1.000','end clamps');const endWrites=writes;scroll(3);eq(writes,endWrites,'no repeated offscreen DOM writes');
+scroll(-1);eq(hero.dataset.websiteProgress,'0.000','opening clamps');eq(classes.has('is-website-ending'),false,'reverse scroll restores opening');
+desktop.matches=false;desktop.change();eq(classes.has('is-website-pinned'),false,'mobile uses document flow');eq(values['--website-zoom'],undefined,'mobile clears transform overrides');eq(values['--website-copy-opacity'],undefined,'mobile clears opacity override');
+desktop.matches=true;preference.matches=true;preference.change();eq(classes.has('is-website-pinned'),false,'reduced motion never pins');preference.matches=false;preference.change();flush();eq(classes.has('is-website-pinned'),true,'preference change restores desktop');
+doc.hidden=true;events.scroll();eq(frames.length,0,'hidden page schedules no motion frame');
+console.log(JSON.stringify({checks,failures:0,note:'Website-only scroll invariants; no autoplay timers or forced scrolling.'}));

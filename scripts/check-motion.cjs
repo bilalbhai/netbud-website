@@ -1,68 +1,22 @@
-const fs = require('fs');
-const vm = require('vm');
-const assert = require('assert/strict');
-let now = 0, serial = 0, timers = new Map(), checks = 0;
-function element(dataset = {}) {
-  return {dataset, hidden: false, textContent: '', innerHTML: '', attrs: {}, events: {},
-    style: {setProperty() {}},
-    classList: {values: new Set(), toggle(name, on) { if (on) this.values.add(name); else this.values.delete(name); }},
-    setAttribute(key, value) { this.attrs[key] = value; },
-    removeAttribute(key) { delete this.attrs[key]; },
-    addEventListener(name, fn) { this.events[name] = fn; }
-  };
-}
-const panels = [element({demoPanel:'websites'}), element({demoPanel:'business-cards'})];
-const nextControl = element(), control = element(), title = element(), status = element(), order = element(), progress = [element(),element()];
-const host = element({demoInterval:'3000'});
-host.getBoundingClientRect = () => ({top:100,bottom:600});
-host.querySelector = selector => ({'[data-story-next]':nextControl,'[data-story-pause]':control,'[data-story-title]':title,'[data-story-status]':status,'[data-story-order]':order}[selector]);
-host.querySelectorAll = selector => selector === '[data-demo-panel]' ? panels : selector === '.hero-story__progress > span' ? progress : [];
-const doc = {dispatchEvent() {},readyState:'complete',hidden:false,events:{},querySelector:()=>host,addEventListener(name,fn){this.events[name]=fn;}};
-const preference = {matches:false,addEventListener(name,fn){this.change=fn;}};
-const win = {innerHeight:900,performance:{now:()=>now},matchMedia:()=>preference,events:{},
-  addEventListener(name,fn){this.events[name]=fn;},setTimeout(fn,delay){const id=++serial;timers.set(id,{fn,at:now+delay});return id;},clearTimeout(id){timers.delete(id);}};
-function advance(ms) {
-  const end = now + ms;
-  while (true) {
-    const next = [...timers].sort((a,b)=>a[1].at-b[1].at)[0];
-    if (!next || next[1].at > end) break;
-    now = next[1].at; timers.delete(next[0]); next[1].fn();
-  }
-  now = end;
-}
-function eq(actual,expected,message){assert.equal(actual,expected,message);checks++;}
-vm.runInNewContext(fs.readFileSync('js/hero-story.js','utf8'),{window:win,document:doc,Date,Array,Number,Math,CustomEvent:class {constructor(type,options){this.type=type;this.detail=options.detail;}}});
-eq(host.dataset.storyActive,'websites','website is first');
-eq(order.textContent,'Explore plans','website CTA text');
-eq(order.attrs.href,'/pricing/','website CTA destination');
-eq(timers.size,1,'one timer');
-advance(2999); eq(host.dataset.storyActive,'websites','full 3000ms first scene');
-advance(1); eq(host.dataset.storyActive,'business-cards','NFC second at 3000ms');
-eq(order.hidden,false,'CTA remains available in both scenes');
-eq(order.textContent,'Order your custom NFC card now','NFC CTA text');
-eq(order.attrs.href,'/shop/custom-nfc-business-card/','NFC CTA destination');
-advance(3000); eq(host.dataset.storyActive,'websites','wraps to website');
-eq(order.hidden,false,'website CTA available');
-advance(500); control.events.click();
-eq(timers.size,0,'pause cancels timer');
-advance(10000); eq(host.dataset.storyActive,'websites','pause holds scene');
-control.events.click(); advance(2499); eq(host.dataset.storyActive,'websites','resume preserves remainder');
-advance(1); eq(host.dataset.storyActive,'business-cards','resume finishes remainder');
-advance(3000); order.events.focus(); advance(6000); eq(host.dataset.storyActive,'websites','focused CTA destination does not change');
-order.events.blur(); advance(3000); eq(host.dataset.storyActive,'business-cards','blur resumes');
-doc.hidden=true; doc.events.visibilitychange(); advance(6000); eq(host.dataset.storyActive,'business-cards','hidden document suspends');
-doc.hidden=false; doc.events.visibilitychange(); advance(3000); eq(host.dataset.storyActive,'websites','visible document resumes');
-preference.matches=true; preference.change(); eq(timers.size,0,'reduced motion disables timer');
-control.events.click(); eq(host.dataset.storyActive,'business-cards','reduced motion can manually reach NFC');
-eq(control.textContent,'Next preview ↗','reduced motion control remains usable');
-preference.matches=false; preference.change(); advance(2999); eq(host.dataset.storyActive,'business-cards','motion preference restart uses full interval');
-advance(1); eq(host.dataset.storyActive,'websites','motion preference resumes');
-eq(timers.size,1,'only one timer after state changes');
-preference.matches=true; preference.change(); nextControl.events.click(); eq(host.dataset.storyActive,'business-cards','explicit next control changes scene in reduced motion');
-eq(timers.size,0,'manual next retains reduced-motion suspension');
-preference.matches=false; preference.change(); control.events.click(); eq(host.dataset.storyState,'paused','normal user pause is preserved');
-nextControl.events.click(); eq(host.dataset.storyActive,'websites','manual next changes a paused NFC scene');
-eq(host.dataset.storyState,'playing','manual next starts the selected scene');
-eq(timers.size,1,'manual next leaves a single scene timer');
-advance(3000); eq(host.dataset.storyActive,'business-cards','manual selection still advances after three seconds');
-console.log(JSON.stringify({checks,failures:0,note:'Isolated controller clock/DOM-state checks; browser rendering remains separate.'}));
+/* Standalone NFC lifecycle invariants. CSS milestones are inspected in-browser. */
+const fs=require('fs'),vm=require('vm'),assert=require('assert/strict');let checks=0,restarts=0,observer;
+function el(){return{dataset:{},events:{},attrs:{},textContent:'',disabled:false,style:{setProperty(){}},classList:{set:new Set(['is-active']),toggle(k,on){if(on)this.set.add(k);else this.set.delete(k);},add(k){this.set.add(k);},remove(k){this.set.delete(k);if(k==='is-active')restarts++;}},addEventListener(k,fn){this.events[k]=fn;},setAttribute(k,v){this.attrs[k]=v;}};}
+const host=el(),panel=el(),pause=el(),replay=el(),status=el(),phone=el(),email=el(),presentation=el();
+presentation.querySelector=s=>({'[data-nfc-pause]':pause,'[data-nfc-replay]':replay,'[data-nfc-status]':status}[s]);
+host.closest=()=>presentation;host.getBoundingClientRect=()=>({top:2000,bottom:2500});host.querySelector=()=>panel;
+host.querySelectorAll=s=>s==='[data-hero-contact-phone]'?[phone]:s==='[data-hero-contact-email]'?[email]:[];
+const preference={matches:false,addEventListener(k,fn){this.change=fn;}};
+const doc={readyState:'complete',hidden:false,events:{},querySelector:()=>null,querySelectorAll:()=>[host],addEventListener(k,fn){this.events[k]=fn;}};
+const win={innerHeight:900,NETBUD_CONFIG:{phoneDisplay:'0425 714 451',contactEmail:'bilal@netbud.com.au'},events:{},matchMedia:()=>preference,addEventListener(k,fn){this.events[k]=fn;},IntersectionObserver:class{constructor(fn){observer=fn;}observe(){}},setTimeout(){throw Error('NFC animation must not require a second timer');}};
+function eq(a,b,n){assert.equal(a,b,n);checks++;}function view(ratio){observer([{target:host,isIntersecting:ratio>0,intersectionRatio:ratio}]);}
+vm.runInNewContext(fs.readFileSync('js/hero-story.js','utf8'),{window:win,document:doc,Intl,Date,Array,Boolean,Math});
+eq(host.dataset.nfcState,'waiting','offscreen does not start');eq(phone.textContent,'0425 714 451','configured phone');eq(email.textContent,'bilal@netbud.com.au','configured email');
+view(.8);eq(host.dataset.nfcState,'playing','entry plays');eq(pause.disabled,false,'pause available');
+const baseline=restarts;view(.7);view(.9);eq(restarts,baseline,'small visibility changes never restart');
+pause.events.click();eq(host.dataset.nfcState,'paused','user pause');view(0);view(.8);eq(host.dataset.nfcState,'paused','reentry preserves user pause');
+pause.events.click();eq(host.dataset.nfcState,'playing','resume');doc.hidden=true;doc.events.visibilitychange();eq(host.dataset.nfcState,'waiting','hidden tab suspends');doc.hidden=false;doc.events.visibilitychange();eq(host.dataset.nfcState,'playing','visible tab resumes');
+panel.events.animationend({animationName:'unrelated'});eq(host.dataset.nfcState,'playing','unrelated animation does not end demo');panel.events.animationend({animationName:'nfc-section-phone'});eq(host.dataset.nfcState,'complete','phone timeline completes demo');eq(pause.disabled,true,'completed demo has no misleading active pause');view(0);view(.8);eq(host.dataset.nfcState,'complete','completion survives reentry');
+replay.events.click();eq(host.dataset.nfcState,'playing','explicit replay starts');eq(restarts,baseline+1,'replay restarts all panel animations once');
+preference.matches=true;preference.change();eq(host.dataset.nfcState,'static','reduced motion uses static preview');eq(replay.disabled,true,'static preview disables replay');const reducedCount=restarts;replay.events.click();eq(restarts,reducedCount,'reduced motion cannot start animation');
+preference.matches=false;preference.change();eq(host.dataset.nfcState,'playing','motion preference resumes a fresh consistent timeline');win.events.pagehide();eq(host.dataset.nfcState,'waiting','pagehide suspends');win.events.pageshow();eq(host.dataset.nfcState,'playing','pageshow resumes');
+console.log(JSON.stringify({checks,failures:0,note:'Standalone NFC lifecycle; actual 10-second animation verified in browser.'}));
