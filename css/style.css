@@ -37,6 +37,15 @@ html::-webkit-scrollbar-corner{background:var(--paper)}
 @supports not selector(::-webkit-scrollbar){html{scrollbar-width:thin;scrollbar-color:var(--coral) var(--paper)}}
 @media(forced-colors:active){html{scrollbar-color:auto}}
 
+/* Reveal the native scrollbar when a mouse approaches its edge. */
+@media(hover:hover) and (pointer:fine){
+ html:not(.is-scrollbar-hover)::-webkit-scrollbar-track{background:transparent;border-color:transparent;box-shadow:none}
+ html:not(.is-scrollbar-hover)::-webkit-scrollbar-thumb{background:transparent;border-color:transparent;box-shadow:none}
+ html:not(.is-scrollbar-hover)::-webkit-scrollbar-corner{background:transparent}
+ @supports not selector(::-webkit-scrollbar){html:not(.is-scrollbar-hover){scrollbar-color:transparent transparent}}
+}
+@media(forced-colors:active){html:not(.is-scrollbar-hover){scrollbar-color:auto}}
+
 /* 2. Reset, readable defaults and reusable layout */
 *, *::before, *::after {
   box-sizing: border-box;

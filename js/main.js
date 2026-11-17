@@ -1175,3 +1175,23 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initialise);
   else initialise();
 })();
+
+/* Keep native scrolling and dragging; only reveal its visual treatment near an edge. */
+(function () {
+  var root = document.documentElement;
+  var mouse = window.matchMedia('(hover:hover) and (pointer:fine)');
+  var shown = false;
+  function reveal(value) {
+    if (shown === value) return;
+    shown = value; root.classList.toggle('is-scrollbar-hover', value);
+  }
+  document.addEventListener('pointermove', function (event) {
+    if (!mouse.matches || event.pointerType === 'touch') { reveal(false); return; }
+    var vertical = root.scrollHeight > root.clientHeight && event.clientX >= root.clientWidth - 24;
+    var horizontal = root.scrollWidth > root.clientWidth && event.clientY >= root.clientHeight - 24;
+    reveal(vertical || horizontal);
+  }, {passive:true});
+  window.addEventListener('blur', function () { reveal(false); });
+  window.addEventListener('pagehide', function () { reveal(false); });
+  mouse.addEventListener('change', function () { reveal(false); });
+}());
