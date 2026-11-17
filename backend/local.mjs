@@ -3,11 +3,15 @@ import {Readable} from 'node:stream';
 import {database} from './test/database.mjs';
 import {createApi} from './src/api.mjs';
 import {ApiError} from './src/core.mjs';
+import {readFile} from 'node:fs/promises';
 const {db,repo}=await database();
 const handle=createApi({repo,origin:'http://127.0.0.1:8787',rateSecret:crypto.randomUUID(),enabled:true,
  authenticate:async()=>{throw new ApiError(401,'authentication_required');}});
 const server=createServer(async(req,res)=>{
  try {
+  const files={'/checkout/':['./public/checkout.html','text/html'],'/checkout/checkout.js':['./public/checkout.js','text/javascript'],'/checkout/checkout.css':['./public/checkout.css','text/css'],'/css/style.css':['../css/style.css','text/css'],'/images/logo.svg':['../images/logo.svg','image/svg+xml']};
+  const asset=files[req.url?.split('?')[0]];
+  if(asset&&req.method==='GET'){res.writeHead(200,{'Content-Type':asset[1],'Cache-Control':'no-store'});res.end(await readFile(new URL(asset[0],import.meta.url)));return;}
   const request=new Request(`http://127.0.0.1:8787${req.url}`,{method:req.method,headers:req.headers,...(req.method==='GET'||req.method==='HEAD'?{}:{body:Readable.toWeb(req),duplex:'half'})});
   const response=await handle(request,req.socket.remoteAddress);
   res.writeHead(response.status,Object.fromEntries(response.headers));res.end(Buffer.from(await response.arrayBuffer()));

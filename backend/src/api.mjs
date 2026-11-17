@@ -21,6 +21,12 @@ export function createApi({repo,authenticate,origin,rateSecret,enabled=false,log
         const bytes=new Uint8Array(size);let offset=0;for(const b of chunks){bytes.set(b,offset);offset+=b.length;}
         try{return JSON.parse(new TextDecoder().decode(bytes));}catch{fail(400,'invalid_json');}
       }
+      if(path==='/api/test/catalogue'&&request.method==='GET')return reply(200,await repo.rpc('netbud_catalogue'));
+      if(path==='/api/test/estimate'&&request.method==='POST'){
+        const data=await body();keys(data,['items','delivery']);
+        const checked=validateOrder({customer:{name:'Test',email:'preview@example.test',phone:'0000000000'},items:data.items,delivery:data.delivery,...(data.delivery==='shipping'?{address:{line1:'Test',suburb:'Test',state:'NSW',postcode:'2150',country:'AU'}}:{})});
+        return reply(200,await repo.rpc('netbud_estimate',{p_items:checked.items,p_delivery:checked.delivery}));
+      }
       if(path==='/api/test/orders'&&request.method==='POST') {
         const input=validateOrder(await body()), id=uuid(request.headers.get('idempotency-key'));
         const result=await repo.rpc('netbud_create',{p_body:input,p_key:id,p_hash:await digest(JSON.stringify(input))});
