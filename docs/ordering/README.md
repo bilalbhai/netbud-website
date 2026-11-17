@@ -1,5 +1,7 @@
 # NetBud ordering system — Phase A review
 
+Latest review: [Phase D local customer tracking](PHASE_D_REPORT.md), on `codex/netbud-phase-d-tracking`. Production remains unchanged; no customer accounts, real emails or artwork approval are activated.
+
 Date: 17 November 2026. Branch: `codex/netbud-ordering-phase-a`.
 Baseline: `49e5708034e84d586bd08724e9734b4c5a6819b7`, verified against `origin/main` before this audit.
 
