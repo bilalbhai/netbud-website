@@ -1176,22 +1176,49 @@
   else initialise();
 })();
 
-/* Keep native scrolling and dragging; only reveal its visual treatment near an edge. */
+/* One full-height hit area, with an independent five-second visibility timer. */
 (function () {
-  var root = document.documentElement;
-  var mouse = window.matchMedia('(hover:hover) and (pointer:fine)');
-  var shown = false;
-  function reveal(value) {
-    if (shown === value) return;
-    shown = value; root.classList.toggle('is-scrollbar-hover', value);
+  var root=document.documentElement, mouse=matchMedia('(hover:hover) and (pointer:fine)'), contrast=matchMedia('(forced-colors:active)');
+  var rail=document.createElement('div'), thumb=document.createElement('span');
+  rail.className='site-scrollbar'; thumb.className='site-scrollbar__thumb'; rail.appendChild(thumb);
+  rail.tabIndex=0; rail.setAttribute('role','scrollbar'); rail.setAttribute('aria-label','Page scroll'); rail.setAttribute('aria-orientation','vertical'); rail.setAttribute('aria-valuemin','0');
+  if(document.getElementById('main')) rail.setAttribute('aria-controls','main');
+  document.body.appendChild(rail);
+  var timer=null, frame=null, dragging=false, grab=0, size=48, travel=0, maximum=0, enabled=false;
+  function arm(){clearTimeout(timer);if(!dragging)timer=setTimeout(function(){rail.classList.remove('is-visible');},5000);}
+  function show(){if(!enabled)return;rail.classList.add('is-visible');arm();}
+  function update(){
+    frame=null; maximum=Math.max(0,root.scrollHeight-innerHeight);
+    rail.hidden=!enabled||maximum===0;
+    var height=rail.clientHeight;
+    size=Math.min(height,Math.max(48,height*innerHeight/Math.max(innerHeight,root.scrollHeight)));travel=Math.max(0,height-size);
+    thumb.style.height=size+'px';thumb.style.transform='translateY('+(maximum?scrollY/maximum*travel:0)+'px)';
+    rail.hidden=!enabled||maximum===0;
+    rail.setAttribute('aria-valuemax',String(Math.round(maximum)));rail.setAttribute('aria-valuenow',String(Math.round(scrollY)));
   }
-  document.addEventListener('pointermove', function (event) {
-    if (!mouse.matches || event.pointerType === 'touch') { reveal(false); return; }
-    var vertical = root.scrollHeight > root.clientHeight && event.clientX >= root.clientWidth - 24;
-    var horizontal = root.scrollWidth > root.clientWidth && event.clientY >= root.clientHeight - 24;
-    reveal(vertical || horizontal);
-  }, {passive:true});
-  window.addEventListener('blur', function () { reveal(false); });
-  window.addEventListener('pagehide', function () { reveal(false); });
-  mouse.addEventListener('change', function () { reveal(false); });
+  function schedule(){if(frame===null)frame=requestAnimationFrame(update);}
+  function mode(){enabled=mouse.matches&&!contrast.matches;root.classList.toggle('has-custom-scrollbar',enabled);clearTimeout(timer);rail.classList.remove('is-visible');schedule();}
+  function move(y){var top=rail.getBoundingClientRect().top;window.scrollTo({top:travel?Math.max(0,Math.min(travel,y-top-grab))/travel*maximum:0,behavior:'instant'});show();schedule();}
+  rail.addEventListener('pointerenter',show);
+  rail.addEventListener('pointermove',function(e){if(dragging)move(e.clientY);else show();});
+  rail.addEventListener('pointerleave',arm);
+  rail.addEventListener('pointerdown',function(e){
+    if(e.button!==0||!enabled)return;e.preventDefault();update();
+    dragging=true;grab=e.target===thumb?e.clientY-thumb.getBoundingClientRect().top:size/2;
+    rail.setPointerCapture(e.pointerId);show();move(e.clientY);
+  });
+  function end(){dragging=false;arm();}
+  rail.addEventListener('pointerup',end);rail.addEventListener('pointercancel',end);rail.addEventListener('lostpointercapture',end);
+  rail.addEventListener('focus',show);rail.addEventListener('blur',arm);
+  rail.addEventListener('keydown',function(e){
+    var pos=scrollY;
+    if(e.key==='ArrowDown')pos+=40;else if(e.key==='ArrowUp')pos-=40;
+    else if(e.key==='PageDown'||e.key===' ')pos+=innerHeight*.9;else if(e.key==='PageUp')pos-=innerHeight*.9;
+    else if(e.key==='Home')pos=0;else if(e.key==='End')pos=maximum;else return;
+    e.preventDefault();window.scrollTo({top:pos,behavior:'instant'});show();
+  });
+  window.addEventListener('scroll',function(){schedule();show();},{passive:true});
+  window.addEventListener('resize',schedule,{passive:true});
+  if(window.ResizeObserver)new ResizeObserver(schedule).observe(document.body);
+  mouse.addEventListener('change',mode);contrast.addEventListener('change',mode);mode();
 }());
