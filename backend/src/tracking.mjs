@@ -22,7 +22,7 @@ export function createTracking({repo,secret,origin,delivery,localOnly=false}){
       const started=Date.now(),id=crypto.randomUUID(),code=generateCode();
       const allowed=await repo.rpc('netbud_otp_begin',{p_id:id,p_email:email,p_email_hash:await mac('email:'+email),p_hmac:await mac('code:'+id+':'+code),p_network:await mac('network:'+network)});
       if(allowed)await delivery.enqueue({id,email,code,expires:Date.now()+300000});
-      await new Promise(resolve=>setTimeout(resolve,Math.max(0,150-Date.now())));
+      await new Promise(resolve=>setTimeout(resolve,Math.max(0,150-(Date.now()-started))));
       return reply(202,{challenge:id,message:'If eligible, a verification code will be delivered. Codes expire after five minutes.'});
     }
     if(path==='/api/test/tracking/verify'&&request.method==='POST'){
