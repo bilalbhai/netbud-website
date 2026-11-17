@@ -59,7 +59,10 @@
     if (arrivalStarted || !document.querySelector('[data-website-hero]')) return;
     var preference = window.matchMedia('(prefers-reduced-motion: reduce)');
     var target = document.querySelector('#site-header .brand img'), heading = document.querySelector('#hero-title');
-    if (!target || preference.matches || document.hidden || !target.animate) return;
+    if (!target || preference.matches || document.hidden || !target.animate || window.__netbudBootExpired) {
+      if (!document.hidden && document.documentElement) document.documentElement.classList.remove('brand-boot');
+      return;
+    }
     var navigation = window.performance && window.performance.getEntriesByType('navigation')[0];
     if (navigation && navigation.type === 'back_forward') return;
     var bounds = target.getBoundingClientRect();
@@ -76,6 +79,8 @@
     var greeting = document.createElement('span'); greeting.textContent = 'Welcome to';
     var wordmark = document.createElement('img'); wordmark.src = '/images/logo-wordmark.svg'; wordmark.alt = ''; wordmark.width = 174; wordmark.height = 58;
     welcome.append(greeting, wordmark); flight.appendChild(logo); overlay.append(backdrop, flight, welcome); document.body.appendChild(overlay);
+    if (document.documentElement) document.documentElement.classList.remove('brand-boot');
+    window.clearTimeout(window.__netbudBootTimer);
     target.classList.add('is-brand-arriving'); if (heading) heading.classList.add('is-brand-intro-pending');
     var animations = [], finished = false, fallback;
     function cleanup(typing) {
@@ -139,6 +144,6 @@
     });
   }
   function loaded() { document.addEventListener('visibilitychange', ready); ready(); }
-  if (document.readyState === 'complete') loaded();
-  else window.addEventListener('load', loaded, {once:true});
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', loaded, {once:true});
+  else loaded();
 }());
