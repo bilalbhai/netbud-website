@@ -32,7 +32,7 @@ window.NETBUD_CONFIG = {
     linkedin: ""
   },
   formEndpoint: "https://formsubmit.co/ajax/bilal@netbud.com.au",
-  formDeliveryVerified: false, // Set true only after activation AND a real test email is confirmed in the recipient inbox.
+  formDeliveryVerified: true, // Owner confirmed activation and receipt of a second test enquiry on 17 November 2026.
   googleAnalyticsId: "", // Optional G-XXXXXXXXXX measurement ID. An opt-in is shown before loading analytics.
   hostedPaymentLinks: [], // Optional [{ label: "Pay an agreed invoice", url: "https://…" }]. Only add genuine links.
   upi: {

@@ -1,16 +1,12 @@
 # NetBud FormSubmit setup and verification
 
-Status: implemented locally; recipient activation and inbox delivery are NOT verified. No production submissions or activation emails were triggered by Codex. Nothing has been deployed.
+Status: the owner confirmed recipient activation AND receipt of a second test enquiry on 17 November 2026. `formDeliveryVerified` is now true. Codex has not accessed the inbox or sent production test enquiries. This does not mean every individual form has been inbox-tested.
 
-## Owner activation
+## Verification
 
-1. Open the local preview and submit ONE enquiry using your own real contact details. Do not use fake customer details. This sends to `https://formsubmit.co/ajax/bilal@netbud.com.au`.
-2. Open bilal@netbud.com.au yourself, including Spam/Junk. Find FormSubmit's activation message and follow its confirmation link. Codex does not access or confirm your inbox.
-3. Submit another enquiry using your own real details. Confirm you actually receive it, including subject, source URL, customer details, and product/quantity information. Reply to confirm Reply-To points at your entered email.
-4. Tell Codex when the second email has arrived. Only then set `formDeliveryVerified: true` in `js/config.js`. This flag is public configuration, not a credential.
-5. Approve deployment separately. After deployment, repeat a test on https://netbud.com.au; an activation associated with a different site/origin may require confirmation again.
+Use FORM_VERIFICATION_CHECKLIST.md to check the 23 distinct form placements. Use your own real details, verify the email subject, source URL, fields and Reply-To, then tick each form. For the basket, select products and quantities before submitting. Old .html URLs and /product/?id=... are aliases of these forms, not additional enquiry types.
 
-While the flag is false, the service still receives submissions (so activation and inbox testing work), but the website conservatively shows the preserved draft / unconfirmed-delivery state instead of claiming success or resetting fields. Activation is not evidence of inbox delivery. Never set the flag true solely because an activation link was clicked.
+If changing the recipient or moving to a new origin, set `formDeliveryVerified` false, submit one test, open the recipient inbox yourself, confirm FormSubmit’s activation message, then submit a second test and confirm receipt before restoring true. An activation link alone is not proof of delivery.
 
 ## Behaviour
 
