@@ -1,6 +1,30 @@
 /* Two original product demonstrations. No device permissions or contact writes. */
 (function () {
   'use strict';
+  function setupLaptopIntroduction(host) {
+    var laptop = host.querySelector('.laptop-demo');
+    if (!laptop) return function () {};
+    var surface = laptop.closest('.showcase-float') || laptop;
+    var introduction = document.createElement('div');
+    introduction.className = 'laptop-cinematic is-cinematic-intro';
+    surface.parentNode.insertBefore(introduction, surface);
+    introduction.appendChild(surface);
+    var photo = laptop.querySelector('.laptop-demo__photo');
+    if (photo) ['rim', 'base'].forEach(function (part) {
+      var light = document.createElement('span');
+      light.className = 'cinematic-reflection cinematic-reflection--' + part;
+      light.setAttribute('aria-hidden', 'true');
+      photo.appendChild(light);
+    });
+    function finish() {
+      introduction.classList.remove('is-cinematic-intro');
+      introduction.dataset.introComplete = 'true';
+    }
+    introduction.addEventListener('animationend', function (event) {
+      if (event.animationName === 'laptop-studio-light') finish();
+    });
+    return finish;
+  }
   function setupPhoneClock(host) {
     var times = host.querySelectorAll('[data-phone-time]');
     var dates = host.querySelectorAll('[data-phone-date]');
@@ -41,6 +65,9 @@
     if (panels.length !== 2) return;
     var duration = Number(host.dataset.demoInterval) || 3000;
     var preference = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+    var finishLaptopIntroduction = setupLaptopIntroduction(host);
+    if (preference && preference.matches) finishLaptopIntroduction();
+    if (preference && preference.matches) finishLaptopIntroduction();
     var config = window.NETBUD_CONFIG || {};
     var refreshPhoneClock = setupPhoneClock(host);
     var active = 0;
@@ -95,6 +122,8 @@
     }
     function show(index) {
       stopClock();
+      // Consume an interrupted intro too: changing scenes must never replay it.
+      if (index !== 0) finishLaptopIntroduction();
       active = index;
       remaining = duration;
       panels.forEach(function (panel, i) {
@@ -129,6 +158,7 @@
     window.addEventListener('pagehide', function () { pageActive = false; schedule(); });
     window.addEventListener('pageshow', function () { pageActive = true; schedule(); });
     function motionChanged() {
+      if (reduced()) finishLaptopIntroduction();
       stopClock();
       remaining = duration;
       schedule();

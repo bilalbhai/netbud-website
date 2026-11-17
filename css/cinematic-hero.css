@@ -1,0 +1,32 @@
+/* One-shot laptop presentation. The hero controller owns pause and scene changes. */
+.laptop-cinematic{width:100%;height:100%;transform-origin:50% 65%;--intro-tilt:10deg;--intro-rise:30px;--intro-scale:.88}
+.cinematic-reflection{position:absolute;display:block;pointer-events:none;overflow:hidden;opacity:0;z-index:2}
+.cinematic-reflection--rim{left:12.8%;top:8%;width:74.5%;height:67.5%;border:4px solid transparent;border-radius:9px;background:linear-gradient(125deg,#f7d7c7,#eee7f8,#fff);background-clip:border-box;mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude}
+.cinematic-reflection--base{left:8%;top:75%;width:84%;height:10%;clip-path:polygon(8% 0,92% 0,100% 85%,96% 100%,4% 100%,0 85%)}
+.cinematic-reflection::after{content:"";position:absolute;inset:-40% -80%;background:linear-gradient(115deg,transparent 33%,#f4d5c433%,#e5dcf25c 46%,#ffffffa6 50%,#fff4e657 54%,transparent 65%);transform:translateX(-45%)}
+@media(prefers-reduced-motion:no-preference){
+ .is-cinematic-intro{animation:laptop-cinema-enter 1.6s cubic-bezier(.16,1,.3,1) .2s both}
+ .is-cinematic-intro .cinematic-reflection{animation:laptop-light-envelope 1.7s ease-in-out .8s both}
+ .is-cinematic-intro .cinematic-reflection::after{animation:laptop-studio-light 1.7s cubic-bezier(.2,.6,.3,1) .8s both}
+ .is-cinematic-intro .cinematic-reflection--rim{opacity:0}
+ .is-cinematic-intro .showcase-float{animation:none!important}
+ [data-hero-story]:not([data-story-state=playing]) .laptop-cinematic,
+ [data-hero-story]:not([data-story-state=playing]) .cinematic-reflection,
+ [data-hero-story]:not([data-story-state=playing]) .cinematic-reflection::after{animation-play-state:paused}
+}
+@keyframes laptop-cinema-enter{
+ from{transform:perspective(1100px) translateY(var(--intro-rise)) rotateX(var(--intro-tilt)) scale(var(--intro-scale));opacity:.65}
+ to{transform:perspective(1100px) translateY(0) rotateX(0) scale(1);opacity:1}
+}
+@keyframes laptop-light-envelope{0%,100%{opacity:0}25%,65%{opacity:.28}}
+@keyframes laptop-studio-light{from{transform:translateX(-45%)}to{transform:translateX(45%)}}
+@media(max-width:767px){
+ .laptop-cinematic{--intro-tilt:4deg;--intro-rise:14px;--intro-scale:.95}
+ .cinematic-reflection--rim{display:none}
+ .cinematic-reflection--base{filter:none}
+}
+@media(prefers-reduced-motion:reduce){
+ .laptop-cinematic{animation:none!important;transform:none!important;opacity:1!important}
+ .cinematic-reflection{display:none!important}
+}
+@supports not (mask-composite:exclude){.cinematic-reflection--rim{display:none}}
