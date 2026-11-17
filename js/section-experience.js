@@ -1,4 +1,4 @@
-/* Responsive comparison, short pinned story and user-controlled project carousel. */
+/* Responsive comparison, short pinned story and automatically rotating project carousel. */
 (function () {
   'use strict';
   function setupDepthCarousel(track, cards, index) {
@@ -22,8 +22,15 @@
     previous.setAttribute('aria-label', 'Previous project'); next.setAttribute('aria-label', 'Next project');
     previous.setAttribute('aria-controls', track.id); next.setAttribute('aria-controls', track.id);
     wrapper.append(previous, next, status);
-    var active = 0;
-    function show(position) {
+    var active = 0, timer = null, visible = false, pageActive = true;
+    var preference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    function schedule() {
+      window.clearTimeout(timer);
+      timer = null;
+      if (!visible || document.hidden || !pageActive || preference.matches || wrapper.contains(document.activeElement)) return;
+      timer = window.setTimeout(function () { show(active + 1, true); }, 1500);
+    }
+    function show(position, automatic) {
       active = (position + cards.length) % cards.length;
       cards.forEach(function (card, i) {
         var offset = (i - active + cards.length) % cards.length;
@@ -35,8 +42,10 @@
         card.inert = !current;
       });
       var heading = cards[active].querySelector('h3');
+      status.setAttribute('aria-live', automatic ? 'off' : 'polite');
       status.textContent = 'Project ' + (active + 1) + ' of ' + cards.length + ': ' + (heading ? heading.textContent : 'Website project');
       wrapper.dataset.activeProject = String(active);
+      schedule();
     }
     previous.addEventListener('click', function () { show(active - 1); });
     next.addEventListener('click', function () { show(active + 1); });
@@ -59,6 +68,18 @@
       touchStart = null;
     });
     track.addEventListener('pointercancel', function () { touchStart = null; });
+    wrapper.addEventListener('focusin', schedule);
+    wrapper.addEventListener('focusout', function () { window.setTimeout(schedule, 0); });
+    document.addEventListener('visibilitychange', schedule);
+    window.addEventListener('pagehide', function () { pageActive = false; schedule(); });
+    window.addEventListener('pageshow', function () { pageActive = true; schedule(); });
+    preference.addEventListener('change', schedule);
+    if (window.IntersectionObserver) {
+      new IntersectionObserver(function (entries) {
+        visible = entries[0].isIntersecting;
+        schedule();
+      }, {threshold: 0}).observe(wrapper);
+    } else { visible = true; }
     show(0);
   }
   function init() {

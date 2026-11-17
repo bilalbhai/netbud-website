@@ -28,3 +28,6 @@
 .nfc-signature :is(a,button):focus-visible{outline-color:#ffd4b2;outline-offset:5px}
 @media(max-width:999px){.nfc-signature .nfc-section-copy{max-width:650px}.nfc-signature .signature-badge{margin-bottom:23px}}
 @media(max-width:600px){.nfc-signature .nfc-section-copy h2{font-size:45px}.nfc-signature .nfc-section-copy>p:not(.eyebrow){font-size:16px}.signature-features{gap:7px;margin:22px 0 26px}.signature-features>li{font-size:10px;padding:7px 9px}.signature-product-label{font-size:8px}.signature-product-label>span:last-child{font-size:9px}}
+
+/* Opaque colours keep the overlapping curve identical over dark and light sections. */
+body[data-page=home] .nfc-signature + .work-section{background:linear-gradient(135deg,#e4eefb,#f2eff8 65%,#faf9f6)}
