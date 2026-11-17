@@ -11,7 +11,7 @@ export function text(v, min, max) {
 }
 export const uuid = v => { if (typeof v !== 'string' || !/^[a-f0-9]{8}-[a-f0-9]{4}-[1-8][a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/i.test(v)) fail(400, 'invalid_input'); return v; };
 export function validateOrder(v) {
-  keys(v, ['customer','items','delivery','address']); keys(v.customer, ['name','email','phone','business']);
+  keys(v, ['customer','items','delivery','address','designs']); keys(v.customer, ['name','email','phone','business']);
   const customer = {name:text(v.customer.name,1,120), email:text(v.customer.email,3,254).toLowerCase(), phone:text(v.customer.phone,6,30)};
   // This foundation accepts synthetic examples only, never real customer submissions.
   if (!/^[^\s@]+@[^\s@]+\.test$/.test(customer.email)) fail(400,'test_email_required');
@@ -27,7 +27,10 @@ export function validateOrder(v) {
     if(v.address.line2) address.line2=text(v.address.line2,1,160);
     if(address.country!=='AU'||!['NSW','VIC','QLD','SA','WA','TAS','ACT','NT'].includes(address.state)||!/^\d{4}$/.test(address.postcode)) fail(400,'invalid_delivery');
   } else if(v.address !== undefined) fail(400,'invalid_delivery');
-  return {customer,items,delivery:v.delivery,...(address?{address}:{})};
+  const designs=v.designs||[];
+  if(!Array.isArray(designs)||designs.length>5)fail(400,'invalid_input');
+  const normalized=designs.map(d=>{keys(d,['product_id','name','instructions','destination']);const item=items.find(i=>i.product_id===d.product_id);if(!item||![5,10].includes(d.product_id)||designs.filter(x=>x.product_id===d.product_id).length>item.quantity)fail(400,'invalid_input');const destination=d.destination?text(d.destination,1,500):'';if(destination&&!/^https:\/\//.test(destination))fail(400,'invalid_input');return {product_id:d.product_id,name:text(d.name,1,120),instructions:d.instructions?text(d.instructions,1,1000):'',destination};});
+  return {customer,items,delivery:v.delivery,...(address?{address}:{}),...(normalized.length?{designs:normalized}:{})};
 }
 export async function digest(value) {
   const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(value)); return Array.from(new Uint8Array(b),v=>v.toString(16).padStart(2,'0')).join('');
