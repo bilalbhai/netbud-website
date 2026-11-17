@@ -1,5 +1,7 @@
 # NetBud backend foundation (Phase B)
 
+Latest development addition: [Phase D tracking report](../docs/ordering/PHASE_D_REPORT.md). The loopback runner now serves `/track/` with a private filesystem mock inbox; real email and the edge tracking adapter remain disabled. Phase B setup details below remain applicable to the local database/test runner.
+
 Development only. This folder is not connected to the public website. Do not deploy it, publish the repository root as static output, or enable real email/payments. No changes to FormSubmit are needed.
 
 ## Local setup

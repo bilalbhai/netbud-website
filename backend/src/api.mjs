@@ -1,6 +1,6 @@
 import {ApiError,fail,keys,uuid,validateOrder,digest,networkKey} from './core.mjs';
 // Fetch-compatible core for a future Pages Function. No production route is installed in Phase B.
-export function createApi({repo,authenticate,origin,rateSecret,enabled=false,log=()=>{}}) {
+export function createApi({repo,authenticate,origin,rateSecret,enabled=false,tracking=null,log=()=>{}}) {
   return async function handle(request,networkIdentity) {
     const requestId=crypto.randomUUID();
     const reply=(status,data)=>new Response(JSON.stringify(data),{status,headers:{'Content-Type':'application/json','Cache-Control':'no-store','X-Content-Type-Options':'nosniff','X-Request-ID':requestId,'Content-Security-Policy':"default-src 'none'; frame-ancestors 'none'"}});
@@ -21,6 +21,7 @@ export function createApi({repo,authenticate,origin,rateSecret,enabled=false,log
         const bytes=new Uint8Array(size);let offset=0;for(const b of chunks){bytes.set(b,offset);offset+=b.length;}
         try{return JSON.parse(new TextDecoder().decode(bytes));}catch{fail(400,'invalid_json');}
       }
+      if(path.startsWith('/api/test/tracking/')&&tracking)return await tracking({request,body,network:networkIdentity,reply});
       if(path==='/api/test/catalogue'&&request.method==='GET')return reply(200,await repo.rpc('netbud_catalogue'));
       if(path==='/api/test/estimate'&&request.method==='POST'){
         const data=await body();keys(data,['items','delivery']);
