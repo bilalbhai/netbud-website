@@ -1,6 +1,6 @@
 import {ApiError,fail,keys,uuid,validateOrder,digest,networkKey} from './core.mjs';
 // Fetch-compatible core for a future Pages Function. No production route is installed in Phase B.
-export function createApi({repo,authenticate,origin,rateSecret,enabled=false,tracking=null,admin=null,log=()=>{}}) {
+export function createApi({repo,authenticate,origin,rateSecret,enabled=false,tracking=null,admin=null,botGuard=null,log=()=>{}}) {
   return async function handle(request,networkIdentity) {
     const requestId=crypto.randomUUID();
     const reply=(status,data)=>new Response(JSON.stringify(data),{status,headers:{'Content-Type':'application/json','Cache-Control':'no-store','X-Content-Type-Options':'nosniff','X-Request-ID':requestId,'Content-Security-Policy':"default-src 'none'; frame-ancestors 'none'"}});
@@ -21,6 +21,8 @@ export function createApi({repo,authenticate,origin,rateSecret,enabled=false,tra
         const bytes=new Uint8Array(size);let offset=0;for(const b of chunks){bytes.set(b,offset);offset+=b.length;}
         try{return JSON.parse(new TextDecoder().decode(bytes));}catch{fail(400,'invalid_json');}
       }
+      const botAction=request.method==='POST'?({'/api/test/orders':'checkout','/api/test/tracking/request':'otp','/api/enquiries':'enquiry','/api/artwork/uploads':'artwork'})[path]:null;
+      if(botAction&&botGuard)await botGuard(request.headers.get('x-turnstile-token'),botAction);
       if(path.startsWith('/api/admin/')&&admin)return await admin({request,body,reply});
       if(path.startsWith('/api/test/tracking/')&&tracking)return await tracking({request,body,network:networkIdentity,reply});
       if(path==='/api/test/catalogue'&&request.method==='GET')return reply(200,await repo.rpc('netbud_catalogue'));

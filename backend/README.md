@@ -1,5 +1,7 @@
 # NetBud backend foundation (Phase B)
 
+Current preparation: [Phase G launch report](../docs/ordering/PHASE_G_REPORT.md), [email/DNS instructions](../docs/ordering/EMAIL_DNS_SETUP.md), [staging/storage/recovery runbook](../docs/ordering/OPERATIONS.md) and [unissued policy/invoice drafts](../docs/ordering/POLICY_AND_INVOICE_DRAFTS.md). Phase F/Revolut is postponed. Real email, public guest routes, uploads, final artwork approval, tax invoice issue and deletion remain off. The server adapter candidates are not deployment entry points.
+
 Latest review: [Phase E private local administration](../docs/ordering/PHASE_E_REPORT.md). Start `node backend/local.mjs`, then open `/admin/` on port 8787. Read the report before using one-time local test capabilities; no real staff credentials, MFA, invitations or production admin routes are activated.
 
 Latest development addition: [Phase D tracking report](../docs/ordering/PHASE_D_REPORT.md). The loopback runner now serves `/track/` with a private filesystem mock inbox; real email and the edge tracking adapter remain disabled. Phase B setup details below remain applicable to the local database/test runner.
