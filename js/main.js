@@ -194,7 +194,7 @@
         var url = safeHttps((config.socialLinks || {})[name]);
         return url ? '<a href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer" aria-label="NetBud on ' + title + '">' + icon(name) + '</a>' : '<button type="button" data-social-placeholder="' + title + '" aria-label="' + title + ' profile — link coming soon" title="Profile link coming soon">' + icon(name) + '</button>';
       }).join("");
-      var analyticsPreference = /^G-[A-Z0-9]+$/.test(config.googleAnalyticsId || "")
+      var analyticsPreference = config.analyticsEnabled === true && config.analyticsContainerReviewed === true && /^GTM-[A-Z0-9]+$/.test(config.googleTagManagerId || "") && /^G-[A-Z0-9]+$/.test(config.googleAnalyticsId || "")
         ? '<button type="button" class="button-link footer-preferences" data-analytics-preferences>Analytics preferences</button>' : "";
       footer.innerHTML = '<div class="container"><div class="footer-grid"><div class="footer-brand"><a class="brand" href="' + localPath("index.html") + '"><img src="' + localPath("images/logo-dark.svg?v=20261028-b1") + '" width="172" height="48" alt="NetBud home"></a><p class="footer-tagline">' + escapeHtml(config.tagline) + '</p><p>Custom Websites · Branding · NFC · Digital Growth<br>Friendly support. One trusted mate.</p><div class="social-links">' + socials + '</div></div>' +
         '<div class="footer-links"><h2>What we do</h2><a href="' + localPath("services.html#websites") + '">Websites & online stores</a><a href="' + localPath("services.html#seo") + '">SEO & Google visibility</a><a href="' + localPath("services.html#systems") + '">Systems & automation</a><a href="' + localPath("services.html#support") + '">Hosting & support</a><a href="' + localPath("shop.html") + '">Explore all packages</a><a href="/services/#website-benefits">Custom-coded websites</a></div>' +
@@ -373,9 +373,11 @@
     if (!product || product.available === false || !Number.isInteger(amount) || amount < 1 || amount > 99) return false;
     if (product.price !== null && (typeof product.price !== 'number' || !Number.isFinite(product.price) || product.price < 0)) return false;
     var current = cart.find(function (item) { return item.id === product.id; });
+    var previousQuantity = current ? current.quantity : 0;
     if (current) current.quantity = Math.min(99, current.quantity + amount);
     else cart.push({ id: product.id, quantity: amount });
     saveCart();
+    if(window.NetBudAnalytics)window.NetBudAnalytics.cart('add_to_cart',product.id,Math.min(99,previousQuantity+amount)-previousQuantity);
     notify(product.name + ' added to your quote basket.');
     return true;
   }
@@ -384,12 +386,16 @@
     var amount = Number(quantity);
     var item = cart.find(function (entry) { return entry.id === Number(id); });
     if (!item || !Number.isInteger(amount) || amount < 1 || amount > 99) return false;
+    var delta = amount - item.quantity;
     item.quantity = amount;
     saveCart();
+    if(delta&&window.NetBudAnalytics)window.NetBudAnalytics.cart(delta>0?'add_to_cart':'remove_from_cart',item.id,Math.abs(delta));
     return true;
   }
 
   function removeFromCart(id) {
+    var removed = cart.find(function(item){return item.id===Number(id);});
+    if(removed&&window.NetBudAnalytics)window.NetBudAnalytics.cart('remove_from_cart',removed.id,removed.quantity);
     cart = cart.filter(function (item) { return item.id !== Number(id); });
     saveCart();
   }
@@ -713,6 +719,7 @@
       var phone = form.querySelector('[name="phone"]');
       var submitting = false;
       var formRevision = 0;
+      var analyticsAttempt = null;
       setFormStatus(form, '', 'info');
       // Keep errors readable in the page as well as in the browser's native prompt.
       form.addEventListener('invalid', function (event) {
@@ -735,7 +742,7 @@
         event.target.setAttribute('aria-describedby', descriptionIds.join(' '));
       }, true);
       function handleEdit(event) {
-        formRevision += 1;
+        formRevision += 1; analyticsAttempt = null;
         var field = event.target;
         if (typeof field.setCustomValidity === 'function') field.setCustomValidity('');
         field.removeAttribute('aria-invalid');
@@ -776,6 +783,7 @@
         var text = buildEnquiryText(form, data);
         var endpoint = safeHttps(config.formEndpoint);
         if (!endpoint) { showEnquiryDraft(form, text, false); return; }
+        if(!analyticsAttempt&&window.crypto&&window.crypto.randomUUID)analyticsAttempt=window.crypto.randomUUID();
         submitting = true;
         var submittedRevision = formRevision;
         var basketSnapshot = form.dataset.enquiryForm === 'checkout' ? JSON.stringify(cart) : null;
@@ -798,6 +806,7 @@
             credentials: 'omit', signal: controller ? controller.signal : undefined
           });
           await confirmFormResponse(response);
+          if(window.NetBudAnalytics&&analyticsAttempt)window.NetBudAnalytics.lead(analyticsAttempt,form.dataset.enquiryForm,document.body.dataset.productId,(form.querySelector('[name=services]')||{}).value);
           var oldReview = form.querySelector('.enquiry-review'); if (oldReview) oldReview.remove();
           var changed = formRevision !== submittedRevision || basketSnapshot !== null && basketSnapshot !== JSON.stringify(cart);
           setFormStatus(form, changed ? "Thanks! Your enquiry has been submitted. We'll be in touch soon. Your latest edits remain here and have not been sent." : "Thanks! Your enquiry has been submitted. We'll be in touch soon.", 'success');
@@ -860,56 +869,10 @@
   }
 
   function setupAnalytics() {
-    var id = config.googleAnalyticsId || '';
-    if (!/^G-[A-Z0-9]+$/.test(id)) return;
-    var consent = null;
-    var analyticsStarted = false;
-    var disableKey = 'ga-disable-' + id;
-    try { consent = window.localStorage.getItem('netbud-analytics-consent'); } catch (error) { /* Consent can still apply for this visit. */ }
-    function activate() {
-      window[disableKey] = false;
-      if (analyticsStarted) return;
-      analyticsStarted = true;
-      window.dataLayer = window.dataLayer || [];
-      window.gtag = function () { window.dataLayer.push(arguments); };
-      window.gtag('js', new Date());
-      window.gtag('config', id, { send_page_view: true });
-      var script = document.createElement('script'); script.async = true;
-      script.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(id); document.head.appendChild(script);
-    }
-    function showChoice(moveFocus) {
-      if (document.querySelector('.analytics-consent')) return;
-      // Google documents this flag as the control for stopping gtag data collection.
-      // https://developers.google.com/tag-platform/security/guides/privacy
-      window[disableKey] = true;
-      var banner = document.createElement('aside');
-      banner.className = 'analytics-consent consent-banner';
-      banner.setAttribute('aria-label', 'Optional analytics choice');
-      banner.innerHTML = '<p>May we use optional Google Analytics to understand website visits? Your enquiry details are never sent as analytics events. Analytics stay off while you choose. <a href="' + localPath('privacy.html') + '">Read the draft policy</a>.</p><div class="button-group button-row"><button type="button" class="button button-primary" data-analytics-yes>Allow analytics</button><button type="button" class="button button-outline" data-analytics-no>No thanks</button></div>';
-      banner.addEventListener('click', function (event) {
-        var yes = event.target.closest('[data-analytics-yes]');
-        var no = event.target.closest('[data-analytics-no]');
-        if (!yes && !no) return;
-        try { window.localStorage.setItem('netbud-analytics-consent', yes ? 'yes' : 'no'); } catch (error) { /* Browser storage is optional. */ }
-        if (yes) activate();
-        else window[disableKey] = true;
-        banner.remove();
-        var preferenceButton = document.querySelector('[data-analytics-preferences]');
-        if (moveFocus && preferenceButton) preferenceButton.focus({ preventScroll: true });
-        notify(yes ? 'Your analytics preference has been saved.' : 'Optional analytics are off.');
-      });
-      document.body.appendChild(banner);
-      if (moveFocus) banner.querySelector('button').focus();
-    }
-    document.querySelectorAll('[data-analytics-preferences]').forEach(function (button) {
-      button.addEventListener('click', function () {
-        try { window.localStorage.removeItem('netbud-analytics-consent'); } catch (error) { /* Preference can still change for this visit. */ }
-        showChoice(true);
-      });
-    });
-    window[disableKey] = consent !== 'yes';
-    if (consent === 'yes') activate();
-    else if (consent !== 'no') showChoice(false);
+    if (config.analyticsEnabled !== true || config.analyticsContainerReviewed !== true || !/^GTM-[A-Z0-9]+$/.test(config.googleTagManagerId || '') || !/^G-[A-Z0-9]+$/.test(config.googleAnalyticsId || '')) return;
+    if (window.NetBudAnalytics || document.querySelector('script[data-netbud-analytics]')) return;
+    var script = document.createElement('script'); script.defer = true; script.dataset.netbudAnalytics = 'true';
+    script.src = localPath('js/analytics.js') + '?v=20261118-a1'; document.head.appendChild(script);
   }
 
   function configureProductionMetadata() {
