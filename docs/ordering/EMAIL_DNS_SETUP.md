@@ -1,5 +1,9 @@
 # Phase G — transactional email setup for owner review
 
+Phase H update (18 November 2026): [staged integration](PHASE_H_REPORT.md) now connects the durable OTP/outbox, explicit email webhook route and optional approved server scheduler. Owner confirmed accounts are not ready, so real sending and hosted webhook tests remain blocked. Verified the protocol against [Resend's raw-body/Svix header instructions](https://resend.com/docs/webhooks/verify-webhooks-requests) and [Svix manual verification](https://docs.svix.com/receiving/verifying-payloads/how-manual): base64-decoded `whsec_` secret, HMAC-SHA256 over message ID, timestamp and untouched payload separated by periods, versioned base64 signatures, and bounded timestamp tolerance. Tests sign/verify synthetic payloads, reject changed bytes/stale timestamps, and bound body reads to 64 KiB. This is not evidence of a webhook received from Resend.
+
+The packaged app provides no OTP inbox/debug endpoint. A staging challenge is delivered only by the separately approved sender, with matching server/database recipient allowlists. The HTTPS loopback test obtains its mock message in the private test process, never through a public route. No real email or forwarding test was performed. Keep the existing FormSubmit integration unchanged.
+
 Prepared 18 November 2026. **Instructions only: no account, DNS, forwarding or sending changes were made.** Existing FormSubmit enquiries remain separate and verified; their activation does not verify Resend.
 
 ## Provider decision

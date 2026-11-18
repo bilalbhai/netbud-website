@@ -6,7 +6,7 @@ export function generateCode(){
   const v=new Uint32Array(1);do{crypto.getRandomValues(v);}while(v[0]>=4200000000);
   return String(v[0]%100000000).padStart(8,'0');
 }
-export function createTracking({repo,secret,origin,delivery,localOnly=false}){
+export function createTracking({repo,secret,origin,delivery,localOnly=false,stagingOnly=false,allowEmail=email=>/^[^\s@]+@[^\s@]+\.test$/.test(email)}){
   if(!secret||secret.length<32)throw Error('OTP secret required');
   if(localOnly&&!['127.0.0.1','localhost','[::1]'].includes(new URL(origin).hostname))throw Error('Mock tracking requires a loopback origin');
   const mac=value=>networkKey(value,secret);
@@ -14,14 +14,15 @@ export function createTracking({repo,secret,origin,delivery,localOnly=false}){
   const cookie=(value,maxAge)=>`${COOKIE}=${value}; Path=/; Max-Age=${maxAge}; Secure; HttpOnly; SameSite=Strict`;
   return async({request,body,network,reply})=>{
     // Never wire this mock delivery into the edge adapter. Public activation needs real bot protection.
-    if(!localOnly||new URL(request.url).origin!==origin)fail(503,'tracking_disabled');
+    if((!localOnly&&!stagingOnly)||new URL(request.url).origin!==origin)fail(503,'tracking_disabled');
     if(request.headers.get('sec-fetch-site')==='cross-site'||(request.headers.has('origin')&&request.headers.get('origin')!==origin))fail(403,'origin_denied');
     const path=new URL(request.url).pathname;
     if(path==='/api/test/tracking/request'&&request.method==='POST'){
-      const v=await body();keys(v,['email']);const email=text(v.email,3,254).toLowerCase();if(!/^[^\s@]+@[^\s@]+\.test$/.test(email))fail(400,'test_email_required');
+      const v=await body();keys(v,['email']);const email=text(v.email,3,254).toLowerCase();if(!allowEmail(email))fail(400,'test_email_required');
       const started=Date.now(),id=crypto.randomUUID(),code=generateCode();
       const allowed=await repo.rpc('netbud_otp_begin',{p_id:id,p_email:email,p_email_hash:await mac('email:'+email),p_hmac:await mac('code:'+id+':'+code),p_network:await mac('network:'+network)});
-      if(allowed)await delivery.enqueue({id,email,code,expires:Date.now()+300000});
+      // An outbox attachment failure must not disclose which addresses passed rate limits.
+      if(allowed)try{await delivery.enqueue({id,email,code,expires:Date.now()+300000});}catch{/* Owner operations sees a missing payload; never expose a code or claim delivery. */}
       await new Promise(resolve=>setTimeout(resolve,Math.max(0,150-(Date.now()-started))));
       return reply(202,{challenge:id,message:'If eligible, a verification code will be delivered. Codes expire after five minutes.'});
     }

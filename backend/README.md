@@ -1,5 +1,11 @@
 # NetBud backend foundation (Phase B)
 
+Latest: [Phase H integration/report](../docs/ordering/PHASE_H_REPORT.md). The owner confirmed hosted accounts are not ready. Local integrations and HTTPS mock browser tests are available; production remains disabled. Read the [updated staging/migration/manual-proof/rollback runbook](../docs/ordering/OPERATIONS.md) before any account or deployment work.
+
+From the repository root, `node backend/build.mjs .cache/h-review-UNIQUE` creates a fresh allowlisted staging artifact. Only its `public/` directory is a future Cloudflare Pages upload candidate; never publish the repo root or the adjacent manifest. It does not deploy. esbuild is a pinned development-only dependency. Synthetic local authentication was moved to `src/local-admin-session.mjs` and is excluded from the server bundle; packaged staff login uses Supabase password/TOTP with memory-only JWTs and database-backed session validity.
+
+For isolated Windows HTTPS review, run `./backend/test/tls.ps1`, set `PLAYWRIGHT_MODULE` if needed, then `node backend/test/integration-browser.mjs`. The certificate/key are generated in ignored cache without changing certificate stores. The browser test trusts this temporary loopback certificate and mocks Auth/Turnstile/email; it does not verify a real domain certificate or provider. Do not use real credentials in the fixture.
+
 Current preparation: [Phase G launch report](../docs/ordering/PHASE_G_REPORT.md), [email/DNS instructions](../docs/ordering/EMAIL_DNS_SETUP.md), [staging/storage/recovery runbook](../docs/ordering/OPERATIONS.md) and [unissued policy/invoice drafts](../docs/ordering/POLICY_AND_INVOICE_DRAFTS.md). Phase F/Revolut is postponed. Real email, public guest routes, uploads, final artwork approval, tax invoice issue and deletion remain off. The server adapter candidates are not deployment entry points.
 
 Latest review: [Phase E private local administration](../docs/ordering/PHASE_E_REPORT.md). Start `node backend/local.mjs`, then open `/admin/` on port 8787. Read the report before using one-time local test capabilities; no real staff credentials, MFA, invitations or production admin routes are activated.

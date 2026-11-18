@@ -1,6 +1,6 @@
 import {ApiError,fail,keys,uuid,validateOrder,digest,networkKey} from './core.mjs';
 // Fetch-compatible core for a future Pages Function. No production route is installed in Phase B.
-export function createApi({repo,authenticate,origin,rateSecret,enabled=false,tracking=null,admin=null,botGuard=null,log=()=>{}}) {
+export function createApi({repo,authenticate,origin,rateSecret,enabled=false,tracking=null,admin=null,botGuard=null,allowEmail,log=()=>{}}) {
   return async function handle(request,networkIdentity) {
     const requestId=crypto.randomUUID();
     const reply=(status,data)=>new Response(JSON.stringify(data),{status,headers:{'Content-Type':'application/json','Cache-Control':'no-store','X-Content-Type-Options':'nosniff','X-Request-ID':requestId,'Content-Security-Policy':"default-src 'none'; frame-ancestors 'none'"}});
@@ -32,7 +32,7 @@ export function createApi({repo,authenticate,origin,rateSecret,enabled=false,tra
         return reply(200,await repo.rpc('netbud_estimate',{p_items:checked.items,p_delivery:checked.delivery}));
       }
       if(path==='/api/test/orders'&&request.method==='POST') {
-        const input=validateOrder(await body()), id=uuid(request.headers.get('idempotency-key'));
+        const input=validateOrder(await body(),allowEmail), id=uuid(request.headers.get('idempotency-key'));
         const result=await repo.rpc('netbud_create',{p_body:input,p_key:id,p_hash:await digest(JSON.stringify(input))});
         return reply(result.replayed?200:201,{...result,test_only:true,email_delivery:'mock_pending'});
       }

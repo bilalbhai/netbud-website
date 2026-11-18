@@ -10,11 +10,11 @@ export function text(v, min, max) {
   return v.trim();
 }
 export const uuid = v => { if (typeof v !== 'string' || !/^[a-f0-9]{8}-[a-f0-9]{4}-[1-8][a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/i.test(v)) fail(400, 'invalid_input'); return v; };
-export function validateOrder(v) {
+export function validateOrder(v,allowEmail=email=>/^[^\s@]+@[^\s@]+\.test$/.test(email)) {
   keys(v, ['customer','items','delivery','address','designs']); keys(v.customer, ['name','email','phone','business']);
   const customer = {name:text(v.customer.name,1,120), email:text(v.customer.email,3,254).toLowerCase(), phone:text(v.customer.phone,6,30)};
   // This foundation accepts synthetic examples only, never real customer submissions.
-  if (!/^[^\s@]+@[^\s@]+\.test$/.test(customer.email)) fail(400,'test_email_required');
+  if (!allowEmail(customer.email)) fail(400,'test_email_required');
   if (v.customer.business !== undefined) customer.business=text(v.customer.business,1,160);
   if (!Array.isArray(v.items) || v.items.length<1 || v.items.length>20) fail(400,'invalid_input');
   const seen=new Set();

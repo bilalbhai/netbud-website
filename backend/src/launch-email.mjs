@@ -18,10 +18,10 @@ export async function openOtp(raw,id,payload,now=Date.now()){
  return value.code;
 }
 export class DurableOtpDelivery {
- constructor(repo,transportKey){this.repo=repo;this.key=transportKey;}
+ constructor(repo,transportKey,allowEmail=email=>email.endsWith('.test')){this.repo=repo;this.key=transportKey;this.allow=allowEmail;}
  async enqueue({id,email,code,expires}){
   // Recipient comes from the original challenge transaction, never a second browser field.
-  if(!email.endsWith('.test'))throw Error('Public OTP activation remains blocked');
+  if(!this.allow(email))throw Error('Recipient not approved');
   const payload=await sealOtp(this.key,id,code,expires);
   await this.repo.rpc('netbud_launch_attach_otp',{p_id:id,p_payload:payload});
  }
@@ -85,7 +85,9 @@ export async function dispatchLaunchMail({repo,sender,transportKey,enabled=false
 export async function verifyResendEvent(request,secret,now=Date.now()){
  const id=request.headers.get('svix-id'),ts=request.headers.get('svix-timestamp'),signatures=request.headers.get('svix-signature')||'';
  if(!id||id.length>200||!/^\d{10}$/.test(ts||'')||Math.abs(now/1000-Number(ts))>300||!secret?.startsWith('whsec_'))fail(401,'invalid_webhook');
- const body=await request.text();if(enc.encode(body).length>65536)fail(413,'request_too_large');
+ const reader=request.body?.getReader();if(!reader)fail(400,'invalid_webhook');let size=0;const chunks=[];
+ while(true){const {done,value}=await reader.read();if(done)break;size+=value.length;if(size>65536){await reader.cancel();fail(413,'request_too_large');}chunks.push(value);}
+ const all=new Uint8Array(size);let offset=0;for(const value of chunks){all.set(value,offset);offset+=value.length;}let body;try{body=new TextDecoder('utf-8',{fatal:true}).decode(all);}catch{fail(400,'invalid_webhook');}
  let raw;try{raw=Uint8Array.from(atob(secret.slice(6)),c=>c.charCodeAt(0));}catch{fail(401,'invalid_webhook');}
  const k=await crypto.subtle.importKey('raw',raw,{name:'HMAC',hash:'SHA-256'},false,['verify']);
  let ok=false;for(const sig of signatures.split(' ').slice(0,5)){if(!sig.startsWith('v1,'))continue;try{ok=await crypto.subtle.verify('HMAC',k,Uint8Array.from(atob(sig.slice(3)),c=>c.charCodeAt(0)),enc.encode(`${id}.${ts}.${body}`))||ok;}catch{}}
