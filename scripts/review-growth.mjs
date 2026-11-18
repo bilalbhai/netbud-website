@@ -7,9 +7,10 @@ const {chromium}=await import(process.env.PLAYWRIGHT_MODULE||'playwright');
 const app=await preview(8972),browser=await chromium.launch({channel:'msedge',headless:true});let checks=0;const results=[];
 function check(ok,label){assert(ok,label);checks++;}
 async function events(page,name){return page.evaluate(n=>(window.dataLayer||[]).filter(x=>x.event===n),name);}
+// Consent tests explicitly approve only the intercepted mock container; production flags stay off.
 async function context(width=1440,block=false){let google=0,forms=0,mode='success';const errors=[],ctx=await browser.newContext({viewport:{width,height:1000},reducedMotion:'reduce'});
  await ctx.route('**/*',async route=>{const u=new URL(route.request().url());
-  if(u.origin===app.origin){if(u.pathname==='/js/config.js'){const s=(await readFile(path.join(root,'js/config.js'),'utf8')).replace(/googleAnalyticsId:\s*"[^"]*"/,'googleAnalyticsId: "G-TESTONLY"').replace('analyticsAllowedOrigins: [','analyticsAllowedOrigins: ["'+app.origin+'",');return route.fulfill({contentType:'text/javascript',body:s});}return route.continue();}
+  if(u.origin===app.origin){if(u.pathname==='/js/config.js'){const s=(await readFile(path.join(root,'js/config.js'),'utf8')).replace('analyticsEnabled: false','analyticsEnabled: true').replace('analyticsContainerReviewed: false','analyticsContainerReviewed: true').replace(/googleAnalyticsId:\s*"[^"]*"/,'googleAnalyticsId: "G-TESTONLY"').replace('analyticsAllowedOrigins: [','analyticsAllowedOrigins: ["'+app.origin+'",');return route.fulfill({contentType:'text/javascript',body:s});}return route.continue();}
   if(u.hostname==='www.googletagmanager.com'){check(u.pathname==='/gtm.js'&&u.searchParams.get('id')==='GTM-N9B3W4F5','only approved GTM loader');google++;return block?route.abort():route.fulfill({contentType:'text/javascript',body:'/* Mock GTM only: no Google calls or cookies. */'});}
   if(u.hostname==='formsubmit.co'){forms++;await new Promise(r=>setTimeout(r,60));return route.fulfill({status:mode==='failure'?503:200,contentType:'application/json',body:JSON.stringify({success:mode==='failure'?'false':'true',message:mode==='activation'?'Activate your email address':mode==='failure'?'Unavailable':'Success'})});}
   return route.abort();

@@ -1,5 +1,7 @@
 # NetBud growth and optimisation sprint
 
+> Historical sprint report. The final production review supersedes its analytics-approval statements: published automatic user-data/form tracking was discovered, and both analytics switches are now held off in the release candidate. See [the production release report](NETBUD_PRODUCTION_RELEASE_REPORT.md). The original performance evidence remains historical, not a claim of current live deployment.
+
 18 November 2026. Branch: `codex/netbud-growth-optimisation`. Baseline: latest fetched `origin/main`, **593c3bf** (consent-controlled marketing analytics release). Draft review targets `main`.
 
 **Development review only: nothing deployed, merged or published to Google.** PRs #1–#6 are not merged. No ordering code, checkout, admin, Supabase, Resend, Revolut, payment settings, DNS or hosting configuration was introduced or activated. PACES's repository and assets were not changed. Existing NetBud portfolio descriptions, URLs and artwork references are unchanged and checked against main.

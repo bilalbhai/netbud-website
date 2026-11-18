@@ -1,0 +1,53 @@
+{
+  "checkedAt": "2026-11-18T11:20:21.826Z",
+  "priorOrderingPullRequests": [
+    {
+      "number": 1,
+      "state": "open",
+      "draft": true,
+      "merged": false,
+      "head": "codex/netbud-ordering-phase-a",
+      "base": "main"
+    },
+    {
+      "number": 2,
+      "state": "open",
+      "draft": true,
+      "merged": false,
+      "head": "codex/netbud-phase-c-checkout",
+      "base": "codex/netbud-ordering-phase-a"
+    },
+    {
+      "number": 3,
+      "state": "open",
+      "draft": true,
+      "merged": false,
+      "head": "codex/netbud-phase-d-tracking",
+      "base": "codex/netbud-phase-c-checkout"
+    },
+    {
+      "number": 4,
+      "state": "open",
+      "draft": true,
+      "merged": false,
+      "head": "codex/netbud-phase-e-admin",
+      "base": "codex/netbud-phase-d-tracking"
+    },
+    {
+      "number": 5,
+      "state": "open",
+      "draft": true,
+      "merged": false,
+      "head": "codex/netbud-phase-g-launch-prep",
+      "base": "codex/netbud-phase-e-admin"
+    },
+    {
+      "number": 6,
+      "state": "open",
+      "draft": true,
+      "merged": false,
+      "head": "codex/netbud-phase-h-integration",
+      "base": "codex/netbud-phase-g-launch-prep"
+    }
+  ]
+}

@@ -1,0 +1,463 @@
+{
+  "checkedAt": "2026-11-18T11:18:42.558Z",
+  "mode": "read-only public GET/DNS; certificate validation enabled; no tag execution or enquiries",
+  "dns": [
+    {
+      "host": "netbud.com.au",
+      "A": [
+        "185.199.109.153",
+        "185.199.110.153",
+        "185.199.111.153",
+        "185.199.108.153"
+      ],
+      "AAAA": [],
+      "CNAME": []
+    },
+    {
+      "host": "www.netbud.com.au",
+      "A": [
+        "185.199.109.153",
+        "185.199.110.153",
+        "185.199.111.153",
+        "185.199.108.153"
+      ],
+      "AAAA": [
+        "2606:50c0:8000::153",
+        "2606:50c0:8001::153",
+        "2606:50c0:8002::153",
+        "2606:50c0:8003::153"
+      ],
+      "CNAME": [
+        "bilalbhai.github.io"
+      ]
+    }
+  ],
+  "http": [
+    {
+      "url": "http://netbud.com.au/",
+      "status": 301,
+      "location": "https://netbud.com.au/",
+      "server": "GitHub.com",
+      "contentType": "text/html",
+      "summary": {
+        "title": "301 Moved Permanently"
+      }
+    },
+    {
+      "url": "https://netbud.com.au/",
+      "status": 200,
+      "location": null,
+      "server": "GitHub.com",
+      "contentType": "text/html; charset=utf-8",
+      "tls": {
+        "authorised": true,
+        "protocol": "TLSv1.3",
+        "subjectAltName": "DNS:netbud.com.au, DNS:www.netbud.com.au",
+        "validFrom": "Nov 16 08:41:39 2026 GMT",
+        "validTo": "Feb 14 08:41:38 2027 GMT",
+        "issuer": "Let's Encrypt"
+      },
+      "summary": {
+        "title": "NetBud | Your Mate for Everything Digital"
+      }
+    },
+    {
+      "url": "http://www.netbud.com.au/",
+      "status": 301,
+      "location": "https://netbud.com.au/",
+      "server": "GitHub.com",
+      "contentType": "text/html",
+      "summary": {
+        "title": "301 Moved Permanently"
+      }
+    },
+    {
+      "url": "https://www.netbud.com.au/",
+      "status": 301,
+      "location": "https://netbud.com.au/",
+      "server": "GitHub.com",
+      "contentType": "text/html",
+      "tls": {
+        "authorised": true,
+        "protocol": "TLSv1.3",
+        "subjectAltName": "DNS:netbud.com.au, DNS:www.netbud.com.au",
+        "validFrom": "Nov 16 08:41:39 2026 GMT",
+        "validTo": "Feb 14 08:41:38 2027 GMT",
+        "issuer": "Let's Encrypt"
+      },
+      "summary": {
+        "title": "301 Moved Permanently"
+      }
+    },
+    {
+      "url": "https://netbud.com.au/shop/",
+      "status": 200,
+      "location": null,
+      "server": "GitHub.com",
+      "contentType": "text/html; charset=utf-8",
+      "tls": {
+        "authorised": true,
+        "protocol": "TLSv1.3",
+        "subjectAltName": "DNS:netbud.com.au, DNS:www.netbud.com.au",
+        "validFrom": "Nov 16 08:41:39 2026 GMT",
+        "validTo": "Feb 14 08:41:38 2027 GMT",
+        "issuer": "Let's Encrypt"
+      },
+      "summary": {
+        "title": "Shop NFC Cards, Websites &amp; Digital Services | NetBud"
+      }
+    },
+    {
+      "url": "https://netbud.com.au/contact/",
+      "status": 200,
+      "location": null,
+      "server": "GitHub.com",
+      "contentType": "text/html; charset=utf-8",
+      "tls": {
+        "authorised": true,
+        "protocol": "TLSv1.3",
+        "subjectAltName": "DNS:netbud.com.au, DNS:www.netbud.com.au",
+        "validFrom": "Nov 16 08:41:39 2026 GMT",
+        "validTo": "Feb 14 08:41:38 2027 GMT",
+        "issuer": "Let's Encrypt"
+      },
+      "summary": {
+        "title": "Request a Callback or Project Quote | Contact NetBud"
+      }
+    },
+    {
+      "url": "https://netbud.com.au/free-preview/",
+      "status": 200,
+      "location": null,
+      "server": "GitHub.com",
+      "contentType": "text/html; charset=utf-8",
+      "tls": {
+        "authorised": true,
+        "protocol": "TLSv1.3",
+        "subjectAltName": "DNS:netbud.com.au, DNS:www.netbud.com.au",
+        "validFrom": "Nov 16 08:41:39 2026 GMT",
+        "validTo": "Feb 14 08:41:38 2027 GMT",
+        "issuer": "Let's Encrypt"
+      },
+      "summary": {
+        "title": "Request a Free Homepage Concept | NetBud"
+      }
+    },
+    {
+      "url": "https://netbud.com.au/cart/",
+      "status": 200,
+      "location": null,
+      "server": "GitHub.com",
+      "contentType": "text/html; charset=utf-8",
+      "tls": {
+        "authorised": true,
+        "protocol": "TLSv1.3",
+        "subjectAltName": "DNS:netbud.com.au, DNS:www.netbud.com.au",
+        "validFrom": "Nov 16 08:41:39 2026 GMT",
+        "validTo": "Feb 14 08:41:38 2027 GMT",
+        "issuer": "Let's Encrypt"
+      },
+      "summary": {
+        "title": "Your Request Basket | NetBud"
+      }
+    },
+    {
+      "url": "https://netbud.com.au/privacy/",
+      "status": 200,
+      "location": null,
+      "server": "GitHub.com",
+      "contentType": "text/html; charset=utf-8",
+      "tls": {
+        "authorised": true,
+        "protocol": "TLSv1.3",
+        "subjectAltName": "DNS:netbud.com.au, DNS:www.netbud.com.au",
+        "validFrom": "Nov 16 08:41:39 2026 GMT",
+        "validTo": "Feb 14 08:41:38 2027 GMT",
+        "issuer": "Let's Encrypt"
+      },
+      "summary": {
+        "title": "Privacy Information — Editable Draft | NetBud"
+      }
+    },
+    {
+      "url": "https://netbud.com.au/terms/",
+      "status": 200,
+      "location": null,
+      "server": "GitHub.com",
+      "contentType": "text/html; charset=utf-8",
+      "tls": {
+        "authorised": true,
+        "protocol": "TLSv1.3",
+        "subjectAltName": "DNS:netbud.com.au, DNS:www.netbud.com.au",
+        "validFrom": "Nov 16 08:41:39 2026 GMT",
+        "validTo": "Feb 14 08:41:38 2027 GMT",
+        "issuer": "Let's Encrypt"
+      },
+      "summary": {
+        "title": "Website Terms — Editable Draft | NetBud"
+      }
+    },
+    {
+      "url": "https://netbud.com.au/sitemap.xml",
+      "status": 200,
+      "location": null,
+      "server": "GitHub.com",
+      "contentType": "application/xml",
+      "tls": {
+        "authorised": true,
+        "protocol": "TLSv1.3",
+        "subjectAltName": "DNS:netbud.com.au, DNS:www.netbud.com.au",
+        "validFrom": "Nov 16 08:41:39 2026 GMT",
+        "validTo": "Feb 14 08:41:38 2027 GMT",
+        "issuer": "Let's Encrypt"
+      },
+      "summary": {
+        "readable": true
+      }
+    },
+    {
+      "url": "https://netbud.com.au/robots.txt",
+      "status": 200,
+      "location": null,
+      "server": "GitHub.com",
+      "contentType": "text/plain; charset=utf-8",
+      "tls": {
+        "authorised": true,
+        "protocol": "TLSv1.3",
+        "subjectAltName": "DNS:netbud.com.au, DNS:www.netbud.com.au",
+        "validFrom": "Nov 16 08:41:39 2026 GMT",
+        "validTo": "Feb 14 08:41:38 2027 GMT",
+        "issuer": "Let's Encrypt"
+      },
+      "summary": {
+        "readable": true
+      }
+    },
+    {
+      "url": "https://netbud.com.au/shop/business-website/",
+      "status": 200,
+      "location": null,
+      "server": "GitHub.com",
+      "contentType": "text/html; charset=utf-8",
+      "tls": {
+        "authorised": true,
+        "protocol": "TLSv1.3",
+        "subjectAltName": "DNS:netbud.com.au, DNS:www.netbud.com.au",
+        "validFrom": "Nov 16 08:41:39 2026 GMT",
+        "validTo": "Feb 14 08:41:38 2027 GMT",
+        "issuer": "Let's Encrypt"
+      },
+      "summary": {
+        "title": "Business Website | NetBud"
+      }
+    },
+    {
+      "url": "https://netbud.com.au/shop/custom-nfc-business-card/",
+      "status": 200,
+      "location": null,
+      "server": "GitHub.com",
+      "contentType": "text/html; charset=utf-8",
+      "tls": {
+        "authorised": true,
+        "protocol": "TLSv1.3",
+        "subjectAltName": "DNS:netbud.com.au, DNS:www.netbud.com.au",
+        "validFrom": "Nov 16 08:41:39 2026 GMT",
+        "validTo": "Feb 14 08:41:38 2027 GMT",
+        "issuer": "Let's Encrypt"
+      },
+      "summary": {
+        "title": "Custom NFC Business Card | NetBud"
+      }
+    },
+    {
+      "url": "https://netbud.com.au/shop/nfc-google-review-card/",
+      "status": 200,
+      "location": null,
+      "server": "GitHub.com",
+      "contentType": "text/html; charset=utf-8",
+      "tls": {
+        "authorised": true,
+        "protocol": "TLSv1.3",
+        "subjectAltName": "DNS:netbud.com.au, DNS:www.netbud.com.au",
+        "validFrom": "Nov 16 08:41:39 2026 GMT",
+        "validTo": "Feb 14 08:41:38 2027 GMT",
+        "issuer": "Let's Encrypt"
+      },
+      "summary": {
+        "title": "NFC Google Review Card | NetBud"
+      }
+    },
+    {
+      "url": "https://netbud.com.au/js/config.js",
+      "status": 200,
+      "location": null,
+      "server": "GitHub.com",
+      "contentType": "application/javascript; charset=utf-8",
+      "tls": {
+        "authorised": true,
+        "protocol": "TLSv1.3",
+        "subjectAltName": "DNS:netbud.com.au, DNS:www.netbud.com.au",
+        "validFrom": "Nov 16 08:41:39 2026 GMT",
+        "validTo": "Feb 14 08:41:38 2027 GMT",
+        "issuer": "Let's Encrypt"
+      },
+      "summary": {
+        "gtm": "GTM-N9B3W4F5",
+        "ga4": "G-4L3JN7WC5M",
+        "gstText": "old non-registration wording"
+      }
+    }
+  ],
+  "hostingPolicy": {
+    "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits",
+    "status": 200,
+    "excerpt": "GitHub Pages is not intended for or allowed to be used as a free web-hosting service to run your online business, e-commerce site, or any other website that is primarily directed at either facilitating commercial transactions or providing commercial software as a service (SaaS). GitHub Pages sites shouldn't be used for sensitive transactions like sending passwords or credit card numbers. In addition, your use of GitHub Pages is subject to the GitHub Terms of Service , including the restrictions on get-rich-quick schemes, sexually obscene content, and violent or threatening content or activity. GitHub Pages sites are subject to the following usage limits: You can only create one user or organ",
+    "error": null
+  },
+  "assets": [
+    {
+      "url": "https://netbud.com.au/images/logo-symbol.svg",
+      "status": 200
+    },
+    {
+      "url": "https://netbud.com.au/images/logo-wordmark.svg",
+      "status": 200
+    },
+    {
+      "url": "https://netbud.com.au/images/favicon.svg?v=20261028-b1",
+      "status": 200
+    },
+    {
+      "url": "https://netbud.com.au/css/style.css?v=20261117-scrollbar3",
+      "status": 200
+    },
+    {
+      "url": "https://netbud.com.au/js/config.js?v=20261117-email2",
+      "status": 200
+    },
+    {
+      "url": "https://netbud.com.au/js/products.js?v=20261116-motion1",
+      "status": 200
+    },
+    {
+      "url": "https://netbud.com.au/js/motion.js?v=20261116-motion1",
+      "status": 200
+    },
+    {
+      "url": "https://netbud.com.au/js/main.js?v=20261117-email1",
+      "status": 200
+    },
+    {
+      "url": "https://netbud.com.au/js/form-experience.js?v=20261116-motion1",
+      "status": 200
+    },
+    {
+      "url": "https://netbud.com.au/js/section-experience.js?v=20261117-carousel1",
+      "status": 200
+    },
+    {
+      "url": "https://netbud.com.au/js/marketing-packages.js?v=20261116-motion1",
+      "status": 200
+    },
+    {
+      "url": "https://netbud.com.au/js/hero-story.js?v=20261117-loop2",
+      "status": 200
+    },
+    {
+      "url": "https://netbud.com.au/css/shop.css?v=20261116-motion1",
+      "status": 200
+    },
+    {
+      "url": "https://netbud.com.au/css/polish.css?v=20261116-motion1",
+      "status": 200
+    },
+    {
+      "url": "https://netbud.com.au/css/motion.css?v=20261116-motion1",
+      "status": 200
+    },
+    {
+      "url": "https://netbud.com.au/css/scroll-experience.css?v=20261117-scroll1",
+      "status": 200
+    },
+    {
+      "url": "https://netbud.com.au/js/scroll-experience.js?v=20261117-scroll1",
+      "status": 200
+    },
+    {
+      "url": "https://netbud.com.au/css/website-hero-nfc.css?v=20261117-loop2",
+      "status": 200
+    },
+    {
+      "url": "https://netbud.com.au/css/signature-product.css?v=20261117-carousel1",
+      "status": 200
+    },
+    {
+      "url": "https://netbud.com.au/css/agency-showcase.css?v=20261117-studio1",
+      "status": 200
+    },
+    {
+      "url": "https://netbud.com.au/css/brand-arrival.css?v=20261117-arrival20",
+      "status": 200
+    },
+    {
+      "url": "https://netbud.com.au/js/brand-arrival.js?v=20261117-arrival20",
+      "status": 200
+    },
+    {
+      "url": "https://netbud.com.au/images/logo.svg?v=20261028-b1",
+      "status": 200
+    },
+    {
+      "url": "https://netbud.com.au/images/business-website-consultation.webp",
+      "status": 200
+    },
+    {
+      "url": "https://netbud.com.au/images/nfc-business-card.webp",
+      "status": 200
+    },
+    {
+      "url": "https://netbud.com.au/images/nfc-google-review.webp",
+      "status": 200
+    },
+    {
+      "url": "https://netbud.com.au/images/workspace-studio.webp",
+      "status": 200
+    },
+    {
+      "url": "https://netbud.com.au/images/icon.svg?v=20261028-b1",
+      "status": 200
+    },
+    {
+      "url": "https://netbud.com.au/images/demo-cafe.webp",
+      "status": 200
+    },
+    {
+      "url": "https://netbud.com.au/images/demo-portfolio.webp",
+      "status": 200
+    },
+    {
+      "url": "https://netbud.com.au/images/demo-booking.webp",
+      "status": 200
+    },
+    {
+      "url": "https://netbud.com.au/images/demo-analytics.webp",
+      "status": 200
+    },
+    {
+      "url": "https://netbud.com.au/images/logo-dark.svg?v=20261028-b1",
+      "status": 200
+    },
+    {
+      "url": "https://netbud.com.au/js/section-experience.js?v=20261116-motion1",
+      "status": 200
+    },
+    {
+      "url": "https://netbud.com.au/js/hero-story.js?v=20261116-motion1",
+      "status": 200
+    },
+    {
+      "url": "https://netbud.com.au/css/polish.css?v=20261117-contact1",
+      "status": 200
+    }
+  ]
+}

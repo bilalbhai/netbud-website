@@ -1,0 +1,56 @@
+{
+  "recordedAt": "2026-11-18T11:26:21.580Z",
+  "verdict": "BLOCKED",
+  "source": "PR #7 final candidate with release-preparation privacy hold; not deployed",
+  "tests": {
+    "existingForms": {
+      "passed": 68,
+      "failures": 0
+    },
+    "existingHero": {
+      "passed": 18,
+      "failures": 0
+    },
+    "existingMotion": {
+      "passed": 15,
+      "failures": 0
+    },
+    "growthAudit": {
+      "passed": 428,
+      "failures": 0
+    },
+    "browserJourneys": {
+      "passed": 486,
+      "failures": 0,
+      "widths": [
+        375,
+        430,
+        768,
+        1024,
+        1440
+      ],
+      "googleAndForms": "mocked"
+    },
+    "finalReview": {
+      "passed": 1144,
+      "failures": 0,
+      "originalPrFiles": 110,
+      "pages": 32,
+      "uniqueInternalReferences": 127
+    }
+  },
+  "live": {
+    "checkedAt": "2026-11-18T11:18:42.558Z",
+    "assetHeads": 36,
+    "assetFailures": 0,
+    "httpsObserved": true,
+    "actualGa4ReceiptVerified": false,
+    "newEmailReceiptVerified": false
+  },
+  "remainingGates": [
+    "published Google automatic user-data/enhanced-measurement configuration, or explicit analytics-off release approval",
+    "GitHub Pages commercial-hosting suitability",
+    "legal seller/ABN/privacy terms approval",
+    "offer-specific GST display basis"
+  ]
+}

@@ -301,6 +301,8 @@
     if(!product && ['8','9'].indexOf(new URLSearchParams(location.search).get('id'))!==-1){window.location.replace(localPath('contact.html?service='+encodeURIComponent(new URLSearchParams(location.search).get('id')==='8'?'Paid digital advertising':'Social content and paid advertising')+'#enquiry'));return;}
     if(!product){container.innerHTML='<div class="empty-state"><h1>Let’s find the right service.</h1><p>This package link is no longer available.</p><a class="button button-primary" href="'+localPath('shop.html')+'">Explore the shop</a></div>';document.title='Package not found | NetBud';return;}
     document.title=product.name+' | NetBud';updateMeta('meta[name="description"]',product.description);updateMeta('meta[property="og:title"]',document.title);updateMeta('meta[property="og:description"]',product.description);updateMeta('meta[name="twitter:title"]',document.title);updateMeta('meta[name="twitter:description"]',product.description);updateCanonical(safeSiteUrl()+'/shop/'+product.slug+'.html');
+    updateMeta('meta[property="og:image"]',safeSiteUrl()+'/'+product.image);
+    updateMeta('meta[name="twitter:image"]',safeSiteUrl()+'/'+product.image);
     function list(items){return '<ul class="feature-list">'+(items||[]).map(function(v){return '<li>'+escapeHtml(v)+'</li>';}).join('')+'</ul>';}
     function panel(title,items){return '<article class="card"><h2>'+title+'</h2>'+list(items)+'</article>';}
     var quote='Your final quote depends on your requirements, project size and any extra features. We’ll confirm the full price with you before starting.';
@@ -879,6 +881,7 @@
   }
 
   function configureProductionMetadata() {
+    if (document.body.dataset.page === '404') return;
     var url = safeSiteUrl();
     if (!url) return;
     var pagePath = document.body.dataset.page === 'preview-studio' ? '/previews/' : cleanUrl(window.location.pathname);
