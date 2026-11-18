@@ -1,13 +1,15 @@
+import {createLocalAdminSession} from './src/local-admin-session.mjs';
 import {createServer} from 'node:http';
 import {Readable} from 'node:stream';
 import {database,actors} from './test/database.mjs';
-import {createAdmin,createLocalAdminSession} from './src/admin.mjs';
+import {createAdmin} from './src/admin.mjs';
 import {createApi} from './src/api.mjs';
 import {ApiError} from './src/core.mjs';
 import {readFile,writeFile,mkdir,rm} from 'node:fs/promises';
 import {createTracking} from './src/tracking.mjs';
 import {LocalOtpDelivery} from './test/mock-otp.mjs';
 const {db,repo}=await database();
+await db.exec('update netbud.runtime_policy set manual_artwork_enabled=true');
 const inboxFile=new URL('./.cache/otp-inbox.json',import.meta.url);
 await mkdir(new URL('./.cache/',import.meta.url),{recursive:true});
 await writeFile(inboxFile,'[]',{mode:0o600});

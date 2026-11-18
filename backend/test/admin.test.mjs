@@ -1,5 +1,6 @@
+import {createLocalAdminSession} from '../src/local-admin-session.mjs';
 import {test,before,after} from 'node:test';import assert from 'node:assert/strict';
-import {database,order,actors} from './database.mjs';import {digest} from '../src/core.mjs';import {csv,createAdmin,createLocalAdminSession} from '../src/admin.mjs';import {createApi} from '../src/api.mjs';
+import {database,order,actors} from './database.mjs';import {digest} from '../src/core.mjs';import {csv,createAdmin} from '../src/admin.mjs';import {createApi} from '../src/api.mjs';
 let db,repo;before(async()=>({db,repo}=await database()));after(async()=>await db?.close());
 const read=(actor,resource,query={})=>repo.rpc('netbud_admin_read',{p_actor:actor,p_resource:resource,p_query:query});
 async function write(action,data,actor=actors.owner,key=crypto.randomUUID()){return repo.rpc('netbud_admin_write',{p_actor:actor,p_action:action,p_data:data,p_key:key,p_hash:await digest(JSON.stringify({action,data}))});}

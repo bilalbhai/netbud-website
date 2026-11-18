@@ -1,0 +1,14 @@
+{
+  "ENVIRONMENT": "staging",
+  "APP_ORIGIN": "https://staging.netbud.example",
+  "STAGING_ADMIN_APPROVED": "false",
+  "STAGING_GUEST_APPROVED": "false",
+  "EMAIL_WEBHOOK_APPROVED": "false",
+  "SCHEDULER_APPROVED": "false",
+  "TRANSACTIONAL_EMAIL_ENABLED": "false",
+  "EMAIL_DOMAIN_VERIFIED": "false",
+  "EMAIL_OWNER_APPROVED": "false",
+  "EMAIL_ALLOWED_RECIPIENTS": "",
+  "PAYMENTS_MODE": "disabled",
+  "ARTWORK_UPLOADS_ENABLED": "false"
+}

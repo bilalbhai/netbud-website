@@ -3,7 +3,7 @@ const $=id=>document.getElementById(id), money=n=>new Intl.NumberFormat('en-AU',
 let catalogue=[],basket=[],designs=[],busy=false,estimate=null,sequence=0,requestKey=null,lastPayload=null;
 const storageKey='netbud-quote-basket-v1';
 function message(s){$('error').textContent=s;if(s)$('error').focus();}
-async function api(path,body,key){const response=await fetch('/api/test/'+path,{method:body?'POST':'GET',headers:{'Content-Type':'application/json',...(key?{'Idempotency-Key':key}:{})},...(body?{body:JSON.stringify(body)}:{})});const data=await response.json();if(!response.ok)throw Error(data.error||'request_failed');return data;}
+async function api(path,body,key){const botToken=window.NetBudBot&&path==='orders'?await window.NetBudBot.token('checkout'):null;const response=await fetch('/api/test/'+path,{method:body?'POST':'GET',headers:{'Content-Type':'application/json',...(botToken?{'X-Turnstile-Token':botToken}:{}),...(key?{'Idempotency-Key':key}:{})},...(body?{body:JSON.stringify(body)}:{})});const data=await response.json();if(!response.ok)throw Error(data.error||'request_failed');return data;}
 function clean(rows){if(!Array.isArray(rows)||rows.length>20)throw Error('Basket must contain up to 20 products.');const seen=new Set();return rows.map(x=>{if(!catalogue.some(p=>p.id===x.id)||!Number.isInteger(x.quantity)||x.quantity<1||x.quantity>99||seen.has(x.id))throw Error('Check basket products and quantities (1–99).');seen.add(x.id);return {id:x.id,quantity:x.quantity};});}
 function save(){try{localStorage.setItem(storageKey,JSON.stringify(basket));}catch{/* Basket still works in memory. */}}
 function physical(){return basket.some(i=>catalogue.find(p=>p.id===i.id)?.physical);}

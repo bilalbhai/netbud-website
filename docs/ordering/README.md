@@ -1,5 +1,7 @@
 # NetBud ordering system — Phase A review
 
+Current review: [Phase H final integration and honest launch-readiness assessment](PHASE_H_REPORT.md), branch `codex/netbud-phase-h-integration`, based on Phase G. [Owner setup, safe migrations, manual proof handling and rollout/rollback](OPERATIONS.md) are updated. Accounts are not ready: hosted tests, legal details, recovery and production approval remain blockers. All PRs remain drafts; nothing is merged/deployed.
+
 Current review: [Phase G launch preparation without Revolut](PHASE_G_REPORT.md), branch `codex/netbud-phase-g-launch-prep`, based on Phase E. See [email/DNS](EMAIL_DNS_SETUP.md), [operations/recovery](OPERATIONS.md) and [policy/invoice drafts](POLICY_AND_INVOICE_DRAFTS.md). Development only; no merge/deployment. Phase F is postponed and hosted launch gates remain unresolved.
 
 Latest review: [Phase E private admin dashboard](PHASE_E_REPORT.md), branch `codex/netbud-phase-e-admin`. Development only; no merges or deployment, and Phase F has not started.

@@ -1,5 +1,7 @@
 # Phase G — review drafts, not issued documents
 
+Phase H preparation: `backend/src/tax-draft.mjs` specifies nearest-cent GST extraction per approved gross line and preserves gross advertised totals. It refuses unreviewed classifications and labels every result `draft_not_valid_for_issue`. Shipping must be an explicitly classified line; mixed taxable/GST-free examples are tested. This helper has no public issue endpoint and does not approve any actual product's classification, ABN or seller identity. Accountant must approve the rounding policy, deposits, refunds/adjustments and final template before use. No real tax invoice was generated. Manual customer-proof evidence and independently confirmed external-refund recording now have guarded development workflows; their proposed operational/privacy terms remain subject to the review below.
+
 18 November 2026. **Do not publish or issue these drafts.** The owner supplied the name **NetBud** and confirmed GST registration in the brief. ABN, verified legal entity/trading-name relationship, effective registration details and accountant-reviewed product/shipping/deposit classifications remain pending. No final GST calculation or tax invoice is enabled by this phase.
 
 ## Proposed pricing wording after verification

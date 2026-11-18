@@ -18,6 +18,6 @@ export function supabaseAuth(env, fetcher=fetch, verificationKey) {
     if(!response.ok) fail(response.status>=500?503:401,'authentication_required');
     const user=await response.json(); if(user.id!==payload.sub) fail(401,'authentication_required');
     const mfaAt=Math.max(0,...(Array.isArray(payload.amr)?payload.amr:[]).filter(x=>x.method==='totp').map(x=>Number(x.timestamp)||0));
-    return {id:payload.sub,aal:payload.aal,mfaAt};
+    return {id:payload.sub,aal:payload.aal,mfaAt,sessionId:payload.session_id};
   };
 }
