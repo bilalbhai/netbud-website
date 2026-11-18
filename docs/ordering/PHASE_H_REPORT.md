@@ -2,7 +2,7 @@
 
 18 November 2026, Australia/Sydney. Branch `codex/netbud-phase-h-integration`, based on Phase G `405263e`. Draft review targets `codex/netbud-phase-g-launch-prep`.
 
-**Local H1 integration and the available H2 tests are complete. NetBud is NOT verified ready for production launch.** The owner explicitly confirmed that the isolated Supabase staging project and verified Resend/Turnstile accounts are not ready, and authorised local integration plus setup documentation. No hosted deployment, account/billing/DNS/forwarding change, real email, real payment or customer-data submission was performed. No earlier PR was merged. Revolut remains postponed. PACES and the public marketing website source remain unchanged.
+**Local H1 integration and the available H2 tests are complete. NetBud is NOT verified ready for production launch.** The owner explicitly confirmed that the isolated Supabase staging project and verified Resend/Turnstile accounts are not ready, and authorised local integration plus setup documentation. No hosted deployment, account/billing/DNS/forwarding change, real email, real payment or customer-data submission was performed. No earlier PR was merged. Revolut remains postponed. PACES remains unchanged. The original Phase H integration preserved public marketing source; the later analytics addendum below lists its narrowly scoped consent/event and privacy-copy changes.
 
 ## Baseline and implementation
 
@@ -192,3 +192,27 @@ The list below covers this development change only; unrelated untracked emoji/tm
 - `docs/ordering/phase-h-screenshots/tracking-375.png`
 - `docs/ordering/phase-h-screenshots/tracking-430.png`
 - `docs/ordering/phase-h-screenshots/tracking-768.png`
+
+## Phase H addendum — consent-gated GA4/GTM (18 November 2026)
+
+Implemented on this same development branch, without restarting Phase H or changing its backend-provider architecture. Configuration names the owner's **GTM-NK56RDLX**, but the actual GA4 Measurement ID is still blank and both owner-review/enable gates are **false**. Nothing has been published or activated. PR #6 remains a draft targeting Phase G; no previous PR was merged.
+
+The new central first-party helper replaces the old standalone Google loader. It requires basic opt-in before GTM, uses explicit allowlisted page/product/basket/checkout/confirmed-lead events, keeps advertising denied and excludes customer-entered values, private routes and sensitive URLs. Withdrawal disables the known GA property and refreshes the document to unload executed tags; the preferences UI warns about unsaved input. Google never loads on admin or order-history/OTP pages. Generic consented lookup events use a short-lived local relay to the next public page, with no customer identifiers.
+
+`order_submitted` is an unpaid, pending-approval order event, **not a purchase**. Random submission keys and locally hashed server order UUIDs prevent repeat conversions on the same browser/origin within bounded storage retention. IDs are not transmitted. There is no purchase/manual-payment analytics event. Existing forms still use their verified FormSubmit workflow, including safe failure drafts; only confirmed provider success generates leads. The new tests contact no actual analytics, email or order service.
+
+Setup and schema: [ANALYTICS_SETUP.md](ANALYTICS_SETUP.md). It contains the exact GTM tag/trigger/consent setup, GA4 ID instructions, owner container audit, DebugView/Realtime checks, key events, funnels, privacy draft review and attribution limitations. The account/container audit and real property checks remain unperformed and are required before any activation approval. Final cross-subdomain attribution depends on the owner's final hosting decision. Campaign/referrer detail and private-page events are deliberately restricted; these reports will not represent all visitors or all real orders.
+
+### Addendum validation
+
+- **131 backend/security/analytics tests passed**: the original 116, 14 new analytics-runtime tests and one packaging/CSP-boundary test. Executed with `node --test --test-concurrency=1 backend/test/*.test.mjs`.
+- **101 existing public checks passed**: 68 form, 18 hero-scroll and 15 motion checks. No animation code, catalogue or prices changed.
+- **68 new mocked browser assertions passed**, at 375/430/768/1024/1440px: no Google before consent/rejection, accept once, explicit page-view dedupe, confirmed and failed contact forms, safe data, withdrawal/reload, checkout stages, unpaid conversion/retry/reload dedupe, no Google on private pages, lookup relay, admin exclusion and ordering with GTM blocked.
+- Existing checkout, tracking, owner-admin and integrated HTTPS browser suites all passed at 375/430/768/1024/1440px. Role-assignment denial, quote stages, financial CSV, secure OTP cookies, staff MFA/logout, keyboard focus, reduced motion and homepage/scroll smoke checks also passed. Previously generated screenshots were not replaced in the review commit.
+- Tests use synthetic records only. GTM is stubbed/intercepted; no real GA collection, FormSubmit enquiry, real email or payment was sent. The existing browser scripts refresh historical synthetic screenshots during review; those timestamp-dependent image changes are excluded from the addendum commit.
+
+### Exact addendum files
+
+`js/config.js`, `js/analytics.js`, `js/main.js`, `privacy.html`, `privacy/index.html`, `backend/entry.mjs`, `backend/local.mjs`, `backend/public/checkout.html`, `backend/public/checkout.js`, `backend/public/tracking.html`, `backend/public/tracking.js`, `backend/test/analytics.test.mjs`, `backend/test/analytics-browser.mjs`, `backend/test/integration.test.mjs`, `docs/ordering/ANALYTICS_SETUP.md`, `docs/ordering/PHASE_H_REPORT.md`.
+
+No admin UI, authentication, catalogue, order database, pricing, hero/NFC/scroll animations, form styling, layout, DNS, hosting settings, payment integration or PACES material was changed. This addendum is ready for development review only, not production activation.

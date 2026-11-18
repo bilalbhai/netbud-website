@@ -132,3 +132,16 @@ test('entry denies private paths and public activation while preserving marketin
  for(const p of ['/backend/.env','/docs/ordering/PHASE_H_REPORT.md','/_worker.js','/.git/config','/admin/'])assert.equal((await entry.fetch(new Request(origin+p),env)).status,404);
  assert.equal(await (await entry.fetch(new Request(origin+'/'),env)).text(),'marketing');assert.equal((await entry.fetch(new Request(origin+'/api/ordering/catalogue'),env)).status,503);
 });
+
+test('analytics packaging preserves private page exclusions and checkout CSP boundary',async()=>{
+ const env={ENVIRONMENT:'staging',STAGING_ADMIN_APPROVED:'true',ASSETS:{fetch:async()=>new Response('isolated asset')}};
+ for(const name of ['admin','track','checkout']){
+  const response=await entry.fetch(new Request(origin+'/'+name+'/'),env),csp=response.headers.get('Content-Security-Policy');
+  assert.equal(csp.includes('www.googletagmanager.com'),name==='checkout');
+ }
+ const root=fileURLToPath(new URL('../../',import.meta.url));
+ const admin=await readFile(path.join(root,'backend/public/admin.html'),'utf8');assert.ok(!admin.includes('/js/analytics.js'));
+ for(const name of ['checkout','tracking'])assert.ok((await readFile(path.join(root,'backend/public/'+name+'.html'),'utf8')).includes('/js/analytics.js'));
+ const bundle=await buildStaging(path.join(root,'.cache','h-analytics-'+crypto.randomUUID()));assert.ok(bundle.manifest.some(x=>x.path==='js/analytics.js'));
+ assert.ok(!(await readFile(path.join(bundle.publicDir,'admin/index.html'),'utf8')).includes('/js/analytics.js'));
+});

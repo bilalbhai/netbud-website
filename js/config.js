@@ -33,7 +33,12 @@ window.NETBUD_CONFIG = {
   },
   formEndpoint: "https://formsubmit.co/ajax/bilal@netbud.com.au",
   formDeliveryVerified: true, // Owner confirmed activation and receipt of a second test enquiry on 17 November 2026.
-  googleAnalyticsId: "", // Optional G-XXXXXXXXXX measurement ID. An opt-in is shown before loading analytics.
+  googleTagManagerId: "GTM-NK56RDLX",
+  googleAnalyticsId: "", // Actual GA4 measurement ID, when supplied. GTM is the ONLY loader.
+  analyticsEnabled: false, // Owner approval + reviewed container/property required before activation.
+  analyticsContainerReviewed: false,
+  analyticsAllowedOrigins: ["https://netbud.com.au", "https://www.netbud.com.au"],
+  analyticsCampaignAllowlist: {}, // Approved public UTM values only; unknown URL data disables tracking.
   hostedPaymentLinks: [], // Optional [{ label: "Pay an agreed invoice", url: "https://…" }]. Only add genuine links.
   upi: {
     enabled: false,
