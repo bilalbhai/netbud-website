@@ -11,6 +11,9 @@ __pycache__/
 *~
 .cache/
 coverage/
+private-backups/
+*.nbbackup
+*.dump
 
 # Private configuration and credentials
 .env

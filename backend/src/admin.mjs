@@ -29,7 +29,9 @@ export function createAdmin({repo,authenticate,origin,localSession=null}){
  if(!Number.isFinite(identity.mfaAt)||Math.abs(Date.now()/1000-identity.mfaAt)>600)fail(403,'fresh_mfa_required');
  }
  if(request.method==='GET'){
- const resource=path.split('/')[3];if(!['session','overview','orders','order','staff','enquiries','reports','export'].includes(resource))fail(404,'not_found');
+ const resource=path.split('/')[3];
+ if(resource==='operations')return reply(200,await repo.rpc('netbud_launch_ops',{p_actor:identity.id}));
+ if(!['session','overview','orders','order','staff','enquiries','reports','export'].includes(resource))fail(404,'not_found');
  const query=Object.fromEntries(u.searchParams);keys(query,['page','size','sort','search','status','id']);
  if(query.id)uuid(query.id);if(query.page&&!/^\d+$/.test(query.page))fail(400,'invalid_input');if(query.size&&!/^\d+$/.test(query.size))fail(400,'invalid_input');
  if(resource==='export'&&(!Number.isFinite(identity.mfaAt)||Math.abs(Date.now()/1000-identity.mfaAt)>600))fail(403,'fresh_mfa_required');
