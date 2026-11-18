@@ -28,3 +28,12 @@ test('order retry and fresh document cannot duplicate conversion',async()=>{cons
 test('leads/quotes use only category enums and separate dedupe keys',async()=>{const f=fixture();await f.api.lead('random-attempt','product',5);await f.api.lead('random-attempt','product',5);await f.api.lead('other','malicious customer@example.test',5);assert.equal(f.data().filter(x=>x.event==='generate_lead').length,1);assert.equal(f.data().filter(x=>x.event==='quote_requested').length,1);assert.equal(f.data().find(x=>x.event==='generate_lead').service_type,'NFC Products');});
 test('lookup events relay without Google or a data layer on private forms',()=>{const session=new Map(),f=fixture({path:'/track/',session});f.api.lookup('order_lookup_started');f.api.lookup('order_lookup_verified');f.api.lookup('customer@example.test');assert.equal(f.scripts.length,0);assert.equal(f.window.dataLayer,undefined);const next=fixture({session});assert(next.data().some(x=>x.event==='order_lookup_verified'));assert.equal(session.size,0);});
 test('lookup relay requires consent and expires',()=>{const f=fixture({path:'/track/',consent:'v2:no'});f.api.lookup('order_lookup_started');assert.equal(f.session.size,0);const session=new Map([['netbud-analytics-lookup-v2',JSON.stringify([{name:'order_lookup_verified',until:1}])]]);assert(!fixture({session}).data().some(x=>x.event==='order_lookup_verified'));});
+
+test('confirmed production IDs remain dormant and browser tests override the real property',async()=>{
+ const config=await readFile(new URL('../../js/config.js',import.meta.url),'utf8'),sandbox={window:{}};vm.runInNewContext(config,sandbox);
+ assert.equal(sandbox.window.NETBUD_CONFIG.googleAnalyticsId,'G-4L3JN7WC5M');
+ assert.equal(sandbox.window.NETBUD_CONFIG.googleTagManagerId,'GTM-NK56RDLX');
+ assert.equal(sandbox.window.NETBUD_CONFIG.analyticsEnabled,false);assert.equal(sandbox.window.NETBUD_CONFIG.analyticsContainerReviewed,false);
+ const browserTest=await readFile(new URL('./analytics-browser.mjs',import.meta.url),'utf8');
+ assert(browserTest.includes('.replace(/googleAnalyticsId:'));
+});

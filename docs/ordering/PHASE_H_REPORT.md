@@ -216,3 +216,9 @@ Setup and schema: [ANALYTICS_SETUP.md](ANALYTICS_SETUP.md). It contains the exac
 `js/config.js`, `js/analytics.js`, `js/main.js`, `privacy.html`, `privacy/index.html`, `backend/entry.mjs`, `backend/local.mjs`, `backend/public/checkout.html`, `backend/public/checkout.js`, `backend/public/tracking.html`, `backend/public/tracking.js`, `backend/test/analytics.test.mjs`, `backend/test/analytics-browser.mjs`, `backend/test/integration.test.mjs`, `docs/ordering/ANALYTICS_SETUP.md`, `docs/ordering/PHASE_H_REPORT.md`.
 
 No admin UI, authentication, catalogue, order database, pricing, hero/NFC/scroll animations, form styling, layout, DNS, hosting settings, payment integration or PACES material was changed. This addendum is ready for development review only, not production activation.
+
+### Confirmed Measurement ID follow-up
+
+The owner supplied **G-4L3JN7WC5M**, now recorded in `js/config.js` alongside **GTM-NK56RDLX**. This supersedes the earlier missing-ID note; container configuration/audit, real DebugView testing and owner activation approval remain outstanding. Both `analyticsEnabled` and `analyticsContainerReviewed` remain **false**. No runtime event/consent/private-page logic changed.
+
+Re-ran all **132 backend/security/analytics tests** (including a new confirmed-ID/dormant-switch guard), **101 public checks**, **68 mocked analytics browser assertions**, and existing checkout/tracking/admin/integrated HTTPS browser suites at **375, 430, 768, 1024 and 1440 px**; all passed. The browser harness always replaces the configured ID with its mock-only ID and intercepts Google requests. No real Analytics, email or payment request was sent. Updated setup instructions identify the exact ID to configure inside GTM. No container publication, merge or deployment performed.
