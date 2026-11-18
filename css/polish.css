@@ -357,3 +357,6 @@ body[data-layout=utility] .page-hero{background:var(--gradient-hero,var(--paper)
 .contact-hero-links .contact-direct-link:hover{color:var(--accent-ink);background:var(--peach)}
 .contact-hero-links .contact-direct-link:focus-visible{outline-color:var(--coral);outline-offset:3px}
 body[data-layout=contact] #callback,body[data-layout=contact] #enquiry{scroll-margin-top:110px}
+
+/* Product intent first on mobile, with DOM order matching keyboard reading order. */
+@media(min-width:761px){.product-detail-grid>.product-detail-info{grid-column:2;grid-row:1}.product-detail-grid>.product-detail-visual{grid-column:1;grid-row:1}}

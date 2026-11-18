@@ -1,0 +1,13 @@
+{
+  "name": "netbud-public-site",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "node scripts/build-public-assets.cjs && node scripts/build-clean-urls.cjs",
+    "test": "node scripts/check-forms.cjs && node scripts/check-hero-scroll.cjs && node scripts/check-motion.cjs && node scripts/check-growth.cjs",
+    "build:catalogue": "node scripts/build-catalogue.cjs && node scripts/build-public-assets.cjs && node scripts/build-clean-urls.cjs"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
+  }
+}

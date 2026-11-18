@@ -1,6 +1,6 @@
 /* NetBud launch catalogue: owner-confirmed starting amounts in AUD.
  * Publish prices only when NETBUD_CONFIG.launchPricingApproved is true.
- * Enquiries only; no paid checkout and no GST is added.
+ * Enquiries only; no paid checkout. GST details and final totals are confirmed in the written quote.
  * IDs 1-7 retain equivalent legacy services; catalogueNumber follows the launch brief. */
 window.NETBUD_PRODUCTS = [
   {
