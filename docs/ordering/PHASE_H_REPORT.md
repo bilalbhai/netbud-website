@@ -195,7 +195,7 @@ The list below covers this development change only; unrelated untracked emoji/tm
 
 ## Phase H addendum — consent-gated GA4/GTM (18 November 2026)
 
-Implemented on this same development branch, without restarting Phase H or changing its backend-provider architecture. Configuration names the owner's **GTM-NK56RDLX**, but the actual GA4 Measurement ID is still blank and both owner-review/enable gates are **false**. Nothing has been published or activated. PR #6 remains a draft targeting Phase G; no previous PR was merged.
+Implemented on this same development branch, without restarting Phase H or changing its backend-provider architecture. Configuration names the owner's **GTM-N9B3W4F5**, but the actual GA4 Measurement ID is still blank and both owner-review/enable gates are **false**. Nothing has been published or activated. PR #6 remains a draft targeting Phase G; no previous PR was merged.
 
 The new central first-party helper replaces the old standalone Google loader. It requires basic opt-in before GTM, uses explicit allowlisted page/product/basket/checkout/confirmed-lead events, keeps advertising denied and excludes customer-entered values, private routes and sensitive URLs. Withdrawal disables the known GA property and refreshes the document to unload executed tags; the preferences UI warns about unsaved input. Google never loads on admin or order-history/OTP pages. Generic consented lookup events use a short-lived local relay to the next public page, with no customer identifiers.
 
@@ -219,6 +219,10 @@ No admin UI, authentication, catalogue, order database, pricing, hero/NFC/scroll
 
 ### Confirmed Measurement ID follow-up
 
-The owner supplied **G-4L3JN7WC5M**, now recorded in `js/config.js` alongside **GTM-NK56RDLX**. This supersedes the earlier missing-ID note; container configuration/audit, real DebugView testing and owner activation approval remain outstanding. Both `analyticsEnabled` and `analyticsContainerReviewed` remain **false**. No runtime event/consent/private-page logic changed.
+The owner supplied **G-4L3JN7WC5M**, now recorded in `js/config.js` alongside **GTM-N9B3W4F5**. This supersedes the earlier missing-ID note; container configuration/audit, real DebugView testing and owner activation approval remain outstanding. Both `analyticsEnabled` and `analyticsContainerReviewed` remain **false**. No runtime event/consent/private-page logic changed.
 
 Re-ran all **132 backend/security/analytics tests** (including a new confirmed-ID/dormant-switch guard), **101 public checks**, **68 mocked analytics browser assertions**, and existing checkout/tracking/admin/integrated HTTPS browser suites at **375, 430, 768, 1024 and 1440 px**; all passed. The browser harness always replaces the configured ID with its mock-only ID and intercepts Google requests. No real Analytics, email or payment request was sent. Updated setup instructions identify the exact ID to configure inside GTM. No container publication, merge or deployment performed.
+
+### GTM container correction
+
+Owner-confirmed container is now **GTM-N9B3W4F5**; GA4 remains **G-4L3JN7WC5M**. Updated configuration, setup instructions and fixture/assertion expectations. Both tracking switches remain false. Re-ran all 132 backend/security/analytics tests, 101 public checks, 68 mocked analytics browser assertions, and checkout/tracking/admin/integrated browser regressions at all five widths; all passed. No Google tags were published and no merge or deployment was performed.

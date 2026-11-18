@@ -4,14 +4,14 @@
 
 ## Activation status and decisions
 
-- Owner-supplied container: **GTM-NK56RDLX**.
-- Owner-confirmed GA4 Measurement ID: **G-4L3JN7WC5M**, recorded in `js/config.js`. Configure this exact ID in the Google tag and GA4 event tags inside **GTM-NK56RDLX** before activation.
+- Owner-supplied container: **GTM-N9B3W4F5**.
+- Owner-confirmed GA4 Measurement ID: **G-4L3JN7WC5M**, recorded in `js/config.js`. Configure this exact ID in the Google tag and GA4 event tags inside **GTM-N9B3W4F5** before activation.
 - `analyticsEnabled` and `analyticsContainerReviewed` remain **false** in `js/config.js`.
 - No Google account/container access was available to audit installed tags. Nothing has been published, deployed or activated. Real DebugView/Realtime and hosted attribution remain unverified.
 - GTM is the only Google script loader. The previous standalone `gtag.js` loader was removed. Consent commands use the data layer; they do not install a second library.
 - No new hosting/provider or monthly subscription is introduced by this addendum. Existing backend hosting decisions are unchanged.
 
-Google's official async GTM bootstrap is created after consent. Its `gtm.start` event and `gtm.js?id=GTM-NK56RDLX` script use the default `dataLayer`. There is deliberately no unconditional noscript iframe: it would contact Google before optional consent. No Google preconnect is added.
+Google's official async GTM bootstrap is created after consent. Its `gtm.start` event and `gtm.js?id=GTM-N9B3W4F5` script use the default `dataLayer`. There is deliberately no unconditional noscript iframe: it would contact Google before optional consent. No Google preconnect is added.
 
 ## Consent and private areas
 
@@ -62,7 +62,7 @@ Successful forms use a random attempt UUID; failed unchanged retries keep the sa
 
 ## Owner setup — exact sequence before approval to activate
 
-1. Sign in at [Google Tag Manager](https://tagmanager.google.com/). Select the NetBud web container and confirm its header shows **GTM-NK56RDLX**. Do not click Submit/Publish yet.
+1. Sign in at [Google Tag Manager](https://tagmanager.google.com/). Select the NetBud web container and confirm its header shows **GTM-N9B3W4F5**. Do not click Submit/Publish yet.
 2. In [Google Analytics](https://analytics.google.com/), select the intended NetBud GA4 property. Open **Admin → Data collection and modification → Data streams → Web → the NetBud stream**. Confirm its **Measurement ID is G-4L3JN7WC5M**. The GTM ID cannot substitute for it. Confirm stream URL is `https://netbud.com.au` and your account can inspect DebugView.
 3. In the web stream's **Enhanced measurement** settings, turn off automatic measurement (particularly forms, history page changes, outbound links and search/query capture). Review Google signals, data collection, retention and data-sharing settings. Keep user-provided data, advertising features and enhanced conversions off. Do not enable automatic Google-tag page views.
 4. In GTM, inspect **every existing tag, trigger, variable, custom template and installed Google tag**. Remove/disable duplicate GA installations and unapproved ads/remarketing, custom HTML, DOM/form variables and automatic URL capture. No all-pages analytics tag should remain outside the following consented event flow. Audit server-side destinations if any. This audit has **not** been performed by Codex.

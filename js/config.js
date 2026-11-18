@@ -33,7 +33,7 @@ window.NETBUD_CONFIG = {
   },
   formEndpoint: "https://formsubmit.co/ajax/bilal@netbud.com.au",
   formDeliveryVerified: true, // Owner confirmed activation and receipt of a second test enquiry on 17 November 2026.
-  googleTagManagerId: "GTM-NK56RDLX",
+  googleTagManagerId: "GTM-N9B3W4F5",
   googleAnalyticsId: "G-4L3JN7WC5M", // Owner-confirmed GA4 Measurement ID. GTM is the ONLY loader; review gates remain off.
   analyticsEnabled: false, // Owner approval + reviewed container/property required before activation.
   analyticsContainerReviewed: false,
