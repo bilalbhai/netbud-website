@@ -18,7 +18,7 @@ window.NETBUD_CONFIG = {
   siteUrl: "https://netbud.com.au", // Add the final HTTPS domain, including a repository path if applicable.
   publicPricing: true,
   launchPricingApproved: true, // Set true only after scope, costs and fulfilment are confirmed.
-  pricingNote: "All prices are AUD. NetBud is GST-registered. Your written quote confirms the scope, final total and any applicable GST.",
+  pricingNote: "All prices are AUD. Your written quote confirms the scope, final total and any applicable taxes.",
   socialContent: {
     videosPerMonth: 10, // Ten videos in total, prepared for the agreed Reels/TikTok profiles.
     postsPerMonth: null, // Confirm the posting allowance and selected platforms in the proposal.
