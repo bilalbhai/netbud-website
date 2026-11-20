@@ -1,4 +1,11 @@
 User-agent: *
 Allow: /
 Disallow: /previews/
+Disallow: /business-card-concepts/
+Disallow: /docs/
+Disallow: /scripts/
+Disallow: /backend/
+Disallow: /admin/
+Disallow: /track/
+Disallow: /checkout/
 Sitemap: https://netbud.com.au/sitemap.xml

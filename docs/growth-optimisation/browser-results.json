@@ -1,0 +1,27 @@
+{
+  "checks": 486,
+  "failures": 0,
+  "widths": [
+    {
+      "width": 375,
+      "passed": true
+    },
+    {
+      "width": 430,
+      "passed": true
+    },
+    {
+      "width": 768,
+      "passed": true
+    },
+    {
+      "width": 1024,
+      "passed": true
+    },
+    {
+      "width": 1440,
+      "passed": true
+    }
+  ],
+  "mocked": true
+}

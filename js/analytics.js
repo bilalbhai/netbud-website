@@ -26,11 +26,12 @@
       if(key==='service'&&products.some(function(p){return p.name===value;}))return;
       if(key==='product'&&product(value))return;
       if(key==='category'&&products.some(function(p){return p.category===value;}))return;
+      if(key==='industry'&&products.some(function(p){return (p.industries||[]).indexOf(value)!==-1;}))return;
       var approved=cfg.analyticsCampaignAllowlist&&cfg.analyticsCampaignAllowlist[key];
       if(/^utm_(source|medium|campaign|id|term|content)$/.test(key)&&Array.isArray(approved)&&approved.indexOf(value)!==-1)return;
       valid=false;
     });
-    if(location.hash&&['#callback','#enquiry','#product-enquiry','#services','#catalogue','#main','#website-benefits','#cafe','#trades','#professional'].indexOf(location.hash)===-1)valid=false;
+    if(location.hash&&['#callback','#enquiry','#product-enquiry','#services','#catalogue','#main','#website-benefits','#cafe','#trades','#professional','#websites','#seo','#systems','#support'].indexOf(location.hash)===-1)valid=false;
     return valid;
   }
   function granted(){return read(consentKey)==='v2:yes';}
@@ -73,9 +74,8 @@
     var r=route();if(!pageViewed){pageViewed=true;send('page_view');}
     if(r.category==='product'&&!lastList){lastList='detail';send('view_item',{items:items([{id:r.product.id,quantity:1}])});}
     if(r.category==='shop'){
-      var list=Array.from(document.querySelectorAll('[data-product-grid] [data-add-product]')).map(function(x){return {id:Number(x.dataset.addProduct),quantity:1};});
-      if(!list.length)list=products.map(function(p){return {id:p.id,quantity:1};});
-      var signature=list.map(function(i){return i.id;}).join(',');if(signature!==lastList){lastList=signature;send('view_item_list',{items:items(list.slice(0,20)),list:'shop'});}
+      var list=Array.from(document.querySelectorAll('[data-product-grid] .product-card[data-product-id]')).map(function(x){return {id:Number(x.dataset.productId),quantity:1};});
+      var signature=list.map(function(i){return i.id;}).join(',');if(signature!==lastList){lastList=signature;if(list.length)send('view_item_list',{items:items(list.slice(0,20)),list:'shop'});}
     }
     if(r.category==='basket'&&!lastList){lastList='basket';send('view_cart',aggregate(currentBasket()));}
     if(r.category==='checkout'&&ready&&basket.length&&!checkoutStarted){checkoutStarted=true;send('begin_checkout',aggregate(basket));}

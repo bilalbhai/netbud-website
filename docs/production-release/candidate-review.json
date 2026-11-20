@@ -1,0 +1,867 @@
+{
+  "checkedAt": "2026-11-18T11:25:21.756Z",
+  "base": "593c3bfd6e3deb23da2fb6903825ed59600e03cc",
+  "originalPrHead": "c7d9dd58c61e40bfa5fdab605ca6a630777a96f0",
+  "originalPrFiles": 110,
+  "checks": 1144,
+  "failures": 0,
+  "pages": 32,
+  "uniqueInternalReferences": 127,
+  "scope": "Public candidate only; every original PR path reviewed; Google/fonts blocked; no external/client links followed",
+  "inventory": [
+    {
+      "file": "404.html",
+      "bytes": 5906,
+      "sha256": "79b879db676aa78ca44ff1f44b599e4bdab2a9665d1cad41470d2690a8295b14",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "README.md",
+      "bytes": 4631,
+      "sha256": "c1eb1043aa971ce5ad8e1f7f21bbbefa0f4d8cfd0bea65a53c9fc3c03007d171",
+      "method": "Full text/diff review; syntax/structured content and regression evidence"
+    },
+    {
+      "file": "about.html",
+      "bytes": 9963,
+      "sha256": "b91f92c1698f5d41742b966a594af51cce0c782168603efbd7bbf81a7a96af24",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "about/index.html",
+      "bytes": 9941,
+      "sha256": "c8cc7be22d6e6d1e9db0265bf3001a2ad0202cd1a27cbb1ab3688b946eaa8e67",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "cart.html",
+      "bytes": 5770,
+      "sha256": "d664dc8042ff107bbfb2d38bcf2b0d24f5286d8b4fe11a4dacc5d4fdc403c6bb",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "cart/index.html",
+      "bytes": 5754,
+      "sha256": "45a6340c7474775b40854b7079b00c8c4c89209a6aeef7ab45b62f2cbf084740",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "contact.html",
+      "bytes": 10418,
+      "sha256": "156ff8f1be23c43886b1d1bb4d52efca370d13441d966e830c1bbd04a4809a17",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "contact/index.html",
+      "bytes": 10402,
+      "sha256": "5b0dd097c429ecd519ea774fe51041668398cf4328fb0e88ad378df030527ac4",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "css/agency-showcase.min.css",
+      "bytes": 8426,
+      "sha256": "dc4401e2d32ac769cb565e0c3d2a358cf24eec61aa14feb237cd848d3a8f53ab",
+      "method": "Regenerated from fully reviewed readable source with pinned esbuild; exact output check"
+    },
+    {
+      "file": "css/brand-arrival.min.css",
+      "bytes": 2753,
+      "sha256": "c66b397d4f1c59085eba49e53cadd0edc73d2d18ef35216ebb239011704bd0df",
+      "method": "Regenerated from fully reviewed readable source with pinned esbuild; exact output check"
+    },
+    {
+      "file": "css/motion.min.css",
+      "bytes": 11789,
+      "sha256": "dc442dd47ec1f44b3e7f53acec60974de09bcbb85b0cc85cbb16c8e6a8c50ae5",
+      "method": "Regenerated from fully reviewed readable source with pinned esbuild; exact output check"
+    },
+    {
+      "file": "css/polish.css",
+      "bytes": 28156,
+      "sha256": "37476a321543dc67ed23b7552141c54bc6ebd2193b5021eaf576107651dc0df4",
+      "method": "Full text/diff review; syntax/structured content and regression evidence"
+    },
+    {
+      "file": "css/polish.min.css",
+      "bytes": 26582,
+      "sha256": "5035b1f0a9f3641b645bdfc6af0b768316fd38ffd42ee7f6a16debff00a4a25c",
+      "method": "Regenerated from fully reviewed readable source with pinned esbuild; exact output check"
+    },
+    {
+      "file": "css/scroll-experience.min.css",
+      "bytes": 4377,
+      "sha256": "ebaf6b527891b7466c45a17ff30a89f5c1ca717ca87667a574f8a272c6d27fea",
+      "method": "Regenerated from fully reviewed readable source with pinned esbuild; exact output check"
+    },
+    {
+      "file": "css/shop.min.css",
+      "bytes": 4667,
+      "sha256": "814c4453cafdaee02cc198e802ec21d22ddd5add6ef3df03c747faaadd210c74",
+      "method": "Regenerated from fully reviewed readable source with pinned esbuild; exact output check"
+    },
+    {
+      "file": "css/signature-product.min.css",
+      "bytes": 3463,
+      "sha256": "39ccbd5a92f8cec06762839b2965501ee797e6d1ae2ec6947327b4666ba15804",
+      "method": "Regenerated from fully reviewed readable source with pinned esbuild; exact output check"
+    },
+    {
+      "file": "css/style.min.css",
+      "bytes": 113417,
+      "sha256": "a4a0b6c9ad310de53a51c13f21c40407879002dfd4ab060bf6e57b656b451c45",
+      "method": "Regenerated from fully reviewed readable source with pinned esbuild; exact output check"
+    },
+    {
+      "file": "css/website-hero-nfc.min.css",
+      "bytes": 13080,
+      "sha256": "49047104934c58fdfe71d8bf6a6b2ba5baedaac7c0eec4de8912b9ae4ac05f55",
+      "method": "Regenerated from fully reviewed readable source with pinned esbuild; exact output check"
+    },
+    {
+      "file": "custom-websites.html",
+      "bytes": 576,
+      "sha256": "ba87ceb3bb3d290f3aab3277e03a0c9d6d123b33a1fbc9b4b0cb72ec0d4f63ff",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "custom-websites/index.html",
+      "bytes": 576,
+      "sha256": "ba87ceb3bb3d290f3aab3277e03a0c9d6d123b33a1fbc9b4b0cb72ec0d4f63ff",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "docs/NETBUD_GROWTH_OPTIMISATION_REPORT.md",
+      "bytes": 20928,
+      "sha256": "f61b9b0639819bca2e1097a2300b0a453d18981946389f4de2cfa87ab49a6f5f",
+      "method": "Full text/diff review; syntax/structured content and regression evidence"
+    },
+    {
+      "file": "docs/growth-optimisation/after-contact-1440.png",
+      "bytes": 288940,
+      "sha256": "a35953e3ff8dbea7ec9ce3077fe6d5def05f3e659363b3f466f63d1ee4439940",
+      "method": "Public before/after screenshot; valid PNG/dimensions; visual review/provenance"
+    },
+    {
+      "file": "docs/growth-optimisation/after-home-1440.png",
+      "bytes": 730886,
+      "sha256": "d44830c9996987beb6dc24afbbb6d5b4f57363afef6885ffc83ae7c729f1e337",
+      "method": "Public before/after screenshot; valid PNG/dimensions; visual review/provenance"
+    },
+    {
+      "file": "docs/growth-optimisation/after-home-375.png",
+      "bytes": 217853,
+      "sha256": "8a330f843d50fc08df57ce6801ce88984d7c419d723d171f07a1a8ce847407e7",
+      "method": "Public before/after screenshot; valid PNG/dimensions; visual review/provenance"
+    },
+    {
+      "file": "docs/growth-optimisation/after-measurements.json",
+      "bytes": 19089,
+      "sha256": "5a0e23e1c837257476daf790f1ad562fcbb41598406f593eacee636bce2b1a0e",
+      "method": "Full text/diff review; syntax/structured content and regression evidence"
+    },
+    {
+      "file": "docs/growth-optimisation/after-motion-1440.png",
+      "bytes": 583795,
+      "sha256": "b5fbdfb90d456a9d9d8e2696819765cf45aad0facc12946f300b98361159ee7f",
+      "method": "Public before/after screenshot; valid PNG/dimensions; visual review/provenance"
+    },
+    {
+      "file": "docs/growth-optimisation/after-nfc-1440.png",
+      "bytes": 434325,
+      "sha256": "dfa31c2a75ce9f96988787108284f2818d13e520b785c7fd7760eb24e2e8fbc2",
+      "method": "Public before/after screenshot; valid PNG/dimensions; visual review/provenance"
+    },
+    {
+      "file": "docs/growth-optimisation/after-nfc-375.png",
+      "bytes": 56718,
+      "sha256": "3926c419f86993af638ae60635511cadf695903b02f7c360f8b24cfaa587d611",
+      "method": "Public before/after screenshot; valid PNG/dimensions; visual review/provenance"
+    },
+    {
+      "file": "docs/growth-optimisation/before-contact-1440.png",
+      "bytes": 288940,
+      "sha256": "a35953e3ff8dbea7ec9ce3077fe6d5def05f3e659363b3f466f63d1ee4439940",
+      "method": "Public before/after screenshot; valid PNG/dimensions; visual review/provenance"
+    },
+    {
+      "file": "docs/growth-optimisation/before-home-1440.png",
+      "bytes": 730886,
+      "sha256": "d44830c9996987beb6dc24afbbb6d5b4f57363afef6885ffc83ae7c729f1e337",
+      "method": "Public before/after screenshot; valid PNG/dimensions; visual review/provenance"
+    },
+    {
+      "file": "docs/growth-optimisation/before-home-375.png",
+      "bytes": 217853,
+      "sha256": "8a330f843d50fc08df57ce6801ce88984d7c419d723d171f07a1a8ce847407e7",
+      "method": "Public before/after screenshot; valid PNG/dimensions; visual review/provenance"
+    },
+    {
+      "file": "docs/growth-optimisation/before-measurements.json",
+      "bytes": 19516,
+      "sha256": "fb7260b152f363dc567e2468b4e556cd7801f67d36b2799f218c4811f23e66cc",
+      "method": "Full text/diff review; syntax/structured content and regression evidence"
+    },
+    {
+      "file": "docs/growth-optimisation/before-nfc-1440.png",
+      "bytes": 434660,
+      "sha256": "7804ffbca7a2f999b31dc058cda8d38634c4077d7cba9732146bfbdf1edffc2a",
+      "method": "Public before/after screenshot; valid PNG/dimensions; visual review/provenance"
+    },
+    {
+      "file": "docs/growth-optimisation/before-nfc-375.png",
+      "bytes": 163222,
+      "sha256": "d7cf2283848c73e5fe23cfd8629f12a38609658d20de18dba31740e795b2fa17",
+      "method": "Public before/after screenshot; valid PNG/dimensions; visual review/provenance"
+    },
+    {
+      "file": "docs/growth-optimisation/browser-results.json",
+      "bytes": 370,
+      "sha256": "1e5581a91a5f41551f44b32ff4842f398c9b0ea4857e4ab69019d8f428fa2e85",
+      "method": "Full text/diff review; syntax/structured content and regression evidence"
+    },
+    {
+      "file": "docs/growth-optimisation/changed-files.txt",
+      "bytes": 3203,
+      "sha256": "782b022c930f537ab9810743c7c051616e91dc7c5943f107eafdf9b9bcc570b0",
+      "method": "Full text/diff review; syntax/structured content and regression evidence"
+    },
+    {
+      "file": "docs/growth-optimisation/performance-summary.json",
+      "bytes": 1281,
+      "sha256": "6d08009ca7309863c937179bfd637b37697acf0464db1c508b5cc02c9a916cb7",
+      "method": "Full text/diff review; syntax/structured content and regression evidence"
+    },
+    {
+      "file": "free-preview.html",
+      "bytes": 12718,
+      "sha256": "e5a64e81b32fa88eacd828cd2243ef89f5991f49147812f13062fbd36cee80ef",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "free-preview/index.html",
+      "bytes": 12690,
+      "sha256": "06127eb5f56a609287c9b1795c06ece58708505f8168944528005892e19beaae",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "how-it-works.html",
+      "bytes": 8436,
+      "sha256": "0c54b27125e4b9a985e69f31dfa668cc39d19e1672f8a079ad739fe84f7e552e",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "how-it-works/index.html",
+      "bytes": 8414,
+      "sha256": "fbd75a202c9ddacfba9ee2e948edc2fc08312f7b387b89ea2929a0abe71d472a",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "index.html",
+      "bytes": 40260,
+      "sha256": "011adee319d54173e3ceb524142e2c59e3330bb73fe732b41ed9d5486b67d8af",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "js/analytics.js",
+      "bytes": 15884,
+      "sha256": "1b210cd6c3c5a5e96051ae852b645a327c8cdc9e9582231806e1a05d73e7181e",
+      "method": "Full text/diff review; syntax/structured content and regression evidence"
+    },
+    {
+      "file": "js/config.js",
+      "bytes": 5178,
+      "sha256": "82e4a68b016f96266601f6f93a65d8d48bb291a0a54b4f03aa39b6c9a4b012e7",
+      "method": "Full text/diff review; syntax/structured content and regression evidence"
+    },
+    {
+      "file": "js/main.js",
+      "bytes": 95757,
+      "sha256": "b40504c518fa4a7307cd9f0d96eabce80551dba429b93b80e700a67fae1dd6ae",
+      "method": "Full text/diff review; syntax/structured content and regression evidence"
+    },
+    {
+      "file": "js/main.min.js",
+      "bytes": 63946,
+      "sha256": "e14e20a36bf9eecebf51c47d37274ac40c7698c7b703e115af8a14aa22537991",
+      "method": "Regenerated from fully reviewed readable source with pinned esbuild; exact output check"
+    },
+    {
+      "file": "js/products.js",
+      "bytes": 74457,
+      "sha256": "49c09129ca8b959cc893a1ac5ba709f698c1d139210aeb2593cfae520961bd6c",
+      "method": "Full text/diff review; syntax/structured content and regression evidence"
+    },
+    {
+      "file": "js/products.min.js",
+      "bytes": 58731,
+      "sha256": "4e28a47b01f54a1c2fce4f95a78a38658269cc77a9f223ea0fb565428520d370",
+      "method": "Regenerated from fully reviewed readable source with pinned esbuild; exact output check"
+    },
+    {
+      "file": "package-lock.json",
+      "bytes": 14481,
+      "sha256": "5bd94e15828077cbb870e2c6eb7c78c8c80b6e025ab8f2f2840fb17b57f1467b",
+      "method": "Full text/diff review; syntax/structured content and regression evidence"
+    },
+    {
+      "file": "package.json",
+      "bytes": 521,
+      "sha256": "1cb491155791622351d75e02a93cc133cc230d617466aea93d5fb0c78a2860bb",
+      "method": "Full text/diff review; syntax/structured content and regression evidence"
+    },
+    {
+      "file": "portfolio.html",
+      "bytes": 6941,
+      "sha256": "61d2d0aed9cd2f5eef2b69ec3ea4678ea1e92c0dd210a78aff4f2b57af28d42c",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "portfolio/index.html",
+      "bytes": 6916,
+      "sha256": "f5bfb7f611f62088371b9f3f4eb53e1aa966ce1921f8a13af777742ff6f74ed9",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "pricing.html",
+      "bytes": 6921,
+      "sha256": "b36fb33a20b8cf886f13e4dada54ff940f01cfa80f69f50edec83ec17628aff1",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "pricing/index.html",
+      "bytes": 6899,
+      "sha256": "f4b5453fc9801363f70b02f1c2d3df770845447dd48c4865863cf7795610fa63",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "privacy.html",
+      "bytes": 12515,
+      "sha256": "3a3b1cca10d4f9c32177e16609ef096daaf6592e0604c763638c29bc69dd5110",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "privacy/index.html",
+      "bytes": 12499,
+      "sha256": "9151047bd1259c1c618b102979d65b280de1e4a88fff7e096f8f7a269343d302",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "product.html",
+      "bytes": 5108,
+      "sha256": "10950b6d545987ee9563fc7bd56cf5215e9d5a64d792cc7b6f665f3081b530f2",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "product/index.html",
+      "bytes": 5092,
+      "sha256": "7a7a245e1e10829de74c6eee8601ee956aabcea03fe87c1c44247d39b0a8f4d7",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "robots.txt",
+      "bytes": 236,
+      "sha256": "ff298e9ba1682d31311adc2065e0abcceb6a8581c450a89107d3cb0d473410bc",
+      "method": "Full text/diff review; syntax/structured content and regression evidence"
+    },
+    {
+      "file": "scripts/build-clean-urls.cjs",
+      "bytes": 1793,
+      "sha256": "521326c1a83a2ed22b222a38f2a929fa90e3dd7823cfb6626299469cf1d150db",
+      "method": "Full text/diff review; syntax/structured content and regression evidence"
+    },
+    {
+      "file": "scripts/build-public-assets.cjs",
+      "bytes": 1812,
+      "sha256": "8f17aac6efd7793a384b266a9139370a1f7998e50e40e13a548fd9bafdffe066",
+      "method": "Full text/diff review; syntax/structured content and regression evidence"
+    },
+    {
+      "file": "scripts/check-growth.cjs",
+      "bytes": 4267,
+      "sha256": "b584beaee84aa852cf8694a9599c45bcf783e377c39eb23be6a5ea2a04c1c339",
+      "method": "Full text/diff review; syntax/structured content and regression evidence"
+    },
+    {
+      "file": "scripts/lib/preview-server.mjs",
+      "bytes": 1830,
+      "sha256": "3c13ad5cfe54f83b5c6cf1d6eaafe7d49228c9fcdc7962fcb512edb2f272c002",
+      "method": "Full text/diff review; syntax/structured content and regression evidence"
+    },
+    {
+      "file": "scripts/measure-growth.mjs",
+      "bytes": 4110,
+      "sha256": "40cfba0b7900ff3a636da9255a2a117898e65e0761a8e132c1cf3dff644c577d",
+      "method": "Full text/diff review; syntax/structured content and regression evidence"
+    },
+    {
+      "file": "scripts/public-page-meta.cjs",
+      "bytes": 3395,
+      "sha256": "a56c5c41320205b4cba24ff0df9ad8790777a00454e6e7b00b4bc1e362cfdb7a",
+      "method": "Full text/diff review; syntax/structured content and regression evidence"
+    },
+    {
+      "file": "scripts/review-growth.mjs",
+      "bytes": 12613,
+      "sha256": "8be5e445b607b6fe78b22baf39dae87525da948aabeee084600026e2cc8ad61f",
+      "method": "Full text/diff review; syntax/structured content and regression evidence"
+    },
+    {
+      "file": "services.html",
+      "bytes": 28098,
+      "sha256": "854c00e6d17c36bd6c3a4d8041d71c6955bd3d4f8ea982aaedeca4882a8c6be0",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "services/index.html",
+      "bytes": 28054,
+      "sha256": "0f2eb92ab4ebe77b1c297874305470dc75ef68d25eed764caed5a74d6a72a3d5",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop.html",
+      "bytes": 12112,
+      "sha256": "e3369ed8d1af32e684f37c3c9b4cb01bb766ea4c107789a1d92be7bb7dc6aabc",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop/business-analytics-tracking-setup.html",
+      "bytes": 7683,
+      "sha256": "8a794a69ca56d0a01fe8ad2b4b0725cde8e6969d5e0fef1cbcc16b6784b48194",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop/business-analytics-tracking-setup/index.html",
+      "bytes": 7599,
+      "sha256": "bd917de01cfea1cf09de37382b233003f487cad23cf81fb6a49890050280e211",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop/business-website.html",
+      "bytes": 10230,
+      "sha256": "64e42c9b3038d85b16cd6428da34721c1b0581f10c749442e67ef47018037f1e",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop/business-website/index.html",
+      "bytes": 10146,
+      "sha256": "1464c789a7d4c9f5e42c7b44675ec67d9bd979cd2beab79e518d28c94e9b36c0",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop/custom-nfc-business-card.html",
+      "bytes": 7935,
+      "sha256": "6165faf53756f849d72c00d11f5bfe4d559ca6868dc1980c87a5e10ad96d7006",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop/custom-nfc-business-card/index.html",
+      "bytes": 7851,
+      "sha256": "f67c8bd3366cfe9e5608869c91423b8e84022cc83eee5d5edf9ece29e856fe57",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop/digital-invoicing-system-setup.html",
+      "bytes": 7401,
+      "sha256": "7ec71ec6db6679c6b051f2ddb7a02f8dd07291f3f96ba285dadab8e20014aca3",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop/digital-invoicing-system-setup/index.html",
+      "bytes": 7317,
+      "sha256": "430f41051b083e07011ea7a6e29302ffc1f4a92b63e24eb0c144e181b91a79a5",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop/domain-professional-email-setup.html",
+      "bytes": 7461,
+      "sha256": "24fef1174211ccfce145c4047ca7cdb1d42b0cde3a3f0fba1dfaebdbb3b6f77a",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop/domain-professional-email-setup/index.html",
+      "bytes": 7377,
+      "sha256": "d1a0235a45c682d4c5cc62730945ab30a08687fe51509755e3ca9a61ec994ac2",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop/ecommerce-website.html",
+      "bytes": 10375,
+      "sha256": "b6e61e8b155f674e21bc8df94d45059642245572ade3249c12be9cd124825fdb",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop/ecommerce-website/index.html",
+      "bytes": 10291,
+      "sha256": "b740ff95cc5c74030f1631a836799543ead4a4eb4c74c1471fddba1276fa6fc4",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop/google-business-profile-management.html",
+      "bytes": 7537,
+      "sha256": "2b5e34447f01509a73e8bbc57794ff80387d69bef106fef5e3e7c3d3f0af3b4a",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop/google-business-profile-management/index.html",
+      "bytes": 7453,
+      "sha256": "bc5d92eb06914ec9b80ae955d9e4c50d932fa397dd30ef31a6695da6d1ed5d8b",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop/google-business-profile-setup.html",
+      "bytes": 7378,
+      "sha256": "d207a55ba7291e145392a9a21716200360b5b0d0b0bb071c09df020dcdec6f2c",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop/google-business-profile-setup/index.html",
+      "bytes": 7294,
+      "sha256": "33c76a3402d40d6f5ca712e58f42563b5ee3a35b7311d8ef0fa593a7a61661e2",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop/index.html",
+      "bytes": 12058,
+      "sha256": "9ca75d78f4c4b0cc9942102ab2d1b0de4e7e253337157cfba2cac9e68094c4de",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop/landing-page.html",
+      "bytes": 9487,
+      "sha256": "d2eff0a73e77457c74d1a0f48ebd26ab06b5b855b9e5d4b0b1dc2fa6049ad040",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop/landing-page/index.html",
+      "bytes": 9403,
+      "sha256": "7eb6a8cd64fac0e4a0597a93493e26e6ac5d600fd63701cb3ec5ed2e9d034ca2",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop/monthly-seo-management.html",
+      "bytes": 7389,
+      "sha256": "cd543c9f61474c56804ff73a6a5be0b4a52bfaa2ca6a41d3feedf1744403edc7",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop/monthly-seo-management/index.html",
+      "bytes": 7305,
+      "sha256": "c9390ac42448c313465271f96307c591b4d84157760d662103461c0399cd4360",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop/nfc-google-review-card.html",
+      "bytes": 7766,
+      "sha256": "2e193e8c101ceb623128a80e37949ede4c12472032f1d0b09fb4789b96ac18b6",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop/nfc-google-review-card/index.html",
+      "bytes": 7682,
+      "sha256": "312689fdf66c98bcab345634b2b76009a218480136ca331ad2ec92107db4673e",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop/online-booking-system-setup.html",
+      "bytes": 7359,
+      "sha256": "fa5df0bf167b77aee5c8b13b3f837ddf4de405a4b0ea0012617cb7e777579e01",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop/online-booking-system-setup/index.html",
+      "bytes": 7275,
+      "sha256": "75e4370cd74def23cf186140c3114657d54c8d89f8ade2249305d28908e76e27",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop/portfolio-website.html",
+      "bytes": 9872,
+      "sha256": "94746a927a140f3fdd5e15fc3344c779da6bf5062e6adf97a855e7cf2d239b8f",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop/portfolio-website/index.html",
+      "bytes": 9788,
+      "sha256": "713850fc79afca05dfcdb0a99c26e5efec88cbd700b827335856a384565cf29c",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop/professional-logo-design.html",
+      "bytes": 8078,
+      "sha256": "1f063e2ba9772db6ce1d98b53cde56517cc3339a4cecedd4483dbe8f83a694e7",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop/professional-logo-design/index.html",
+      "bytes": 7994,
+      "sha256": "c55830f6c1061ef6c11e44a601e88b3d4f32dd5bf8c2dfa76cfbf1769b2e1c99",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop/seo-setup-optimisation.html",
+      "bytes": 7367,
+      "sha256": "b2c19a7b0e1a2e79755e54328fa66185d6d5e3512657135fbf2164adcdba3cec",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop/seo-setup-optimisation/index.html",
+      "bytes": 7283,
+      "sha256": "14ace733d73aea6f58ae903369122bd87301cac684a3a0566939cb73d8e12d09",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop/social-media-content-management.html",
+      "bytes": 8034,
+      "sha256": "fd01a87f6e4258b792f461d8051f3dd4f8b37ed99c700f89ee66cda5fd5ed5b1",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop/social-media-content-management/index.html",
+      "bytes": 7950,
+      "sha256": "993f79ae7a2380d94be883b2590b5df46455bce22f64e73414fcb431e70b183f",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop/website-hosting-care.html",
+      "bytes": 7521,
+      "sha256": "caa1ac5e474230ade97547564acf85c263051a2ece08e4c0ad675e169b4e5d2b",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop/website-hosting-care/index.html",
+      "bytes": 7437,
+      "sha256": "3a78bd75019181784ea917249fbcb0517646866d911dea43c6823dd9796990a7",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop/website-redesign.html",
+      "bytes": 9877,
+      "sha256": "6bfe467a9c78950e7a4e0db171c6ac28009f0f26a893d60c798355c2365f0814",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "shop/website-redesign/index.html",
+      "bytes": 9793,
+      "sha256": "612378435a6eae899686908cb1d153bae5292c4c7faaa1950c7ccdc3d2d72b81",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "terms.html",
+      "bytes": 10713,
+      "sha256": "e4224e1de90d9d1aee71e5148f06f7497ca277d103fd1447cd240c900afd4152",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "terms/index.html",
+      "bytes": 10694,
+      "sha256": "630b5b9cc65a286b0b52295cb4e84d75840e0e9f5cb4c15aaddb74bce5f7c669",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "thank-you.html",
+      "bytes": 6158,
+      "sha256": "5a900dc7b247ffd70cd7ac7035c0aaa2d26ce18367ba93a25d9d21691c9373ad",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    },
+    {
+      "file": "thank-you/index.html",
+      "bytes": 6136,
+      "sha256": "196e6505af0dcef122881ba262fed51dbc0fbac35bd02dac84f449cd55fde60c",
+      "method": "Full static head/resource/schema inspection; rendered site crawl; body compared with main"
+    }
+  ],
+  "pageResults": [
+    {
+      "route": "/",
+      "productId": null,
+      "canonical": "https://netbud.com.au/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/services/",
+      "productId": null,
+      "canonical": "https://netbud.com.au/services/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/shop/",
+      "productId": null,
+      "canonical": "https://netbud.com.au/shop/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/pricing/",
+      "productId": null,
+      "canonical": "https://netbud.com.au/pricing/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/portfolio/",
+      "productId": null,
+      "canonical": "https://netbud.com.au/portfolio/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/about/",
+      "productId": null,
+      "canonical": "https://netbud.com.au/about/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/contact/",
+      "productId": null,
+      "canonical": "https://netbud.com.au/contact/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/free-preview/",
+      "productId": null,
+      "canonical": "https://netbud.com.au/free-preview/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/how-it-works/",
+      "productId": null,
+      "canonical": "https://netbud.com.au/how-it-works/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/shop/nfc-google-review-card/",
+      "productId": "10",
+      "canonical": "https://netbud.com.au/shop/nfc-google-review-card/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/shop/custom-nfc-business-card/",
+      "productId": "5",
+      "canonical": "https://netbud.com.au/shop/custom-nfc-business-card/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/shop/professional-logo-design/",
+      "productId": "4",
+      "canonical": "https://netbud.com.au/shop/professional-logo-design/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/shop/landing-page/",
+      "productId": "11",
+      "canonical": "https://netbud.com.au/shop/landing-page/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/shop/portfolio-website/",
+      "productId": "12",
+      "canonical": "https://netbud.com.au/shop/portfolio-website/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/shop/business-website/",
+      "productId": "1",
+      "canonical": "https://netbud.com.au/shop/business-website/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/shop/ecommerce-website/",
+      "productId": "13",
+      "canonical": "https://netbud.com.au/shop/ecommerce-website/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/shop/website-redesign/",
+      "productId": "14",
+      "canonical": "https://netbud.com.au/shop/website-redesign/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/shop/google-business-profile-setup/",
+      "productId": "15",
+      "canonical": "https://netbud.com.au/shop/google-business-profile-setup/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/shop/google-business-profile-management/",
+      "productId": "16",
+      "canonical": "https://netbud.com.au/shop/google-business-profile-management/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/shop/seo-setup-optimisation/",
+      "productId": "2",
+      "canonical": "https://netbud.com.au/shop/seo-setup-optimisation/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/shop/monthly-seo-management/",
+      "productId": "17",
+      "canonical": "https://netbud.com.au/shop/monthly-seo-management/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/shop/social-media-content-management/",
+      "productId": "7",
+      "canonical": "https://netbud.com.au/shop/social-media-content-management/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/shop/business-analytics-tracking-setup/",
+      "productId": "18",
+      "canonical": "https://netbud.com.au/shop/business-analytics-tracking-setup/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/shop/domain-professional-email-setup/",
+      "productId": "19",
+      "canonical": "https://netbud.com.au/shop/domain-professional-email-setup/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/shop/website-hosting-care/",
+      "productId": "3",
+      "canonical": "https://netbud.com.au/shop/website-hosting-care/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/shop/online-booking-system-setup/",
+      "productId": "6",
+      "canonical": "https://netbud.com.au/shop/online-booking-system-setup/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/shop/digital-invoicing-system-setup/",
+      "productId": "20",
+      "canonical": "https://netbud.com.au/shop/digital-invoicing-system-setup/",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/cart/",
+      "productId": null,
+      "canonical": "https://netbud.com.au/cart/",
+      "robots": "noindex, follow"
+    },
+    {
+      "route": "/privacy/",
+      "productId": null,
+      "canonical": "https://netbud.com.au/privacy/",
+      "robots": "noindex, follow"
+    },
+    {
+      "route": "/terms/",
+      "productId": null,
+      "canonical": "https://netbud.com.au/terms/",
+      "robots": "noindex, follow"
+    },
+    {
+      "route": "/thank-you/",
+      "productId": null,
+      "canonical": "https://netbud.com.au/thank-you/",
+      "robots": "noindex, follow"
+    },
+    {
+      "route": "/previews/",
+      "productId": null,
+      "canonical": "https://netbud.com.au/previews/",
+      "robots": "noindex, follow"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "checkedAt": "2026-11-18T11:14:20.197Z",
+  "mode": "Public source downloaded for review only; tags not executed; no GA4 collect, email or enquiry",
+  "url": "https://www.googletagmanager.com/gtm.js?id=GTM-N9B3W4F5",
+  "status": 200,
+  "container": "GTM-N9B3W4F5",
+  "measurementIdPresent": true,
+  "sha256": "a396393f46010a36ea6cf6923ec51bbc24b56b25ca2d83f068dd41afc9b490e9",
+  "review": {
+    "resourceVersion": "2",
+    "automaticMeasurement": {
+      "vtp_enableOutboundClick": true,
+      "vtp_enableScroll": true,
+      "vtp_enableDownload": true,
+      "vtp_enableHistoryEvents": true,
+      "vtp_enableForm": true,
+      "vtp_enableVideo": true
+    },
+    "automaticUserData": {
+      "vtp_isAutoEnabled": true,
+      "vtp_isEnabled": true,
+      "vtp_autoPhoneEnabled": true,
+      "vtp_autoAddressEnabled": true,
+      "vtp_autoEmailEnabled": true,
+      "vtp_isAutoCollectPiiEnabledFlag": true
+    },
+    "googleDestination": "G-4L3JN7WC5M",
+    "googleTagRequiredConsent": [
+      "list",
+      "analytics_storage"
+    ],
+    "eventTagRequiredConsent": [
+      "list",
+      "analytics_storage"
+    ],
+    "googleSettings": [
+      {
+        "parameter": "send_page_view",
+        "value": "false"
+      },
+      {
+        "parameter": "allow_google_signals",
+        "value": "false"
+      },
+      {
+        "parameter": "allow_ad_personalization_signals",
+        "value": "false"
+      }
+    ],
+    "eventTriggerAllowlist": "^(page_view|view_item_list|select_item|view_item|add_to_cart|remove_from_cart|view_cart|begin_checkout|add_shipping_info|order_submitted|generate_lead|quote_requested|order_lookup_started|order_lookup_verified)$",
+    "customHtmlTagPresent": false
+  },
+  "limitations": "Source inspection is not proof of actual data transmission, live Analytics receipt, complete workspace settings or recipient email delivery.",
+  "verdict": "BLOCKED: published configuration conflicts with intended privacy/event restrictions"
+}

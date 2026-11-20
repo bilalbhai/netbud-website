@@ -1,0 +1,53 @@
+{
+  "assets": {
+    "bytesBefore": 385796,
+    "bytesAfter": 311096,
+    "gzipBefore": 87896,
+    "gzipAfter": 76368
+  },
+  "routes": [
+    {
+      "route": "/",
+      "beforeLcpMedian": 6144,
+      "afterLcpMedian": 3268,
+      "beforeLcpRange": [
+        10748,
+        6144,
+        5608
+      ],
+      "afterLcpRange": [
+        5528,
+        3268,
+        3104
+      ],
+      "beforeClsMedian": 0.0075703703703703705,
+      "afterClsMedian": 0.0075703703703703705,
+      "beforeLongTaskExcessMedian": 1923,
+      "afterLongTaskExcessMedian": 353,
+      "beforeResourceTransferMedian": 583277,
+      "afterResourceTransferMedian": 493470
+    },
+    {
+      "route": "/shop/custom-nfc-business-card/",
+      "beforeLcpMedian": 4524,
+      "afterLcpMedian": 2728,
+      "beforeLcpRange": [
+        5412,
+        4056,
+        4524
+      ],
+      "afterLcpRange": [
+        2640,
+        3020,
+        2728
+      ],
+      "beforeClsMedian": 0,
+      "afterClsMedian": 0,
+      "beforeLongTaskExcessMedian": 1166,
+      "afterLongTaskExcessMedian": 320,
+      "beforeResourceTransferMedian": 478979,
+      "afterResourceTransferMedian": 395634
+    }
+  ],
+  "note": "Synthetic lab observations only; gzip estimates are local compression, not a claim about live response headers."
+}

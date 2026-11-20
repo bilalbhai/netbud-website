@@ -1,0 +1,800 @@
+{
+  "method": "Edge headless, loopback HTTP no-store; 375x900; cold cache; 4x CPU; 40ms latency; 200KB/s download; external fonts/Google blocked; 6.5s observation after load; 3 samples each; not production field data",
+  "results": [
+    {
+      "phase": "after",
+      "route": "/",
+      "width": 375,
+      "sample": 1,
+      "lcp": 5528,
+      "cls": 0.0075703703703703705,
+      "longTasks": 456,
+      "events": [],
+      "resources": [
+        {
+          "path": "/images/logo-symbol.svg",
+          "bytes": 685,
+          "ms": 89.89999997615814
+        },
+        {
+          "path": "/images/logo-wordmark.svg",
+          "bytes": 4430,
+          "ms": 194.60000002384186
+        },
+        {
+          "path": "/css/style.min.css",
+          "bytes": 113717,
+          "ms": 2164.600000023842
+        },
+        {
+          "path": "/js/config.js",
+          "bytes": 5393,
+          "ms": 762.1999999880791
+        },
+        {
+          "path": "/js/products.min.js",
+          "bytes": 59031,
+          "ms": 1947.5
+        },
+        {
+          "path": "/js/motion.js",
+          "bytes": 9866,
+          "ms": 969.8999999761581
+        },
+        {
+          "path": "/js/main.min.js",
+          "bytes": 64111,
+          "ms": 2044
+        },
+        {
+          "path": "/js/form-experience.js",
+          "bytes": 7940,
+          "ms": 1047.4000000357628
+        },
+        {
+          "path": "/js/section-experience.js",
+          "bytes": 10661,
+          "ms": 1206.2999999523163
+        },
+        {
+          "path": "/js/marketing-packages.js",
+          "bytes": 1326,
+          "ms": 1045.699999988079
+        },
+        {
+          "path": "/js/hero-story.js",
+          "bytes": 6644,
+          "ms": 1277.199999988079
+        },
+        {
+          "path": "/css/shop.min.css",
+          "bytes": 4967,
+          "ms": 231.30000001192093
+        },
+        {
+          "path": "/css/polish.min.css",
+          "bytes": 26882,
+          "ms": 817.8000000119209
+        },
+        {
+          "path": "/css/motion.min.css",
+          "bytes": 12089,
+          "ms": 451.5
+        },
+        {
+          "path": "/css/scroll-experience.min.css",
+          "bytes": 4677,
+          "ms": 403
+        },
+        {
+          "path": "/js/scroll-experience.js",
+          "bytes": 3960,
+          "ms": 1219.0999999642372
+        },
+        {
+          "path": "/css/website-hero-nfc.min.css",
+          "bytes": 13380,
+          "ms": 637.5
+        },
+        {
+          "path": "/css/signature-product.min.css",
+          "bytes": 3763,
+          "ms": 559.4000000357628
+        },
+        {
+          "path": "/css/agency-showcase.min.css",
+          "bytes": 8726,
+          "ms": 726.6000000238419
+        },
+        {
+          "path": "/css/brand-arrival.min.css",
+          "bytes": 3053,
+          "ms": 606.0999999642372
+        },
+        {
+          "path": "/js/brand-arrival.js",
+          "bytes": 10021,
+          "ms": 1520
+        },
+        {
+          "path": "/images/logo.svg",
+          "bytes": 4880,
+          "ms": 1391.9000000357628
+        },
+        {
+          "path": "/images/icon.svg",
+          "bytes": 611,
+          "ms": 1285
+        },
+        {
+          "path": "/images/logo-dark.svg",
+          "bytes": 4880,
+          "ms": 1054.3999999761581
+        },
+        {
+          "path": "/images/business-website-consultation.webp",
+          "bytes": 44530,
+          "ms": 497
+        },
+        {
+          "path": "/images/nfc-business-card.webp",
+          "bytes": 46452,
+          "ms": 511.80000001192093
+        },
+        {
+          "path": "/js/analytics.js",
+          "bytes": 16184,
+          "ms": 408.9000000357628
+        },
+        {
+          "path": "/images/favicon.svg",
+          "bytes": 611,
+          "ms": 63.30000001192093
+        }
+      ],
+      "navigation": [
+        {
+          "domContentLoaded": 5874.899999976158,
+          "load": 5959.199999988079
+        }
+      ],
+      "overflow": false,
+      "h1": "We make\nBusiness\ntech easy."
+    },
+    {
+      "phase": "after",
+      "route": "/",
+      "width": 375,
+      "sample": 2,
+      "lcp": 3268,
+      "cls": 0.0075703703703703705,
+      "longTasks": 327,
+      "events": [],
+      "resources": [
+        {
+          "path": "/images/logo-symbol.svg",
+          "bytes": 685,
+          "ms": 81.80000001192093
+        },
+        {
+          "path": "/images/logo-wordmark.svg",
+          "bytes": 4430,
+          "ms": 174
+        },
+        {
+          "path": "/css/style.min.css",
+          "bytes": 113717,
+          "ms": 2166.300000011921
+        },
+        {
+          "path": "/js/config.js",
+          "bytes": 5393,
+          "ms": 783.5
+        },
+        {
+          "path": "/js/products.min.js",
+          "bytes": 59031,
+          "ms": 1961.3999999761581
+        },
+        {
+          "path": "/js/motion.js",
+          "bytes": 9866,
+          "ms": 1014.6999999880791
+        },
+        {
+          "path": "/js/main.min.js",
+          "bytes": 64111,
+          "ms": 2054.100000023842
+        },
+        {
+          "path": "/js/form-experience.js",
+          "bytes": 7940,
+          "ms": 1077.300000011921
+        },
+        {
+          "path": "/js/section-experience.js",
+          "bytes": 10661,
+          "ms": 1179.5
+        },
+        {
+          "path": "/js/marketing-packages.js",
+          "bytes": 1326,
+          "ms": 1093.199999988079
+        },
+        {
+          "path": "/js/hero-story.js",
+          "bytes": 6644,
+          "ms": 1312.4000000357628
+        },
+        {
+          "path": "/css/shop.min.css",
+          "bytes": 4967,
+          "ms": 219.30000001192093
+        },
+        {
+          "path": "/css/polish.min.css",
+          "bytes": 26882,
+          "ms": 810.5
+        },
+        {
+          "path": "/css/motion.min.css",
+          "bytes": 12089,
+          "ms": 451.5
+        },
+        {
+          "path": "/css/scroll-experience.min.css",
+          "bytes": 4677,
+          "ms": 372.5
+        },
+        {
+          "path": "/js/scroll-experience.js",
+          "bytes": 3960,
+          "ms": 1264.6000000238419
+        },
+        {
+          "path": "/css/website-hero-nfc.min.css",
+          "bytes": 13380,
+          "ms": 626.1999999880791
+        },
+        {
+          "path": "/css/signature-product.min.css",
+          "bytes": 3763,
+          "ms": 546.3999999761581
+        },
+        {
+          "path": "/css/agency-showcase.min.css",
+          "bytes": 8726,
+          "ms": 719.6000000238419
+        },
+        {
+          "path": "/css/brand-arrival.min.css",
+          "bytes": 3053,
+          "ms": 672.4000000357628
+        },
+        {
+          "path": "/js/brand-arrival.js",
+          "bytes": 10021,
+          "ms": 1509.7999999523163
+        },
+        {
+          "path": "/images/logo.svg",
+          "bytes": 4880,
+          "ms": 1466.800000011921
+        },
+        {
+          "path": "/images/icon.svg",
+          "bytes": 611,
+          "ms": 1263.8999999761581
+        },
+        {
+          "path": "/images/logo-dark.svg",
+          "bytes": 4880,
+          "ms": 985
+        },
+        {
+          "path": "/images/business-website-consultation.webp",
+          "bytes": 44530,
+          "ms": 546.9000000357628
+        },
+        {
+          "path": "/images/nfc-business-card.webp",
+          "bytes": 46452,
+          "ms": 578
+        },
+        {
+          "path": "/js/analytics.js",
+          "bytes": 16184,
+          "ms": 462.2999999523163
+        },
+        {
+          "path": "/images/favicon.svg",
+          "bytes": 611,
+          "ms": 59.80000001192093
+        }
+      ],
+      "navigation": [
+        {
+          "domContentLoaded": 3819.100000023842,
+          "load": 3911.800000011921
+        }
+      ],
+      "overflow": false,
+      "h1": "We make\nBusiness\ntech easy."
+    },
+    {
+      "phase": "after",
+      "route": "/",
+      "width": 375,
+      "sample": 3,
+      "lcp": 3104,
+      "cls": 0.0075703703703703705,
+      "longTasks": 353,
+      "events": [],
+      "resources": [
+        {
+          "path": "/images/logo-symbol.svg",
+          "bytes": 685,
+          "ms": 89.80000001192093
+        },
+        {
+          "path": "/images/logo-wordmark.svg",
+          "bytes": 4430,
+          "ms": 188.5
+        },
+        {
+          "path": "/css/style.min.css",
+          "bytes": 113717,
+          "ms": 2162.599999964237
+        },
+        {
+          "path": "/js/config.js",
+          "bytes": 5393,
+          "ms": 766.8999999761581
+        },
+        {
+          "path": "/js/motion.js",
+          "bytes": 9866,
+          "ms": 977.3999999761581
+        },
+        {
+          "path": "/js/products.min.js",
+          "bytes": 59031,
+          "ms": 1953.199999988079
+        },
+        {
+          "path": "/js/main.min.js",
+          "bytes": 64111,
+          "ms": 2054
+        },
+        {
+          "path": "/js/form-experience.js",
+          "bytes": 7940,
+          "ms": 1071.800000011921
+        },
+        {
+          "path": "/js/section-experience.js",
+          "bytes": 10661,
+          "ms": 1191.8999999761581
+        },
+        {
+          "path": "/js/marketing-packages.js",
+          "bytes": 1326,
+          "ms": 1056
+        },
+        {
+          "path": "/js/hero-story.js",
+          "bytes": 6644,
+          "ms": 1308.699999988079
+        },
+        {
+          "path": "/css/shop.min.css",
+          "bytes": 4967,
+          "ms": 232.5
+        },
+        {
+          "path": "/css/polish.min.css",
+          "bytes": 26882,
+          "ms": 796
+        },
+        {
+          "path": "/css/motion.min.css",
+          "bytes": 12089,
+          "ms": 475.39999997615814
+        },
+        {
+          "path": "/css/scroll-experience.min.css",
+          "bytes": 4677,
+          "ms": 413
+        },
+        {
+          "path": "/js/scroll-experience.js",
+          "bytes": 3960,
+          "ms": 1238.199999988079
+        },
+        {
+          "path": "/css/website-hero-nfc.min.css",
+          "bytes": 13380,
+          "ms": 637.5999999642372
+        },
+        {
+          "path": "/css/signature-product.min.css",
+          "bytes": 3763,
+          "ms": 573.6999999880791
+        },
+        {
+          "path": "/css/agency-showcase.min.css",
+          "bytes": 8726,
+          "ms": 746.7999999523163
+        },
+        {
+          "path": "/css/brand-arrival.min.css",
+          "bytes": 3053,
+          "ms": 652.5
+        },
+        {
+          "path": "/js/brand-arrival.js",
+          "bytes": 10021,
+          "ms": 1512.300000011921
+        },
+        {
+          "path": "/images/logo.svg",
+          "bytes": 4880,
+          "ms": 1403.7000000476837
+        },
+        {
+          "path": "/images/icon.svg",
+          "bytes": 611,
+          "ms": 1304.699999988079
+        },
+        {
+          "path": "/images/logo-dark.svg",
+          "bytes": 4880,
+          "ms": 1046.0999999642372
+        },
+        {
+          "path": "/images/business-website-consultation.webp",
+          "bytes": 44530,
+          "ms": 531.5999999642372
+        },
+        {
+          "path": "/images/nfc-business-card.webp",
+          "bytes": 46452,
+          "ms": 556.8000000119209
+        },
+        {
+          "path": "/js/analytics.js",
+          "bytes": 16184,
+          "ms": 456.30000001192093
+        },
+        {
+          "path": "/images/favicon.svg",
+          "bytes": 611,
+          "ms": 71.19999998807907
+        }
+      ],
+      "navigation": [
+        {
+          "domContentLoaded": 3709.099999964237,
+          "load": 3790.699999988079
+        }
+      ],
+      "overflow": false,
+      "h1": "We make\nBusiness\ntech easy."
+    },
+    {
+      "phase": "after",
+      "route": "/shop/custom-nfc-business-card/",
+      "width": 375,
+      "sample": 1,
+      "lcp": 2640,
+      "cls": 0,
+      "longTasks": 261,
+      "events": [],
+      "resources": [
+        {
+          "path": "/css/style.min.css",
+          "bytes": 113717,
+          "ms": 2003.5
+        },
+        {
+          "path": "/js/config.js",
+          "bytes": 5393,
+          "ms": 250.80000001192093
+        },
+        {
+          "path": "/js/products.min.js",
+          "bytes": 59031,
+          "ms": 1712.300000011921
+        },
+        {
+          "path": "/js/motion.js",
+          "bytes": 9866,
+          "ms": 606
+        },
+        {
+          "path": "/js/main.min.js",
+          "bytes": 64111,
+          "ms": 1830.800000011921
+        },
+        {
+          "path": "/js/form-experience.js",
+          "bytes": 7940,
+          "ms": 918.1999999880791
+        },
+        {
+          "path": "/js/section-experience.js",
+          "bytes": 10661,
+          "ms": 1186.800000011921
+        },
+        {
+          "path": "/js/marketing-packages.js",
+          "bytes": 1326,
+          "ms": 1002.1999999880791
+        },
+        {
+          "path": "/js/hero-story.js",
+          "bytes": 6644,
+          "ms": 1268.199999988079
+        },
+        {
+          "path": "/css/shop.min.css",
+          "bytes": 4967,
+          "ms": 216.5
+        },
+        {
+          "path": "/css/polish.min.css",
+          "bytes": 26882,
+          "ms": 807.8999999761581
+        },
+        {
+          "path": "/css/motion.min.css",
+          "bytes": 12089,
+          "ms": 399.19999998807907
+        },
+        {
+          "path": "/images/logo.svg",
+          "bytes": 4880,
+          "ms": 1383.7000000476837
+        },
+        {
+          "path": "/images/nfc-business-card.webp",
+          "bytes": 46452,
+          "ms": 1368.0999999642372
+        },
+        {
+          "path": "/images/logo-dark.svg",
+          "bytes": 4880,
+          "ms": 1441.199999988079
+        },
+        {
+          "path": "/js/analytics.js",
+          "bytes": 16184,
+          "ms": 155.89999997615814
+        },
+        {
+          "path": "/images/favicon.svg",
+          "bytes": 611,
+          "ms": 53.60000002384186
+        }
+      ],
+      "navigation": [
+        {
+          "domContentLoaded": 2666.600000023842,
+          "load": 2759.300000011921
+        }
+      ],
+      "overflow": false,
+      "h1": "Custom NFC Business Card"
+    },
+    {
+      "phase": "after",
+      "route": "/shop/custom-nfc-business-card/",
+      "width": 375,
+      "sample": 2,
+      "lcp": 3020,
+      "cls": 0,
+      "longTasks": 504,
+      "events": [],
+      "resources": [
+        {
+          "path": "/css/style.min.css",
+          "bytes": 113717,
+          "ms": 2020
+        },
+        {
+          "path": "/js/config.js",
+          "bytes": 5393,
+          "ms": 252.39999997615814
+        },
+        {
+          "path": "/js/products.min.js",
+          "bytes": 59031,
+          "ms": 1718.2000000476837
+        },
+        {
+          "path": "/js/motion.js",
+          "bytes": 9866,
+          "ms": 599.6999999880791
+        },
+        {
+          "path": "/js/main.min.js",
+          "bytes": 64111,
+          "ms": 1845.199999988079
+        },
+        {
+          "path": "/js/form-experience.js",
+          "bytes": 7940,
+          "ms": 908.4000000357628
+        },
+        {
+          "path": "/js/section-experience.js",
+          "bytes": 10661,
+          "ms": 1194.5
+        },
+        {
+          "path": "/js/marketing-packages.js",
+          "bytes": 1326,
+          "ms": 984.3999999761581
+        },
+        {
+          "path": "/js/hero-story.js",
+          "bytes": 6644,
+          "ms": 1239.9000000357628
+        },
+        {
+          "path": "/css/shop.min.css",
+          "bytes": 4967,
+          "ms": 215
+        },
+        {
+          "path": "/css/polish.min.css",
+          "bytes": 26882,
+          "ms": 812.5
+        },
+        {
+          "path": "/css/motion.min.css",
+          "bytes": 12089,
+          "ms": 398.69999998807907
+        },
+        {
+          "path": "/images/logo.svg",
+          "bytes": 4880,
+          "ms": 1407.699999988079
+        },
+        {
+          "path": "/images/nfc-business-card.webp",
+          "bytes": 46452,
+          "ms": 1377.300000011921
+        },
+        {
+          "path": "/images/logo-dark.svg",
+          "bytes": 4880,
+          "ms": 1410.8999999761581
+        },
+        {
+          "path": "/js/analytics.js",
+          "bytes": 16184,
+          "ms": 161
+        },
+        {
+          "path": "/images/favicon.svg",
+          "bytes": 611,
+          "ms": 78.39999997615814
+        }
+      ],
+      "navigation": [
+        {
+          "domContentLoaded": 3071.800000011921,
+          "load": 3149.400000035763
+        }
+      ],
+      "overflow": false,
+      "h1": "Custom NFC Business Card"
+    },
+    {
+      "phase": "after",
+      "route": "/shop/custom-nfc-business-card/",
+      "width": 375,
+      "sample": 3,
+      "lcp": 2728,
+      "cls": 0,
+      "longTasks": 320,
+      "events": [],
+      "resources": [
+        {
+          "path": "/css/style.min.css",
+          "bytes": 113717,
+          "ms": 2019.699999988079
+        },
+        {
+          "path": "/js/config.js",
+          "bytes": 5393,
+          "ms": 240.69999998807907
+        },
+        {
+          "path": "/js/products.min.js",
+          "bytes": 59031,
+          "ms": 1672.199999988079
+        },
+        {
+          "path": "/js/motion.js",
+          "bytes": 9866,
+          "ms": 571.1000000238419
+        },
+        {
+          "path": "/js/form-experience.js",
+          "bytes": 7940,
+          "ms": 878
+        },
+        {
+          "path": "/js/main.min.js",
+          "bytes": 64111,
+          "ms": 1840.9000000357628
+        },
+        {
+          "path": "/js/section-experience.js",
+          "bytes": 10661,
+          "ms": 1216.5999999642372
+        },
+        {
+          "path": "/js/marketing-packages.js",
+          "bytes": 1326,
+          "ms": 955.0999999642372
+        },
+        {
+          "path": "/js/hero-story.js",
+          "bytes": 6644,
+          "ms": 1232.300000011921
+        },
+        {
+          "path": "/css/shop.min.css",
+          "bytes": 4967,
+          "ms": 216.5
+        },
+        {
+          "path": "/css/polish.min.css",
+          "bytes": 26882,
+          "ms": 829.6000000238419
+        },
+        {
+          "path": "/css/motion.min.css",
+          "bytes": 12089,
+          "ms": 401.89999997615814
+        },
+        {
+          "path": "/images/logo.svg",
+          "bytes": 4880,
+          "ms": 1407.800000011921
+        },
+        {
+          "path": "/images/nfc-business-card.webp",
+          "bytes": 46452,
+          "ms": 1528.199999988079
+        },
+        {
+          "path": "/images/logo-dark.svg",
+          "bytes": 4880,
+          "ms": 1437.1000000238419
+        },
+        {
+          "path": "/js/analytics.js",
+          "bytes": 16184,
+          "ms": 156.89999997615814
+        },
+        {
+          "path": "/images/favicon.svg",
+          "bytes": 611,
+          "ms": 46.30000001192093
+        }
+      ],
+      "navigation": [
+        {
+          "domContentLoaded": 2743.300000011921,
+          "load": 2805.7000000476837
+        }
+      ],
+      "overflow": false,
+      "h1": "Custom NFC Business Card"
+    }
+  ]
+}

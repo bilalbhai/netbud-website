@@ -2,7 +2,7 @@
 
 A website for NetBud, a Sydney-based business offering websites, NFC business cards, SEO, social media, paid advertising and digital support.
 
-Built with HTML, CSS and plain JavaScript. No build step or package installation is required.
+Built with HTML, CSS and plain JavaScript. The checked-in website runs without installing packages. Maintainers regenerate the smaller production assets after editing CSS or shared JavaScript (see below).
 
 ## Run locally
 
@@ -60,3 +60,17 @@ The shared palette, type and motion tokens are at the top of `css/style.css`; `c
 ## Creative motion review
 
 `css/motion.css` and `js/motion.js` provide the selective entrance, timeline and pointer enhancements. `js/hero-story.js` remains the sole device-scene controller. Run `node scripts/check-motion.cjs` for its dependency-free regression checks. See `CREATIVE_MOTION_AUDIT.md` and `CREATIVE_MOTION_REPORT.md` for the separate review branch, animation inventory, evidence, limits and approval-before-deployment workflow.
+
+## Rebuild public assets and metadata
+
+Use Node.js 18+ and npm for maintenance only. These commands do not deploy the site:
+
+```sh
+npm ci --ignore-scripts
+npm run build
+npm test
+```
+
+Edit the readable `.css` and `.js` sources, not their generated `.min` copies. The build uses pinned esbuild 0.28.2 and updates asset version hashes, canonical/sharing metadata and clean directory routes. After changing the catalogue, run `npm run build:catalogue` instead. No server, customer checkout or paid service is introduced.
+
+The growth audit, local measurements, screenshots and remaining owner decisions are in [the optimisation report](docs/NETBUD_GROWTH_OPTIMISATION_REPORT.md). Google and FormSubmit must be mocked during automated browser tests.
