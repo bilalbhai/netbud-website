@@ -34,9 +34,9 @@ window.NETBUD_CONFIG = {
   formEndpoint: "https://formsubmit.co/ajax/bilal@netbud.com.au",
   formDeliveryVerified: true, // Owner confirmed activation and receipt of a second test enquiry on 17 November 2026.
   googleTagManagerId: "GTM-N9B3W4F5",
-  googleAnalyticsId: "G-4L3JN7WC5M", // Owner-confirmed GA4 Measurement ID. GTM is the ONLY loader; release hold pending published-container privacy remediation.
-  analyticsEnabled: false, // Release hold: published automatic user-data/form tracking needs correction.
-  analyticsContainerReviewed: false, // Published-container privacy review failed on 18 November 2026.
+  googleAnalyticsId: "G-4L3JN7WC5M", // Approved GA4 property; GTM is the only loader.
+  analyticsEnabled: true, // Owner-directed restoration of consent-based visitor tracking, 20 November 2026.
+  analyticsContainerReviewed: true, // Owner-directed activation; separately review Google auto-detection settings urgently.
   analyticsAllowedOrigins: ["https://netbud.com.au", "https://www.netbud.com.au"],
   analyticsCampaignAllowlist: {}, // Approved public UTM values only; unknown URL data disables tracking.
   hostedPaymentLinks: [], // Optional [{ label: "Pay an agreed invoice", url: "https://…" }]. Only add genuine links.

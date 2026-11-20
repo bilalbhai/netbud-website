@@ -133,16 +133,16 @@
   }
   function preferences(moveFocus){
     if(document.querySelector('.analytics-consent'))return;
-    var previous=document.activeElement,banner=document.createElement('aside');banner.className='analytics-consent consent-banner';banner.setAttribute('aria-label','Optional analytics choice');
-    var text=document.createElement('p');text.textContent='May we use optional Google Analytics to understand visits, product interest and enquiry journeys? Names, contact details and form messages are not included. '+(loaded?'Turning analytics off refreshes this page; unsaved form entries may be lost.':'Analytics stay off unless you accept.');banner.appendChild(text);
+    var previous=document.activeElement,banner=document.createElement('aside');banner.className='analytics-consent consent-banner';banner.setAttribute('aria-label','Cookie preferences');
+    var text=document.createElement('p');text.textContent='We use optional cookies to understand visits and improve our website. Do you accept these cookies? '+(loaded?'Changing your choice may refresh this page and lose unsaved form entries.':'You can change your choice at any time.');banner.appendChild(text);
     var link=document.createElement('a');link.href='/privacy/';link.textContent='Read the privacy policy';text.appendChild(document.createTextNode(' '));text.appendChild(link);
     var group=document.createElement('div');group.className='button-group button-row';
-    [['yes','Accept analytics'],['no','Reject optional analytics']].forEach(function(option){var button=document.createElement('button');button.type='button';button.className='button '+(option[0]==='yes'?'button-primary':'button-outline');button.setAttribute('data-analytics-'+option[0],'');button.textContent=option[1];button.onclick=function(){banner.remove();if(option[0]==='yes'){write(consentKey,'v2:yes');activate();}else reject();if(previous&&moveFocus)previous.focus({preventScroll:true});};group.appendChild(button);});
+    [['yes','Accept cookies'],['no','Reject cookies']].forEach(function(option){var button=document.createElement('button');button.type='button';button.className='button '+(option[0]==='yes'?'button-primary':'button-outline');button.setAttribute('data-analytics-'+option[0],'');button.textContent=option[1];button.onclick=function(){banner.remove();if(option[0]==='yes'){write(consentKey,'v2:yes');activate();}else reject();if(previous&&moveFocus)previous.focus({preventScroll:true});};group.appendChild(button);});
     banner.appendChild(group);document.body.appendChild(banner);if(moveFocus)group.querySelector('button').focus();
   }
   function init(){
     if(!configured()||route().mode!=='public')return;
-    if(!document.querySelector('[data-analytics-preferences]')){var b=document.createElement('button');b.type='button';b.className='button-link footer-preferences';b.setAttribute('data-analytics-preferences','');b.textContent='Analytics preferences';(document.querySelector('footer')||document.querySelector('main')).appendChild(b);}
+    if(!document.querySelector('[data-analytics-preferences]')){var b=document.createElement('button');b.type='button';b.className='button-link footer-preferences';b.setAttribute('data-analytics-preferences','');b.textContent='Cookie preferences';(document.querySelector('footer')||document.querySelector('main')).appendChild(b);}
     document.addEventListener('click',function(event){var target=event.target.closest('[data-analytics-preferences]');if(target){preferences(true);return;}var a=event.target.closest('a[href]');if(!a||!canSend())return;try{var url=new URL(a.href,location.href);if(url.origin!==location.origin)return;var p=products.find(function(x){return cleanPath(url.pathname)==='/shop/'+x.slug+'/';});if(p)send('select_item',{items:items([{id:p.id,quantity:1}]),list:route().category==='shop'?'shop':'public'});}catch(error){}});
     document.addEventListener('netbud:cataloguechange',view);
     window.addEventListener('storage',function(event){if(event.key===consentKey&&event.newValue!=='v2:yes')reject();});
