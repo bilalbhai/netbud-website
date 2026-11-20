@@ -877,7 +877,7 @@
     if (config.analyticsEnabled !== true || config.analyticsContainerReviewed !== true || !/^GTM-[A-Z0-9]+$/.test(config.googleTagManagerId || '') || !/^G-[A-Z0-9]+$/.test(config.googleAnalyticsId || '')) return;
     if (window.NetBudAnalytics || document.querySelector('script[data-netbud-analytics]')) return;
     var script = document.createElement('script'); script.defer = true; script.dataset.netbudAnalytics = 'true';
-    script.src = localPath('js/analytics.js') + '?v=20261118-growth1'; document.head.appendChild(script);
+    script.src = localPath('js/analytics.js') + '?v=20261120-cookies1'; document.head.appendChild(script);
   }
 
   function configureProductionMetadata() {
