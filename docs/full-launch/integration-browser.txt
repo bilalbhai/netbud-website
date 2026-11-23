@@ -1,0 +1,10 @@
+PASS marketing smoke 375px with reduced motion; protected source unchanged
+PASS HTTPS 375px: checkout, mock OTP, Secure HttpOnly cookie, staff JWT/TOTP, keyboard, reduced motion and logout
+PASS marketing smoke 430px with reduced motion; protected source unchanged
+PASS HTTPS 430px: checkout, mock OTP, Secure HttpOnly cookie, staff JWT/TOTP enrollment, keyboard, reduced motion and logout
+PASS marketing smoke 768px with reduced motion; protected source unchanged
+PASS HTTPS 768px: checkout, mock OTP, Secure HttpOnly cookie, staff JWT/TOTP, keyboard, reduced motion and logout
+PASS marketing smoke 1024px with reduced motion; protected source unchanged
+PASS HTTPS 1024px: checkout, mock OTP, Secure HttpOnly cookie, staff JWT/TOTP, keyboard, reduced motion and logout
+PASS marketing smoke 1440px with reduced motion; protected source unchanged
+PASS HTTPS 1440px: checkout, mock OTP, Secure HttpOnly cookie, staff JWT/TOTP, keyboard, reduced motion and logout

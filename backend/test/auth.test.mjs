@@ -1,0 +1,16 @@
+import {test,before} from 'node:test';
+import assert from 'node:assert/strict';
+import {generateKeyPair,SignJWT} from 'jose';
+import {supabaseAuth} from '../src/auth.mjs';
+const id='10000000-0000-4000-8000-000000000001';let pair;
+before(async()=>{pair=await generateKeyPair('ES256');});
+const env={SUPABASE_URL:'https://test.supabase.co',SUPABASE_PUBLISHABLE_KEY:'public-test-placeholder'};
+const token=async(overrides={},key=pair.privateKey)=>new SignJWT({sub:id,role:'authenticated',aal:'aal2',session_id:crypto.randomUUID(),amr:[{method:'totp',timestamp:Math.floor(Date.now()/1000)}],...overrides}).setProtectedHeader({alg:'ES256'}).setIssuedAt().setIssuer('https://test.supabase.co/auth/v1').setAudience('authenticated').setExpirationTime('5m').sign(key);
+const req=t=>new Request('https://local.test',{headers:{Authorization:`Bearer ${t}`}});
+const auth=(fetcher=async()=>Response.json({id}))=>supabaseAuth(env,fetcher,pair.publicKey);
+test('staff auth verifies real JWT signature, issuer/audience/expiry and user service',async()=>{const identity=await auth()(req(await token()));assert.equal(identity.id,id);assert.equal(identity.aal,'aal2');assert.ok(identity.mfaAt>0);});
+test('unsigned/malformed/missing or wrong-signature credentials rejected',async()=>{const foreign=await generateKeyPair('ES256');for(const t of ['bad','',await token({},foreign.privateKey)])await assert.rejects(auth()(req(t)),e=>e.status===401);});
+test('signed aal1 or nonstaff JWT role never accepted',async()=>{for(const v of [{aal:'aal1'},{role:'anon'}])await assert.rejects(auth()(req(await token(v))),e=>e.status===403);});
+test('expired signed JWT rejected',async()=>{const t=await new SignJWT({sub:id,aal:'aal2',role:'authenticated',session_id:crypto.randomUUID()}).setProtectedHeader({alg:'ES256'}).setIssuedAt().setIssuer('https://test.supabase.co/auth/v1').setAudience('authenticated').setExpirationTime('0s').sign(pair.privateKey);await assert.rejects(auth()(req(t)),e=>e.status===401);});
+test('Auth deletion/mismatched user and network errors fail closed',async()=>{const t=await token();await assert.rejects(auth(async()=>Response.json({id:'another-user'}))(req(t)),e=>e.status===401);await assert.rejects(auth(async()=>new Response('',{status:401}))(req(t)),e=>e.status===401);await assert.rejects(auth(async()=>{throw Error('network');})(req(t)),e=>e.status===503);});
+test('otherwise valid JWT for another issuer or audience is rejected',async()=>{for(const [issuer,audience] of [['https://other.supabase.co/auth/v1','authenticated'],['https://test.supabase.co/auth/v1','anon']]){const t=await new SignJWT({sub:id,aal:'aal2',role:'authenticated',session_id:crypto.randomUUID()}).setProtectedHeader({alg:'ES256'}).setIssuedAt().setIssuer(issuer).setAudience(audience).setExpirationTime('5m').sign(pair.privateKey);await assert.rejects(auth()(req(t)),e=>e.status===401);}});
