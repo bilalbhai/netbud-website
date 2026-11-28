@@ -1,0 +1,10 @@
+.cache/
+node_modules/
+.env
+.env.*
+!.env.example
+.wrangler/
+*.dump
+*.backup
+*.db
+test-results.local.*

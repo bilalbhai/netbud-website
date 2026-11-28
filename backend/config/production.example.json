@@ -1,0 +1,12 @@
+{
+  "ENVIRONMENT": "production",
+  "APP_ORIGIN": "https://netbud.com.au",
+  "STAGING_ADMIN_APPROVED": "false",
+  "STAGING_GUEST_APPROVED": "false",
+  "EMAIL_WEBHOOK_APPROVED": "false",
+  "SCHEDULER_APPROVED": "false",
+  "TRANSACTIONAL_EMAIL_ENABLED": "false",
+  "PAYMENTS_MODE": "disabled",
+  "ARTWORK_UPLOADS_ENABLED": "false",
+  "RELEASE_STATUS": "blocked_pending_hosted_security_legal_backup_tests_and_owner_approval"
+}

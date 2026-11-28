@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="en-AU"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Payment status · NetBud</title>
+<link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/checkout/checkout.css"><link rel="stylesheet" href="/admin/admin.css"><script src="/payment/payment.js" defer></script></head>
+<body><main><p>NETBUD SANDBOX</p><h1>Check your payment status</h1>
+<p>Returning from checkout does not confirm a payment. Verify your email to view the recorded Sandbox result.</p>
+<form id="payment-status"><label for="reference">NetBud order reference</label><input id="reference" autocomplete="off" required>
+<button name="action" value="status">Check recorded status</button>
+<button name="action" value="checkout">Open Sandbox checkout for outstanding balance</button></form>
+<p id="feedback" role="status"></p><div id="results"></div>
+<a href="/track/">Verify email and track order</a><p><a href="/admin/payments/">Owner Sandbox workspace</a></p></main></body></html>

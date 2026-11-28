@@ -1,0 +1,28 @@
+✔ staging and production default closed; guest config cannot expose a service-role key (2078.4758ms)
+✔ mandatory Turnstile rejects invalid, wrong action and replayed tokens before order mutation (79.1531ms)
+✔ staging reuses authoritative prices, idempotency, five designs, shipping and mixed quotes (61.1791ms)
+✔ real-address staging admission requires both server and database allowlists (19.117ms)
+✔ integrated OTP outbox, HTTPS cookie, customer isolation, CSRF and logout (389.931ms)
+✔ five-design manual proof approval, verified payment, partial dispatch and completion (280.9851ms)
+✔ proof replacement invalidates old approval; wrong customer, stale version and staff denied (153.1682ms)
+✔ shipping cannot proceed on item-only payment even with valid manual proof (197.7774ms)
+✔ approved service deposit permits project start, never full-paid completion (214.5132ms)
+✔ verified manual refund is owner-only, immutable and idempotent; approval alone is no transfer (299.3504ms)
+✔ staff session revocation and 30-minute age are checked in database on every API call (49.7482ms)
+✔ maintenance scrubs expired code secrets, sessions and rate data, preserves orders and finances (19.899ms)
+✔ external artwork deletion recording requires notice, age and released hold; financial evidence stays (109.6439ms)
+✔ GST draft calculations require reviewed classifications and do not issue invoices (2.0347ms)
+✔ encrypted fresh-engine recovery preserves manual approvals, refund ledger and private fixture bytes (3374.634ms)
+✔ bundle includes unchanged marketing assets, excludes private files and synthetic login (1795.9029ms)
+✔ entry denies private paths and public activation while preserving marketing fallback (6.8381ms)
+✔ analytics packaging preserves private page exclusions and checkout CSP boundary (1169.19ms)
+✔ staging packaging rejects production/custom origins and invalid project names (1.7395ms)
+✔ reviewed staging artifact defaults closed and detects unexpected files and tampering (2303.827ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13224.8754

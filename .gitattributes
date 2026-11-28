@@ -1,0 +1,3 @@
+# Keep generated asset hashes identical after Windows and Linux checkouts.
+*.min.js text eol=lf
+*.min.css text eol=lf

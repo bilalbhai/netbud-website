@@ -1,0 +1,100 @@
+{
+  "reviewedOn": "2026-11-28",
+  "target": {
+    "name": "netbud-staging",
+    "ref": "pzorzppbxgqespexuers",
+    "url": "https://pzorzppbxgqespexuers.supabase.co"
+  },
+  "approval": "granted_staging_only",
+  "hostedInspection": "applied_and_verified",
+  "hashEncoding": "SHA-256 of UTF-8 SQL with CRLF normalised to LF",
+  "files": [
+    {
+      "order": 1,
+      "path": "backend/migrations/001_foundation.sql",
+      "sha256Lf": "74fdd3c4e0ff17ccfdcd6a134145b37dc9a433e239587e3eb2e34a170159c99e"
+    },
+    {
+      "order": 2,
+      "path": "backend/migrations/002_operations.sql",
+      "sha256Lf": "9c3a58157690051a2dcdd94848774f00768b1240ef95c24effb2979885146537"
+    },
+    {
+      "order": 3,
+      "path": "backend/migrations/003_outbox_storage.sql",
+      "sha256Lf": "a27306107ad5bfb66bb4d83b50ac031b415a90c038a399ef0d21d84849752d28"
+    },
+    {
+      "order": 4,
+      "path": "backend/migrations/004_catalogue.sql",
+      "sha256Lf": "764fd40d8640203db5570032b39b489bf3b1664c9003494606485b7e421744c0"
+    },
+    {
+      "order": 5,
+      "path": "backend/migrations/005_integrity.sql",
+      "sha256Lf": "169e7057a14e8b10417e1e7c145ffbfedc06e60582469e601cdea01f69502970"
+    },
+    {
+      "order": 6,
+      "path": "backend/migrations/006_guest_checkout.sql",
+      "sha256Lf": "012bd3471f3f64519f459e31f313f90afaf93129b50e2b8b8f6ae01e8f009f94"
+    },
+    {
+      "order": 7,
+      "path": "backend/migrations/007_customer_tracking.sql",
+      "sha256Lf": "cbf3f61d05a22011a6464af241a3142d922b15bf39031552cf47228997c9e076"
+    },
+    {
+      "order": 8,
+      "path": "backend/migrations/008_admin.sql",
+      "sha256Lf": "beffe770295da134fd112f811ae08fb5fc7e68a0750f49deb4da7b824d56aeb7"
+    },
+    {
+      "order": 9,
+      "path": "backend/migrations/009_admin_actions.sql",
+      "sha256Lf": "1681b9a4f1d5526551ce7fb399dba305e9e40ab08fe42ada5e89789fc74840ad"
+    },
+    {
+      "order": 10,
+      "path": "backend/migrations/010_tracking_quote_totals.sql",
+      "sha256Lf": "1ae71ba310846aeac176ebd239171d356585a96463d6f761136568dce6b02433"
+    },
+    {
+      "order": 11,
+      "path": "backend/migrations/011_launch_operations.sql",
+      "sha256Lf": "3a07b3eb0aedf66e679a326d7ce11117315886bdfe96d8d6f2da4de14704cd5a"
+    },
+    {
+      "order": 12,
+      "path": "backend/migrations/012_integration.sql",
+      "sha256Lf": "a0260c5c8ca90e4728db853f9f057eead3e7b226a0139bc7c2688931a06df204"
+    },
+    {
+      "order": 13,
+      "path": "backend/migrations/013_manual_refunds.sql",
+      "sha256Lf": "272aeb62cf9f2f5b89eb950b7b0e59817c06271156573fa5c2f89216879f5e84"
+    },
+    {
+      "order": 14,
+      "path": "backend/migrations/014_manual_retention.sql",
+      "sha256Lf": "5b1317cf252a3737ba20330dba181db9d996cebb69529c8aec0fe788af6b4b27"
+    }
+  ],
+  "observed": {
+    "name": "netbud-staging",
+    "ref": "pzorzppbxgqespexuers",
+    "status": "ACTIVE_HEALTHY",
+    "postgresVersion": "17.12",
+    "migrationHistory": [],
+    "netbudSchemaExists": false,
+    "applicationTables": 0,
+    "netbudPublicFunctions": 0,
+    "intendedArtworkBucketExists": false
+  },
+  "proposedPrerequisite": {
+    "path": "backend/review/proposed-staging-rls-helper-permissions.sql",
+    "sha256Lf": "072ba494fa457fdaed8e61408614951b12cb0873db29825ecc52f0aff674d993",
+    "applied": true
+  },
+  "observationScope": "observed contains the pre-application snapshot. See NETBUD_FULL_LAUNCH_REPORT.md for verified post-migration history and results."
+}
