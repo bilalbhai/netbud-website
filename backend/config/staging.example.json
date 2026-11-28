@@ -1,5 +1,7 @@
 {
   "ENVIRONMENT": "staging",
+  "SUPABASE_URL": "https://pzorzppbxgqespexuers.supabase.co",
+  "SUPABASE_PUBLISHABLE_KEY": "",
   "APP_ORIGIN": "https://staging.netbud.example",
   "STAGING_ADMIN_APPROVED": "false",
   "STAGING_GUEST_APPROVED": "false",

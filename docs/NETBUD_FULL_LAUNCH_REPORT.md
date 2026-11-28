@@ -1,5 +1,7 @@
 # NetBud full launch execution report
 
+**28 November update:** owner has created `netbud-staging` (`pzorzppbxgqespexuers`). Both connected Supabase accounts deny project and migration-history access; no hosted migration, test or owner provisioning has run. See [the current staging setup report and approval plan](ordering/SUPABASE_STAGING_SETUP.md). The 23 November report below is retained as historical launch evidence.
+
 23 November 2026, Australia/Sydney. **Full operational launch: BLOCKED.** Marketing website remains live. Integration branch: `codex/netbud-full-launch`, based on current production `a5eb696`. No production deployment, merge, DNS/MX change, paid subscription, real order, real email or payment was performed.
 
 ## Deployment status
