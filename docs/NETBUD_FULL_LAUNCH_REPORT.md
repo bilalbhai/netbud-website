@@ -1,5 +1,17 @@
 # NetBud full launch execution report
 
+## Admin secret activation verified · 28 November 2026
+
+Cloudflare showed RATE_LIMIT_HMAC_SECRET and SUPABASE_SERVICE_ROLE_KEY as encrypted Secrets. Their values were never revealed. The existing verified ZIP was uploaded again, all 186 files completed, and Cloudflare reported successful deployment. The source artifact remains based on 0fd2b2b.
+
+Actual HTTPS results after deployment: /admin/ HTTP 200, /api/staging/config HTTP 200 with correct Supabase project and guests=false, /api/admin/orders HTTP 401 authentication_required. A fabricated token also returned 401 and an untrusted POST origin returned 403 origin_denied. The previous configuration_required response is resolved. Reaching authentication after the rate-limit RPCs establishes that the hosted service credential can execute those database calls. It does not establish authenticated financial or dashboard operations.
+
+The original UUID bf9b95f7-54f8-4d1a-9101-0188702a601e remains an active owner. No duplicate account or role assignment was performed. At the final read-only check there were zero verified TOTP factors and zero recent Auth sessions for that identity. Owner password login, TOTP enrollment, dashboard access, session expiry, logout and revoked-session denial remain pending owner interaction. No successful login is claimed.
+
+Owner next action is to open https://netbud-staging.pages.dev/admin/, enter their password privately, add the displayed setup key to their authenticator, and enter its six-digit code. Report only dashboard success or error text. Never share the password, setup key, code or session token. Once authenticated, use synthetic fixtures for dashboard testing and check logout/revocation against a previously valid session without recording tokens.
+
+Independent Revolut Sandbox preparation adds a development-only read probe and setup guide under docs/ordering/REVOLUT_SANDBOX_SETUP.md. Two mocked tests passed for live-origin rejection and safe canonical-response projection. No real Revolut call, payment, callback registration or database payment write occurred. The probe is excluded from the deployment package. Guest ordering, emails, webhooks, scheduler, artwork uploads and payments remain disabled.
+
 ## Admin activation check · 28 November 2026
 
 The existing verified 186-file ZIP was redeployed after the owner saved Supabase bindings and enabled the staging admin gate. **https://netbud-staging.pages.dev/admin/ now returns HTTP 200** and contains the staff login form. The staging config endpoint returns the correct Supabase URL, a present publishable key and `guests=false`.
