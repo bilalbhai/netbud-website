@@ -1,5 +1,7 @@
 # NetBud ordering system — Phase A review
 
+Current staging status: [verified Supabase read-only review and exact migration approval request](SUPABASE_READ_ONLY_REVIEW.md). Access is restored; no schema changes have been applied. The prior connection-failure note below is historical.
+
 28 November staging update: [Supabase connection, migration review and approval plan](SUPABASE_STAGING_SETUP.md), current branch `codex/netbud-full-launch` / PR #8. Owner supplied the new `netbud-staging` project, but both connected accounts deny access. No hosted migrations or owner provisioning have been performed; the older account-readiness notes below are historical.
 
 Current review: [Phase H final integration and honest launch-readiness assessment](PHASE_H_REPORT.md), branch `codex/netbud-phase-h-integration`, based on Phase G. [Owner setup, safe migrations, manual proof handling and rollout/rollback](OPERATIONS.md) are updated. Accounts are not ready: hosted tests, legal details, recovery and production approval remain blockers. All PRs remain drafts; nothing is merged/deployed.

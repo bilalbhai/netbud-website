@@ -6,7 +6,7 @@
     "url": "https://pzorzppbxgqespexuers.supabase.co"
   },
   "approval": "not_granted",
-  "hostedInspection": "permission_denied_on_both_connections",
+  "hostedInspection": "verified_read_only_awaiting_explicit_approval",
   "hashEncoding": "SHA-256 of UTF-8 SQL with CRLF normalised to LF",
   "files": [
     {
@@ -79,5 +79,21 @@
       "path": "backend/migrations/014_manual_retention.sql",
       "sha256Lf": "5b1317cf252a3737ba20330dba181db9d996cebb69529c8aec0fe788af6b4b27"
     }
-  ]
+  ],
+  "observed": {
+    "name": "netbud-staging",
+    "ref": "pzorzppbxgqespexuers",
+    "status": "ACTIVE_HEALTHY",
+    "postgresVersion": "17.12",
+    "migrationHistory": [],
+    "netbudSchemaExists": false,
+    "applicationTables": 0,
+    "netbudPublicFunctions": 0,
+    "intendedArtworkBucketExists": false
+  },
+  "proposedPrerequisite": {
+    "path": "backend/review/proposed-staging-rls-helper-permissions.sql",
+    "sha256Lf": "072ba494fa457fdaed8e61408614951b12cb0873db29825ecc52f0aff674d993",
+    "applied": false
+  }
 }

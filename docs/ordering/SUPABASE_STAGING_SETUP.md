@@ -1,5 +1,7 @@
 # NetBud staging database review — approval not yet requested
 
+**Access-restored update, 28 November:** the reconnected account now confirms the exact healthy project and its empty NetBud namespace/migration history. One existing RLS-helper permission warning needs a proposed correction. See [the verified read-only findings and approval request](SUPABASE_READ_ONLY_REVIEW.md). The earlier connection-failure details below are historical. No migrations or settings changes have been applied.
+
 28 November 2026. Branch `codex/netbud-full-launch`, [draft PR #8](https://github.com/bilalbhai/netbud-website/pull/8). NetBud only. No production website, prices, animations, DNS, mail routing or PACES changes.
 
 ## Connection and actual database status
