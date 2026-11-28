@@ -1,5 +1,25 @@
 # NetBud full launch execution report
 
+## Cloudflare staging deployed · 28 November 2026
+
+**Staging website is hosted at https://netbud-staging.pages.dev. Admin authentication remains blocked on owner and server-secret setup.** Source commit `0fd2b2bd488c206339dfe10df860b60f9a88c334`. Cloudflare deployment `c81b3f96-8c1b-438d-a6cd-2e07ed05356b`, immutable URL https://c81b3f96.netbud-staging.pages.dev.
+
+The existing packaging workflow rebuilt 186 allowlisted files for project `netbud-staging`. Every ZIP entry matched its reviewed SHA-256. The ZIP has assets, protected application files and the bundled Worker at its root. Private SQL, test fixtures, backups, configuration secrets, source maps and internal documentation are excluded. ZIP SHA-256 `153eb550ff313a29268294f9efe66eb596b5d196dd97b00b8f7d8c40c32bce84`.
+
+Local archive is `.cache/netbud-release-0e64994a-967e-4077-b69b-b0cc9abbc010/netbud-staging-upload.zip`; upload folder is its sibling `public/`. For a replacement deployment, choose **Create deployment → file**, select that ZIP and deploy. Upload only that archive or the public folder. The parent directory contains private deployment-review material. Cloudflare supports this precompiled `_worker.js` in dashboard uploads. The dashboard confirmed all 186 files uploaded and deployment success.
+
+Production environment settings of this isolated Pages project were saved and verified after a dashboard reload. `ENVIRONMENT=staging`, `APP_ORIGIN=https://netbud-staging.pages.dev`, `SUPABASE_URL=https://pzorzppbxgqespexuers.supabase.co`. Admin, guest, webhook, scheduler, transactional-email, verified-email, owner-email and artwork gates are false. `PAYMENTS_MODE=disabled`. These settings belong to the staging project's primary pages.dev deployment.
+
+Real HTTPS checks returned homepage 200, admin/checkout 404, API config 503 with `staging_disabled`, private SQL/docs paths 404 and Worker-source URL 404. The protected results confirm that the bundled server is running and activation is closed. TLS certificate verification succeeded. No forms, login credentials or analytics events were submitted during verification. No migrations were rerun.
+
+### Remaining owner setup for admin
+
+Open the [staging settings](https://dash.cloudflare.com/5f9b0457d320a612a9ee70b75d181328/pages/view/netbud-staging/settings/production). Under **Variables and secrets**, add `SUPABASE_SERVICE_ROLE_KEY` as a **Secret** directly from the authorised staging project's API settings. Add its public `SUPABASE_PUBLISHABLE_KEY` as Text. Keep the privileged key outside chat, source control and browser assets. Server API access cannot be completed through the Supabase management connector alone. Once those settings and the owner Auth identity are verified, enable `STAGING_ADMIN_APPROVED=true` and redeploy this same archive so bindings take effect. Keep guest and mail gates false. Admin URL is https://netbud-staging.pages.dev/admin/ and currently returns 404 intentionally.
+
+The owner must create their own password for bilal@netbud.com.au in staging Supabase Auth, independently confirm its user UUID, approve the corresponding owner-role assignment, and enrol TOTP through the hosted admin flow. Hosted owner login, MFA, logout/revocation and dashboard operations remain untested. The preceding database-only and local/mock results do not establish them.
+
+Rollback for this first deployment is to keep all activation gates false. Later releases can restore this verified artifact. No custom domain, live marketing deployment, email routing or database contents were changed.
+
 ## Staging execution · 28 November 2026
 
 **Database installed and tested. Hosted admin login and production release are blocked.** The Supabase management API confirmed NetBud staging project `pzorzppbxgqespexuers` in Singapore, healthy on PostgreSQL 17.12. Before writing, its NetBud namespace and migration history were empty. Each file was rehashed immediately before submission. The history below was independently read back after the final commit. **Do not reapply these migrations.**
