@@ -1,5 +1,17 @@
 # NetBud full launch execution report
 
+## Admin activation check · 28 November 2026
+
+The existing verified 186-file ZIP was redeployed after the owner saved Supabase bindings and enabled the staging admin gate. **https://netbud-staging.pages.dev/admin/ now returns HTTP 200** and contains the staff login form. The staging config endpoint returns the correct Supabase URL, a present publishable key and `guests=false`.
+
+Read-only inspection of project `pzorzppbxgqespexuers` confirmed a healthy NetBud staging instance. The intended email has one confirmed Auth identity with UUID `bf9b95f7-54f8-4d1a-9101-0188702a601e`, no ban/deletion and an existing active `owner` staff row. No owner assignment was executed. No verified TOTP factor exists yet. The observed role is an existing database assignment, independently joined to the Auth UUID.
+
+Cloudflare settings showed the publishable key as Text and service-role binding as Secret with its value encrypted. No secret value was revealed. Admin gate was already true. Guest, mail, scheduler, webhook and upload flags were false, with payments disabled.
+
+The hosted admin API currently returns HTTP 503 `configuration_required`. Source tracing identifies missing `RATE_LIMIT_HMAC_SECRET` (minimum 32 characters) before database rate limiting/authentication runs. The presence of a secret binding therefore does not yet prove the service credential works. Owner must add a separate cryptographically random server secret under that exact name using Cloudflare's encrypted Secret type and redeploy this same artifact. Keep the value private. Then verify the unauthenticated admin endpoint returns 401 and complete owner-controlled password login and TOTP enrollment.
+
+Hosted login/MFA, dashboard views/actions, session expiry, logout/revocation and service credential operation remain blocked on that configuration and owner interaction. Earlier database and mocked tests remain evidence within their documented scope. No password, TOTP secret or code was requested or entered by the agent. No migrations or role writes were executed during this activation check.
+
 ## Cloudflare staging deployed · 28 November 2026
 
 **Staging website is hosted at https://netbud-staging.pages.dev. Admin authentication remains blocked on owner and server-secret setup.** Source commit `0fd2b2bd488c206339dfe10df860b60f9a88c334`. Cloudflare deployment `c81b3f96-8c1b-438d-a6cd-2e07ed05356b`, immutable URL https://c81b3f96.netbud-staging.pages.dev.
