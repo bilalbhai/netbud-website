@@ -1,5 +1,74 @@
 # NetBud full launch execution report
 
+## Staging execution · 28 November 2026
+
+**Database installed and tested. Hosted admin login and production release are blocked.** The Supabase management API confirmed NetBud staging project `pzorzppbxgqespexuers` in Singapore, healthy on PostgreSQL 17.12. Before writing, its NetBud namespace and migration history were empty. Each file was rehashed immediately before submission. The history below was independently read back after the final commit. **Do not reapply these migrations.**
+
+| Migration | Hosted version | SHA-256 (UTF-8, LF) | Result |
+| --- | --- | --- | --- |
+| netbud_staging_rls_helper_permissions | 20261128051737 | `072ba494fa457fdaed8e61408614951b12cb0873db29825ecc52f0aff674d993` | Applied |
+| netbud_001_foundation | 20261128051811 | `74fdd3c4e0ff17ccfdcd6a134145b37dc9a433e239587e3eb2e34a170159c99e` | Applied |
+| netbud_002_operations | 20261128051829 | `9c3a58157690051a2dcdd94848774f00768b1240ef95c24effb2979885146537` | Applied |
+| netbud_003_outbox_storage | 20261128051836 | `a27306107ad5bfb66bb4d83b50ac031b415a90c038a399ef0d21d84849752d28` | Applied |
+| netbud_004_catalogue | 20261128051841 | `764fd40d8640203db5570032b39b489bf3b1664c9003494606485b7e421744c0` | Applied |
+| netbud_005_integrity | 20261128051848 | `169e7057a14e8b10417e1e7c145ffbfedc06e60582469e601cdea01f69502970` | Applied |
+| netbud_006_guest_checkout | 20261128051853 | `012bd3471f3f64519f459e31f313f90afaf93129b50e2b8b8f6ae01e8f009f94` | Applied |
+| netbud_007_customer_tracking | 20261128051859 | `cbf3f61d05a22011a6464af241a3142d922b15bf39031552cf47228997c9e076` | Applied |
+| netbud_008_admin | 20261128051907 | `beffe770295da134fd112f811ae08fb5fc7e68a0750f49deb4da7b824d56aeb7` | Applied |
+| netbud_009_admin_actions | 20261128051914 | `1681b9a4f1d5526551ce7fb399dba305e9e40ab08fe42ada5e89789fc74840ad` | Applied |
+| netbud_010_tracking_quote_totals | 20261128051921 | `1ae71ba310846aeac176ebd239171d356585a96463d6f761136568dce6b02433` | Applied |
+| netbud_011_launch_operations | 20261128052027 | `3a07b3eb0aedf66e679a326d7ce11117315886bdfe96d8d6f2da4de14704cd5a` | Applied |
+| netbud_012_integration | 20261128052137 | `a0260c5c8ca90e4728db853f9f057eead3e7b226a0139bc7c2688931a06df204` | Applied |
+| netbud_013_manual_refunds | 20261128052143 | `272aeb62cf9f2f5b89eb950b7b0e59817c06271156573fa5c2f89216879f5e84` | Applied |
+| netbud_014_manual_retention | 20261128052149 | `5b1317cf252a3737ba20330dba181db9d996cebb69529c8aec0fe788af6b4b27` | Applied |
+
+### Real hosted verification
+
+Installed private tables (40): `admin_requests`, `artwork`, `artwork_approvals`, `artwork_reservations`, `assignments`, `audit`, `bot_tokens`, `communication`, `customer_updates`, `customers`, `deliveries`, `delivery_items`, `enquiries`, `guest_sessions`, `internal_notes`, `invoices`, `limits`, `mail_budget`, `mail_events`, `manual_proof_approvals`, `manual_proofs`, `order_items`, `orders`, `otp_challenges`, `outbox`, `outbox_attempts`, `payment_allocations`, `payments`, `products`, `quote_acceptances`, `quote_versions`, `quote_workflow`, `quotes`, `rate_limits`, `refund_approvals`, `refund_records`, `retention_jobs`, `runtime_policy`, `staff`, `staff_invites`.
+
+Additional hosted checks confirmed OTP expiry, the five-attempt ceiling and repeat-request throttling. On 28 November a fresh read of the public GTM configuration confirmed that automatic email, phone, address and PII collection flags still resolve to true. This inspection did not execute a tag or establish that personal data was transmitted.
+
+- Both browser roles lost EXECUTE on the automatic-RLS helper. The original event trigger remained enabled. Both prior warnings cleared.
+- All 40 NetBud tables have RLS. Anonymous and authenticated roles have zero direct table/view grants, no schema usage and no execute privilege on any of the 35 public NetBud routines. Definer search paths are set. Actual SQL requests as each role were denied; a REST request with the staging publishable key returned HTTP 401 / SQLSTATE 42501. Project-wide default grants were preserved. The advisor reported 40 informational findings: private tables intentionally have no client policy. [Advisor explanation](https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy)
+- The private artwork bucket allows JPEG/PNG up to 10,000,000 bytes; zero object policies. Browser upload and emailed-artwork production handling still require independent validation.
+- Rollback-only synthetic transactions exercised server-side order pricing (A$39 pickup, A$53.95 with shipping), mixed quotes, replay of an order key, pending-payment state, owner acceptance, quote draft/preparation/acceptance and refusal to record unverified funds.
+- A synthetic customer's verified database session retrieved only its own order. Another customer's reference returned an empty list. Incorrect and reused OTPs failed; logout invalidated retrieval. No email was sent. Synthetic staff role tests checked reports for the owner, financial-export denial for other roles, denial of unassigned access and rejection of an unknown Auth session. These tests ran inside PostgreSQL; no owner password or MFA was simulated as a hosted login.
+- Two concurrent replay-guard calls using the same synthetic digest returned exactly one acceptance and one denial. That test used one expiring replay marker. Products remained inactive, and the post-fixture check counted zero orders, staff and outbox messages.
+- The live Auth settings endpoint confirmed public signup disabled. JWKS advertised ES256, supported by the existing verifier. No Auth identity exists for the intended owner. Verified end-to-end login, AAL2, token expiration, logout and revocation require the owner and a hosted runtime.
+
+### Local and mocked evidence
+
+134 backend tests passed after repeating the suite with loopback permission. Public form/hero/motion checks passed 68/18/15; growth/SEO passed 428. Public browser suite passed 486 checks and analytics passed 68 mocked browser assertions. Admin, guest checkout, tracking and HTTPS integration browser suites completed at 375, 430, 768, 1024 and 1440px. Mocked Auth, mail, Turnstile, Google and FormSubmit results are local evidence. Encrypted fixture recovery passed locally. No disposable hosted restore target or provider-level backup was available.
+
+The allowlisted Pages build passed integrity verification for all 186 files. No Cloudflare project URL or authorised deploy session was available. The separate cron-only Worker in `backend/staging-scheduler.mjs` imports the existing bounded dispatcher; its staging-only configuration disables routes, previews and operations by default. The bundle and disabled invocation passed locally. Actual cron execution, alarms and delivery monitoring require Cloudflare. There is no hosted admin or Pages preview URL to give the owner yet.
+
+### Owner actions and activation order
+
+1. In [staging Authentication → Users](https://supabase.com/dashboard/project/pzorzppbxgqespexuers/auth/users), select **Add user → Create new user**, set your own unique password for **bilal@netbud.com.au**, and confirm the identity under your control. Verify the displayed user UUID independently before authorising the one-row owner assignment. Keep credentials and MFA codes in your possession. On the eventual staging admin page sign in, enrol your authenticator and complete the verification challenge. Test sign-out, revoked-session denial and owner-controlled recovery.
+2. In [Cloudflare Workers & Pages](https://dash.cloudflare.com/) create a free staging Pages project and authorise deployment access scoped to NetBud. Provide its assigned HTTPS pages.dev origin. Generate the final deployment package with the exact project and origin using the command below. Set server variables and secrets listed in the setup section below. Enable admin testing first. For cron use the separate `backend/wrangler.scheduler.staging.jsonc` Worker configuration with its own server secrets and dashboard monitoring. Enable the scheduler only when its target and operating limits are verified.
+3. Configure Turnstile for that exact hostname. For email, authorise a verified Resend sender, owner-only test recipients and webhook secret. Approve any sender DNS changes separately. Verify delivery, retries and signatures before enabling guest OTP. Keep customer ordering, uploads, online payments and unverified manual payment actions closed.
+4. Authorise an encrypted backup destination, owner-controlled recovery keys and a disposable restore target. Follow [the recovery runbook](ordering/OPERATIONS.md). Verify the application schema/rows, Auth identity mapping and MFA recovery, object bytes, access controls, immutable payments, outbox deduplication and secrets before admitting orders. Suppress outgoing mail on restore and reconcile uncertain messages before resuming.
+5. Complete the Google settings and seller/tax checks detailed below. Website consent and identifiers are preserved. Last published-container inspection detected automatic contact-data collection settings. Actual Google account remediation and GA4 receipt require authorised access.
+
+**Rollback:** keep staging activation gates closed. On a later failed deployment, disable the scheduler and guest/admin routing and roll back the Pages artifact to the previously verified version. Retain migration history. For database issues use a reviewed forward correction or a verified isolated restore followed by reconciliation. Never replay the initial schema or reset the active database.
+
+| Component | Current status |
+| --- | --- |
+| Supabase database | COMPLETE |
+| Database migrations | COMPLETE |
+| Database security | VERIFIED for the hosted database checks above |
+| Owner authentication | BLOCKED |
+| Admin dashboard | BLOCKED |
+| Cloudflare staging | BLOCKED |
+| Checkout | TESTED in hosted PostgreSQL and local browser; hosted HTTPS checkout blocked |
+| Email OTP | BLOCKED on real delivery |
+| Manual payment management | BLOCKED on authorised hosted operator |
+| Backups and recovery | BLOCKED on hosted rehearsal |
+| Production launch | BLOCKED |
+
+## Historical preflight and previous launch evidence
+
+
 **Latest 28 November read-only result:** access to the exact Supabase staging project is restored and its empty NetBud namespace is verified. The permission correction and original migrations remain unapplied, awaiting approval. [Current findings and exact approval plan](ordering/SUPABASE_READ_ONLY_REVIEW.md). No production deployment or account provisioning occurred.
 
 **28 November update:** owner has created `netbud-staging` (`pzorzppbxgqespexuers`). Both connected Supabase accounts deny project and migration-history access; no hosted migration, test or owner provisioning has run. See [the current staging setup report and approval plan](ordering/SUPABASE_STAGING_SETUP.md). The 23 November report below is retained as historical launch evidence.

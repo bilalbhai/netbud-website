@@ -1,0 +1,17 @@
+{
+  "name": "netbud-staging-operations",
+  "main": "staging-scheduler.mjs",
+  "compatibility_date": "2026-11-20",
+  "workers_dev": false,
+  "preview_urls": false,
+  "triggers": { "crons": ["* * * * *"] },
+  "vars": {
+    "ENVIRONMENT": "staging",
+    "SUPABASE_URL": "https://pzorzppbxgqespexuers.supabase.co",
+    "SCHEDULER_APPROVED": "false",
+    "TRANSACTIONAL_EMAIL_ENABLED": "false",
+    "EMAIL_DOMAIN_VERIFIED": "false",
+    "EMAIL_OWNER_APPROVED": "false",
+    "EMAIL_ALLOWED_RECIPIENTS": ""
+  }
+}

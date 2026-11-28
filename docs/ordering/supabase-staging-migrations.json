@@ -5,8 +5,8 @@
     "ref": "pzorzppbxgqespexuers",
     "url": "https://pzorzppbxgqespexuers.supabase.co"
   },
-  "approval": "not_granted",
-  "hostedInspection": "verified_read_only_awaiting_explicit_approval",
+  "approval": "granted_staging_only",
+  "hostedInspection": "applied_and_verified",
   "hashEncoding": "SHA-256 of UTF-8 SQL with CRLF normalised to LF",
   "files": [
     {
@@ -94,6 +94,7 @@
   "proposedPrerequisite": {
     "path": "backend/review/proposed-staging-rls-helper-permissions.sql",
     "sha256Lf": "072ba494fa457fdaed8e61408614951b12cb0873db29825ecc52f0aff674d993",
-    "applied": false
-  }
+    "applied": true
+  },
+  "observationScope": "observed contains the pre-application snapshot. See NETBUD_FULL_LAUNCH_REPORT.md for verified post-migration history and results."
 }
