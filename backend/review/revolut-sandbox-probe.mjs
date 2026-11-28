@@ -24,7 +24,8 @@ export async function inspectSandboxOrder(env, orderId, fetcher = fetch) {
     throw new Error('Sandbox request failed');
   }
   if (!response.ok) throw new Error('Sandbox request rejected with HTTP ' + response.status);
-  const order = await response.json();
+  let order;
+  try { order = await response.json(); } catch { throw new Error('Unexpected Sandbox response'); }
   if (order.id !== orderId || typeof order.state !== 'string'
       || !Number.isSafeInteger(order.amount) || typeof order.currency !== 'string') {
     throw new Error('Unexpected Sandbox response');

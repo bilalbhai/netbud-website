@@ -1,6 +1,6 @@
 import {createIntegration,runOperations} from './src/integration.mjs';
 const blocked=/^\/(backend|docs|scripts|test|tests|node_modules|private-backups|_worker|\.git|\.env|\.cache|tmp|output)(\/|\.|$)/i;
-const app=/^\/(checkout|track|admin)(\/|$)/;
+const app=/^\/(checkout|track|admin|payment)(\/|$)/;
 export default {
  async fetch(request,env){
   const u=new URL(request.url);if(blocked.test(u.pathname)||u.pathname.includes('\\'))return new Response(null,{status:404});

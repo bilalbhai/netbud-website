@@ -1,5 +1,11 @@
 # NetBud full launch execution report
 
+## Owner MFA verified and Merchant Sandbox implementation · 28 November 2026
+
+The actual hosted owner dashboard, Reports and Staff views were verified after owner password/TOTP login. Supabase confirmed a verified TOTP factor and live owner session. The authorised logout test returned the app to sign-in and removed the Auth session. Natural hosted expiration, token replay and owner recovery remain incomplete.
+
+Merchant Sandbox Hosted Checkout implementation, additive SQL approval request, configuration names and actual test evidence are in [the integration report](ordering/REVOLUT_INTEGRATION_REPORT.md). Full backend regression passed 147 tests; 13 targeted payment tests and browser flows at all five widths passed. Real Revolut tests remain blocked on credentials and approval of the proposed staging migration. No new migration was applied and the Sandbox code remains undeployed.
+
 ## Admin secret activation verified · 28 November 2026
 
 Cloudflare showed RATE_LIMIT_HMAC_SECRET and SUPABASE_SERVICE_ROLE_KEY as encrypted Secrets. Their values were never revealed. The existing verified ZIP was uploaded again, all 186 files completed, and Cloudflare reported successful deployment. The source artifact remains based on 0fd2b2b.

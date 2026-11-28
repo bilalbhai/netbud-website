@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en-AU"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Sandbox payments · NetBud</title>
+<link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/checkout/checkout.css"><link rel="stylesheet" href="/admin/admin.css"><script src="/admin/staff-auth.js" defer></script><script src="/admin/payments.js" defer></script></head>
+<body><main><p>NETBUD OWNER WORKSPACE</p><h1>Test hosted checkout</h1><p>Use synthetic orders only. Sandbox results do not change received revenue or authorise production.</p>
+<section id="login"><form id="login-form"><label for="staff-email">Staff email</label><input id="staff-email" type="email" autocomplete="username" required>
+<label for="staff-password">Password</label><input id="staff-password" type="password" autocomplete="current-password">
+<div id="staff-code-section" hidden><p id="enrol-secret"></p><label for="staff-code">Authenticator code</label><input id="staff-code" inputmode="numeric" pattern="[0-9]{6}" autocomplete="one-time-code"></div>
+<button id="login-button">Continue securely</button></form></section>
+<section id="workspace" hidden><form id="payment-form">
+<label for="order">Accepted NetBud test order UUID</label><input id="order" required>
+<label for="purpose">Payment stage</label><select id="purpose"><option value="balance">Outstanding balance including shipping</option><option value="deposit">Accepted quote deposit</option></select>
+<label for="item">Quote item UUID for a deposit</label><input id="item">
+<button id="create">Open Revolut Sandbox checkout</button><button type="button" id="status">Refresh provider status</button></form>
+<div id="results"></div><button id="logout">End session</button></section>
+<p id="feedback" role="status"></p><a href="/admin/">Back to workspace</a></main></body></html>

@@ -6,6 +6,7 @@ import {supabaseRepository} from './repository.mjs';
 import {createTurnstile} from './bot-protection.mjs';
 import {DurableOtpDelivery,ResendSender,dispatchLaunchMail,handleResendWebhook} from './launch-email.mjs';
 import {fail} from './core.mjs';
+import {createRevolut} from './revolut.mjs';
 const unavailable=()=>Response.json({error:'staging_disabled'},{status:503,headers:{'Cache-Control':'no-store'}});
 function publishable(value){if(typeof value!=='string')return false;if(value.startsWith('sb_publishable_'))return true;try{return JSON.parse(atob(value.split('.')[1].replaceAll('-','+').replaceAll('_','/'))).role==='anon';}catch{return false;}}
 export function createIntegration(env,{repo,authenticate,botGuard,fetcher=fetch}={}){
@@ -23,8 +24,11 @@ export function createIntegration(env,{repo,authenticate,botGuard,fetcher=fetch}
  const guard=guests?(botGuard||createTurnstile({repo,secret:env.TURNSTILE_SECRET_KEY,hostname:origin.hostname,fetcher})):null;
  const admin=createAdmin({repo,authenticate:staff,origin:origin.origin});
  const api=createApi({repo,authenticate:staff,origin:origin.origin,rateSecret:env.RATE_LIMIT_HMAC_SECRET,enabled:true,admin,tracking,botGuard:guard,allowEmail});
+ const revolut=createRevolut({env,repo,authenticate:staff,fetcher});
  return async(request,network)=>{
   const url=new URL(request.url);if(url.origin!==origin.origin)return new Response(null,{status:404});
+  if(url.pathname==='/api/revolut/events'||url.pathname.startsWith('/api/admin/revolut/')
+   ||(guests&&url.pathname.startsWith('/api/ordering/payments/')))return revolut(request,network);
   if(url.pathname==='/api/email/events')return handleResendWebhook(request,{repo,secret:env.RESEND_WEBHOOK_SECRET,enabled:env.EMAIL_WEBHOOK_APPROVED==='true'});
   if(url.pathname==='/api/staging/config'&&request.method==='GET'){
    if(!/^https:\/\/[a-z0-9-]+\.supabase\.co$/.test(env.SUPABASE_URL||'')||!publishable(env.SUPABASE_PUBLISHABLE_KEY))return unavailable();

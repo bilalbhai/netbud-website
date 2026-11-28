@@ -12,5 +12,8 @@
   "EMAIL_OWNER_APPROVED": "false",
   "EMAIL_ALLOWED_RECIPIENTS": "",
   "PAYMENTS_MODE": "disabled",
+  "REVOLUT_SANDBOX_APPROVED": "false",
+  "REVOLUT_WEBHOOK_APPROVED": "false",
+  "REVOLUT_MERCHANT_API_BASE_URL": "https://sandbox-merchant.revolut.com/",
   "ARTWORK_UPLOADS_ENABLED": "false"
 }
